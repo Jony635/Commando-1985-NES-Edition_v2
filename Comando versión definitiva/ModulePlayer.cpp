@@ -73,6 +73,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
+	App->particles->Enable();
 	App->player->dead = false;
 	App->collision->Enable();
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
@@ -88,7 +89,7 @@ bool ModulePlayer::Start()
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
-
+	App->particles->Disable();
 	App->collision->Disable();
 	App->textures->Unload(graphics);
 	return true;
