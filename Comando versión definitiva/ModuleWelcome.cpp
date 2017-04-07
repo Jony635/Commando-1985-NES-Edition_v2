@@ -1,0 +1,68 @@
+#include "Globals.h"
+#include "Application.h"
+#include "ModuleTextures.h"
+#include "ModuleRender.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleLvl1.h"
+#include "ModuleWelcome.h"
+#include "ModuleLvl2.h"
+#include "ModuleGameOver.h"
+#include "ModuleAudio.h"
+#include "ModulePlayer.h"
+
+
+
+ModuleWelcome::ModuleWelcome()
+{}
+
+ModuleWelcome::~ModuleWelcome()
+{}
+
+// Load assets
+bool ModuleWelcome::Start()
+{
+	App->audio->Enable();
+
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg");
+	LOG("Loading welcome scene");
+	bool ret = true;
+	background = App->textures->Load("Resources/Screens/Commandowelcome.png");//foto del fondo
+	App->render->camera.x = App->render->camera.y = 0;
+	App->player->Disable();
+
+
+
+	return ret;
+}
+
+// UnLoad assets
+bool ModuleWelcome::CleanUp()
+{
+	App->audio->Stop();
+	App->player->Disable();
+	LOG("Unloading space scene");
+
+	App->textures->Unload(background);
+
+	return true;
+}
+
+// Update: draw background
+update_status ModuleWelcome::Update()
+{
+	
+
+
+
+	// Draw everything --------------------------------------
+	App->render->Blit(background, 0,  0, NULL);
+
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
+
+		App->fade->FadeToBlack(this, App->lvl1, 1);
+	}
+
+	return UPDATE_CONTINUE;
+}
