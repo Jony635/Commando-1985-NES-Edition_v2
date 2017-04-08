@@ -14,13 +14,14 @@ public:
 
 	bool Start();
 	bool Play(const char*);
+	bool PlaySound(const char*);
 	bool Stop();
 	bool CleanUp();
 
 public:
 
 	Mix_Music* soundtrack = nullptr;
-
+	Mix_Chunk* sounfeffect1 = nullptr;
 };
 
 #endif // __MODULEAUDIO_H__

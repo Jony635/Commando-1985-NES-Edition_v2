@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleLvl2.h"
+#include "ModuleAudio.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -107,6 +108,7 @@ update_status ModulePlayer::Update()
 		//Check if Player Shoots
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
 				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{

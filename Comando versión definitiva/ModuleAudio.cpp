@@ -44,6 +44,23 @@ bool ModuleAudio::Play(const char* path)
 	Mix_PlayMusic(soundtrack, -1);
 	return ret;
 }
+bool ModuleAudio::PlaySound(const char* path)
+{
+	bool ret;
+	sounfeffect1 = Mix_LoadWAV(path);
+	if (sounfeffect1 == nullptr)
+	{
+		LOG("Error loading sound effect 1: %s", Mix_GetError());
+		ret = false;
+	}
+	else
+	{
+		LOG("Sound effect 1 Loaded");
+		Mix_PlayChannel(-1, sounfeffect1, 0);
+		ret = true;
+	}
+	return ret;
+}
 
 
 bool ModuleAudio::Stop()
