@@ -38,7 +38,7 @@ bool ModuleAudio::Play(const char* path)
 		ret = false;
 	}
 	else {
-		LOG("Music Loaded");
+		//LOG("Music Loaded");
 		ret = true;
 	}
 	Mix_PlayMusic(soundtrack, -1);
