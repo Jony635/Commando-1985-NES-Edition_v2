@@ -1,4 +1,11 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDL7 Handout.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  ModuleCollision.cpp
+  Generando código...
+  Omitiendo... (no se detectaron cambios relevantes)
   ModulePlayer.cpp
+  ModuleParticles.cpp
+  ModuleLvl2.cpp
+  ModuleLvl1.cpp
+  Application.cpp
   SDL Game.vcxproj -> C:\Users\Jony635\Desktop\Commando-1985-NES-Edition_v2\Comando versión definitiva\Debug\Commando_FlanStudios.exe
   SDL Game.vcxproj -> C:\Users\Jony635\Desktop\Commando-1985-NES-Edition_v2\Comando versión definitiva\Debug\Commando_FlanStudios.pdb (Full PDB)

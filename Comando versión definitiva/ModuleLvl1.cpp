@@ -156,7 +156,7 @@ update_status ModuleLvl1::Update()
 
 
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
+	if (App->input->keyboard[SDL_SCANCODE_1]) {
 
 		App->fade->FadeToBlack(this, App->lvl2, 1);
 

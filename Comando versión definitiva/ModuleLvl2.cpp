@@ -101,7 +101,7 @@ update_status ModuleLvl2::Update()
 	App->render->Blit(graphics2, SCREEN_WIDTH / 2, -(2880 - 2700 - SCREEN_HEIGHT), &(enemydie.GetCurrentFrame()), 1.0f);
 
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
+	if (App->input->keyboard[SDL_SCANCODE_1]) {
 
 		App->fade->FadeToBlack(this, App->gameover, 1);
 	}
