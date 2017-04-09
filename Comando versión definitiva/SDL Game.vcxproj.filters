@@ -27,6 +27,9 @@
     <Filter Include="Modules\Screens">
       <UniqueIdentifier>{c45d7804-1208-4054-a9b9-d95fa567959c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\General\Enemies">
+      <UniqueIdentifier>{9d4fa8d5-f865-4394-8ea1-3d8c7659c635}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -86,11 +89,17 @@
     <ClInclude Include="ModuleWelcome.h">
       <Filter>Modules\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_WhiteGuard.h">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules\General\.h</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +152,12 @@
       <Filter>Modules\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_WhiteGuard.cpp">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules\General\.cpp</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,7 +19,7 @@ class ModuleWelcome;
 class ModuleLvl1;
 class ModuleLvl2;
 class ModuleGameOver;
-
+class Enemy;
 
 
 
@@ -43,6 +43,7 @@ public:
 	ModuleGameOver* gameover;
 	ModuleWelcome* welcome;
 	bool stop_music;
+	ModuleEnemies* enemies;
 
 	
 

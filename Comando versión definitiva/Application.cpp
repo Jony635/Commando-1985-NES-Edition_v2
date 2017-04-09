@@ -12,6 +12,7 @@
 #include "ModuleLvl2.h"
 #include "ModuleWelcome.h"
 #include "ModuleGameOver.h"
+#include "ModuleEnemies.h"
 
 
 Application::Application()
@@ -30,6 +31,8 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = enemies = new ModuleEnemies();
+
 }	
 
 Application::~Application()
