@@ -53,6 +53,7 @@ bool Application::Init()
 	player->Disable();
 	collision->Disable();
 	audio->Disable();
+	enemies->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

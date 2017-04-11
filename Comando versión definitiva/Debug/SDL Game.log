@@ -1,79 +1,21 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDL7 Handout.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  ModuleWindow.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
+﻿  ModuleWindow.cpp
   ModuleWelcome.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleTextures.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleRender.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModulePlayer.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleParticles.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleLvl2.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleLvl1.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleInput.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleGameOver.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleFadeToBlack.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleEnemies.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\moduleenemies.h(5): fatal error C1083: No se puede abrir el archivo incluir: 'Enemy_RedBird.h': No such file or directory
   ModuleCollision.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   ModuleAudio.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   Main.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   Enemy_WhiteGuard.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\enemy_whiteguard.cpp(19): error C2039: 'enemies': no es un miembro de 'Application'
-  c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(28): note: vea la declaración de 'Application'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\enemy_whiteguard.cpp(41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
   Enemy.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
   Application.cpp
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2143: error de sintaxis: falta ';' delante de '*'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\application.h(46): error C2238: símbolos (token) inesperados delante de ';'
-c:\users\jony635\desktop\commando-1985-nes-edition_v2\comando versión definitiva\moduleenemies.h(5): fatal error C1083: No se puede abrir el archivo incluir: 'Enemy_RedBird.h': No such file or directory
   Generando código...
+  SDL Game.vcxproj -> C:\Users\Jony635\Desktop\Commando-1985-NES-Edition_v2\Comando versión definitiva\Debug\Commando_FlanStudios.exe
+  SDL Game.vcxproj -> C:\Users\Jony635\Desktop\Commando-1985-NES-Edition_v2\Comando versión definitiva\Debug\Commando_FlanStudios.pdb (Full PDB)

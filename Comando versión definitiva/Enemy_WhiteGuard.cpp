@@ -18,12 +18,13 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	original_y = y;
+	original_pos.x = x;
+	original_pos.y = y;
 }
 
 void Enemy_WhiteGuard::Move()
 {
-	if (going_up)
+	/*if (going_up)
 	{
 		if (wave > 1.0f)
 			going_up = false;
@@ -36,8 +37,8 @@ void Enemy_WhiteGuard::Move()
 			going_up = true;
 		else
 			wave -= 0.05f;
-	}
+	}*/
 
-	position.y = original_y + (25.0f * sinf(wave));
-	position.x -= 1;
+	path.PushBack({ -0.3f, 0.0f }, 150, &fly);
+	position = original_pos + path.GetCurrentPosition();
 }

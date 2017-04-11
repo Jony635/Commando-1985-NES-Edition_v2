@@ -19,7 +19,7 @@ class ModuleWelcome;
 class ModuleLvl1;
 class ModuleLvl2;
 class ModuleGameOver;
-class Enemy;
+class ModuleEnemies;
 
 
 
