@@ -14,7 +14,9 @@
 
 
 ModuleWelcome::ModuleWelcome()
-{}
+{
+
+}
 
 ModuleWelcome::~ModuleWelcome()
 {}
@@ -59,7 +61,7 @@ update_status ModuleWelcome::Update()
 	App->render->Blit(background, 0,  0, NULL);
 
 
-	if (App->input->keyboard[SDL_SCANCODE_1]) {
+	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
 
 		App->fade->FadeToBlack(this, App->lvl1, 1);
 	}

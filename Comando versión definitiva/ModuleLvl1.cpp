@@ -131,10 +131,9 @@ update_status ModuleLvl1::Update()
 
 	// Move camera forward -----------------------------
 	int speed = 3;
-
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->render->camera.y < ((2880- SCREEN_HEIGHT)*SCREEN_SIZE) - speed)
+	
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->render->camera.y < ((2880 - SCREEN_HEIGHT)*SCREEN_SIZE) - speed)
 		App->render->camera.y += speed;
-
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->render->camera.y != 0)
 		App->render->camera.y -= speed;
 	
