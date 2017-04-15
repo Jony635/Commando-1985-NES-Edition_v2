@@ -34,6 +34,7 @@ public:
 	Animation box6;
 	Animation enemyally;
 	Animation enemyally2;
+	Collider* wall1;
 
 
 

@@ -100,6 +100,9 @@ bool ModuleLvl1::Start()
 	App->player->Enable();
 	App->collision->Enable();
 
+	// Colliders ---
+	wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+
 	return true;
 }
 
