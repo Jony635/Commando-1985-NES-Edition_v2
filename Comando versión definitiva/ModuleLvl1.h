@@ -35,6 +35,7 @@ public:
 	Animation enemyally;
 	Animation enemyally2;
 	Collider* wall1;
+	int cont = 0;
 
 
 

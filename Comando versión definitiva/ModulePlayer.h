@@ -32,9 +32,9 @@ public:
 	Animation dl;
 	Animation die;
 	Collider* p;
-
 	Animation right;
 	iPoint position;
+	int contd = 0;
 };
 
 #endif
