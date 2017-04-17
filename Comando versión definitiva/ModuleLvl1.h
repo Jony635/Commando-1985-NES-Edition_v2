@@ -37,12 +37,20 @@ public:
 	Animation enemyally;
 	Animation enemyally2;
 	Animation bigh;
+	Animation medh;
+	Animation smallh;
+	Animation current_animation;
+
+	
+
 	iPoint positionh;
 	Collider* wall1;
 	int cont = 0;
 	bool intro = true;
-	bool forward = true;
-
+	//bool forward = true;
+	bool big = true;
+	bool medium = false;
+	bool small = false;
 
 
 };

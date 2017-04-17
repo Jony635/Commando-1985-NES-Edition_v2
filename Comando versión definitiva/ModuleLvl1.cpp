@@ -26,6 +26,24 @@ ModuleLvl1::ModuleLvl1()
 	bigh.PushBack({ 27, 761, 160, 139 });
 	bigh.PushBack({ 41, 907, 160, 139 });
 	bigh.speed = 0.8f;
+	//Helicopter med animation
+	medh.PushBack({ 256, 54, 112, 92 });
+	medh.PushBack({ 264, 204, 112, 92 });
+	medh.PushBack({ 262, 341, 112, 92 });
+	medh.PushBack({ 264, 497, 112, 92 });
+	medh.PushBack({ 262, 663, 112, 92 });
+	medh.PushBack({ 261, 809, 112, 92 });
+	medh.PushBack({ 260, 945, 112, 92 });
+	medh.speed = 0.8f;
+	//Helicopter small animation
+	smallh.PushBack({ 454, 51, 126, 90 });
+	smallh.PushBack({ 458, 206, 126, 90 });
+	smallh.PushBack({ 459, 361, 126, 90 });
+	smallh.PushBack({ 459, 503, 126, 90 });
+	smallh.PushBack({ 452, 661, 126, 90 });
+	smallh.PushBack({ 451, 815, 126, 90 });
+	smallh.PushBack({ 462, 954, 126, 90 });
+	smallh.speed = 0.8f;
 
 	//ally animation
 	ally.PushBack({ 0, 0, 16, 22 });
@@ -106,9 +124,9 @@ bool ModuleLvl1::Start()
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
 			background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 			graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
-
+			current_animation = bigh;
 			positionh.y = SCREEN_HEIGHT;
-			
+			positionh.x = (SCREEN_WIDTH / 2) - 80;
 			//App->textures->Unload(graphics4);
 
 			intro = false;
@@ -167,28 +185,41 @@ update_status ModuleLvl1::Update()
 		cont++;
 		App->render->camera.y += speed;
 	}
-	
+
 
 
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, -2880+SCREEN_HEIGHT, NULL);
+	App->render->Blit(background, 0, -2880 + SCREEN_HEIGHT, NULL);
 
-	if (positionh.y > 0) {
-		positionh.y--;
-}
-
-	// Calculate boat Y position -----------------------------
-	if (positionh.y > 5.0f)
-		forward = false;
-	else
-		forward = true;
-
-	if (!forward)
-		positionh.y -= 0.000000008f;
-
-
-	App->render->Blit(graphics4, (SCREEN_WIDTH/2)-80, positionh.y, &(bigh.GetCurrentFrame()), 1.0f); // bigh animation
 	
+
+	// Calculate helicopter Y position -----------------------------
+	if (positionh.y != 5.0f && big==true) {
+		positionh.y -= 0.001f;
+		//forward = false;
+	}
+
+	else if (positionh.y == 5) {
+		//forward = true;
+		big = false;
+		medium = true;
+		current_animation = medh;
+		positionh.y = 5 + 47;
+		positionh.x = (SCREEN_WIDTH / 2) - 80 + 24;
+
+		/*forward = false;*/
+	}
+
+	if (medium) {
+		current_animation = smallh;
+
+	}
+	
+	
+
+
+	App->render->Blit(graphics4, positionh.x, positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
+
 
 
 	App->render->Blit(graphics, 50, -(2880 - 1675 - SCREEN_HEIGHT), &(ally.GetCurrentFrame()), 1.0f); // ally animation
