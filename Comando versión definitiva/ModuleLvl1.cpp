@@ -100,8 +100,9 @@ bool ModuleLvl1::Start()
 {
 		LOG("Loading lvl1 scene");
 		intro = true;
-		if (intro) {
-			App->audio->Play("Resources/Audio/Sound Effects/Helicopter.wav");
+		if (intro) 
+		{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
 			background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 			graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
@@ -147,7 +148,7 @@ bool ModuleLvl1::CleanUp()
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
 	App->textures->Unload(graphics4);
-
+	App->audio->CleanUp();
 	
 	//App->audio->Stop();
 	return true;

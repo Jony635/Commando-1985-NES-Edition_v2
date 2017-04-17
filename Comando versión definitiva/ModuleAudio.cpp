@@ -77,6 +77,7 @@ bool ModuleAudio::CleanUp()
 	LOG("Quitting SDL input event subsystem");
 	Stop();
 	Mix_FreeMusic(soundtrack);
+	Mix_Pause(-1);
 	Mix_Quit();
 	return true;
 }

@@ -51,7 +51,6 @@ bool ModuleLvl2::Start()
 	graphics2 = App->textures->Load("Resources/Animations/Common enemy.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
-	
 	App->player->Enable();
 	App->collision->Enable();
 

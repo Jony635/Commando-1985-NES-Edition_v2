@@ -19,7 +19,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	int loop = 0;
 	Mix_Music* soundtrack = nullptr;
 	Mix_Chunk* sounfeffect1 = nullptr;
 };

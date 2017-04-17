@@ -104,9 +104,6 @@
     <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules\General\.h</Filter>
     </ClInclude>
-    <ClInclude Include="Helicopter.h">
-      <Filter>Modules\General\Others</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -165,9 +162,6 @@
     </ClCompile>
     <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Helicopter.cpp">
-      <Filter>Modules\General\Others</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
