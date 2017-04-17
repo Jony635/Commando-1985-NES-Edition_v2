@@ -63,7 +63,7 @@ update_status ModuleWelcome::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
 
-		App->fade->FadeToBlack(this, App->lvl1, 1);
+		App->fade->FadeToBlack(this, App->lvl1, 0);
 	}
 
 	return UPDATE_CONTINUE;
