@@ -30,6 +30,9 @@
     <Filter Include="Modules\General\Enemies">
       <UniqueIdentifier>{9d4fa8d5-f865-4394-8ea1-3d8c7659c635}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\General\Others">
+      <UniqueIdentifier>{6bcecf3d-68c1-4c8d-9973-9a162160a0b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -101,6 +104,9 @@
     <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules\General\.h</Filter>
     </ClInclude>
+    <ClInclude Include="Helicopter.h">
+      <Filter>Modules\General\Others</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -159,6 +165,9 @@
     </ClCompile>
     <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules\General\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Helicopter.cpp">
+      <Filter>Modules\General\Others</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

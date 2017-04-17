@@ -17,6 +17,15 @@
 ModuleLvl1::ModuleLvl1()
 {
 	
+	//Helicopter big animation
+	bigh.PushBack({ 10, 15, 160, 139 });
+	bigh.PushBack({ 16, 187, 160, 139 });
+	bigh.PushBack({ 14, 330, 160, 139 });
+	bigh.PushBack({ 17, 472, 160, 139 });
+	bigh.PushBack({ 26, 619, 160, 139 });
+	bigh.PushBack({ 27, 761, 160, 139 });
+	bigh.PushBack({ 41, 907, 160, 139 });
+	bigh.speed = 0.8f;
 
 	//ally animation
 	ally.PushBack({ 0, 0, 16, 22 });
@@ -89,20 +98,37 @@ ModuleLvl1::~ModuleLvl1()
 // Load assets
 bool ModuleLvl1::Start()
 {
+		LOG("Loading lvl1 scene");
+		intro = true;
+		if (intro) {
+			App->audio->Play("Resources/Audio/Sound Effects/Helicopter.wav");
+			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
+			background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+			graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
 
-	LOG("Loading space scene");
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
-	graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
-	graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
-	graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
-	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-	App->render->camera.x = App->render->camera.y = 0;
-	App->player->Enable();
-	App->collision->Enable();
+			positionh.y = SCREEN_HEIGHT;
+			
+			//App->textures->Unload(graphics4);
 
-	// Colliders ---
-	wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+			intro = false;
+		}
+		else {
 
+
+
+
+
+			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
+			graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
+			graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
+			graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
+			App->render->camera.x = App->render->camera.y = 0;
+			App->player->Enable();
+			App->collision->Enable();
+
+			// Colliders ---
+			wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+		}
 	return true;
 }
 
@@ -120,6 +146,7 @@ bool ModuleLvl1::CleanUp()
 
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
+	App->textures->Unload(graphics4);
 
 	
 	//App->audio->Stop();
@@ -144,6 +171,25 @@ update_status ModuleLvl1::Update()
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2880+SCREEN_HEIGHT, NULL);
+
+	if (positionh.y > 0) {
+		positionh.y--;
+}
+
+	// Calculate boat Y position -----------------------------
+	if (positionh.y > 5.0f)
+		forward = false;
+	else
+		forward = true;
+
+	if (!forward)
+		positionh.y -= 0.000000008f;
+
+
+	App->render->Blit(graphics4, (SCREEN_WIDTH/2)-80, positionh.y, &(bigh.GetCurrentFrame()), 1.0f); // bigh animation
+	
+
+
 	App->render->Blit(graphics, 50, -(2880 - 1675 - SCREEN_HEIGHT), &(ally.GetCurrentFrame()), 1.0f); // ally animation
 	App->render->Blit(graphics, 47, -(2880 - 765 - SCREEN_HEIGHT), &(ally2.GetCurrentFrame()), 1.0f); // ally2 animation
 	App->render->Blit(graphics, 15, -(2880-765-SCREEN_HEIGHT), &(ally3.GetCurrentFrame()), 1.0f); // ally3 animation
@@ -155,6 +201,7 @@ update_status ModuleLvl1::Update()
 	App->render->Blit(graphics3, 55, -(2880 - 718 - SCREEN_HEIGHT), &(box4.GetCurrentFrame()), 1.0f); // box4 animation
 	App->render->Blit(graphics3, 2, -(2880 - 492 - SCREEN_HEIGHT), &(box5.GetCurrentFrame()), 1.0f); // box5 animation
 	App->render->Blit(graphics3, 166, -(2880 - 258 - SCREEN_HEIGHT), &(box6.GetCurrentFrame()), 1.0f); // box6 animation
+
 
 
 

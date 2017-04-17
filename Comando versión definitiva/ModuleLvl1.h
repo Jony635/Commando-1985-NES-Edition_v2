@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -22,6 +23,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* graphics3 = nullptr;
+	SDL_Texture* graphics4 = nullptr;
 	SDL_Texture* background = nullptr;
 	Animation ally;
 	Animation ally2;
@@ -34,8 +36,12 @@ public:
 	Animation box6;
 	Animation enemyally;
 	Animation enemyally2;
+	Animation bigh;
+	iPoint positionh;
 	Collider* wall1;
 	int cont = 0;
+	bool intro = true;
+	bool forward = true;
 
 
 
