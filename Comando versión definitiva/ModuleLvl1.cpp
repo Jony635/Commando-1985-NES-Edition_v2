@@ -192,14 +192,15 @@ update_status ModuleLvl1::Update()
 	App->render->Blit(background, 0, -2880 + SCREEN_HEIGHT, NULL);
 
 	
+	contanimh += 0.02f;
 
 	// Calculate helicopter Y position -----------------------------
-	if (positionh.y != 5.0f && big==true) {
-		positionh.y -= 0.001f;
+	if (positionh.y > 5.0f && big==true) {
+		positionh.y -= 0.01f;
 		//forward = false;
 	}
 
-	else if (positionh.y == 5) {
+	else if (positionh.y == 5 && contanimh>5 && contanimh<6) {
 		//forward = true;
 		big = false;
 		medium = true;
@@ -210,15 +211,41 @@ update_status ModuleLvl1::Update()
 		/*forward = false;*/
 	}
 
-	if (medium) {
+	else if (medium==true && contanimh>6 && contanimh < 7) {
+		medium = false;
+		small = true;
+		positionh.x = (SCREEN_WIDTH / 2) - 80 +20;
 		current_animation = smallh;
+		//medium = false;
 
 	}
-	
+	else if (small == true && contanimh > 7 && contanimh < 9) {
+		//big = true;
+		current_animation = medh;
+		positionh.y = 5 + 47;
+		positionh.x = (SCREEN_WIDTH / 2) - 80 + 24;
+
+	}
+	else if (/*big == true &&*/  contanimh > 9) {
+		current_animation = bigh;
+		positionh.y -= 0.01f;
+		positionh.x = (SCREEN_WIDTH / 2) - 80;
+
+	}
+
+	//if (foreground_pos < -6.0f)
+	//	forward = false;
+	//else if (foreground_pos > 0.0f)
+	//	forward = true;
+
+	//if (forward)
+	//	foreground_pos -= 0.02f;
+	//else
+	//	foreground_pos += 0.02f;
 	
 
 
-	App->render->Blit(graphics4, positionh.x, positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
+	App->render->Blit(graphics4, positionh.x, (int)positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
 
 
 

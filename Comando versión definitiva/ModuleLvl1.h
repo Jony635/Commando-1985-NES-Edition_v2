@@ -51,7 +51,8 @@ public:
 	bool big = true;
 	bool medium = false;
 	bool small = false;
-
+	float contanimh = 0;
+	bool forward = false;
 
 };
 
