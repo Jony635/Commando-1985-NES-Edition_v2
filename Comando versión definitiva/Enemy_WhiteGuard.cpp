@@ -4,7 +4,7 @@
 
 Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 0,0,17,23 });
+	fly.PushBack({ 0,22,16,23 });
 	fly.speed = 0.2f;
 
 	animation = &fly;

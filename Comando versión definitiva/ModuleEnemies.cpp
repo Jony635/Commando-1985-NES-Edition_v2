@@ -24,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Resources/Animations/Guard Enemy.png");
+	sprites = App->textures->Load("Resources/Sprites/Enemies/Common enemy.png");
 
 	return true;
 }

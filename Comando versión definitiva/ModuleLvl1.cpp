@@ -154,7 +154,7 @@ bool ModuleLvl1::Start()
 			// Colliders ---
 			wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
 			//Enemies
-			App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 102, 2492);
+			App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT) );
 		//}
 	return true;
 }
@@ -253,7 +253,7 @@ update_status ModuleLvl1::Update()
 	
 
 
-	App->render->Blit(graphics4, positionh.x, (int)positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
+	//App->render->Blit(graphics4, positionh.x, (int)positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
 
 
 
