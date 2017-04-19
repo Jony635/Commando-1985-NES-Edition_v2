@@ -37,6 +37,7 @@ struct Collider
 	}
 
 	bool CheckCollision(const SDL_Rect& r) const;
+	bool CheckFutureCollision(const SDL_Rect& r) const;
 };
 
 class ModuleCollision : public Module

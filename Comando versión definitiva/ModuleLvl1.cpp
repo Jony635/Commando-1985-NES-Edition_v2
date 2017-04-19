@@ -116,6 +116,8 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 134, -(2880 - 2594 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 149, -(2880 - 2578 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2770 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 
 
 		//Enemies

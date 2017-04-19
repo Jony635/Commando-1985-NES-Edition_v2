@@ -12,6 +12,8 @@
 #include "ModuleAudio.h"
 
 
+
+
 ModulePlayer::ModulePlayer()
 {
 	// idle animation (just the ship)
@@ -96,6 +98,7 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(graphics);
 	return true;
 }
+
 
 // Update: draw background
 update_status ModulePlayer::Update()
@@ -194,7 +197,8 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&&App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE )
+			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&&colleft == false)
 		{
 			position.x -= speed;
 			if (current_animation != &left)
@@ -365,6 +369,8 @@ update_status ModulePlayer::Update()
 		}
 
 	}
+
+	
 	//Player collision
 	if(App->lvl2->IsEnabled())
 	if (p->CheckCollision(App->lvl2->enemy->rect) )
@@ -376,3 +382,23 @@ update_status ModulePlayer::Update()
 	return UPDATE_CONTINUE;
 }
 
+
+
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+{
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL || c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
+	{
+		if ((c1->rect.x + c1->rect.w) < c2->rect.x - SPEED_PLAYER) {
+			colleft = true;
+		}
+		if ((c1->rect.y + c1->rect.h) < c2->rect.y - SPEED_PLAYER) {
+			coldown = true;
+		}
+		if ((c1->rect.x) > (c2->rect.x + c2->rect.w + SPEED_PLAYER)) {
+			colright = true;
+		}
+		if ((c1->rect.y) > (c2->rect.y + c2->rect.h + SPEED_PLAYER)) {
+			colup = true;
+		}
+	}
+}

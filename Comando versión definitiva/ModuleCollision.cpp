@@ -10,6 +10,7 @@
 #include "Animation.h"
 
 
+
 ModuleCollision::ModuleCollision()
 {
 	
@@ -206,6 +207,22 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 		return true;
 	}
 }
+
+
+bool Collider::CheckFutureCollision(const SDL_Rect& r) const
+{
+
+	if ((rect.x + rect.w) < r.x-SPEED_PLAYER || (rect.y + rect.h) < r.y- SPEED_PLAYER || rect.x > (r.x + r.w + SPEED_PLAYER) || rect.y>(r.y + r.h + SPEED_PLAYER))
+	{
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+
+
 void ModuleCollision::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)

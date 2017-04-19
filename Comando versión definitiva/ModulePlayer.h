@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+#define SPEED_PLAYER 1
+
 struct SDL_Texture;
 struct Collider;
 
@@ -17,9 +19,14 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
 
 public:
 	bool dead = false;
+	bool colup = false;
+	bool coldown = false;
+	bool colleft = false;
+	bool colright = false;
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;
