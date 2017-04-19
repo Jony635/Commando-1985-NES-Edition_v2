@@ -19,33 +19,7 @@
 ModuleLvl1::ModuleLvl1()
 {
 	
-	//Helicopter big animation
-	bigh.PushBack({ 10, 15, 160, 139 });
-	bigh.PushBack({ 16, 187, 160, 139 });
-	bigh.PushBack({ 14, 330, 160, 139 });
-	bigh.PushBack({ 17, 472, 160, 139 });
-	bigh.PushBack({ 26, 619, 160, 139 });
-	bigh.PushBack({ 27, 761, 160, 139 });
-	bigh.PushBack({ 41, 907, 160, 139 });
-	bigh.speed = 0.8f;
-	//Helicopter med animation
-	medh.PushBack({ 256, 54, 112, 92 });
-	medh.PushBack({ 264, 204, 112, 92 });
-	medh.PushBack({ 262, 341, 112, 92 });
-	medh.PushBack({ 264, 497, 112, 92 });
-	medh.PushBack({ 262, 663, 112, 92 });
-	medh.PushBack({ 261, 809, 112, 92 });
-	medh.PushBack({ 260, 945, 112, 92 });
-	medh.speed = 0.8f;
-	//Helicopter small animation
-	smallh.PushBack({ 454, 51, 126, 90 });
-	smallh.PushBack({ 458, 206, 126, 90 });
-	smallh.PushBack({ 459, 361, 126, 90 });
-	smallh.PushBack({ 459, 503, 126, 90 });
-	smallh.PushBack({ 452, 661, 126, 90 });
-	smallh.PushBack({ 451, 815, 126, 90 });
-	smallh.PushBack({ 462, 954, 126, 90 });
-	smallh.speed = 0.8f;
+	
 
 	//ally animation
 	ally.PushBack({ 0, 0, 16, 22 });
@@ -118,45 +92,29 @@ ModuleLvl1::~ModuleLvl1()
 // Load assets
 bool ModuleLvl1::Start()
 {
-		LOG("Loading lvl1 scene");
-		
-		
-		/*intro = true;
-		if (intro) 
-		{*/
-			//App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
-			//App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
-			background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-			//graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
-			/*current_animation = bigh;
-			positionh.y = SCREEN_HEIGHT;
-			positionh.x = (SCREEN_WIDTH / 2) - 80;*/
-			//App->textures->Unload(graphics4);
+	LOG("Loading lvl1 scene");
 
-			//intro = false;
+
+	
+
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
+		background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+		graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
+		graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
+		graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
+		App->render->camera.x = App->render->camera.y = 0;
+		App->player->Enable();
+		App->particles->Enable();
+		App->collision->Enable();
+		App->enemies->Enable();
+
+		// Colliders ---
+		wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+		//Enemies
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		//}
-		//else {
-
-
-
-
-
-			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
-			graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
-			graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
-			graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
-			App->render->camera.x = App->render->camera.y = 0;
-			App->player->Enable();
-			App->particles->Enable();
-			App->collision->Enable();
-			App->enemies->Enable();
-			
-			// Colliders ---
-			wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
-			//Enemies
-			App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT) );
-		//}
-	return true;
+		return true;
+	
 }
 
 // UnLoad assets
@@ -173,7 +131,6 @@ bool ModuleLvl1::CleanUp()
 
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
-	App->textures->Unload(graphics4);
 	
 	
 	//App->audio->Stop();
@@ -194,67 +151,7 @@ update_status ModuleLvl1::Update()
 		App->render->camera.y += speed;
 	}
 
-
-
-	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -2880 + SCREEN_HEIGHT, NULL);
-
-	
-	contanimh += 0.02f;
-
-	// Calculate helicopter Y position -----------------------------
-	if (positionh.y > 5.0f && big==true) {
-		positionh.y -= 0.01f;
-		//forward = false;
-	}
-
-	else if (positionh.y == 5 && contanimh>5 && contanimh<6) {
-		//forward = true;
-		big = false;
-		medium = true;
-		current_animation = medh;
-		positionh.y = 5 + 47;
-		positionh.x = (SCREEN_WIDTH / 2) - 80 + 24;
-
-		/*forward = false;*/
-	}
-
-	else if (medium==true && contanimh>6 && contanimh < 7) {
-		medium = false;
-		small = true;
-		positionh.x = (SCREEN_WIDTH / 2) - 80 +20;
-		current_animation = smallh;
-		//medium = false;
-
-	}
-	else if (small == true && contanimh > 7 && contanimh < 9) {
-		//big = true;
-		current_animation = medh;
-		positionh.y = 5 + 47;
-		positionh.x = (SCREEN_WIDTH / 2) - 80 + 24;
-
-	}
-	else if (/*big == true &&*/  contanimh > 9) {
-		current_animation = bigh;
-		positionh.y -= 0.01f;
-		positionh.x = (SCREEN_WIDTH / 2) - 80;
-
-	}
-
-	//if (foreground_pos < -6.0f)
-	//	forward = false;
-	//else if (foreground_pos > 0.0f)
-	//	forward = true;
-
-	//if (forward)
-	//	foreground_pos -= 0.02f;
-	//else
-	//	foreground_pos += 0.02f;
-	
-
-
-	//App->render->Blit(graphics4, positionh.x, (int)positionh.y, &(current_animation.GetCurrentFrame()), 1.0f); // helicopter animation
-
 
 
 	App->render->Blit(graphics, 50, -(2880 - 1675 - SCREEN_HEIGHT), &(ally.GetCurrentFrame()), 1.0f); // ally animation
