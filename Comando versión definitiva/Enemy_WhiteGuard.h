@@ -15,7 +15,6 @@ private:
 public:
 
 	Enemy_WhiteGuard(int x, int y);
-
 	void Move();
 };
 

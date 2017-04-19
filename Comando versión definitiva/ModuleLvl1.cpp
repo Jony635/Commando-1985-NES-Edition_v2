@@ -10,6 +10,8 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
+#include "ModuleParticles.h"
 
 
 
@@ -117,21 +119,23 @@ ModuleLvl1::~ModuleLvl1()
 bool ModuleLvl1::Start()
 {
 		LOG("Loading lvl1 scene");
-		intro = true;
+		
+		
+		/*intro = true;
 		if (intro) 
-		{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
-			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
+		{*/
+			//App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
+			//App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
 			background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-			graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
-			current_animation = bigh;
+			//graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
+			/*current_animation = bigh;
 			positionh.y = SCREEN_HEIGHT;
-			positionh.x = (SCREEN_WIDTH / 2) - 80;
+			positionh.x = (SCREEN_WIDTH / 2) - 80;*/
 			//App->textures->Unload(graphics4);
 
-			intro = false;
-		}
-		else {
+			//intro = false;
+		//}
+		//else {
 
 
 
@@ -143,11 +147,15 @@ bool ModuleLvl1::Start()
 			graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
 			App->render->camera.x = App->render->camera.y = 0;
 			App->player->Enable();
+			App->particles->Enable();
 			App->collision->Enable();
-
+			App->enemies->Enable();
+			
 			// Colliders ---
 			wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
-		}
+			//Enemies
+			App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 102, 2492);
+		//}
 	return true;
 }
 
@@ -166,7 +174,7 @@ bool ModuleLvl1::CleanUp()
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
 	App->textures->Unload(graphics4);
-	App->audio->CleanUp();
+	
 	
 	//App->audio->Stop();
 	return true;
@@ -181,7 +189,7 @@ update_status ModuleLvl1::Update()
 	// Move camera forward -----------------------------
 	int speed = 3;
 
-	if (App->player->position.y == (135 - cont) && App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->render->camera.y < ((2880 - SCREEN_HEIGHT)*SCREEN_SIZE) - speed) {
+	if (App->player->position.y == (135 - cont) && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->render->camera.y < ((2880 - SCREEN_HEIGHT)*SCREEN_SIZE) - speed) {
 		cont++;
 		App->render->camera.y += speed;
 	}

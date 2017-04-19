@@ -107,11 +107,11 @@ update_status ModulePlayer::Update()
 
 		int speed = 1;
 		//Check if Player Shoots
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
-			if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT
-				&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = -5;
@@ -119,8 +119,8 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x + 20, position.y - 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT
-				&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = -5;
@@ -128,8 +128,8 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x - 20, position.y - 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT
-				&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = 5;
@@ -137,8 +137,8 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x + 20, position.y + 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT
-				&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = 5;
@@ -146,7 +146,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x - 20, position.y + 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = 0;
 				App->particles->bullet.speed.y = 5;
@@ -154,7 +154,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.x = 0;
 				App->particles->bullet.speed.y = -5;
@@ -162,7 +162,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y - 20, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = -5;
@@ -170,7 +170,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->bullet, position.x - 20, position.y, COLLIDER_PLAYER_SHOT);
 
 			}
-			else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 			{
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = 5;
@@ -191,10 +191,10 @@ update_status ModulePlayer::Update()
 		//Player Movement
 
 		
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT &&position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
-			&&App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&&App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE )
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&&App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE )
 		{
 			position.x -= speed;
 			if (current_animation != &left)
@@ -204,10 +204,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
 		{
 			position.x += speed;
 
@@ -218,10 +218,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->player->position.y != (202 - App->lvl1->cont))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE && App->player->position.y != (202 - App->lvl1->cont))
 		{
 			position.y += speed;
 			if (current_animation != &down)
@@ -231,10 +231,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
 			position.y -= speed;
 			//App->render->camera.y += speed;
@@ -254,17 +254,17 @@ update_status ModulePlayer::Update()
 
 
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&&App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
 
 			current_animation = &idle;
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
 		{
 			position.x += speed;
 			position.y -= speed;
@@ -274,10 +274,10 @@ update_status ModulePlayer::Update()
 				current_animation = &ur;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
 			position.x -= speed;
 			position.y -= speed;
@@ -287,10 +287,10 @@ update_status ModulePlayer::Update()
 				current_animation = &ul;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
 			position.x += speed;
 			position.y += speed;
@@ -301,10 +301,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
 			position.x -= speed;
 			position.y += speed;
@@ -315,10 +315,10 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
 			position.y += speed;
 			if (current_animation != &down)
@@ -327,10 +327,10 @@ update_status ModulePlayer::Update()
 				current_animation = &down;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y -= speed;
 			if (current_animation != &up)
@@ -339,10 +339,10 @@ update_status ModulePlayer::Update()
 				current_animation = &up;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
 			position.x += speed;
 			if (current_animation != &right)
@@ -351,10 +351,10 @@ update_status ModulePlayer::Update()
 				current_animation = &right;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
 			position.x -= speed;
 			if (current_animation != &left)

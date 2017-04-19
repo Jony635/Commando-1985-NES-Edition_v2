@@ -4,14 +4,7 @@
 
 Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 5,6,24,24 });
-	fly.PushBack({ 38, 6, 24, 24 });
-	fly.PushBack({ 71, 6, 24, 24 });
-	fly.PushBack({ 104, 6, 24, 24 });
-	fly.PushBack({ 137, 6, 24, 24 });
-	fly.PushBack({ 170, 6, 24, 24 });
-	fly.PushBack({ 203, 6, 24, 24 });
-	fly.PushBack({ 236, 6, 24, 24 });
+	fly.PushBack({ 0,0,17,23 });
 	fly.speed = 0.2f;
 
 	animation = &fly;
@@ -20,11 +13,13 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 
 	original_pos.x = x;
 	original_pos.y = y;
+
+	//path.PushBack({ -0.3f, 0.0f }, 150, &fly);
 }
 
 void Enemy_WhiteGuard::Move()
 {
-	/*if (going_up)
+	if (going_up)
 	{
 		if (wave > 1.0f)
 			going_up = false;
@@ -37,8 +32,8 @@ void Enemy_WhiteGuard::Move()
 			going_up = true;
 		else
 			wave -= 0.05f;
-	}*/
+	}
 
-	path.PushBack({ -0.3f, 0.0f }, 150, &fly);
+	
 	position = original_pos + path.GetCurrentPosition();
 }
