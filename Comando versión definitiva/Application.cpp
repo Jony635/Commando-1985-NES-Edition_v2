@@ -13,6 +13,7 @@
 #include "ModuleWelcome.h"
 #include "ModuleGameOver.h"
 #include "ModuleEnemies.h"
+#include "ModuleHelicopter.h"
 
 
 Application::Application()
@@ -23,6 +24,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = welcome = new ModuleWelcome();
+	modules[i++] = helicopter = new ModuleHelicopter();
 	modules[i++] = lvl1 = new ModuleLvl1();
 	modules[i++] = lvl2 = new ModuleLvl2();
 	modules[i++] = gameover = new ModuleGameOver();
@@ -49,6 +51,7 @@ bool Application::Init()
 	//welcome->Disable();
 	lvl1->Disable();
 	lvl2->Disable();
+	helicopter->Disable();
 	gameover->Disable();
 	player->Disable();
 	collision->Disable();
