@@ -26,7 +26,6 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* graphics3 = nullptr;
-	SDL_Texture* graphics4 = nullptr;
 	SDL_Texture* background = nullptr;
 	Animation ally;
 	Animation ally2;
@@ -42,7 +41,7 @@ public:
 	Animation bigh;
 	Animation medh;
 	Animation smallh;
-	Animation current_animation;
+	Animation* current_animationh = nullptr;
 
 	
 
