@@ -109,7 +109,15 @@ bool ModuleLvl1::Start()
 		App->enemies->Enable();
 
 		// Colliders ---
-		wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+		int i = 0;
+		wall[i++] = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2642 - SCREEN_HEIGHT), 46, 32 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2642 - SCREEN_HEIGHT), 25, 23 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 134, -(2880 - 2594 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 149, -(2880 - 2578 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+
+
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		//}
