@@ -6,9 +6,6 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-
-#define NUM_COLLIDERSWALL 10
-
 struct SDL_Texture;
 
 class ModuleLvl1 : public Module
@@ -46,11 +43,7 @@ public:
 	
 
 	iPoint positionh;
-
-	//Colliders
-	Collider* wall[NUM_COLLIDERSWALL];
-
-
+	Collider* wall1;
 	int cont = 0;
 	bool intro = true;
 	//bool forward = true;

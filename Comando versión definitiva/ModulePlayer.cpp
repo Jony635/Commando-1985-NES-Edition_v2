@@ -80,7 +80,7 @@ bool ModulePlayer::Start()
 	App->collision->Enable();
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 
-	position.x = (SCREEN_WIDTH / 2) - 7;
+	position.x = (SCREEN_WIDTH / 2)-7;
 	position.y = 140;
 
 	p = App->collision->AddCollider({ 0, 0, 17, 23 }, COLLIDER_PLAYER);
@@ -103,7 +103,7 @@ update_status ModulePlayer::Update()
 
 	if (!dead) {
 
-
+		
 
 		int speed = 1;
 		//Check if Player Shoots
@@ -190,11 +190,11 @@ update_status ModulePlayer::Update()
 
 		//Player Movement
 
-
+		
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&&App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
+			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE )
 		{
 			position.x -= speed;
 			if (current_animation != &left)
@@ -366,9 +366,9 @@ update_status ModulePlayer::Update()
 
 	}
 	//Player collision
-	if (App->lvl2->IsEnabled())
-		if (p->CheckCollision(App->lvl2->enemy->rect))
-			App->collision->OnCollision(p, App->lvl2->enemy);
+	if(App->lvl2->IsEnabled())
+	if (p->CheckCollision(App->lvl2->enemy->rect) )
+		App->collision->OnCollision(p, App->lvl2->enemy);
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	p->SetPos(position.x, position.y);

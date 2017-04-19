@@ -137,6 +137,10 @@ bool ModuleLvl1::Start()
 		//}
 		//else {
 
+
+
+
+
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
 			graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
 			graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
@@ -148,11 +152,7 @@ bool ModuleLvl1::Start()
 			App->enemies->Enable();
 			
 			// Colliders ---
-			int i = 0;
-			wall[i++] = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
-			wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2642 - SCREEN_HEIGHT), 46, 32 }, COLLIDER_WALL);			
-			
-
+			wall1 = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
 			//Enemies
 			App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT) );
 		//}
