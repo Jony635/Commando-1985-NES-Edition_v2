@@ -193,7 +193,9 @@ update_status ModulePlayer::Update()
 
 		//Player Movement
 
-		
+		/*App->player->OnCollision(p, );*/
+
+
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&&App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -386,7 +388,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL || c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL) || c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
 	{
 		if ((c1->rect.x + c1->rect.w) < c2->rect.x - SPEED_PLAYER) {
 			colleft = true;

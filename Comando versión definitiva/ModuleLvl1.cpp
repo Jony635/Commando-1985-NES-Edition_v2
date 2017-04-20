@@ -115,10 +115,91 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2642 - SCREEN_HEIGHT), 25, 23 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 134, -(2880 - 2594 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 149, -(2880 - 2578 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+
 		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2770 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 2802 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 166, -(2880 - 2818 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
+		
+		wall[i++] = App->collision->AddCollider({ 197, -(2880 - 2509 - SCREEN_HEIGHT), 59, 30 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 212, -(2880 - 2484 - SCREEN_HEIGHT), 44, 25 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 203, -(2880 - 2491 - SCREEN_HEIGHT), 17, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 5, -(2880 - 2419 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2402 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
+		
+		wall[i++] = App->collision->AddCollider({ 37, -(2880 - 2418 - SCREEN_HEIGHT), 26, 23 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 165, -(2880 - 2595 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 127, -(2880 - 2384 - SCREEN_HEIGHT), 62, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2338 - SCREEN_HEIGHT), 25, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 2290 - SCREEN_HEIGHT), 25, 22 }, COLLIDER_WALL);
 
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2260 - SCREEN_HEIGHT), 46, 58 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 39, -(2880 - 2282 - SCREEN_HEIGHT), 20, 23 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 41, -(2880 - 2269 - SCREEN_HEIGHT), 11, 19 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 2226 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1988 - SCREEN_HEIGHT), 108, 56 }, COLLIDER_WALL);		
+
+		wall[i++] = App->collision->AddCollider({ 103, -(2880 - 2007 - SCREEN_HEIGHT), 20, 30 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 96, -(2880 - 1990 - SCREEN_HEIGHT), 20, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 211, -(2880 - 1925 - SCREEN_HEIGHT), 45, 53 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 197, -(2880 - 1944 - SCREEN_HEIGHT), 27, 28 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 203, -(2880 - 1932 - SCREEN_HEIGHT), 20, 17 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 76, -(2880 - 1861 - SCREEN_HEIGHT), 70, 55 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 68, -(2880 - 1882 - SCREEN_HEIGHT), 88, 23 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 212, -(2880 - 1748 - SCREEN_HEIGHT), 44, 56 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 197, -(2880 - 1768 - SCREEN_HEIGHT), 33, 28 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 203, -(2880 - 1755 - SCREEN_HEIGHT), 17, 18 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1700 - SCREEN_HEIGHT), 45, 56 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 38, -(2880 - 1721 - SCREEN_HEIGHT), 22, 26 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 35, -(2880 - 1707 - SCREEN_HEIGHT), 17, 19 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 70, -(2880 - 1697 - SCREEN_HEIGHT), 25, 23 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 1682 - SCREEN_HEIGHT), 25, 20 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 101, -(2880 - 1699 - SCREEN_HEIGHT), 26, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 1538 - SCREEN_HEIGHT), 25, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 1539 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 85, -(2880 - 1474 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 191, -(2880 - 1472 - SCREEN_HEIGHT), 62, 8 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1343 - SCREEN_HEIGHT), 98, 82 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 158, -(2880 - 1343 - SCREEN_HEIGHT), 98, 82 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1205 - SCREEN_HEIGHT), 25, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 50, -(2880 - 1141 - SCREEN_HEIGHT), 26, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 163, -(2880 - 1141 - SCREEN_HEIGHT), 25, 18 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 194, -(2880 - 1088 - SCREEN_HEIGHT), 57, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 35, -(2880 - 1061 - SCREEN_HEIGHT), 24, 17 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 114, -(2880 - 1028 - SCREEN_HEIGHT), 26, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1008 - SCREEN_HEIGHT), 57, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 178, -(2880 - 997 - SCREEN_HEIGHT), 26, 18 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 162, -(2880 - 933 - SCREEN_HEIGHT), 26, 17 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 18, -(2880 - 853 - SCREEN_HEIGHT), 26, 17 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 114, -(2880 - 853 - SCREEN_HEIGHT), 27, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 210, -(2880 - 853 - SCREEN_HEIGHT), 26, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 221, -(2880 - 719 - SCREEN_HEIGHT), 35, 82 }, COLLIDER_WALL);
+		
+		wall[i++] = App->collision->AddCollider({ 211, -(2880 - 729 - SCREEN_HEIGHT), 20, 68 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 66, -(2880 - 752 - SCREEN_HEIGHT), 54, 9 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 6, -(2880 - 738 - SCREEN_HEIGHT), 24, 20 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 722 - SCREEN_HEIGHT), 25, 20 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 37, -(2880 - 739 - SCREEN_HEIGHT), 26, 21 }, COLLIDER_WALL);
+		
+		wall[i++] = App->collision->AddCollider({ 147, -(2880 - 672 - SCREEN_HEIGHT), 70, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 640 - SCREEN_HEIGHT), 57, 7 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 98, -(2880 - 576 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 512 - SCREEN_HEIGHT), 70, 7 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 389 - SCREEN_HEIGHT), 42, 76 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 421 - SCREEN_HEIGHT), 29, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);
+		
+		/*wall[i++] = App->collision->AddCollider({ 22, -(2880 - 1539 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 85, -(2880 - 1474 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 191, -(2880 - 1472 - SCREEN_HEIGHT), 62, 8 }, COLLIDER_WALL);*/
 
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));

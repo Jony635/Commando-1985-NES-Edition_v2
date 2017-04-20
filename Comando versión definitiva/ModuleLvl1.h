@@ -6,7 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define NUM_COLLIDERSWALL 10
+#define NUM_COLLIDERSWALL 60
 
 struct SDL_Texture;
 
