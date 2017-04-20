@@ -218,8 +218,9 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& colright == false)
+			)
 		{
+			if(colright == false)
 			position.x += speed;
 
 			if (current_animation != &right)
@@ -236,9 +237,10 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE 
 			&& App->player->position.y != (202 - App->lvl1->cont)
-			&& coldown == false)
+			)
 		{
-			position.y += speed;
+			if(coldown == false)
+				position.y += speed;
 			if (current_animation != &down)
 			{
 				down.Reset();
@@ -414,8 +416,73 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL) || c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))//|| c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
+	{
+		if (c1->rect.x + c1->rect.w >= c2->rect.x
+			&& (c1->rect.x + c1->rect.w) < (c2->rect.x + c2->rect.w / 2)
+			)
+		{
+			colright = true;
+		}
+		if (c1->rect.x <= c2->rect.x + c2->rect.w
+			&& (c1->rect.x > (c2->rect.x + c2->rect.w / 2)))
+		{
+
+			colleft = true;
+		}
+
+		if (c1->rect.y >= 0)
+		{
+			if (c1->rect.y <= c2->rect.y + c2->rect.h
+				&&c1->rect.y > (c2->rect.y + c2->rect.h) / 2)
+
+			{
+				colup = true;
+			}
+
+			if (c1->rect.y < 0)
+			{
+
+				if (c1->rect.y <= c2->rect.y + c2->rect.h
+					&&c1->rect.y < (c2->rect.y + c2->rect.h) / 2)
+
+				{
+					colup = true;
+				}
+			}
+		}
+		if (c1->rect.y < 0)
+		{
+			if (c1->rect.y + c1->rect.h >= c2->rect.y
+				&&c1->rect.y + c1->rect.h < (c2->rect.y + c2->rect.h) / 2)
+
+			{
+				coldown = true;
+				colup = false;
+			}
+
+		}
+		if (c1->rect.y >= 0)
+		{
+			if (c1->rect.y + c1->rect.h >= c2->rect.y
+				&&c1->rect.y + c1->rect.h > (c2->rect.y + c2->rect.h) / 2)
+			{
+
+				coldown = true;
+				colup = false;
+			}
+
+
+		}
+
+	}
+
+
+}
+
+
+
+	/*if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL) || c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN) {
 			colleft = true;
@@ -429,5 +496,5 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN) {
 			coldown = true;
 		}
-	}
-}
+	}*/
+//}
