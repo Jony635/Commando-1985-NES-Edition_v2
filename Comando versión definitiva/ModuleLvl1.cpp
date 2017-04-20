@@ -119,7 +119,7 @@ bool ModuleLvl1::Start()
 
 		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2770 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
-		//wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 2802 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 166, -(2880 - 2818 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
 		
