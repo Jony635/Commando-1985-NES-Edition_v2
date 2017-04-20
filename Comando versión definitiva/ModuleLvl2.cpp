@@ -12,6 +12,7 @@
 #include "ModulePlayer.h"
 #include "Animation.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 
 
@@ -53,7 +54,7 @@ bool ModuleLvl2::Start()
 	App->render->camera.x = App->render->camera.y = 0;
 	App->player->Enable();
 	App->collision->Enable();
-
+	App->particles->Enable();
 	// Colliders ---
 	enemy=App->collision->AddCollider({ SCREEN_WIDTH/2, -(2880 - 2700 - SCREEN_HEIGHT), 16, 22 }, COLLIDER_ENEMY);
 

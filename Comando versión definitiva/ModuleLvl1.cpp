@@ -97,17 +97,18 @@ bool ModuleLvl1::Start()
 
 	
 
-		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
-		background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-		graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
-		graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
-		graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
-		App->render->camera.x = App->render->camera.y = 0;
-		App->player->Enable();
-		App->particles->Enable();
-		App->collision->Enable();
-		App->enemies->Enable();
-
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
+	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+	graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
+	graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
+	graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
+	App->render->camera.x = App->render->camera.y = 0;
+ 	App->enemies->Enable();
+	App->collision->Enable(); 
+	App->player->Enable();
+	App->particles->Enable();
+	
+	
 		// Colliders ---
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
@@ -118,7 +119,7 @@ bool ModuleLvl1::Start()
 
 		wall[i++] = App->collision->AddCollider({ 86, -(2880 - 2530 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2770 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
+		//wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 2802 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 166, -(2880 - 2818 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
 		

@@ -77,9 +77,9 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
-	App->particles->Enable();
+	
 	App->player->dead = false;
-	App->collision->Enable();
+	
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 
 	position.x = (SCREEN_WIDTH / 2)-7;
@@ -374,9 +374,9 @@ update_status ModulePlayer::Update()
 
 	
 	//Player collision
-	if(App->lvl2->IsEnabled())
+	/*if(App->lvl2->IsEnabled())
 	if (p->CheckCollision(App->lvl2->enemy->rect) )
-		App->collision->OnCollision(p, App->lvl2->enemy);
+		App->collision->OnCollision(p, App->lvl2->enemy);*/
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	p->SetPos(position.x, position.y);
