@@ -6,7 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define NUM_COLLIDERSWALL 100
+#define NUM_COLLIDERSWALL 90
+#define NUM_COLLIDERSWATER 5
 
 struct SDL_Texture;
 
@@ -49,6 +50,7 @@ public:
 
 	//Colliders
 	Collider* wall[NUM_COLLIDERSWALL];
+	Collider* water[NUM_COLLIDERSWATER];
 
 
 	int cont = 0;

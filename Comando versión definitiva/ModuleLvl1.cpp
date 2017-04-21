@@ -213,6 +213,17 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 195, -(2880 - 309 - SCREEN_HEIGHT), 25, 17 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 132, -(2880 - 288 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);*/
 
+
+		//Colliders Water
+
+		i = 0;
+		water[i++] = App->collision->AddCollider({ 0, -(2880 - 2471 - SCREEN_HEIGHT), 57, 54 }, COLLIDER_WATER);
+		water[i++] = App->collision->AddCollider({ 39, -(2880 - 1256 - SCREEN_HEIGHT), 50, 37 }, COLLIDER_WATER);
+		water[i++] = App->collision->AddCollider({ 167, -(2880 - 1205 - SCREEN_HEIGHT), 89, 88 }, COLLIDER_WATER);
+		water[i++] = App->collision->AddCollider({ 0, -(2880 - 244 - SCREEN_HEIGHT), 89, 74 }, COLLIDER_WATER);
+
+
+
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		//}
