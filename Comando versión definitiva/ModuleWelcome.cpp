@@ -44,7 +44,6 @@ bool ModuleWelcome::CleanUp()
 {
 	App->audio->Stop();
 	App->player->Disable();
-	LOG("Unloading space scene");
 
 	App->textures->Unload(background);
 
@@ -64,7 +63,7 @@ update_status ModuleWelcome::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
 
-		App->fade->FadeToBlack(this, App->lvl1, 0);
+		App->fade->FadeToBlack(this, App->helicopter, 0);
 	}
 
 	return UPDATE_CONTINUE;

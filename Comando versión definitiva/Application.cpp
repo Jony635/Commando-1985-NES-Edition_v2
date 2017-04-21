@@ -14,6 +14,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleEnemies.h"
 #include "ModuleHelicopter.h"
+#include "ModuleDie.h"
 
 
 Application::Application()
@@ -34,6 +35,7 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = die = new ModuleDie();
 
 
 }	
@@ -58,6 +60,7 @@ bool Application::Init()
 	collision->Disable();
 	audio->Disable();
 	enemies->Disable();
+	die->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

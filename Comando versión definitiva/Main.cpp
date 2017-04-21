@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 	{
 		switch (state)
 		{
-			case MAIN_CREATION:
+			case MAIN_CREATION: 
 			{
 				LOG("Application Creation --------------");
 				App = new Application();

@@ -107,6 +107,9 @@
     <ClInclude Include="ModuleHelicopter.h">
       <Filter>Modules\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleDie.h">
+      <Filter>Modules\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -167,6 +170,9 @@
       <Filter>Modules\General\.cpp</Filter>
     </ClCompile>
     <ClCompile Include="ModuleHelicopter.cpp">
+      <Filter>Modules\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleDie.cpp">
       <Filter>Modules\Screens</Filter>
     </ClCompile>
   </ItemGroup>

@@ -73,20 +73,24 @@ bool ModuleHelicopter::Start()
 	App->player->Disable();
 	App->audio->Enable();
 
-App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
-App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
-background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
-graphics5 = App->textures->Load("Resources/Animations/Main Character Blue.png");
-positionhy = SCREEN_HEIGHT;
-positionhx = (SCREEN_WIDTH / 2) - 80;
-positionjoey = 85;
-positionjoex = (SCREEN_WIDTH / 2) + 18;
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
+	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+	graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
+	graphics5 = App->textures->Load("Resources/Animations/Main Character Blue.png");
+	positionhy = SCREEN_HEIGHT - 50;
+	positionhx = (SCREEN_WIDTH / 2) - 80;
+	positionjoey = 85 + 25;
+	positionjoex = (SCREEN_WIDTH / 2) + 18;
 
+	if (current_animationjoe != &joevoid)
+	{
+		joevoid.Reset();
+		current_animationjoe = &joevoid;
+	}
 
-//current_animationh = bigh;
+	//current_animationh = bigh;
 
-return true;
+	return true;
 
 }
 
@@ -114,15 +118,15 @@ update_status ModuleHelicopter::Update() {
 
 	contanimh += 0.02f;
 	/*if (contanimh > 7) {
-		contanimj += 0.1f;
+	contanimj += 0.1f;
 
 	}*/
 	// Calculate helicopter & joe position -----------------------------
-	
 
 
 
-	if (contanimh > 7&& contanimh < 8) {
+
+	if (contanimh > 5 && contanimh < 6) {
 		if (current_animationjoe != &joejump)
 		{
 			joejump.Reset();
@@ -130,20 +134,20 @@ update_status ModuleHelicopter::Update() {
 		}
 	}
 
-	else if(contanimh>8&&contanimh<9.2){
+	else if (contanimh>6 && contanimh<7) {
 		contanimj += 0.1f;
 
-	positionjoex = ((SCREEN_WIDTH / 2) + 18) + (contanimj * 5.5);
-	positionjoey = 85 + ((-30)*(contanimj)) + (6 * contanimj*contanimj);
+		positionjoex = ((SCREEN_WIDTH / 2) + 18) + (contanimj * 5.5);
+		positionjoey = 85 + 25 + ((-30)*(contanimj)) + (6 * contanimj*contanimj);
 
-	 if (current_animationjoe != &joejump)
+		if (current_animationjoe != &joejump)
 		{
-		joejump.Reset();
-		current_animationjoe = &joejump;
+			joejump.Reset();
+			current_animationjoe = &joejump;
 		}
 	}
 
-	 if (contanimh>9.3 && contanimh<11) {
+	if (contanimh>7 && contanimh<9) {
 
 		if (current_animationjoe != &joegoodbye)
 		{
@@ -151,22 +155,52 @@ update_status ModuleHelicopter::Update() {
 			current_animationjoe = &joegoodbye;
 		}
 	}
-	 if (contanimh>11 && contanimh<16) {
+	if (contanimh>9 && contanimh<11.5) {
 
-		 positionjoex -=0.25;
-		 positionjoey +=0.09;
+		positionjoex -= 0.45;
+		positionjoey += 0.25;
 
-		 if (current_animationjoe != &joerun)
-		 {
-			 joerun.Reset();
-			 current_animationjoe = &joerun;
-		 }
-	 }
-
-
+		if (current_animationjoe != &joerun)
+		{
+			joerun.Reset();
+			current_animationjoe = &joerun;
+		}
+	}
 
 
 
+	//falta ponerlo que jonny mayude
+
+	/* if (contanimh < 4) {
+	music1 = true;
+	cont++;
+	}
+	else if (contanimh > 4 && contanimh < 9) {
+	music1 = false;
+	music2 = true;
+	cont2++;
+
+	}
+	else if (contanimh > 9 && contanimh < 11.5) {
+	music2 = false;
+	music3 = true;
+	cont3++;
+
+	}
+
+	if (music1&&cont==1) {
+	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
+	}
+	else if(music2&&cont2 == 1){
+	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter is going away.wav");
+	}
+	else if (music3&&cont3 == 1) {
+	App->audio->PlaySound("Resources/Audio/Sound Effects/helicopter is going MORE away.wav");
+	}
+
+	if (!music1 || !music2 || !music3) {
+	App->audio->Disable();
+	}*/
 
 
 
@@ -174,71 +208,68 @@ update_status ModuleHelicopter::Update() {
 
 
 
-
-
-
-	if (positionhy > -10.0f && contanimh < 5.0f) {
+	if (positionhy > 15.0f && contanimh < 4.50f) {
 		if (current_animationh != &bigh)
 		{
 			bigh.Reset();
 			current_animationh = &bigh;
 		}
-		
-		positionhy -= 1.0f;
+
+		positionhy -= 0.80f;
 		//forward = false;
 	}
 
-	else if ( contanimh > 6 && contanimh < 7) {
+	else if (contanimh > 4.5 && contanimh < 5) {
 		if (current_animationh != &medh)
 		{
 			medh.Reset();
 			current_animationh = &medh;
 		}
-		
-		positionhy = 15 + 47-25;
+
+		positionhy = 15 + 47;
 		positionhx = (SCREEN_WIDTH / 2) - 80 + 24;
-		
+
 		/*forward = false;*/
 	}
 
-	else if ( contanimh > 7 && contanimh < 11) {
-		positionhx = (SCREEN_WIDTH / 2) - 80 + 18 ;
+	else if (contanimh > 5 && contanimh < 7) {
+		positionhx = (SCREEN_WIDTH / 2) - 80 + 18;
 
-		
+
 		if (current_animationh != &smallh)
 		{
 			smallh.Reset();
 			current_animationh = &smallh;
 		}
-		
+
 		//medium = false;
 
 	}
-	else if (contanimh > 11 && contanimh < 12) {
+	else if (contanimh > 7 && contanimh < 7.5) {
 		//big = true;
 		if (current_animationh != &medh)
 		{
 			medh.Reset();
 			current_animationh = &medh;
 		}
-		
+
 		//current_animationh = medh;
 
-		positionhy = 15 + 47 - 25;
+		positionhy = 15 + 47;
 		positionhx = (SCREEN_WIDTH / 2) - 80 + 24;
 
 	}
-	else if ( contanimh > 12 && contanimh < 13) {
+	else if (contanimh > 7.5 && contanimh < 8) {
 		if (current_animationh != &bigh)
 		{
 			bigh.Reset();
 			current_animationh = &bigh;
 		}
-		positionhy = -10;
+		positionhy = 15;
 		positionhx = (SCREEN_WIDTH / 2) - 80;
 
 	}
-	else if (contanimh > 13) {
+	else if (contanimh > 8) {
 		if (current_animationh != &bigh)
 		{
 			bigh.Reset();
@@ -258,11 +289,13 @@ update_status ModuleHelicopter::Update() {
 	App->render->Blit(graphics5, positionjoex, positionjoey, &(current_animationjoe->GetCurrentFrame())); // joe animation
 
 
-	if(contanimh>16)
-	App->fade->FadeToBlack(this, App->lvl1, 0);
+	if (contanimh > 11.5) {
+		contanimh = 0;
+		contanimj = 0;
+		App->fade->FadeToBlack(this, App->lvl1, 0);
+	}
 
 
-
-return UPDATE_CONTINUE;
+	return UPDATE_CONTINUE;
 
 }

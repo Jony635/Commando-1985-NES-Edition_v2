@@ -10,7 +10,7 @@
 #include "ModuleLvl1.h"
 #include "ModuleLvl2.h"
 #include "ModuleAudio.h"
-
+#include "ModuleDie.h"
 
 
 
@@ -502,7 +502,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 	}
-
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
+	{
+		App->fade->FadeToBlack(this, App->die, 0);
+	}
 
 }
 

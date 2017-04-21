@@ -1,5 +1,5 @@
-#ifndef __MODULEHELICOPTER_H__
-#define __MODULEHELICOPTER_H__
+#ifndef _MODULEHELICOPTER_H_
+#define _MODULEHELICOPTER_H_
 
 #include "Module.h"
 #include "Animation.h"
@@ -31,20 +31,25 @@ public:
 	Animation joegoodbye;
 	Animation joerun;
 	Animation* current_animationh = nullptr;
-	Animation* current_animationjoe = &joevoid;
+	Animation* current_animationjoe = nullptr;
 
 
 	float positionhy;
 	float positionhx;
 	float positionjoex;
 	float positionjoey;
-	float g = 9.81f;
-	int cont = 0;
-	
 	float contanimh = 0;
 	float contanimj = 0;
+
+	bool music1;
+	bool music2;
+	bool music3;
+
+	uint cont = 0;
+	uint cont2 = 0;
+	uint cont3 = 0;
+
 };
 
-#endif // __MODULEHELICOPTER_H__
-
+#endif // _MODULEHELICOPTER_H_
 
