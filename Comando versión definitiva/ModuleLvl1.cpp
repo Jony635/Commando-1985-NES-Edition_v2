@@ -196,11 +196,22 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 389 - SCREEN_HEIGHT), 42, 76 }, COLLIDER_WALL);
 
 		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 421 - SCREEN_HEIGHT), 29, 18 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);		
+		wall[i++] = App->collision->AddCollider({ 131, -(2880 - 342 - SCREEN_HEIGHT), 25, 16 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 195, -(2880 - 309 - SCREEN_HEIGHT), 25, 17 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 132, -(2880 - 288 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);
 		
-		/*wall[i++] = App->collision->AddCollider({ 22, -(2880 - 1539 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 85, -(2880 - 1474 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 191, -(2880 - 1472 - SCREEN_HEIGHT), 62, 8 }, COLLIDER_WALL);*/
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 117 - SCREEN_HEIGHT), 46, 123 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 100 - SCREEN_HEIGHT), 42, 125 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 32, -(2880 - 80 - SCREEN_HEIGHT), 60, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 161, -(2880 - 80 - SCREEN_HEIGHT), 60, 8 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - SCREEN_HEIGHT), 96, 40 }, COLLIDER_WALL);
+
+		wall[i++] = App->collision->AddCollider({ 159, -(2880 - SCREEN_HEIGHT), 97, 39 }, COLLIDER_WALL);
+		/*wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 131, -(2880 - 342 - SCREEN_HEIGHT), 25, 16 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 195, -(2880 - 309 - SCREEN_HEIGHT), 25, 17 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 132, -(2880 - 288 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);*/
 
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
