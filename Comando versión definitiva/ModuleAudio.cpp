@@ -28,7 +28,7 @@ bool ModuleAudio::Start()
 }
 
 
-bool ModuleAudio::Play(const char* path)
+bool ModuleAudio::Play(const char* path,bool loop)
 {
 	bool ret;
 
@@ -41,9 +41,13 @@ bool ModuleAudio::Play(const char* path)
 		LOG("Music Loaded");
 		ret = true;
 	}
+	if(loop)
 	Mix_PlayMusic(soundtrack, -1);
-	return ret;
+	if (!loop)
+	Mix_PlayMusic(soundtrack, 1);
+		return ret;
 }
+
 bool ModuleAudio::PlaySound(const char* path)
 {
 	bool ret;

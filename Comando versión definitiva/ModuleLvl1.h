@@ -55,7 +55,6 @@ public:
 
 	int cont = 0;
 	bool intro = true;
-	//bool forward = true;
 	bool big = true;
 	bool medium = false;
 	bool small = false;

@@ -41,13 +41,7 @@ public:
 	float contanimh = 0;
 	float contanimj = 0;
 
-	bool music1;
-	bool music2;
-	bool music3;
-
-	uint cont = 0;
-	uint cont2 = 0;
-	uint cont3 = 0;
+	
 
 };
 

@@ -45,7 +45,7 @@ bool ModuleLvl2::Start()
 	enemydie.Reset();
 
 	LOG("Loading space scene");
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg",true);
 
 	background = App->textures->Load("Resources/Screens/CommandoArea2.png");//foto del fondo
 	graphics = App->textures->Load("Resources/Animations/Guard Enemy.png");
@@ -72,6 +72,7 @@ bool ModuleLvl2::CleanUp()
 	App->textures->Unload(graphics);
 	App->textures->Unload(graphics2);
 	App->collision->Disable();
+	App->textures->Disable();
 
 
 	return true;

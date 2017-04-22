@@ -22,10 +22,10 @@ ModuleGameOver::~ModuleGameOver()
 // Load assets
 bool ModuleGameOver::Start()
 {
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Ending Theme.ogg");
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Ending Theme.ogg",true);
 
 	LOG("Loading gameover scene");
-
+	App->input->Enable();
 	background = App->textures->Load("Resources/Screens/EndGame.png");//foto del fondo
 	App->render->camera.x = App->render->camera.y = 0;
 	App->player->Disable();
@@ -36,11 +36,12 @@ bool ModuleGameOver::Start()
 // UnLoad assets
 bool ModuleGameOver::CleanUp()
 {
-	App->audio->Stop();
+	//App->audio->Stop();
 
 	LOG("Unloading gameover scene");
 
 	App->textures->Unload(background);
+	App->textures->Disable();
 
 	return true;
 }

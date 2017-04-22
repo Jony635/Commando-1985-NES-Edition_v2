@@ -93,11 +93,16 @@ ModuleLvl1::~ModuleLvl1()
 bool ModuleLvl1::Start()
 {
 	LOG("Loading lvl1 scene");
-
-
+	cont = 0;
+	intro = true;
+	big = true;
+	medium = false;
+	small = false;
+	contanimh = 0;
+	forward = false;
 	
 
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg");
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg",true);
 	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 	graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
 	graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
@@ -246,7 +251,7 @@ bool ModuleLvl1::CleanUp()
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
 	
-	
+	App->textures->Disable();
 	//App->audio->Stop();
 	return true;
 }

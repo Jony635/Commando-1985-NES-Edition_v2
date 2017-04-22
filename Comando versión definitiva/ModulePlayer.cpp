@@ -10,7 +10,9 @@
 #include "ModuleLvl1.h"
 #include "ModuleLvl2.h"
 #include "ModuleAudio.h"
-#include "ModuleDie.h"
+#include "ModuleWelcome.h"
+#include "ModuleGameOver.h"
+
 
 
 
@@ -27,6 +29,8 @@ ModulePlayer::ModulePlayer()
 	die.PushBack({ 21, 80, 15, 19 });
 	die.PushBack({ 37, 72, 16, 27 });
 	die.PushBack({ 21, 80, 15, 19 });
+	die.PushBack({ 2, 72, 17, 27 });
+	die.loop = false;
 	die.speed = 0.07f;
 
 	// move upwards
@@ -78,8 +82,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	
-	App->player->dead = false;
-	
+	dead = false;
+	contdead = 0;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 
 	position.x = (SCREEN_WIDTH / 2)-7;
@@ -105,10 +109,9 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 
-	if (!dead) {
 
 		
-
+	if (!dead) {
 		int speed = 1;
 		//Check if Player Shoots
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -292,7 +295,7 @@ update_status ModulePlayer::Update()
 				if (colup == false)
 					position.y -= speed;
 			}
-			
+
 			if (current_animation != &ur)
 			{
 				ur.Reset();
@@ -306,14 +309,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
-			if (blockUL == false) 
+			if (blockUL == false)
 			{
 				if (colleft == false)
 					position.x -= speed;
 				if (colup == false)
 					position.y -= speed;
 			}
-			
+
 			if (current_animation != &ul)
 			{
 				ul.Reset();
@@ -327,14 +330,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
-			if (blockDR == false) 
+			if (blockDR == false)
 			{
 				if (colright == false)
 					position.x += speed;
 				if (coldown == false)
 					position.y += speed;
 			}
-			
+
 			if (current_animation != &dr)
 			{
 				dr.Reset();
@@ -348,14 +351,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
-			if(blockDL == false)
+			if (blockDL == false)
 			{
 				if (colleft == false)
 					position.x -= speed;
 				if (coldown == false)
 					position.y += speed;
 			}
-			
+
 			if (current_animation != &dl)
 			{
 				dl.Reset();
@@ -423,25 +426,39 @@ update_status ModulePlayer::Update()
 			}
 		}
 
+
+
+		colup = false;
+		coldown = false;
+		colleft = false;
+		colright = false;
+		blockUL = false;
+		blockUR = false;
+		blockDL = false;
+		blockDR = false;
+
+		//Player collision
+		/*if(App->lvl2->IsEnabled())
+		if (p->CheckCollision(App->lvl2->enemy->rect) )
+			App->collision->OnCollision(p, App->lvl2->enemy);*/
+			// Draw everything --------------------------------------
 	}
-
-	colup = false;
-	coldown = false;
-	colleft = false;
-	colright = false;
-	blockUL = false;
-	blockUR = false;
-	blockDL = false;
-	blockDR = false;
-
-	//Player collision
-	/*if(App->lvl2->IsEnabled())
-	if (p->CheckCollision(App->lvl2->enemy->rect) )
-		App->collision->OnCollision(p, App->lvl2->enemy);*/
-	// Draw everything --------------------------------------
-	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-	p->SetPos(position.x, position.y);
-
+		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		p->SetPos(position.x, position.y);
+	
+	if(dead&& contdead==0) {
+		contdead++;
+		App->input->Disable();
+		App->audio->Stop();
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg",false);
+		if (current_animation != &die)
+		{
+			die.Reset();
+			current_animation = &die;
+		}
+		if(App->lvl1->IsEnabled())
+		App->fade->FadeToBlack(App->lvl1, App->welcome, 1);
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -450,7 +467,7 @@ update_status ModulePlayer::Update()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	//If it collides with a wall	
-	
+
 	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))
 	{
 		//Check collision Right
@@ -470,7 +487,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			colleft = true;
 		}
-		
+
 		//Check collision Up
 		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
 			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
@@ -540,15 +557,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			blockDR = true;
 		}
-	}
-	
-	//If it collides with an enemy
-	
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
-	{
-		App->fade->FadeToBlack(this, App->die, 0);
+
 	}
 
+
+		//If it collides with an enemy
+
+		if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
+		{
+		dead = true;
+		}
+
+	
 }
-
 

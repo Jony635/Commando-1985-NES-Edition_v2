@@ -45,7 +45,7 @@ public:
 	Collider* p;
 	Animation right;
 	iPoint position;
-	int contd = 0;
+	int contdead = 0;
 };
 
 #endif

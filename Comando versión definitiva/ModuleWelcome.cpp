@@ -25,14 +25,14 @@ ModuleWelcome::~ModuleWelcome()
 // Load assets
 bool ModuleWelcome::Start()
 {
+	App->textures->Enable();
 	App->audio->Enable();
-
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg");
+	App->input->Enable();
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg",true);
 	LOG("Loading welcome scene");
 	bool ret = true;
 	background = App->textures->Load("Resources/Screens/Commandowelcome.png");//foto del fondo
 	App->render->camera.x = App->render->camera.y = 0;
-	App->player->Disable();
 
 
 
@@ -42,8 +42,8 @@ bool ModuleWelcome::Start()
 // UnLoad assets
 bool ModuleWelcome::CleanUp()
 {
+	//App->audio->Disable();
 	App->audio->Stop();
-	App->player->Disable();
 
 	App->textures->Unload(background);
 

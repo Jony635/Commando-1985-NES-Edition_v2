@@ -245,20 +245,7 @@ void ModuleCollision::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (colliders[i] != nullptr && colliders[i] == c1)
 		{
-			if (colliders[i]->type = COLLIDER_PLAYER) {
-				//App->player->Disable();
-				if (App->lvl1->IsEnabled())
-				{
-					App->fade->FadeToBlack(App->lvl1, App->welcome, 1);
-
-				}
-				if (App->lvl2->IsEnabled())
-				{
-					App->player->dead = true;
-					App->player->current_animation = &App->player->die;
-
-					App->fade->FadeToBlack(App->lvl2, App->welcome, 1);
-				}
+			
 				
 			}
 
@@ -270,4 +257,3 @@ void ModuleCollision::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
-}

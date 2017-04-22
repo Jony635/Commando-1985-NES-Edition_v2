@@ -69,11 +69,10 @@ bool ModuleHelicopter::Start()
 {
 	LOG("Loading lvl1 scene");
 
-
 	App->player->Disable();
 	App->audio->Enable();
 
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg");
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area Intro.ogg",true);
 	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 	graphics4 = App->textures->Load("Resources/Animations/Helicopter.png");
 	graphics5 = App->textures->Load("Resources/Animations/Main Character Blue.png");
@@ -81,6 +80,9 @@ bool ModuleHelicopter::Start()
 	positionhx = (SCREEN_WIDTH / 2) - 80;
 	positionjoey = 85 + 25;
 	positionjoex = (SCREEN_WIDTH / 2) + 18;
+	contanimh = 0;
+	contanimj = 0;
+
 
 	if (current_animationjoe != &joevoid)
 	{
@@ -101,7 +103,7 @@ bool ModuleHelicopter::CleanUp()
 
 	LOG("Unloading space scene");
 
-
+	App->textures->Unload(background);
 	App->textures->Unload(graphics4);
 	App->textures->Unload(graphics5);
 
@@ -155,7 +157,7 @@ update_status ModuleHelicopter::Update() {
 			current_animationjoe = &joegoodbye;
 		}
 	}
-	if (contanimh>9 && contanimh<11.5) {
+	if (contanimh>9 && contanimh<11.4) {
 
 		positionjoex -= 0.45;
 		positionjoey += 0.25;
@@ -186,21 +188,41 @@ update_status ModuleHelicopter::Update() {
 	music3 = true;
 	cont3++;
 
-	}
-
-	if (music1&&cont==1) {
-	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
-	}
-	else if(music2&&cont2 == 1){
-	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter is going away.wav");
-	}
-	else if (music3&&cont3 == 1) {
-	App->audio->PlaySound("Resources/Audio/Sound Effects/helicopter is going MORE away.wav");
-	}
-
-	if (!music1 || !music2 || !music3) {
-	App->audio->Disable();
 	}*/
+
+
+	if (contanimh >0 && contanimh <0.01f) {
+		Mix_HaltChannel(-1);
+		App->audio->sounfeffect1 = nullptr;
+	}
+	if (contanimh < 4 && App->audio->sounfeffect1 == nullptr) {
+	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
+	
+	}
+	if (contanimh >4 && contanimh <4.02f) {
+		Mix_HaltChannel(-1);
+		App->audio->sounfeffect1 = nullptr;
+
+	}
+	if (contanimh > 4 && contanimh < 9 && App->audio->sounfeffect1 == nullptr) {
+		App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter is going away.wav");
+	}
+	if (contanimh >8 && contanimh <8.02f) {
+		Mix_HaltChannel(-1);
+		App->audio->sounfeffect1 = nullptr;
+
+	}
+	if (contanimh > 8 && contanimh < 11.4 && App->audio->sounfeffect1 == nullptr) {
+		App->audio->PlaySound("Resources/Audio/Sound Effects/helicopter is going MORE away.wav");
+	}
+	if (contanimh >11.4) {
+		Mix_HaltChannel(-1);
+		App->audio->sounfeffect1 = nullptr;
+
+	}
+	
+
+	
 
 
 

@@ -142,7 +142,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (c2->type != COLLIDER_WALL) {
+			if (c2->type != COLLIDER_WALL&&c2->type != COLLIDER_PLAYER) {
 				enemies[i]->OnCollision(c2);
 				delete enemies[i];
 				enemies[i] = nullptr;
