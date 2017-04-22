@@ -27,6 +27,10 @@ public:
 	bool coldown = false;
 	bool colleft = false;
 	bool colright = false;
+	bool blockUL = false;
+	bool blockUR = false;
+	bool blockDL = false;
+	bool blockDR = false;
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;

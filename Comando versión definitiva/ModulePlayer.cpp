@@ -285,10 +285,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
 		{
-			if (colright == false)
-				position.x += speed;
-			if (colup == false)
-				position.y -= speed;
+			if (blockUR == false)
+			{
+				if (colright == false)
+					position.x += speed;
+				if (colup == false)
+					position.y -= speed;
+			}
+			
 			if (current_animation != &ur)
 			{
 				ur.Reset();
@@ -302,10 +306,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		{
-			if (colleft == false)
-				position.x -= speed;
-			if (colup == false)
-				position.y -= speed;
+			if (blockUL == false) 
+			{
+				if (colleft == false)
+					position.x -= speed;
+				if (colup == false)
+					position.y -= speed;
+			}
+			
 			if (current_animation != &ul)
 			{
 				ul.Reset();
@@ -319,10 +327,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
-			if (colright == false)
-				position.x += speed;
-			if (coldown == false)
-				position.y += speed;
+			if (blockDR == false) 
+			{
+				if (colright == false)
+					position.x += speed;
+				if (coldown == false)
+					position.y += speed;
+			}
+			
 			if (current_animation != &dr)
 			{
 				dr.Reset();
@@ -336,10 +348,14 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE&& App->player->position.y != (202 - App->lvl1->cont))
 		{
-			if (colleft == false)
-				position.x -= speed;
-			if (coldown == false)
-				position.y += speed;
+			if(blockDL == false)
+			{
+				if (colleft == false)
+					position.x -= speed;
+				if (coldown == false)
+					position.y += speed;
+			}
+			
 			if (current_animation != &dl)
 			{
 				dl.Reset();
@@ -409,11 +425,14 @@ update_status ModulePlayer::Update()
 
 	}
 
-
 	colup = false;
 	coldown = false;
 	colleft = false;
 	colright = false;
+	blockUL = false;
+	blockUR = false;
+	blockDL = false;
+	blockDR = false;
 
 	//Player collision
 	/*if(App->lvl2->IsEnabled())
@@ -430,78 +449,101 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))//|| c1->type == COLLIDER_WALL && c2->type == COLLIDER_PLAYER)
+	//If it collides with a wall	
+	
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))
 	{
-		if (c1->rect.x + c1->rect.w >= c2->rect.x
-			&& (c1->rect.x + c1->rect.w) < (c2->rect.x + c2->rect.w / 2)
-			)
+		//Check collision Right
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
 		{
 			colright = true;
 		}
-		if (c1->rect.x <= c2->rect.x + c2->rect.w
-			&& (c1->rect.x > (c2->rect.x + c2->rect.w / 2)))
-		{
 
+		//Check collision Left
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
 			colleft = true;
 		}
-
-
-		if (c1->rect.y >= 0) //Si el player esta en la parte inferior del mapa
+		
+		//Check collision Up
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
 		{
-			if (c1->rect.y <= c2->rect.y + c2->rect.h
-				&&c1->rect.y > (c2->rect.y + c2->rect.h) / 2
-				&& c1->rect.y > c2->rect.y
-				&& colup == false
-				&& coldown == false)
-			{
-				colup = true;
-				coldown = false;
-			}
-		}
-		else //Si el player esta en la parte superior
-		{
-
-			if (c1->rect.y <= c2->rect.y + c2->rect.h
-				&&c1->rect.y < (c2->rect.y + c2->rect.h) / 2
-				&& c1->rect.y>c2->rect.y
-				&& colup == false
-				&& coldown == false)
-
-			{
-				colup = true;
-				coldown = false;
-			}
-		}
-		if (c1->rect.y < 0)
-		{
-			if (c1->rect.y + c1->rect.h >= c2->rect.y
-				&&c1->rect.y + c1->rect.h < (c2->rect.y + c2->rect.h) / 2
-				&& colup == false
-				&& coldown == false)
-
-			{
-				coldown = true;
-				colup = false;
-			}
-
-		}
-		else
-		{
-
-			if (c1->rect.y + c1->rect.h >= c2->rect.y
-				&&c1->rect.y + c1->rect.h > (c2->rect.y + c2->rect.h) / 2
-				&& colup == false
-				&& coldown == false)
-			{
-
-				coldown = true;
-				colup = false;
-			}
+			colup = true;
 		}
 
+		//Check collision Down
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
+		{
+			coldown = true;
+		}
 
+		//Block Up-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUR = true;
+		}
 
+		//Block Up-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUL = true;
+		}
+
+		//Block Down-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDL = true;
+		}
+
+		//Block Down-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDR = true;
+		}
 	}
+	
+	//If it collides with an enemy
+	
 	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
 	{
 		App->fade->FadeToBlack(this, App->die, 0);
