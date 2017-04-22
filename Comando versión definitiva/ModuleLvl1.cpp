@@ -12,6 +12,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
+#include "ModuleHelicopter.h"
 
 
 
@@ -100,20 +101,25 @@ bool ModuleLvl1::Start()
 	small = false;
 	contanimh = 0;
 	forward = false;
-	
-
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg",true);
+	App->input->Disable();
 	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
-	graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
-	graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
-	graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
-	App->render->camera.x = App->render->camera.y = 0;
- 	App->enemies->Enable();
-	App->collision->Enable(); 
+	App->textures->Enable();
 	App->player->Enable();
-	App->particles->Enable();
-	
-	
+	App->render->camera.x = App->render->camera.y = 0;
+	App->player->timeintro = 0;
+
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - New Life Intro.ogg", false);
+
+
+		graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
+		graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
+		graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
+		App->enemies->Enable();
+		App->collision->Enable();
+		App->particles->Enable();
+		//App->player->timeintro = 0;
+
+
 		// Colliders ---
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 193, -(2880 - 2706 - SCREEN_HEIGHT), 63, 46 }, COLLIDER_WALL);
@@ -127,13 +133,13 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 135, -(2880 - 2819 - SCREEN_HEIGHT), 22, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 150, -(2880 - 2802 - SCREEN_HEIGHT), 24, 21 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 166, -(2880 - 2818 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
-		
+
 		wall[i++] = App->collision->AddCollider({ 197, -(2880 - 2509 - SCREEN_HEIGHT), 59, 30 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 212, -(2880 - 2484 - SCREEN_HEIGHT), 44, 25 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 203, -(2880 - 2491 - SCREEN_HEIGHT), 17, 18 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 5, -(2880 - 2419 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 2402 - SCREEN_HEIGHT), 24, 22 }, COLLIDER_WALL);
-		
+
 		wall[i++] = App->collision->AddCollider({ 37, -(2880 - 2418 - SCREEN_HEIGHT), 26, 23 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 165, -(2880 - 2595 - SCREEN_HEIGHT), 26, 22 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 127, -(2880 - 2384 - SCREEN_HEIGHT), 62, 8 }, COLLIDER_WALL);
@@ -144,7 +150,7 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 39, -(2880 - 2282 - SCREEN_HEIGHT), 20, 23 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 41, -(2880 - 2269 - SCREEN_HEIGHT), 11, 19 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 2226 - SCREEN_HEIGHT), 25, 24 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1988 - SCREEN_HEIGHT), 108, 56 }, COLLIDER_WALL);		
+		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 1988 - SCREEN_HEIGHT), 108, 56 }, COLLIDER_WALL);
 
 		wall[i++] = App->collision->AddCollider({ 103, -(2880 - 2007 - SCREEN_HEIGHT), 20, 30 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 96, -(2880 - 1990 - SCREEN_HEIGHT), 20, 22 }, COLLIDER_WALL);
@@ -187,13 +193,13 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 114, -(2880 - 853 - SCREEN_HEIGHT), 27, 18 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 210, -(2880 - 853 - SCREEN_HEIGHT), 26, 18 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 221, -(2880 - 719 - SCREEN_HEIGHT), 35, 82 }, COLLIDER_WALL);
-		
+
 		wall[i++] = App->collision->AddCollider({ 211, -(2880 - 729 - SCREEN_HEIGHT), 20, 68 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 66, -(2880 - 752 - SCREEN_HEIGHT), 54, 9 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 6, -(2880 - 738 - SCREEN_HEIGHT), 24, 20 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 22, -(2880 - 722 - SCREEN_HEIGHT), 25, 20 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 37, -(2880 - 739 - SCREEN_HEIGHT), 26, 21 }, COLLIDER_WALL);
-		
+
 		wall[i++] = App->collision->AddCollider({ 147, -(2880 - 672 - SCREEN_HEIGHT), 70, 8 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 640 - SCREEN_HEIGHT), 57, 7 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 98, -(2880 - 576 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);
@@ -201,11 +207,11 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 389 - SCREEN_HEIGHT), 42, 76 }, COLLIDER_WALL);
 
 		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 421 - SCREEN_HEIGHT), 29, 18 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);		
+		wall[i++] = App->collision->AddCollider({ 65, -(2880 - 373 - SCREEN_HEIGHT), 28, 18 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 131, -(2880 - 342 - SCREEN_HEIGHT), 25, 16 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 195, -(2880 - 309 - SCREEN_HEIGHT), 25, 17 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 132, -(2880 - 288 - SCREEN_HEIGHT), 54, 8 }, COLLIDER_WALL);
-		
+
 		wall[i++] = App->collision->AddCollider({ 0, -(2880 - 117 - SCREEN_HEIGHT), 46, 123 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 214, -(2880 - 100 - SCREEN_HEIGHT), 42, 125 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 32, -(2880 - 80 - SCREEN_HEIGHT), 60, 8 }, COLLIDER_WALL);
@@ -231,7 +237,7 @@ bool ModuleLvl1::Start()
 
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
-		//}
+	
 		return true;
 	
 }
@@ -242,8 +248,14 @@ bool ModuleLvl1::CleanUp()
 	App->audio->Stop();
 	App->player->Disable();
 	App->collision->Disable();
+	App->enemies->Disable();
+	App->input->keyboard[App->input->kcounter] = KEY_UP;
+	App->player->current_animation = &App->player->idle;
+	App->input->Disable();
+	hfinished = true;
 
-	LOG("Unloading space scene");
+	introlvl1 = false;
+	LOG("Unloading lvl1 scene");
 
 	App->textures->Unload(background);
 	App->textures->Unload(graphics);
@@ -259,7 +271,23 @@ bool ModuleLvl1::CleanUp()
 // Update: draw background
 update_status ModuleLvl1::Update()
 {
+	//if (App->player->timeintro > 0 && introlvl1 == false && hfinished)
+	//{
+	//	introlvl1 = true;
+	//	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
+	//	//App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - New Life Intro.ogg", false);
+	//}
+	//if(App->player->timeintro == 3.8f)
+	//	introlvl1 = false;
 
+	if (App->player->timeintro > 3.8f && introlvl1==false)
+	{
+		introlvl1=true;
+		App->audio->Stop();
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
+		App->input->Enable();
+
+	}
 
 
 	// Move camera forward -----------------------------

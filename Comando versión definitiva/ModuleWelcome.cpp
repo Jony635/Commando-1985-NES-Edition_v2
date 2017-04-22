@@ -35,7 +35,6 @@ bool ModuleWelcome::Start()
 	App->render->camera.x = App->render->camera.y = 0;
 
 
-
 	return ret;
 }
 
@@ -44,6 +43,7 @@ bool ModuleWelcome::CleanUp()
 {
 	//App->audio->Disable();
 	App->audio->Stop();
+	App->input->Disable();
 
 	App->textures->Unload(background);
 

@@ -107,7 +107,6 @@ bool ModuleHelicopter::CleanUp()
 	App->textures->Unload(graphics4);
 	App->textures->Unload(graphics5);
 
-
 	//App->audio->Stop();
 	return true;
 }

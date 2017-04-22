@@ -33,6 +33,7 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::PreUpdate()
 {
+
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
@@ -41,10 +42,15 @@ update_status ModuleInput::PreUpdate()
 	{
 		if(keys[i] == 1)
 		{
-			if(keyboard[i] == KEY_IDLE)
+			if (keyboard[i] == KEY_IDLE) {
 				keyboard[i] = KEY_DOWN;
-			else
+				kcounter = i;
+
+			}
+			else {
 				keyboard[i] = KEY_REPEAT;
+			}
+
 		}
 		else
 		{

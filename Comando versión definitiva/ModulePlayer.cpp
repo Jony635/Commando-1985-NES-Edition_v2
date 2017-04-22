@@ -31,7 +31,7 @@ ModulePlayer::ModulePlayer()
 	die.PushBack({ 21, 80, 15, 19 });
 	die.PushBack({ 2, 72, 17, 27 });
 	die.loop = false;
-	die.speed = 0.07f;
+	die.speed = 0.05f;
 
 	// move upwards
 	up.PushBack({ 28, 1, 11, 22 });
@@ -101,6 +101,8 @@ bool ModulePlayer::CleanUp()
 	App->particles->Disable();
 	App->collision->Disable();
 	App->textures->Unload(graphics);
+	App->input->Disable();
+
 	return true;
 }
 
@@ -108,9 +110,9 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	timeintro += 0.02f;
 
 
-		
 	if (!dead) {
 		int speed = 1;
 		//Check if Player Shoots
@@ -443,22 +445,45 @@ update_status ModulePlayer::Update()
 			App->collision->OnCollision(p, App->lvl2->enemy);*/
 			// Draw everything --------------------------------------
 	}
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-		p->SetPos(position.x, position.y);
-	
-	if(dead&& contdead==0) {
+	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	p->SetPos(position.x, position.y);
+
+	if (dead){
+		time += 0.02f;
+	if ( time > 5 && contlives>0) {
+		time = 0;
+		contlives--;
+		App->fade->FadeToBlack(App->lvl1, App->lvl1,0);
+	}
+	if ( time > 7.5 && contlives == 0) {
+		time = 0;
+		contlives=4;
+		App->fade->FadeToBlack(App->lvl1, App->welcome, 0);
+		}
+	}
+	if(dead && contdead==0 && contlives > 0) {
 		contdead++;
 		App->input->Disable();
 		App->audio->Stop();
-		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg",false);
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Life Lost.ogg",false);
 		if (current_animation != &die)
 		{
 			die.Reset();
 			current_animation = &die;
 		}
-		if(App->lvl1->IsEnabled())
-		App->fade->FadeToBlack(App->lvl1, App->welcome, 1);
 	}
+	if (dead && contdead == 0 && contlives == 0) {
+		contdead++;
+		App->input->Disable();
+		App->audio->Stop();
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
+		if (current_animation != &die)
+		{
+			die.Reset();
+			current_animation = &die;
+		}
+	}
+
 	return UPDATE_CONTINUE;
 }
 

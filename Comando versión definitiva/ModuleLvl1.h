@@ -60,7 +60,8 @@ public:
 	bool small = false;
 	float contanimh = 0;
 	bool forward = false;
-
+	bool introlvl1 = false;
+	bool hfinished = false;
 };
 
 #endif // __MODULELVL1_H__

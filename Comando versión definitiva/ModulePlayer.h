@@ -46,6 +46,9 @@ public:
 	Animation right;
 	iPoint position;
 	int contdead = 0;
+	float time = 0;
+	int contlives = 4;
+	float timeintro = 0;
 };
 
 #endif
