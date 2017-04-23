@@ -42,6 +42,7 @@ public:
 	Animation dr;
 	Animation dl;
 	Animation die;
+	Animation die_w;
 	Collider* p;
 	Animation right;
 	iPoint position;

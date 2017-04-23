@@ -33,6 +33,12 @@ ModulePlayer::ModulePlayer()
 	die.loop = false;
 	die.speed = 0.05f;
 
+	//die water animation	
+	die_w.PushBack({ 68, 23, 11, 16 });
+	die_w.PushBack({ 98, 27, 12, 14 });
+	die_w.loop = false;
+	die_w.speed = 0.05f;
+
 	// move upwards
 	up.PushBack({ 28, 1, 11, 22 });
 	up.PushBack({ 40, 2, 11, 22 });
@@ -588,13 +594,29 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 
-		//If it collides with an enemy
+	//If it collides with an enemy
 
-		if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
-		{
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
+	{
 		dead = true;
+	}
+
+	//If it collides with the water
+
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER))
+	{
+		if (c2->rect.x == (c1->rect.x + (c1->rect.w / 2))
+			|| (c2->rect.x + c2->rect.w) == (c1->rect.x + (c1->rect.w / 2))
+			|| c2->rect.y == (c1->rect.y + (c1->rect.h / 2))
+			|| (c2->rect.y + c2->rect.h) == (c1->rect.y + (c1->rect.h / 2)))
+		{
+			if (current_animation != &die_w)
+			{
+				die_w.Reset();
+				current_animation = &die_w;
+			}
+			current_animation = &die_w;
+			dead = true;
 		}
-
-	
+	}
 }
-
