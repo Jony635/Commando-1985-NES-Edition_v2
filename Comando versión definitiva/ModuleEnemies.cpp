@@ -143,12 +143,16 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (c2->type != COLLIDER_WALL&&c2->type != COLLIDER_PLAYER) {
+			if (c2->type == COLLIDER_PLAYER_SHOT) {
 				enemies[i]->OnCollision(c2);
 				enemies[i]->Draw(sprites);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
+			}
+			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER)
+			{
+				enemies[i]->OnCollision(c2);
 			}
 		}
 	}
