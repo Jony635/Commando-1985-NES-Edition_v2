@@ -20,7 +20,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 
 	original_pos.x = x;
 	original_pos.y = y;
-
+	path.PushBack({})
 	//path.PushBack({ -0.3f, 0.0f }, 150, &fly);
 }
 
