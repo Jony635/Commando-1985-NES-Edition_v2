@@ -13,7 +13,7 @@ private:
 	Animation default;
 	Animation WhiteGuard_Die;
 public:
-	Animation getWhiteGuard_Die() const;
+	Animation getWhiteGuard_Die();
 	Enemy_WhiteGuard(int x, int y);
 	void Move();
 };

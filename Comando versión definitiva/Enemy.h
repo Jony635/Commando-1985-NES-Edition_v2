@@ -26,7 +26,7 @@ public:
 	Enemy(int x, int y);
 	virtual ~Enemy();
 	ENEMY_TYPES type;
-	virtual Animation getWhiteGuard_Die() const = 0;
+	virtual Animation getWhiteGuard_Die()  = 0;
 	Path path;
 	const Collider* GetCollider() const;
 	virtual void Move() {};

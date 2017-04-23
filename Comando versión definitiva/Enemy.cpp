@@ -33,8 +33,8 @@ void Enemy::OnCollision(Collider* collider)
 	{
 		if (this->animation != &this->getWhiteGuard_Die())
 		{
+			this->animation->Reset();
 			this->animation = &this->getWhiteGuard_Die();
-			this->~Enemy;
 		}
 		
 	}

@@ -145,9 +145,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type != COLLIDER_WALL&&c2->type != COLLIDER_PLAYER) {
 				enemies[i]->OnCollision(c2);
-				/*delete enemies[i];*/
-				enemies[i] = nullptr;
 
+				/*if (deadEnemyCounter < 5)
+				{
+					delete enemies[i];
+					enemies[i] = nullptr;
+				}*/
 				break;
 			}
 		}

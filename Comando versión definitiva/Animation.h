@@ -10,6 +10,7 @@ public:
 	bool loop = true;
 	bool pingpong = false;
 	float speed = 1.0f;
+	bool firstTime;
 	SDL_Rect frames[MAX_FRAMES];
 
 private:

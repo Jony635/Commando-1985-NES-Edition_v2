@@ -12,6 +12,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Die.PushBack({ 20, 68, 16, 26 });
 	WhiteGuard_Die.PushBack({ 36, 68, 16, 26 });
 	WhiteGuard_Die.PushBack({ 51, 68, 16, 26 });
+	WhiteGuard_Die.firstTime = false;
 	WhiteGuard_Die.loop = false;
 	WhiteGuard_Die.speed = 0.07f;
 
@@ -23,13 +24,18 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	//path.PushBack({ -0.3f, 0.0f }, 150, &fly);
 }
 
-Animation Enemy_WhiteGuard::getWhiteGuard_Die() const
+Animation Enemy_WhiteGuard::getWhiteGuard_Die() 
 {
+	//if (!WhiteGuard_Die.firstTime)
+	//{
+	//	/*WhiteGuard_Die.Reset();*/
+	//	WhiteGuard_Die.firstTime = true;
+	//}
 	return WhiteGuard_Die;
 }
 void Enemy_WhiteGuard::Move()
 {
-	if (going_up)
+	/*if (going_up)
 	{
 		if (wave > 1.0f)
 			going_up = false;
@@ -43,7 +49,7 @@ void Enemy_WhiteGuard::Move()
 		else
 			wave -= 0.05f;
 	}
-
+*/
 	
 	position = original_pos + path.GetCurrentPosition();
 }

@@ -28,7 +28,7 @@ public:
 
 	ModuleEnemies();
 	~ModuleEnemies();
-
+	float deadEnemyCounter=0.2f;
 	bool Start();
 	update_status PreUpdate();
 	update_status Update();
