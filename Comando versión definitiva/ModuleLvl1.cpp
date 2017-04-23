@@ -19,7 +19,41 @@
 
 ModuleLvl1::ModuleLvl1()
 {
-	
+	// zero
+	zero.x = 1;
+	zero.y = 1;
+	zero.w = 8;
+	zero.h = 8;
+	// one
+	one.x = 9;
+	one.y = 1;
+	one.w = 8;
+	one.h = 8;
+	// two
+	two.x = 18;
+	two.y = 1;
+	two.w = 8;
+	two.h = 8;
+	// three
+	three.x = 29;
+	three.y = 1;
+	three.w = 8;
+	three.h = 8;
+	// four
+	four.x = 39;
+	four.y = 1;
+	four.w = 8;
+	four.h = 8;
+	// handg
+	handg.x = 7;
+	handg.y = 28;
+	handg.w = 10;
+	handg.h = 12;
+	// life
+	life.x = 0;
+	life.y = 0;
+	life.w = 11;
+	life.h = 15;
 	
 
 	//ally animation
@@ -101,19 +135,26 @@ bool ModuleLvl1::Start()
 	small = false;
 	contanimh = 0;
 	forward = false;
-	App->input->Disable();
+	//App->input->Disable();
 	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 	App->textures->Enable();
 	App->player->Enable();
 	App->render->camera.x = App->render->camera.y = 0;
 	App->player->timeintro = 0;
 
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - New Life Intro.ogg", false);
+	if (App->helicopter->firstimelvl1 == false) 
+	{
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - New Life Intro.ogg", false);
+
+	}
 
 
 		graphics = App->textures->Load("Resources/Animations/Ally soldier alone.png");
 		graphics2 = App->textures->Load("Resources/Animations/Guard Enemy.png");
 		graphics3 = App->textures->Load("Resources/Animations/handgranadesx4.png");
+		graphics4= App->textures->Load("Resources/Animations/Alphabet.png");
+		graphics5 = App->textures->Load("Resources/Animations/boosted handgranade.png");
+		graphics6 = App->textures->Load("Resources/Animations/lives_counter.png");
 		App->enemies->Enable();
 		App->collision->Enable();
 		App->particles->Enable();
@@ -252,9 +293,8 @@ bool ModuleLvl1::CleanUp()
 	App->input->keyboard[App->input->kcounter] = KEY_UP;
 	App->player->current_animation = &App->player->idle;
 	App->input->Disable();
-	hfinished = true;
-
 	introlvl1 = false;
+	App->helicopter->firstimelvl1 = false;
 	LOG("Unloading lvl1 scene");
 
 	App->textures->Unload(background);
@@ -262,7 +302,10 @@ bool ModuleLvl1::CleanUp()
 
 	App->textures->Unload(graphics2);
 	App->textures->Unload(graphics3);
-	
+	App->textures->Unload(graphics4);
+	App->textures->Unload(graphics5);
+	App->textures->Unload(graphics6);
+
 	App->textures->Disable();
 	//App->audio->Stop();
 	return true;
@@ -280,13 +323,20 @@ update_status ModuleLvl1::Update()
 	//if(App->player->timeintro == 3.8f)
 	//	introlvl1 = false;
 
-	if (App->player->timeintro > 3.8f && introlvl1==false)
+	if (App->player->timeintro > 3.8f && introlvl1==false && App->helicopter->firstimelvl1 == false)
 	{
 		introlvl1=true;
 		App->audio->Stop();
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
 		App->input->Enable();
 
+	}
+	else if (App->player->timeintro > 0 && introlvl1 == false && App->helicopter->firstimelvl1 == true)
+	{
+		introlvl1 = true;
+		App->audio->Stop();
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
+		App->input->Enable();
 	}
 
 
@@ -313,7 +363,27 @@ update_status ModuleLvl1::Update()
 	App->render->Blit(graphics3, 2, -(2880 - 492 - SCREEN_HEIGHT), &(box5.GetCurrentFrame()), 1.0f); // box5 animation
 	App->render->Blit(graphics3, 166, -(2880 - 258 - SCREEN_HEIGHT), &(box6.GetCurrentFrame()), 1.0f); // box6 animation
 
+	App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y/3), &zero );// zero
+	App->render->Blit(graphics4, 16+9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
+	App->render->Blit(graphics4, 16+18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero );// zero
+	App->render->Blit(graphics4, 16+27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero );// zero
+	App->render->Blit(graphics4, 16+36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
+	App->render->Blit(graphics4, 16+45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
 
+	App->render->Blit(graphics4, 119+13, -(2880 - 2860 - SCREEN_HEIGHT)+3 - (App->render->camera.y / 3), &zero); // zero
+	App->render->Blit(graphics5, 119, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &handg); // handg
+	App->render->Blit(graphics6, 16, -(2880 - 2860 - SCREEN_HEIGHT)-3 - (App->render->camera.y / 3), &life); // life
+
+	if(App->player->contlives==4)
+		App->render->Blit(graphics4, 16+13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four); // four
+	else if (App->player->contlives == 3)
+		App->render->Blit(graphics4, 16 + 13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three); // three
+	else if (App->player->contlives == 2)
+		App->render->Blit(graphics4, 16 + 13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two); // two
+	else if (App->player->contlives == 1)
+		App->render->Blit(graphics4, 16 + 13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one); // one
+	else if (App->player->contlives == 0)
+		App->render->Blit(graphics4, 16 + 13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero); // zero
 
 
 	if (App->input->keyboard[SDL_SCANCODE_1]) {

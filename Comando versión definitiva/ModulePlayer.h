@@ -49,6 +49,7 @@ public:
 	float time = 0;
 	int contlives = 4;
 	float timeintro = 0;
+	bool musend = false;
 };
 
 #endif

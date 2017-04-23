@@ -41,6 +41,8 @@ public:
 	float contanimh = 0;
 	float contanimj = 0;
 
+	bool firstimelvl1 = false;
+
 	
 
 };

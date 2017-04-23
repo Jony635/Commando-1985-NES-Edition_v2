@@ -106,6 +106,7 @@ bool ModuleHelicopter::CleanUp()
 	App->textures->Unload(background);
 	App->textures->Unload(graphics4);
 	App->textures->Unload(graphics5);
+	firstimelvl1 = true;
 
 	//App->audio->Stop();
 	return true;

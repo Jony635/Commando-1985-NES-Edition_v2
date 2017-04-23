@@ -27,6 +27,9 @@ public:
 	SDL_Texture* graphics2 = nullptr;
 	SDL_Texture* graphics3 = nullptr;
 	SDL_Texture* background = nullptr;
+	SDL_Texture* graphics4 = nullptr;
+	SDL_Texture* graphics5 = nullptr;
+	SDL_Texture* graphics6 = nullptr;
 	Animation ally;
 	Animation ally2;
 	Animation ally3;
@@ -42,7 +45,13 @@ public:
 	Animation medh;
 	Animation smallh;
 	Animation* current_animationh = nullptr;
-
+	SDL_Rect zero;
+	SDL_Rect one;
+	SDL_Rect two;
+	SDL_Rect three;
+	SDL_Rect four;
+	SDL_Rect life;
+	SDL_Rect handg;
 	
 
 	iPoint positionh;
@@ -61,7 +70,6 @@ public:
 	float contanimh = 0;
 	bool forward = false;
 	bool introlvl1 = false;
-	bool hfinished = false;
 };
 
 #endif // __MODULELVL1_H__

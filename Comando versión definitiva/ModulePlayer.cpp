@@ -83,6 +83,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	
 	dead = false;
+	musend = false;
 	contdead = 0;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 
@@ -102,7 +103,7 @@ bool ModulePlayer::CleanUp()
 	App->collision->Disable();
 	App->textures->Unload(graphics);
 	App->input->Disable();
-
+	contdead = 0;
 	return true;
 }
 
@@ -455,13 +456,14 @@ update_status ModulePlayer::Update()
 		contlives--;
 		App->fade->FadeToBlack(App->lvl1, App->lvl1,0);
 	}
-	if ( time > 7.5 && contlives == 0) {
+	if ( time > 9.5 && contlives == 0) {
 		time = 0;
+		App->audio->Stop();
 		contlives=4;
 		App->fade->FadeToBlack(App->lvl1, App->welcome, 0);
 		}
 	}
-	if(dead && contdead==0 && contlives > 0) {
+	if(dead && contdead==0 && contlives >= 0 && musend == false) {
 		contdead++;
 		App->input->Disable();
 		App->audio->Stop();
@@ -471,17 +473,17 @@ update_status ModulePlayer::Update()
 			die.Reset();
 			current_animation = &die;
 		}
+		if (contlives == 0&&contdead==1) {
+			musend=true;
+		}
 	}
-	if (dead && contdead == 0 && contlives == 0) {
+	if (dead && musend==true && contlives == 0 && time>3) {
+		time = 0;
 		contdead++;
+		musend = false;
 		App->input->Disable();
 		App->audio->Stop();
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
-		if (current_animation != &die)
-		{
-			die.Reset();
-			current_animation = &die;
-		}
 	}
 
 	return UPDATE_CONTINUE;
