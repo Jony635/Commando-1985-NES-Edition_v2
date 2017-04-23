@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "Enemy_WhiteGuard.h"
-
+#include "Enemy.h"
 #define MAX_ENEMIES 100
 
 // TODO 2: Add a new enemy: Brown Cookies!
@@ -12,12 +12,7 @@
 
 // TODO 4: Create a new enemy type: the Mech
 
-enum ENEMY_TYPES
-{
-	NO_TYPE,
-	WHITEGUARD,
-	
-};
+
 
 class Enemy;
 

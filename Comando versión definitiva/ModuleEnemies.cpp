@@ -131,6 +131,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 			case ENEMY_TYPES::WHITEGUARD:
 			enemies[i] = new Enemy_WhiteGuard(info.x,info.y);
+			enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
 			break;
 		}
 	}
@@ -144,7 +145,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type != COLLIDER_WALL&&c2->type != COLLIDER_PLAYER) {
 				enemies[i]->OnCollision(c2);
-				delete enemies[i];
+				/*delete enemies[i];*/
 				enemies[i] = nullptr;
 
 				break;

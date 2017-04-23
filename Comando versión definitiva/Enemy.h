@@ -4,10 +4,14 @@
 #include "p2Point.h"
 #include "Animation.h"
 #include "Path.h"
-
 struct SDL_Texture;
 struct Collider;
+enum ENEMY_TYPES
+{
+	NO_TYPE,
+	WHITEGUARD,
 
+};
 class Enemy
 {
 protected:
@@ -21,9 +25,10 @@ public:
 public:
 	Enemy(int x, int y);
 	virtual ~Enemy();
+	ENEMY_TYPES type;
+	virtual Animation getWhiteGuard_Die() const = 0;
 	Path path;
 	const Collider* GetCollider() const;
-
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);

@@ -10,10 +10,10 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
-	Animation fly;
-
+	Animation default;
+	Animation WhiteGuard_Die;
 public:
-
+	Animation getWhiteGuard_Die() const;
 	Enemy_WhiteGuard(int x, int y);
 	void Move();
 };

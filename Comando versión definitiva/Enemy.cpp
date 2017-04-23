@@ -29,5 +29,13 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->die, position.x, position.y);
+	if (this->type == ENEMY_TYPES::WHITEGUARD)
+	{
+		if (this->animation != &this->getWhiteGuard_Die())
+		{
+			this->animation = &this->getWhiteGuard_Die();
+			this->~Enemy;
+		}
+		
+	}
 }
