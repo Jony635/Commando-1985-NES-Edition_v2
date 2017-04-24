@@ -40,8 +40,8 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 
 
 	//Path Definition
-	/*path.PushBack({ -0.3f, 0.0f }, 100, &WhiteGuard_Left);
-	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);*/
+	path.PushBack({ -0.3f, 0.0f }, 70, &WhiteGuard_Left);
+	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);
 	
 	//path.PushBack({ -0.3f, 0.0f }, 150, &fly);
 	
