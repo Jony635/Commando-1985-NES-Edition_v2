@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleHelicopter.h"
+#include "ModuleEndLvl1.h"
 
 
 
@@ -63,7 +64,7 @@ update_status ModuleWelcome::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
 
-		App->fade->FadeToBlack(this, App->lvl1, 0);
+		App->fade->FadeToBlack(this, App->helicopter, 0);
 	}
 
 	return UPDATE_CONTINUE;
