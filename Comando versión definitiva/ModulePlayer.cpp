@@ -462,6 +462,8 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics2, 0, -(2880 - 1344 - SCREEN_HEIGHT), &bridgelvl1);
 	p->SetPos(position.x, position.y);
 
+
+
 	if (dead){
 		time += 0.02f;
 	if ( time > 5 && contlives>0) {

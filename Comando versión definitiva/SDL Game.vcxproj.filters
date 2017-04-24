@@ -80,13 +80,7 @@
     <ClInclude Include="ModuleWindow.h">
       <Filter>Modules\General\.h</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleGameOver.h">
-      <Filter>Modules\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleLvl1.h">
-      <Filter>Modules\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleLvl2.h">
       <Filter>Modules\Screens</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWelcome.h">
@@ -105,6 +99,9 @@
       <Filter>Modules\General\.h</Filter>
     </ClInclude>
     <ClInclude Include="ModuleHelicopter.h">
+      <Filter>Modules\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEndLvl1.h">
       <Filter>Modules\Screens</Filter>
     </ClInclude>
   </ItemGroup>
@@ -145,13 +142,7 @@
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Modules\General\.cpp</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleGameOver.cpp">
-      <Filter>Modules\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleLvl1.cpp">
-      <Filter>Modules\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleLvl2.cpp">
       <Filter>Modules\Screens</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWelcome.cpp">
@@ -167,6 +158,9 @@
       <Filter>Modules\General\.cpp</Filter>
     </ClCompile>
     <ClCompile Include="ModuleHelicopter.cpp">
+      <Filter>Modules\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEndLvl1.cpp">
       <Filter>Modules\Screens</Filter>
     </ClCompile>
   </ItemGroup>

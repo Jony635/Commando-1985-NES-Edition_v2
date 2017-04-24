@@ -9,11 +9,10 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleLvl1.h"
-#include "ModuleLvl2.h"
 #include "ModuleWelcome.h"
-#include "ModuleGameOver.h"
 #include "ModuleEnemies.h"
 #include "ModuleHelicopter.h"
+#include "ModuleEndLvl1.h"
 
 
 Application::Application()
@@ -26,15 +25,15 @@ Application::Application()
 	modules[i++] = welcome = new ModuleWelcome();
 	modules[i++] = helicopter = new ModuleHelicopter();
 	modules[i++] = lvl1 = new ModuleLvl1();
-	modules[i++] = lvl2 = new ModuleLvl2();
-	modules[i++] = gameover = new ModuleGameOver();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = endlvl1 = new ModuleEndLvl1();
 
+	
 
 }	
 
@@ -58,6 +57,7 @@ bool Application::Init()
 	collision->Disable();
 	audio->Disable();
 	enemies->Disable();
+	endlvl->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
