@@ -32,6 +32,7 @@ public:
 	bool blockDL = false;
 	bool blockDR = false;
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* graphics2 = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation up;
@@ -46,6 +47,7 @@ public:
 	Collider* p;
 	Animation right;
 	iPoint position;
+	SDL_Rect bridgelvl1;
 	int contdead = 0;
 	float time = 0;
 	int contlives = 4;
