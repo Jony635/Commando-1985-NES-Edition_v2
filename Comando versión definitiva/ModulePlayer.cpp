@@ -18,6 +18,11 @@
 
 ModulePlayer::ModulePlayer()
 {
+	//bridge lvl1
+	bridgelvl1.x = 0;
+	bridgelvl1.y = 0;
+	bridgelvl1.w = 256;
+	bridgelvl1.h = 95;
 	// idle animation (just the ship)
 	idle.PushBack({ 40, 2, 11, 22 });
 	//idle.PushBack({ 40, 2, 11, 22 });
@@ -92,7 +97,7 @@ bool ModulePlayer::Start()
 	musend = false;
 	contdead = 0;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
-
+	graphics2 = App->textures->Load("Resources/Screens/bridgelvl1.png");
 	position.x = (SCREEN_WIDTH / 2)-7;
 	position.y = 140;
 
@@ -108,6 +113,7 @@ bool ModulePlayer::CleanUp()
 	App->particles->Disable();
 	App->collision->Disable();
 	App->textures->Unload(graphics);
+	App->textures->Unload(graphics2);
 	App->input->Disable();
 	contdead = 0;
 	return true;
@@ -453,6 +459,7 @@ update_status ModulePlayer::Update()
 			// Draw everything --------------------------------------
 	}
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	App->render->Blit(graphics2, 0, -(2880 - 1344 - SCREEN_HEIGHT), &bridgelvl1);
 	p->SetPos(position.x, position.y);
 
 	if (dead){
