@@ -31,15 +31,15 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
-	modules[i++] = endlvl1 = new ModuleEndLvl1();
+	//modules[i++] = endlvl1 = new ModuleEndLvl1();
 
+	
 
-
-}
+}	
 
 Application::~Application()
 {
-	for (int i = NUM_MODULES - 1; i >= 0; --i)
+	for(int i = NUM_MODULES - 1; i >= 0; --i)
 		delete modules[i];
 }
 
@@ -50,20 +50,20 @@ bool Application::Init()
 	// Deactivate modules here ----
 	//welcome->Disable();
 	lvl1->Disable();
-	//	lvl2->Disable();
+//	lvl2->Disable();
 	helicopter->Disable();
-	//	gameover->Disable();
+//	gameover->Disable();
 	player->Disable();
 	collision->Disable();
 	audio->Disable();
 	enemies->Disable();
-	endlvl1->Disable();
+//	endlvl->Disable();
 	// ----------------------------
 
-	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 
-	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	return ret;
@@ -73,13 +73,13 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
-	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 
-	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
