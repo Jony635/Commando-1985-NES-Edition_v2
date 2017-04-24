@@ -10,6 +10,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	WHITEGUARD,
+	CAPTURERGUARD
 
 };
 class Enemy
@@ -26,7 +27,7 @@ public:
 	Enemy(int x, int y);
 	virtual ~Enemy();
 	ENEMY_TYPES type;
-	virtual Animation getWhiteGuard_Die()  = 0;
+	virtual Animation getDie()  = 0;
 	Path path;
 	const Collider* GetCollider() const;
 	virtual void Move() {};

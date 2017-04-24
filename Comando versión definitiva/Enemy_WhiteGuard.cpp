@@ -1,11 +1,13 @@
 #include "Application.h"
 #include "Enemy_WhiteGuard.h"
 #include "ModuleCollision.h"
-
+#include <time.h>
+#include<stdlib.h>
 Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 {
+	srand(time(NULL));
 	//Default Animation
-	default.PushBack({ 0,22,16,23 });
+	default.PushBack({ 67,0,12,23 });
 	default.speed = 0.2f;
 	
 	//Die Animation
@@ -35,7 +37,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	//Down Animation
 	WhiteGuard_Down.PushBack({1, 23, 15, 22});
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
-
+	
 
 
 
@@ -43,38 +45,74 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	path.PushBack({ -0.3f, 0.0f }, 70, &WhiteGuard_Left);
 	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);
 	
-	//path.PushBack({ -0.3f, 0.0f }, 150, &fly);
-	
 }
 
 void Enemy_WhiteGuard::PathUp()
 {
+	moving[MOVE_STATE::GOING_UP] = true;
+	moving[MOVE_STATE::GOING_DOWN] = false;
+	moving[MOVE_STATE::GOING_LEFT] = false;
+	moving[MOVE_STATE::GOING_RIGHT] = false;
+	
+	path.PushBack({0, 0.3f}, 5, &WhiteGuard_Up);
 	path.Reset();
-	path.PushBack({0, 0.3f}, 50, &WhiteGuard_Up);
 }
 
 void Enemy_WhiteGuard::PathDown()
 {
+	moving[MOVE_STATE::GOING_UP] = false;
+	moving[MOVE_STATE::GOING_DOWN] = true;
+	moving[MOVE_STATE::GOING_LEFT] = false;
+	moving[MOVE_STATE::GOING_RIGHT] = false;
+	
+	path.PushBack({ 0, -0.3f }, 5, &WhiteGuard_Down);
 	path.Reset();
-	path.PushBack({ 0, -0.3f }, 50, &WhiteGuard_Down);
 }
 
 void Enemy_WhiteGuard::PathLeft()
 {
+	moving[MOVE_STATE::GOING_UP] = false;
+	moving[MOVE_STATE::GOING_DOWN] = false;
+	moving[MOVE_STATE::GOING_LEFT] = true;
+	moving[MOVE_STATE::GOING_RIGHT] = false;
+	
+	path.PushBack({ -0.3f, 0 }, 5, &WhiteGuard_Left);
 	path.Reset();
-	path.PushBack({ -0.3f, 0 }, 50, &WhiteGuard_Left);
 }
 void Enemy_WhiteGuard::PathRight()
 {
-	path.Reset();
-	path.PushBack({ 0.3f, 0 }, 50, &WhiteGuard_Right);
-}
-Animation Enemy_WhiteGuard::getWhiteGuard_Die() 
-{
+	moving[MOVE_STATE::GOING_UP] = false;
+	moving[MOVE_STATE::GOING_DOWN] = false;
+	moving[MOVE_STATE::GOING_LEFT] = false;
+	moving[MOVE_STATE::GOING_RIGHT] = true;
 	
+	path.PushBack({ 0.3f, 0 }, 5, &WhiteGuard_Right);
+	path.Reset();
+}
+Animation Enemy_WhiteGuard::getDie() 
+{
 	return WhiteGuard_Die;
 }
 void Enemy_WhiteGuard::Move()
 {
+	/*int move = rand() % 4;
+	if (move == MOVE_STATE::GOING_UP && !moving[MOVE_STATE::GOING_UP] && path.getCurrent_Frame()==0)
+	{
+		PathUp();
+	}
+	else if (move == MOVE_STATE::GOING_DOWN && !moving[MOVE_STATE::GOING_DOWN] &&path.getCurrent_Frame()==0)
+	{
+		PathDown();
+	}
+	else if (move == MOVE_STATE::GOING_LEFT && !moving[MOVE_STATE::GOING_LEFT] && path.getCurrent_Frame() == 0)
+	{
+		PathLeft();
+	}
+	else if (move == MOVE_STATE::GOING_RIGHT && !moving[MOVE_STATE::GOING_RIGHT] && path.getCurrent_Frame() == 0)
+	{
+		PathRight();
+	}*/
+	
 	position = original_pos + path.GetCurrentPosition(&animation);
+	
 }

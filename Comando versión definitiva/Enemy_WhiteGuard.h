@@ -16,12 +16,20 @@ private:
 	Animation WhiteGuard_Right;
 	Animation WhiteGuard_Up;
 	Animation WhiteGuard_Down;
+	bool moving[4];
+	enum MOVE_STATE {
+		GOING_UP,
+		GOING_DOWN,
+		GOING_LEFT,
+		GOING_RIGHT,
+		NO_STATE
+	};
 public:
 	void PathUp();
 	void PathDown();
 	void PathLeft();
 	void PathRight();
-	Animation getWhiteGuard_Die();
+	Animation getDie();
 	Enemy_WhiteGuard(int x, int y);
 	void Move();
 };

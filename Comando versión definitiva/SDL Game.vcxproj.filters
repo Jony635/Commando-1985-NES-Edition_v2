@@ -104,6 +104,9 @@
     <ClInclude Include="ModuleEndLvl1.h">
       <Filter>Modules\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_CapturerGuard.h">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -162,6 +165,9 @@
     </ClCompile>
     <ClCompile Include="ModuleEndLvl1.cpp">
       <Filter>Modules\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_CapturerGuard.cpp">
+      <Filter>Modules\General\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

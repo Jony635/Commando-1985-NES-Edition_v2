@@ -13,59 +13,59 @@
 #include "ModuleHelicopter.h"
 #include "ModuleEndLvl1.h"
 
-
-
-ModuleWelcome::ModuleWelcome()
-{
-
-}
-
-ModuleWelcome::~ModuleWelcome()
-{}
-
-// Load assets
-bool ModuleWelcome::Start()
-{
-	App->textures->Enable();
-	App->audio->Enable();
-	App->input->Enable();
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg", true);
-	LOG("Loading welcome scene");
-	bool ret = true;
-	background = App->textures->Load("Resources/Screens/Commandowelcome.png");//foto del fondo
-	App->render->camera.x = App->render->camera.y = 0;
-
-
-	return ret;
-}
-
-// UnLoad assets
-bool ModuleWelcome::CleanUp()
-{
-	//App->audio->Disable();
-	App->audio->Stop();
-	App->input->Disable();
-
-	App->textures->Unload(background);
-
-	return true;
-}
-
-// Update: draw background
-update_status ModuleWelcome::Update()
-{
-
-
-
-
-	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, 0, NULL);
-
-
-	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
-
-		App->fade->FadeToBlack(this, App->helicopter, 0);
-	}
-
-	return UPDATE_CONTINUE;
-}
+//
+//
+//ModuleWelcome::ModuleWelcome()
+//{
+//
+//}
+//
+//ModuleWelcome::~ModuleWelcome()
+//{}
+//
+//// Load assets
+//bool ModuleWelcome::Start()
+//{
+//	App->textures->Enable();
+//	App->audio->Enable();
+//	App->input->Enable();
+//	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg", true);
+//	LOG("Loading welcome scene");
+//	bool ret = true;
+//	background = App->textures->Load("Resources/Screens/Commandowelcome.png");//foto del fondo
+//	App->render->camera.x = App->render->camera.y = 0;
+//
+//
+//	return ret;
+//}
+//
+//// UnLoad assets
+//bool ModuleWelcome::CleanUp()
+//{
+//	//App->audio->Disable();
+//	App->audio->Stop();
+//	App->input->Disable();
+//
+//	App->textures->Unload(background);
+//
+//	return true;
+//}
+//
+//// Update: draw background
+//update_status ModuleWelcome::Update()
+//{
+//
+//
+//
+//
+//	// Draw everything --------------------------------------
+//	App->render->Blit(background, 0, 0, NULL);
+//
+//
+//	if (App->input->keyboard[SDL_SCANCODE_RETURN]) {
+//
+//		App->fade->FadeToBlack(this, App->helicopter, 0);
+//	}
+//
+//	return UPDATE_CONTINUE;
+//}

@@ -31,7 +31,7 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
-	modules[i++] = endlvl1 = new ModuleEndLvl1();
+	//modules[i++] = endlvl1 = new ModuleEndLvl1();
 
 	
 
@@ -50,14 +50,14 @@ bool Application::Init()
 	// Deactivate modules here ----
 	//welcome->Disable();
 	lvl1->Disable();
-	lvl2->Disable();
+//	lvl2->Disable();
 	helicopter->Disable();
-	gameover->Disable();
+//	gameover->Disable();
 	player->Disable();
 	collision->Disable();
 	audio->Disable();
 	enemies->Disable();
-	endlvl->Disable();
+//	endlvl->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

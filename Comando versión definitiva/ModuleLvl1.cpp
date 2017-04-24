@@ -263,7 +263,9 @@ bool ModuleLvl1::Start()
 
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
-		/*App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 2491 - 200 - 200 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 150, -(2880 - 2491 - SCREEN_HEIGHT));
+		
+		/*
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 2491 - 200 - 200 - 200 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 23, -(2880 - 2491 - 200 - 200 - 200 - 200 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 74, -(2880 - 2491 - 200 - 200 - 200 - 200 - 200 - SCREEN_HEIGHT));
@@ -389,7 +391,7 @@ update_status ModuleLvl1::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_1]) {
 
-		App->fade->FadeToBlack(this, App->lvl2, 1);
+	//	App->fade->FadeToBlack(this, App->lvl2, 1);
 
 	}
 

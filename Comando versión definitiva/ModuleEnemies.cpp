@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_WhiteGuard.h"
+#include "Enemy_CapturerGuard.h"
 
 
 #define SPAWN_MARGIN 50
@@ -24,7 +25,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Resources/Sprites/Enemies/Common enemy.png");
+	sprites = App->textures->Load("Resources/Sprites/Enemies/All_Enemies.png");
 
 	return true;
 }
@@ -133,6 +134,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_WhiteGuard(info.x,info.y);
 			enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
 			break;
+			case ENEMY_TYPES::CAPTURERGUARD:
+				enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
 		}
 	}
 }

@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 14
+#define NUM_MODULES 13
 
 class ModuleWindow;
 class ModuleInput;
@@ -40,7 +40,7 @@ public:
 	ModuleFadeToBlack* fade;
 	ModuleParticles* particles;
 	ModuleAudio* audio;
-	ModuleLvl2* lvl2;
+	//ModuleLvl2* lvl2;
 	ModuleLvl1* lvl1;
 	ModuleWelcome* welcome;
 	bool stop_music;

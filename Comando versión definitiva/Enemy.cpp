@@ -33,16 +33,27 @@ void Enemy::OnCollision(Collider* collider)
 	{
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
-			if (this->animation != &this->getWhiteGuard_Die())
+			if (this->animation != &this->getDie())
 			{
 				this->animation->Reset();
-				this->animation = &this->getWhiteGuard_Die();
+				this->animation = &this->getDie();
 			}
 		}
 		
 		if (collider->type == COLLIDER_WALL || collider->type==COLLIDER_WATER)
 		{
 			
+		}
+	}
+	else if (this->type == ENEMY_TYPES::CAPTURERGUARD)
+	{
+		if (collider->type == COLLIDER_PLAYER_SHOT)
+		{
+			if (this->animation != &this->getDie())
+			{
+				this->animation->Reset();
+				this->animation = &this->getDie();
+			}
 		}
 	}
 }

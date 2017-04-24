@@ -18,13 +18,13 @@ public:
 	bool loop = true;
 	Step steps[MAX_STEPS];
 	fPoint accumulated_speed = {0.0f, 0.0f};
-
+	
 private:
 	uint current_frame = 0;
 	uint last_step = 0;
 
 public:
-
+	
 	void PushBack(fPoint speed, uint frames, Animation* animation = nullptr)
 	{
 		steps[last_step].animation = animation;
@@ -61,6 +61,10 @@ public:
 	void Reset()
 	{
 		current_frame = 0;
+	}
+	uint getCurrent_Frame() const
+	{
+		return current_frame;
 	}
 };
 
