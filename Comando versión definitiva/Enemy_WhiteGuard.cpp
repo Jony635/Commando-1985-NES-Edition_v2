@@ -37,14 +37,14 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	//Down Animation
 	WhiteGuard_Down.PushBack({1, 23, 15, 22});
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
-	
+	WhiteGuard_Down.speed = 0.07f;
 
 
 
 	//Path Definition
-	path.PushBack({ -0.3f, 0.0f }, 70, &WhiteGuard_Left);
+	/*path.PushBack({ -0.3f, 0.0f }, 70, &WhiteGuard_Left);
 	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);
-	
+	*/
 }
 
 void Enemy_WhiteGuard::PathUp()
@@ -54,7 +54,7 @@ void Enemy_WhiteGuard::PathUp()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({0, 0.3f}, 5, &WhiteGuard_Up);
+	path.PushBack({0, -0.3f}, 100, &WhiteGuard_Up);
 	path.Reset();
 }
 
@@ -65,7 +65,7 @@ void Enemy_WhiteGuard::PathDown()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({ 0, -0.3f }, 5, &WhiteGuard_Down);
+	path.PushBack({ 0, 0.3f }, 100, &WhiteGuard_Down);
 	path.Reset();
 }
 
@@ -76,7 +76,7 @@ void Enemy_WhiteGuard::PathLeft()
 	moving[MOVE_STATE::GOING_LEFT] = true;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({ -0.3f, 0 }, 5, &WhiteGuard_Left);
+	path.PushBack({ -0.3f, 0 }, 100, &WhiteGuard_Left);
 	path.Reset();
 }
 void Enemy_WhiteGuard::PathRight()
@@ -86,7 +86,7 @@ void Enemy_WhiteGuard::PathRight()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = true;
 	
-	path.PushBack({ 0.3f, 0 }, 5, &WhiteGuard_Right);
+	path.PushBack({ 0.3f, 0 }, 100, &WhiteGuard_Right);
 	path.Reset();
 }
 Animation Enemy_WhiteGuard::getDie() 
@@ -95,7 +95,7 @@ Animation Enemy_WhiteGuard::getDie()
 }
 void Enemy_WhiteGuard::Move()
 {
-	/*int move = rand() % 4;
+	int move = rand() % 4;
 	if (move == MOVE_STATE::GOING_UP && !moving[MOVE_STATE::GOING_UP] && path.getCurrent_Frame()==0)
 	{
 		PathUp();
@@ -111,7 +111,7 @@ void Enemy_WhiteGuard::Move()
 	else if (move == MOVE_STATE::GOING_RIGHT && !moving[MOVE_STATE::GOING_RIGHT] && path.getCurrent_Frame() == 0)
 	{
 		PathRight();
-	}*/
+	}
 	
 	position = original_pos + path.GetCurrentPosition(&animation);
 	
