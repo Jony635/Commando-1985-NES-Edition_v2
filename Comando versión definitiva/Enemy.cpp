@@ -29,7 +29,9 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (this->type == ENEMY_TYPES::WHITEGUARD)
+	if (this->type == ENEMY_TYPES::WHITEGUARD
+		|| this->type == ENEMY_TYPES::CAPTURERGUARD
+		|| this->type == ENEMY_TYPES::BOSSLVL1)
 	{
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
@@ -40,27 +42,5 @@ void Enemy::OnCollision(Collider* collider)
 			}
 		}
 		
-	}
-	else if (this->type == ENEMY_TYPES::CAPTURERGUARD)
-	{
-		if (collider->type == COLLIDER_PLAYER_SHOT)
-		{
-			if (this->animation != &this->getDie())
-			{
-				this->animation->Reset();
-				this->animation = &this->getDie();
-			}
-		}
-	}
-	else if (this->type == ENEMY_TYPES::BOSSLVL1)
-	{
-		if (collider->type == COLLIDER_PLAYER_SHOT)
-		{
-			if (this->animation != &this->getDie())
-			{
-				this->animation->Reset();
-				this->animation = &this->getDie();
-			}
-		}
 	}
 }

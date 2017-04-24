@@ -134,14 +134,17 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::WHITEGUARD:
 			enemies[i] = new Enemy_WhiteGuard(info.x,info.y);
 			enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::WHITEGUARD;
 			break;
 			case ENEMY_TYPES::CAPTURERGUARD:
 			enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::CAPTURERGUARD;
 			break;
 			case ENEMY_TYPES::BOSSLVL1:
 			enemies[i] = new Enemy_Bosslvl1(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::BOSSLVL1;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSLVL1;
 			break;
 		}
 	}
@@ -160,9 +163,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			}
-			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER)
+			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER) && c1->enemytype!=ENEMY_TYPES::BOSSLVL1)
 			{
-				enemies[i]->OnCollision(c2);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
 			}
 		}
 	}
