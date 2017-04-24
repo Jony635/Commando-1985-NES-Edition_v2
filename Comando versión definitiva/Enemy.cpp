@@ -40,12 +40,19 @@ void Enemy::OnCollision(Collider* collider)
 			}
 		}
 		
-		if (collider->type == COLLIDER_WALL || collider->type==COLLIDER_WATER)
-		{
-			
-		}
 	}
 	else if (this->type == ENEMY_TYPES::CAPTURERGUARD)
+	{
+		if (collider->type == COLLIDER_PLAYER_SHOT)
+		{
+			if (this->animation != &this->getDie())
+			{
+				this->animation->Reset();
+				this->animation = &this->getDie();
+			}
+		}
+	}
+	else if (this->type == ENEMY_TYPES::BOSSLVL1)
 	{
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{

@@ -12,10 +12,7 @@ private:
 	int original_x = 0;
 	Animation default;
 	Animation Bosslvl1_Die;
-	Animation Bosslvl1_Left;
 	Animation Bosslvl1_Right;
-	Animation Bosslvl1_Up;
-	Animation Bosslvl1_Down;
 	bool moving[4];
 	enum MOVE_STATE {
 		GOING_UP,
