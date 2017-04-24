@@ -34,4 +34,4 @@ public:
 	void Move();
 };
 
-#endif // __ENEMY_REDBIRD_H__
+#endif 

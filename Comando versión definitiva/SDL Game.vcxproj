@@ -72,6 +72,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Bosslvl1.h" />
     <ClInclude Include="Enemy_CapturerGuard.h" />
     <ClInclude Include="Enemy_WhiteGuard.h" />
     <ClInclude Include="Globals.h" />
@@ -97,6 +98,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Bosslvl1.cpp" />
     <ClCompile Include="Enemy_CapturerGuard.cpp" />
     <ClCompile Include="Enemy_WhiteGuard.cpp" />
     <ClCompile Include="Globals.cpp" />

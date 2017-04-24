@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_WhiteGuard.h"
 #include "Enemy_CapturerGuard.h"
+#include "Enemy_Bosslvl1.h"
 
 
 #define SPAWN_MARGIN 50
@@ -135,8 +136,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
 			break;
 			case ENEMY_TYPES::CAPTURERGUARD:
-				enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
-				enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
+			enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
+			break;
+			case ENEMY_TYPES::BOSSLVL1:
+				enemies[i] = new Enemy_Bosslvl1(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOSSLVL1;
+				break;
 		}
 	}
 }

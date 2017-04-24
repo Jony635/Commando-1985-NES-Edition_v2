@@ -107,6 +107,9 @@
     <ClInclude Include="Enemy_CapturerGuard.h">
       <Filter>Modules\General\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Bosslvl1.h">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -167,6 +170,9 @@
       <Filter>Modules\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_CapturerGuard.cpp">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Bosslvl1.cpp">
       <Filter>Modules\General\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
