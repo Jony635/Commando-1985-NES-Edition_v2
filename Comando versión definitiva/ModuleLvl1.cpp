@@ -60,7 +60,7 @@ ModuleLvl1::ModuleLvl1()
 	ally.PushBack({ 0, 0, 16, 22 });
 	ally.PushBack({ 17, 0, 16, 22 });
 	ally.speed = 0.08f;
-	//ally2 animationae
+	//ally2 animation
 	ally2.PushBack({ 0, 0, 16, 22 });
 	ally2.PushBack({ 17, 0, 16, 22 });
 	ally2.speed = 0.08f;
