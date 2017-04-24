@@ -86,6 +86,7 @@ update_status ModuleCollision::Update()
 	Collider* c2;
 	
 	COLLIDER_TYPE typecol=COLLIDER_NONE;
+
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		// skip empty colliders
@@ -109,12 +110,14 @@ update_status ModuleCollision::Update()
 				if (matrix[c1->type][c2->type] && c1->callback)
 				{
 					typecol = c1->type;
-					c3 = c1;
+					
   					c1->callback->OnCollision(c1, c2);
 					
 				}
 				if (typecol != COLLIDER_NONE)
 				{
+					if(typecol==COLLIDER_PLAYER_SHOT)
+					c3->type = typecol;
 					if ((matrix[c2->type][c3->type] && c2->callback))
 					{
 						c2->callback->OnCollision(c2, c3);
