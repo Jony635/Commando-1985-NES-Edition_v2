@@ -84,7 +84,8 @@ update_status ModuleCollision::Update()
 {
 	Collider* c1;
 	Collider* c2;
-
+	
+	COLLIDER_TYPE typecol=COLLIDER_NONE;
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		// skip empty colliders
@@ -104,13 +105,26 @@ update_status ModuleCollision::Update()
 
 			if(c1->CheckCollision(c2->rect) == true)
 			{
-							
-				if(matrix[c1->type][c2->type] && c1->callback) 
-					c1->callback->OnCollision(c1, c2);
-				
-				if(matrix[c2->type][c1->type] && c2->callback) 
-					c2->callback->OnCollision(c2, c1);
-				
+				Collider* c3= c1;
+				if (matrix[c1->type][c2->type] && c1->callback)
+				{
+					typecol = c1->type;
+					c3 = c1;
+  					c1->callback->OnCollision(c1, c2);
+					
+				}
+				if (typecol != COLLIDER_NONE)
+				{
+					if ((matrix[c2->type][c3->type] && c2->callback))
+					{
+						c2->callback->OnCollision(c2, c3);
+					}
+				}
+				else 
+				{
+					if ((matrix[c2->type][c1->type] && c2->callback))
+						c2->callback->OnCollision(c2, c1);
+				}
 			}
 		}
 	}
@@ -222,38 +236,3 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 		return true;
 	}
 }
-
-
-bool Collider::CheckFutureCollision(const SDL_Rect& r) const
-{
-
-	if ((rect.x + rect.w) < r.x-SPEED_PLAYER || (rect.y + rect.h) < r.y- SPEED_PLAYER || rect.x > (r.x + r.w + SPEED_PLAYER) || rect.y>(r.y + r.h + SPEED_PLAYER))
-	{
-		return false;
-	}
-	else {
-		return true;
-	}
-}
-
-
-
-void ModuleCollision::OnCollision(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_COLLIDERS; ++i)
-	{
-		// Always destroy particles that collide
-		if (colliders[i] != nullptr && colliders[i] == c1)
-		{
-			
-				
-			}
-
-
-
-
-			delete colliders[i];
-			colliders[i] = nullptr;
-			break;
-		}
-	}

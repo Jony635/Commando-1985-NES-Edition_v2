@@ -1,7 +1,7 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#define MAX_COLLIDERS 500
+#define MAX_COLLIDERS 700
 
 #include "Module.h"
 
@@ -37,7 +37,6 @@ struct Collider
 	}
 
 	bool CheckCollision(const SDL_Rect& r) const;
-	bool CheckFutureCollision(const SDL_Rect& r) const;
 };
 
 class ModuleCollision : public Module
@@ -51,7 +50,6 @@ public:
 	update_status Update();
 	//update_status PostUpdate();
 	bool CleanUp();
-	void OnCollision(Collider* c1, Collider* c2);
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
 	bool EraseCollider(Collider* collider);
 	void DebugDraw();
