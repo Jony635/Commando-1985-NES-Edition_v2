@@ -100,9 +100,13 @@ bool ModulePlayer::Start()
 	graphics2 = App->textures->Load("Resources/Screens/bridgelvl1.png");
 	position.x = (SCREEN_WIDTH / 2)-7;
 	position.y = 140;
-
+	score = 0;
 	p = App->collision->AddCollider({ 0, 0, 17, 23 }, COLLIDER_PLAYER, (Module*)App->player);
-
+	for (int i = 0; i < 6; i++)
+	{
+		sc[i] = 0;
+		hs[i] = 0;
+	}
 	return true;
 }
 
@@ -458,8 +462,12 @@ update_status ModulePlayer::Update()
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
 	}
 
-	getScore(score);
-
+	for (int i = 0; i < 6; i++)
+	{
+		exp1 = pow(10, (6 - i));
+		exp2 = pow(10, (5 - i));
+		sc[i] = (score % exp1) / (exp2);
+	}
 	return UPDATE_CONTINUE;
 }
 
@@ -591,26 +599,3 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 }
 
-void ModulePlayer::getScore(int score) {
-
-	for (int i = 0; i < 6; i++)
-	{
-		sc[i] = 0;
-		hs[i] = 0;
-
-	}
-	for (int i = 0; i < 6; i++)
-	{
-		j++;
-		exp = pow(10, (6 - j));
-
-		if ((score / pow(10, (6 - j))) <1) {
-			sc[i] = 0;
-
-		}
-		else {
-//			sc[i] = (score - (score % exp)) / exp;
-
-		}
-	}
-}

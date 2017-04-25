@@ -45,6 +45,32 @@ ModuleLvl1::ModuleLvl1()
 	four.y = 1;
 	four.w = 8;
 	four.h = 8;
+	// five
+	five.x = 49;
+	five.y = 1;
+	five.w = 8;
+	five.h = 8;
+	// six
+	six.x = 59;
+	six.y = 1;
+	six.w = 8;
+	six.h = 8;
+	// seven
+	seven.x = 68;
+	seven.y = 1;
+	seven.w = 8;
+	seven.h = 8;
+	// eight
+	eight.x = 78;
+	eight.y = 1;
+	eight.w = 8;
+	eight.h = 8;
+	// nine
+	nine.x = 88;
+	nine.y = 1;
+	nine.w = 8;
+	nine.h = 8;
+
 	// handg
 	handg.x = 7;
 	handg.y = 28;
@@ -369,12 +395,136 @@ update_status ModuleLvl1::Update()
 	App->render->Blit(graphics3, 2, -(2880 - 492 - SCREEN_HEIGHT), &(box5.GetCurrentFrame()), 1.0f); // box5 animation
 	App->render->Blit(graphics3, 166, -(2880 - 258 - SCREEN_HEIGHT), &(box6.GetCurrentFrame()), 1.0f); // box6 animation
 
+
+	if(App->player->sc[0]==0)
 	App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y/3), &zero );// zero
+	if (App->player->sc[1] == 0)
 	App->render->Blit(graphics4, 16+9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
+	if (App->player->sc[2] == 0)
 	App->render->Blit(graphics4, 16+18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero );// zero
+	if (App->player->sc[3] == 0)
 	App->render->Blit(graphics4, 16+27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero );// zero
+	if (App->player->sc[4] == 0)
 	App->render->Blit(graphics4, 16+36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
+	if (App->player->sc[5] == 0)
 	App->render->Blit(graphics4, 16+45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero);// zero
+
+	if (App->player->sc[0] == 1)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+	if (App->player->sc[1] == 1)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+	if (App->player->sc[2] == 1)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+	if (App->player->sc[3] == 1)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+	if (App->player->sc[4] == 1)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+	if (App->player->sc[5] == 1)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &one);// one
+
+	if (App->player->sc[0] == 2)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+	if (App->player->sc[1] == 2)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+	if (App->player->sc[2] == 2)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+	if (App->player->sc[3] == 2)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+	if (App->player->sc[4] == 2)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+	if (App->player->sc[5] == 2)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &two);// two
+
+	if (App->player->sc[0] == 3)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+	if (App->player->sc[1] == 3)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+	if (App->player->sc[2] == 3)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+	if (App->player->sc[3] == 3)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+	if (App->player->sc[4] == 3)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+	if (App->player->sc[5] == 3)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &three);// three
+
+	if (App->player->sc[0] == 4)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+	if (App->player->sc[1] == 4)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+	if (App->player->sc[2] == 4)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+	if (App->player->sc[3] == 4)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+	if (App->player->sc[4] == 4)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+	if (App->player->sc[5] == 4)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &four);// four
+
+	if (App->player->sc[0] == 5)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+	if (App->player->sc[1] == 5)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+	if (App->player->sc[2] == 5)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+	if (App->player->sc[3] == 5)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+	if (App->player->sc[4] == 5)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+	if (App->player->sc[5] == 5)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &five);// five
+
+	if (App->player->sc[0] == 6)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+	if (App->player->sc[1] == 6)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+	if (App->player->sc[2] == 6)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+	if (App->player->sc[3] == 6)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+	if (App->player->sc[4] == 6)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+	if (App->player->sc[5] == 6)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &six);// five
+
+	if (App->player->sc[0] == 7)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+	if (App->player->sc[1] == 7)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+	if (App->player->sc[2] == 7)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+	if (App->player->sc[3] == 7)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+	if (App->player->sc[4] == 7)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+	if (App->player->sc[5] == 7)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &seven);// five
+
+	if (App->player->sc[0] == 8)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+	if (App->player->sc[1] == 8)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+	if (App->player->sc[2] == 8)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+	if (App->player->sc[3] == 8)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+	if (App->player->sc[4] == 8)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+	if (App->player->sc[5] == 8)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &eight);// five
+
+	if (App->player->sc[0] == 9)
+		App->render->Blit(graphics4, 16, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
+	if (App->player->sc[1] == 9)
+		App->render->Blit(graphics4, 16 + 9, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
+	if (App->player->sc[2] == 9)
+		App->render->Blit(graphics4, 16 + 18, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
+	if (App->player->sc[3] == 9)
+		App->render->Blit(graphics4, 16 + 27, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
+	if (App->player->sc[4] == 9)
+		App->render->Blit(graphics4, 16 + 36, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
+	if (App->player->sc[5] == 9)
+		App->render->Blit(graphics4, 16 + 45, -(2880 - 2675 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &nine);// five
 
 	App->render->Blit(graphics4, 119+13, -(2880 - 2860 - SCREEN_HEIGHT)+3 - (App->render->camera.y / 3), &zero); // zero
 	App->render->Blit(graphics5, 119, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &handg); // handg
