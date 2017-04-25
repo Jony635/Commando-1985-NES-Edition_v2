@@ -14,6 +14,13 @@ enum ENEMY_TYPES
 	BOSSLVL1
 
 };
+enum MOVE_STATE {
+	GOING_UP,
+	GOING_DOWN,
+	GOING_LEFT,
+	GOING_RIGHT,
+	NO_STATE
+};
 class Enemy
 {
 protected:
@@ -35,6 +42,11 @@ public:
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
+	virtual void PathUp() {};
+	virtual void PathDown() {};
+	virtual void PathLeft() {};
+	virtual void PathRight() {};
+	virtual bool* getMoving() const { bool* buf=nullptr; return buf; };
 };
 
 #endif // __ENEMY_H__

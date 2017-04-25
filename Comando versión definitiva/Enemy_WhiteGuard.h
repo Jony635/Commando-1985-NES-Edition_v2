@@ -16,15 +16,10 @@ private:
 	Animation WhiteGuard_Right;
 	Animation WhiteGuard_Up;
 	Animation WhiteGuard_Down;
-	bool moving[4];
-	enum MOVE_STATE {
-		GOING_UP,
-		GOING_DOWN,
-		GOING_LEFT,
-		GOING_RIGHT,
-		NO_STATE
-	};
+	bool moving[4] = {false, false, false, false};
+	bool* movingptr = moving;
 public:
+	bool* getMoving() const;
 	void PathUp();
 	void PathDown();
 	void PathLeft();

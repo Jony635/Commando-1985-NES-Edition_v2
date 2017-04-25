@@ -57,7 +57,10 @@ public:
 
 		return iPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
 	}
-	
+	void ResetlastStep()
+	{
+		last_step = 0;
+	}
 	void Reset()
 	{
 		current_frame = 0;

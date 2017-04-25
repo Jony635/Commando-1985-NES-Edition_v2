@@ -167,8 +167,31 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 			{
-				delete enemies[i];
-				enemies[i] = nullptr;
+				bool* moving = enemies[i]->getMoving();
+				if (moving[MOVE_STATE::GOING_UP])
+				{
+					enemies[i]->path.ResetlastStep();
+					enemies[i]->path.Reset();
+					enemies[i]->PathDown();
+				}
+				else if (moving[MOVE_STATE::GOING_DOWN])
+				{
+					enemies[i]->path.ResetlastStep();
+					enemies[i]->path.Reset();
+					enemies[i]->PathUp();
+				}
+				else if (moving[MOVE_STATE::GOING_LEFT])
+				{
+					enemies[i]->path.ResetlastStep();
+					enemies[i]->path.Reset();
+					enemies[i]->PathRight();
+				}
+				else
+				{
+					enemies[i]->path.ResetlastStep();
+					enemies[i]->path.Reset();
+					enemies[i]->PathLeft();
+				}
 				break;
 			}
 		}

@@ -38,7 +38,8 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Down.PushBack({1, 23, 15, 22});
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
 	WhiteGuard_Down.speed = 0.07f;
-
+	
+	
 
 
 	//Path Definition
@@ -46,7 +47,10 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);
 	*/
 }
-
+bool* Enemy_WhiteGuard::getMoving() const
+{
+	return movingptr;
+}
 void Enemy_WhiteGuard::PathUp()
 {
 	moving[MOVE_STATE::GOING_UP] = true;
