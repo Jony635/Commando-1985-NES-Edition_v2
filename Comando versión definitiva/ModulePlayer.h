@@ -58,6 +58,9 @@ public:
 	int hs[6];
 	int sc[6];
 	int exp1, exp2;
+	bool win = false;
+	int highscore = 0;
+	bool ftimediemusic = false;
 
 };
 

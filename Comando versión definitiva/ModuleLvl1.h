@@ -55,6 +55,17 @@ public:
 	SDL_Rect seven;
 	SDL_Rect eight;
 	SDL_Rect nine;
+	SDL_Rect redzero;
+	SDL_Rect redone;
+	SDL_Rect redtwo;
+	SDL_Rect redthree;
+	SDL_Rect redfour;
+	SDL_Rect redfive;
+	SDL_Rect redsix;
+	SDL_Rect redseven;
+	SDL_Rect redeight;
+	SDL_Rect rednine;
+	SDL_Rect highsc;
 	SDL_Rect life;
 	SDL_Rect handg;
 	

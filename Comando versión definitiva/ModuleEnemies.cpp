@@ -168,7 +168,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (c1->enemytype == ENEMY_TYPES::BOSSLVL1)
 				{
 					App->player->score += 1850;
-					//App->player->win = true;
+					App->player->win = true;
+					App->player->ftimediemusic = true;
 				}
 				break;
 			}

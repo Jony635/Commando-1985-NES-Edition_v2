@@ -26,7 +26,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Right.PushBack({ 32, 0, 16, 22 });
 	WhiteGuard_Right.PushBack({ 49, 0, 16, 22 });
 	WhiteGuard_Right.speed = 0.07f;
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &WhiteGuard_Left;
 	original_pos.x = x;
 	original_pos.y = y;

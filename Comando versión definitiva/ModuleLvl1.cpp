@@ -20,6 +20,62 @@
 
 ModuleLvl1::ModuleLvl1()
 {
+	// redzero
+	redzero.x = 1;
+	redzero.y = 49;
+	redzero.w = 8;
+	redzero.h = 8;
+	// redone
+	redone.x = 9;
+	redone.y = 49;
+	redone.w = 8;
+	redone.h = 8;
+	// redtwo
+	redtwo.x = 18;
+	redtwo.y = 49;
+	redtwo.w = 8;
+	redtwo.h = 8;
+	// redthree
+	redthree.x = 29;
+	redthree.y = 49;
+	redthree.w = 8;
+	redthree.h = 8;
+	// redfour
+	redfour.x = 39;
+	redfour.y = 49;
+	redfour.w = 8;
+	redfour.h = 8;
+	// redfive
+	redfive.x = 49;
+	redfive.y = 49;
+	redfive.w = 8;
+	redfive.h = 8;
+	// redsix
+	redsix.x = 59;
+	redsix.y = 49;
+	redsix.w = 8;
+	redsix.h = 8;
+	// redseven
+	redseven.x = 68;
+	redseven.y = 49;
+	redseven.w = 8;
+	redseven.h = 8;
+	// redeight
+	redeight.x = 78;
+	redeight.y = 49;
+	redeight.w = 8;
+	redeight.h = 8;
+	// rednine
+	rednine.x = 88;
+	rednine.y = 49;
+	rednine.w = 8;
+	rednine.h = 8;
+	//highsc
+	rednine.x = 2;
+	rednine.y = 39;
+	rednine.w = 32;
+	rednine.h = 8;
+
 	// zero
 	zero.x = 1;
 	zero.y = 1;
