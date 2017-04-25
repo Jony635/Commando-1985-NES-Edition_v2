@@ -102,6 +102,7 @@ bool ModulePlayer::Start()
 	position.y = 140;
 	score = 0;
 	p = App->collision->AddCollider({ 0, 0, 17, 23 }, COLLIDER_PLAYER, (Module*)App->player);
+	bridge = App->collision->AddCollider({ 69, -(2880 - 1344 - SCREEN_HEIGHT), 119, 64 }, COLLIDER_ANTIBULLET);
 	for (int i = 0; i < 6; i++)
 	{
 		sc[i] = 0;
@@ -422,6 +423,7 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	App->render->Blit(graphics2, 0, -(2880 - 1344 - SCREEN_HEIGHT), &bridgelvl1);
 	p->SetPos(position.x, position.y);
+
 
 
 

@@ -45,6 +45,7 @@ public:
 	Animation die;
 	Animation die_w;
 	Collider* p;
+	Collider* bridge;
 	Animation right;
 	iPoint position;
 	SDL_Rect bridgelvl1;
