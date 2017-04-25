@@ -25,6 +25,7 @@ public:
 	iPoint original_pos;
 
 public:
+	friend class ModuleEnemies;
 	Enemy(int x, int y);
 	virtual ~Enemy();
 	ENEMY_TYPES type;
