@@ -58,7 +58,7 @@ void Enemy_WhiteGuard::PathUp()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({0, -0.3f}, 100, &WhiteGuard_Up);
+	path.PushBack({0, -0.7f}, 70, &WhiteGuard_Up);
 	path.Reset();
 }
 
@@ -69,7 +69,7 @@ void Enemy_WhiteGuard::PathDown()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({ 0, 0.3f }, 100, &WhiteGuard_Down);
+	path.PushBack({ 0, 0.7f }, 70, &WhiteGuard_Down);
 	path.Reset();
 }
 
@@ -80,7 +80,7 @@ void Enemy_WhiteGuard::PathLeft()
 	moving[MOVE_STATE::GOING_LEFT] = true;
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
-	path.PushBack({ -0.3f, 0 }, 100, &WhiteGuard_Left);
+	path.PushBack({ -0.7f, 0 }, 70, &WhiteGuard_Left);
 	path.Reset();
 }
 void Enemy_WhiteGuard::PathRight()
@@ -90,7 +90,7 @@ void Enemy_WhiteGuard::PathRight()
 	moving[MOVE_STATE::GOING_LEFT] = false;
 	moving[MOVE_STATE::GOING_RIGHT] = true;
 	
-	path.PushBack({ 0.3f, 0 }, 100, &WhiteGuard_Right);
+	path.PushBack({ 0.7f, 0 }, 70, &WhiteGuard_Right);
 	path.Reset();
 }
 Animation Enemy_WhiteGuard::getDie() 

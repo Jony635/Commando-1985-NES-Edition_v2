@@ -95,20 +95,6 @@ ModuleLvl1::ModuleLvl1()
 	ally3.PushBack({ 0, 0, 16, 22 });
 	ally3.PushBack({ 17, 0, 16, 22 });
 	ally3.speed = 0.08f;
-
-	//enemyally animation
-	enemyally.PushBack({ 17, 0, 16, 22 });
-	enemyally.PushBack({ 0, 0, 16, 22 });
-	enemyally.PushBack({ 34, 0, 16, 22 });
-	enemyally.PushBack({ 0, 0, 16, 22 });
-	enemyally.speed = 0.08f;
-		//enemyally2 animation
-	enemyally2.PushBack({ 17, 0, 16, 22 });
-	enemyally2.PushBack({ 0, 0, 16, 22 });
-	enemyally2.PushBack({ 34, 0, 16, 22 });
-	enemyally2.PushBack({ 0, 0, 16, 22 });
-	enemyally2.speed = 0.08f;
-
 	//box animation
 	box.PushBack({ 27, 18, 23, 15 });
 	box.PushBack({ 27, 1, 23, 15 });
@@ -293,8 +279,12 @@ bool ModuleLvl1::Start()
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 150, -(2880 - 2491 - SCREEN_HEIGHT));
-		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 65, -(2880 - 126 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 75, -(2880 - 126 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 65, -(2880 - 2595 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 34, -(2880 - 1675 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 66, -(2880 - 1675 - SCREEN_HEIGHT));
+
+
 		/*App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 2491 - 200 - 200 - 200 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 23, -(2880 - 2491 - 200 - 200 - 200 - 200 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 74, -(2880 - 2491 - 200 - 200 - 200 - 200 - 200 - SCREEN_HEIGHT));
@@ -386,8 +376,6 @@ update_status ModuleLvl1::Update()
 	App->render->Blit(graphics, 50, -(2880 - 1675 - SCREEN_HEIGHT), &(ally.GetCurrentFrame()), 1.0f); // ally animation
 	App->render->Blit(graphics, 47, -(2880 - 765 - SCREEN_HEIGHT), &(ally2.GetCurrentFrame()), 1.0f); // ally2 animation
 	App->render->Blit(graphics, 15, -(2880-765-SCREEN_HEIGHT), &(ally3.GetCurrentFrame()), 1.0f); // ally3 animation
-	App->render->Blit(graphics2, 34, -(2880 - 1675 - SCREEN_HEIGHT), &(enemyally.GetCurrentFrame()), 1.0f); // enemyally animation
-	App->render->Blit(graphics2, 66, -(2880 - 1675 - SCREEN_HEIGHT), &(enemyally2.GetCurrentFrame()), 1.0f); // enemyally2 animation
 	App->render->Blit(graphics3, 161, -(2880 - 2482 - SCREEN_HEIGHT), &(box.GetCurrentFrame()), 1.0f); // box animation
 	App->render->Blit(graphics3, 32, -(2880 - 1958 - SCREEN_HEIGHT), &(box2.GetCurrentFrame()), 1.0f); // box2 animation
 	App->render->Blit(graphics3, 25, -(2880 - 977 - SCREEN_HEIGHT), &(box3.GetCurrentFrame()), 1.0f); // box3 animation

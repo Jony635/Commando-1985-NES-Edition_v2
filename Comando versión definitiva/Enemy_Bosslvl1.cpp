@@ -30,10 +30,10 @@ Enemy_Bosslvl1::Enemy_Bosslvl1(int x, int y) : Enemy(x, y)
 	//Default Animation
 	//animation = &default;
 	//Path Definition
-	path.PushBack({0.8f, 0.8f}, 200, &Bosslvl1_Right);
-	path.PushBack({ 0.0f, -0.8f }, 200, &Bosslvl1_Right);
-	path.PushBack({ -0.8f, 0.8f }, 200, &default);
-	path.PushBack({ 0.0f, -0.8f }, 200, &default);
+	path.PushBack({0.8f, 0.8f}, 100, &Bosslvl1_Right);
+	path.PushBack({ 0.0f, -0.8f }, 100, &Bosslvl1_Right);
+	path.PushBack({ -0.8f, 0.8f }, 100, &default);
+	path.PushBack({ 0.0f, -0.8f }, 100, &default);
 }
 
 void Enemy_Bosslvl1::PathUp()

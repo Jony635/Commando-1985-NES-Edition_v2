@@ -153,40 +153,62 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER_SHOT) {
+			if (c2->type == COLLIDER_PLAYER_SHOT) 
+			{
 				App->player->score += 150;
 				enemies[i]->OnCollision(c2);
 				enemies[i]->Draw(sprites);
 				delete enemies[i];
 				enemies[i] = nullptr;
+				
+				if (c1->enemytype == ENEMY_TYPES::BOSSLVL1)
+				{
+					App->player->score += 1850;
+					//App->player->win = true;
+				}
 				break;
 			}
+			
 			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 			{
-				bool* moving = enemies[i]->getMoving();
-				if (moving[MOVE_STATE::GOING_UP])
+
+
+
+				if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+					&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+					&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+					&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
 					enemies[i]->PathDown();
 				}
-				else if (moving[MOVE_STATE::GOING_DOWN])
+				else if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+					&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+					&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+					&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
 					enemies[i]->PathUp();
 				}
-				else if (moving[MOVE_STATE::GOING_LEFT])
+				else if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+					&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+					&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+					&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
 					enemies[i]->PathRight();
 				}
-				else
+				else if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+					&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+					&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+					&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
