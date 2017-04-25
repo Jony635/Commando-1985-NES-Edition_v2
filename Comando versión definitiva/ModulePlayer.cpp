@@ -652,7 +652,7 @@ void ModulePlayer::getScore(int score) {
 
 		}
 		else {
-			sc[i] = (score - (score % exp)) / exp;
+//			sc[i] = (score - (score % exp)) / exp;
 
 		}
 	}
