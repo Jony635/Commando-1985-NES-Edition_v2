@@ -20,6 +20,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	void getScore(int score);
 
 public:
 	bool dead = false;
@@ -53,6 +54,13 @@ public:
 	int contlives = 4;
 	float timeintro = 0;
 	bool musend = false;
+	int score = 0;
+	int exp = 0;
+	int j = 0;
+	int hs[6];
+	int sc[6];
+
+
 };
 
 #endif

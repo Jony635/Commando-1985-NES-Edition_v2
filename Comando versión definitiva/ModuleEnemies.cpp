@@ -8,6 +8,7 @@
 #include "Enemy_WhiteGuard.h"
 #include "Enemy_CapturerGuard.h"
 #include "Enemy_Bosslvl1.h"
+#include "ModulePlayer.h"
 
 
 #define SPAWN_MARGIN 50
@@ -154,6 +155,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			if (c2->type == COLLIDER_PLAYER_SHOT) {
+				App->player->score += 150;
 				enemies[i]->OnCollision(c2);
 				enemies[i]->Draw(sprites);
 				delete enemies[i];

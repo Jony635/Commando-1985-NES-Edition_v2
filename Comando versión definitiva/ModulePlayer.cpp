@@ -501,6 +501,8 @@ update_status ModulePlayer::Update()
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
 	}
 
+	getScore(score);
+
 	return UPDATE_CONTINUE;
 }
 
@@ -626,6 +628,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 			current_animation = &die_w;
 			dead = true;
+		}
+	}
+
+
+}
+
+void ModulePlayer::getScore(int score) {
+
+	for (int i = 0; i < 6; i++)
+	{
+		sc[i] = 0;
+		hs[i] = 0;
+
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		j++;
+		exp = pow(10, (6 - j));
+
+		if ((score / pow(10, (6 - j))) <1) {
+			sc[i] = 0;
+
+		}
+		else {
+			sc[i] = (score - (score % exp)) / exp;
+
 		}
 	}
 }

@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleHelicopter.h"
+#include "Math.h"
 
 
 
@@ -135,6 +136,7 @@ bool ModuleLvl1::Start()
 	small = false;
 	contanimh = 0;
 	forward = false;
+	
 	//App->input->Disable();
 	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
 	App->textures->Enable();
@@ -390,11 +392,16 @@ update_status ModuleLvl1::Update()
 		App->render->Blit(graphics4, 16 + 13, -(2880 - 2860 - SCREEN_HEIGHT) - (App->render->camera.y / 3), &zero); // zero
 
 
-	if (App->input->keyboard[SDL_SCANCODE_1]) {
+	
 
-	//	App->fade->FadeToBlack(this, App->lvl2, 1);
+	//if (App->input->keyboard[SDL_SCANCODE_1]) {
 
-	}
+	////	App->fade->FadeToBlack(this, App->lvl2, 1);
+
+	//}
 
 	return UPDATE_CONTINUE;
 }
+
+
+
