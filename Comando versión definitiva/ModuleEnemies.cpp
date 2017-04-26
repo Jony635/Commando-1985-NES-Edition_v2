@@ -74,7 +74,7 @@ update_status ModuleEnemies::PostUpdate()
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].y * SCREEN_SIZE);
+				LOG("DESpawning enemy at %d", queue[i].y * SCREEN_SIZE);
 			}
 		}
 	}
