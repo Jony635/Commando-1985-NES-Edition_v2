@@ -4,7 +4,7 @@ This is a class project made by 4 students of the "design and development of vid
 The objective of the project is to recreate the arcade game Commando the more accurately possible.
 
 
-##Description
+## Description
 
 Commando is a shoot-em-up vertically scrolling arcade game released by Capcom in 1986. The player takes control of a soldier named Super Joe, who starts by being dropped off in a jungle by a helicopter, and has to fight his way out 
 singlehandedly, fending off a massive assault of enemy soldiers and rescuing captives. Your weapons consist of a machine gun with unlimited shots and a limited supply of hand grenades that may be replenished by stealing from the enemy.
@@ -17,7 +17,7 @@ Unzip the realese folder and execute the .exe file.
 
 ## Usage
 
-###Movement keys (combine them to go in diagonal):
+### Movement keys (combine them to go in diagonal):
 
 W,↑ ➣ Move player up
 
@@ -28,12 +28,12 @@ S,↓ ➣ Move player down
 D,→ ➣ Move player right
 
 
-###Shoot key:
+### Shoot key:
 
 Space bar ➣ Shoot
 
 
-###Other keys:
+### Other keys:
 
 F1 ➣ Show colliders
 
@@ -44,16 +44,16 @@ F3 ➣ Lose automatically
 Esc ➣ Quit the game
 
 
-##Win lose condition
+## Win lose condition
 
 Win ➣ Kill the boss at the end of the level.
 
 Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
 
 
-##Changelist
+## Changelist
 
-###Version 0.5
+### Version 0.5
 
 - Welcome screen, level 1 and win screen implemented.
 
@@ -76,11 +76,11 @@ Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
 - Music and sound effects implemented correctly.
 
 
-##Project wiki
+## Project wiki
 
 https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki
 
-##Project web
+## Project web
 
 https://jony635.github.io/Commando-1985-NES-Edition_v2/
 
