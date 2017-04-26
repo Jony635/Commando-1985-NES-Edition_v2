@@ -20,6 +20,10 @@ private:
 	bool* movingptr = moving;
 public:
 	bool* getMoving() const;
+	void ColPathDown();
+	void ColPathUp();
+	void ColPathRight();
+	void ColPathLeft();
 	void PathUp();
 	void PathDown();
 	void PathLeft();

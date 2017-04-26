@@ -38,15 +38,8 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Down.PushBack({1, 23, 15, 22});
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
 	WhiteGuard_Down.speed = 0.07f;
-	
-	
-
-
-	//Path Definition
-	/*path.PushBack({ -0.3f, 0.0f }, 70, &WhiteGuard_Left);
-	path.PushBack({ 0.3f, 0.0f }, 70, &WhiteGuard_Right);
-	*/
 }
+
 bool* Enemy_WhiteGuard::getMoving() const
 {
 	return movingptr;
@@ -62,6 +55,13 @@ void Enemy_WhiteGuard::PathUp()
 	path.Reset();
 }
 
+void Enemy_WhiteGuard::ColPathUp()
+{
+	path.PushBack({ 0, -0.7f }, 12, &WhiteGuard_Up);
+	path.Reset();
+}
+
+
 void Enemy_WhiteGuard::PathDown()
 {
 	moving[MOVE_STATE::GOING_UP] = false;
@@ -70,6 +70,12 @@ void Enemy_WhiteGuard::PathDown()
 	moving[MOVE_STATE::GOING_RIGHT] = false;
 	
 	path.PushBack({ 0, 0.7f }, 70, &WhiteGuard_Down);
+	path.Reset();
+}
+
+void Enemy_WhiteGuard::ColPathDown()
+{
+	path.PushBack({ 0, 0.7f }, 12, &WhiteGuard_Down);
 	path.Reset();
 }
 
@@ -83,6 +89,12 @@ void Enemy_WhiteGuard::PathLeft()
 	path.PushBack({ -0.7f, 0 }, 70, &WhiteGuard_Left);
 	path.Reset();
 }
+
+void Enemy_WhiteGuard::ColPathLeft()
+{
+	path.PushBack({ -0.7f, 0 }, 12, &WhiteGuard_Left);
+	path.Reset();
+}
 void Enemy_WhiteGuard::PathRight()
 {
 	moving[MOVE_STATE::GOING_UP] = false;
@@ -91,6 +103,12 @@ void Enemy_WhiteGuard::PathRight()
 	moving[MOVE_STATE::GOING_RIGHT] = true;
 	
 	path.PushBack({ 0.7f, 0 }, 70, &WhiteGuard_Right);
+	path.Reset();
+}
+
+void Enemy_WhiteGuard::ColPathRight()
+{
+	path.PushBack({ 0.7f, 0 }, 12, &WhiteGuard_Right);
 	path.Reset();
 }
 Animation Enemy_WhiteGuard::getDie() 

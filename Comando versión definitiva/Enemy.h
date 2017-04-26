@@ -46,6 +46,10 @@ public:
 	virtual void PathDown() {};
 	virtual void PathLeft() {};
 	virtual void PathRight() {};
+	virtual void ColPathUp() {};
+	virtual void ColPathDown() {};
+	virtual void ColPathLeft() {};
+	virtual void ColPathRight() {};
 	virtual bool* getMoving() const { bool* buf=nullptr; return buf; };
 };
 

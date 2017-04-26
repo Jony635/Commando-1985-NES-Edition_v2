@@ -186,7 +186,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
-					enemies[i]->PathDown();
+					enemies[i]->ColPathDown();
 				}
 				else if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
 					&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
@@ -195,7 +195,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
-					enemies[i]->PathUp();
+					enemies[i]->ColPathUp();
 				}
 				else if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
 					&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
@@ -204,7 +204,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
-					enemies[i]->PathRight();
+					enemies[i]->ColPathRight();
 				}
 				else if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
 					&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
@@ -213,7 +213,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				{
 					enemies[i]->path.ResetlastStep();
 					enemies[i]->path.Reset();
-					enemies[i]->PathLeft();
+					enemies[i]->ColPathLeft();
 				}
 				break;
 			}
