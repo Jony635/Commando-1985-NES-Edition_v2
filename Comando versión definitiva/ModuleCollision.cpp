@@ -118,7 +118,7 @@ update_status ModuleCollision::Update()
 
 			if (c1->CheckCollision(c2->rect) == true)
 			{
-				
+
 				if (matrix[c1->type][c2->type] && c1->callback)
 				{
 					if (c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
@@ -127,26 +127,26 @@ update_status ModuleCollision::Update()
 						{
 							c2->callback->OnCollision(c2, c1);
 						}
-						c1->callback->OnCollision(c1, c2); 
-						
+						c1->callback->OnCollision(c1, c2);
+
 					}
 					else
 					{
 						c1->callback->OnCollision(c1, c2);
 						c2->callback->OnCollision(c2, c1);
 					}
-					
+
 				}
-				
-				else if ((matrix[c2->type][c1->type] && c2->callback)) 
-						c2->callback->OnCollision(c2, c1); 
-				}
-				
-				
-				
+
+				else if ((matrix[c2->type][c1->type] && c2->callback))
+					c2->callback->OnCollision(c2, c1);
 			}
+
+
+
 		}
 	}
+	
 
 	DebugDraw();
 
