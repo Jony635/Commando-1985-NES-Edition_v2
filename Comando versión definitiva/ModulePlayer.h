@@ -62,6 +62,7 @@ public:
 	int highscore = 0;
 	bool ftimediemusic = false;
 	bool fhs = false;
+	bool godmode = false;
 
 };
 

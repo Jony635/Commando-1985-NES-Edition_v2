@@ -684,7 +684,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//If it collides with an enemy
 
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY))
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)&&!godmode)
 	{
 		dead = true;
 	}

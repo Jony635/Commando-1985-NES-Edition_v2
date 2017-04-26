@@ -12,7 +12,7 @@
 #include "Enemy_Knife.h"
 
 
-#define SPAWN_MARGIN 70
+#define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -74,7 +74,7 @@ update_status ModuleEnemies::PostUpdate()
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("DESpawning enemy at %d", queue[i].y * SCREEN_SIZE);
+				LOG("Spawning enemy at %d", queue[i].y * SCREEN_SIZE);
 			}
 		}
 	}
@@ -177,7 +177,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			
-			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER || c2->type== COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
+			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 			{
 
 

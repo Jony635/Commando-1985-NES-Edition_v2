@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "Globals.h"
 #include "MemLeaks.h"
-
+#include "ModulePlayer.h"
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
 #pragma comment( lib, "SDL/libx86/SDL2main.lib" )
@@ -20,6 +20,9 @@ Application* App = nullptr;
 
 int main(int argc, char* argv[])
 {
+	if (*argv == "godmode") {
+		App->player->godmode = true;
+	}
 	ReportMemoryLeaks();
 
 	int main_return = EXIT_FAILURE;
