@@ -336,7 +336,6 @@ bool ModuleLvl1::Start()
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 150, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 75, -(2880 - 126 - SCREEN_HEIGHT));
-		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 65, -(2880 - 2595 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 34, -(2880 - 1675 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 66, -(2880 - 1675 - SCREEN_HEIGHT));
 
