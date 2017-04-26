@@ -41,8 +41,6 @@ F2 ➣ Win automatically
 
 F3 ➣ Lose automatically
 
-F4 ➣ Use God mode
-
 Esc ➣ Quit the game
 
 
@@ -84,7 +82,7 @@ https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki
 
 ##Project web
 
-http://nicobabot.github.io/OutZone_AlchemistStudio/
+https://jony635.github.io/Commando-1985-NES-Edition_v2/
 
 
 ## Credits
