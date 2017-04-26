@@ -10,7 +10,6 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
-	Animation default;
 	Animation Knife_Die;
 	Animation Knife_Left;
 	Animation Knife_Right;

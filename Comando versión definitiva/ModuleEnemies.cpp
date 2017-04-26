@@ -9,6 +9,7 @@
 #include "Enemy_CapturerGuard.h"
 #include "Enemy_Bosslvl1.h"
 #include "ModulePlayer.h"
+#include "Enemy_Knife.h"
 
 
 #define SPAWN_MARGIN 50
@@ -146,6 +147,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Bosslvl1(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::BOSSLVL1;
 			enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSLVL1;
+			break;
+		case ENEMY_TYPES::KNIFE:
+			enemies[i] = new Enemy_Knife(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::KNIFE;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::KNIFE;
 			break;
 		}
 	}

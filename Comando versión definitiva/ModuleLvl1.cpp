@@ -332,8 +332,10 @@ bool ModuleLvl1::Start()
 
 
 		//Enemies
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 66, -(2880 - 2600 - SCREEN_HEIGHT));
+		/*App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
-		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
@@ -441,7 +443,7 @@ bool ModuleLvl1::Start()
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
 
-
+*/
 
 
 

@@ -6,10 +6,6 @@
 Enemy_Knife::Enemy_Knife(int x, int y) : Enemy(x, y)
 {
 	srand(time(NULL));
-	//Default Animation
-	default.PushBack({ 67,0,12,23 });
-	default.speed = 0.2f;
-
 	//Die Animation
 	Knife_Die.PushBack({ 2, 68, 16, 26 });
 	Knife_Die.PushBack({ 20, 68, 16, 26 });
@@ -19,20 +15,20 @@ Enemy_Knife::Enemy_Knife(int x, int y) : Enemy(x, y)
 	Knife_Die.loop = false;
 	Knife_Die.speed = 0.07f;
 	//Left Animation
-	Knife_Left.PushBack({ 50, 23, 16, 22 });
-	Knife_Left.PushBack({ 68, 24, 16, 22 });
+	Knife_Left.PushBack({ 200, 147, 16, 22 });
+	Knife_Left.PushBack({ 153, 81, 16, 22 });
 	Knife_Left.speed = 0.07f;
 	//Right Animation
-	Knife_Right.PushBack({ 32, 0, 16, 22 });
-	Knife_Right.PushBack({ 49, 0, 16, 22 });
+	Knife_Right.PushBack({ 183, 147, 16, 22 });
+	Knife_Right.PushBack({ 178, 81, 16, 22 });
 	Knife_Right.speed = 0.07f;
 	//Up Animation
-	Knife_Up.PushBack({ 35, 46, 11, 21 });
-	Knife_Up.PushBack({ 49, 46, 11, 22 });
+	Knife_Up.PushBack({ 235, 147, 11, 22 });
+	Knife_Up.PushBack({ 248, 147, 11, 22 });
 	Knife_Up.speed = 0.07f;
 	//Down Animation
-	Knife_Down.PushBack({ 1, 23, 15, 22 });
-	Knife_Down.PushBack({ 17, 23, 15, 22 });
+	Knife_Down.PushBack({ 218, 147, 15, 22 });
+	Knife_Down.PushBack({ 129, 81, 15, 22 });
 	Knife_Down.speed = 0.07f;
 
 	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
