@@ -334,7 +334,117 @@ bool ModuleLvl1::Start()
 		//Enemies
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 93, -(2880 - 2491 - SCREEN_HEIGHT));
-		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 150, -(2880 - 2491 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2664 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 2591 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 2591 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 2591 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 2591 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 2591 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 2490 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 2490 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 2490 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 2490 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 2490 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 142, -(2880 - 2344 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 94, -(2880 - 2214 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 94, -(2880 - 2214 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 94, -(2880 - 2214 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 94, -(2880 - 2214 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 94, -(2880 - 2214 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2103 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2103 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2103 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2103 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2103 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 116, -(2880 - 1955 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 116, -(2880 - 1955 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 116, -(2880 - 1955 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 116, -(2880 - 1955 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 116, -(2880 - 1955 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 1791 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 1791 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 1791 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 1791 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 1791 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 1597 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 1597 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 1597 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 1597 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 1597 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 103, -(2880 - 1218 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 103, -(2880 - 1218 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 103, -(2880 - 1218 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 103, -(2880 - 1218 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 103, -(2880 - 1218 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 1104 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 1104 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 1104 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 1104 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 1104 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 82, -(2880 - 949 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 82, -(2880 - 949 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 82, -(2880 - 949 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 82, -(2880 - 949 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 82, -(2880 - 949 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 785 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 785 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 785 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 785 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 785 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 680 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 680 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 680 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 680 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 680 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 143, -(2880 - 530 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 143, -(2880 - 530 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 143, -(2880 - 530 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 143, -(2880 - 530 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 143, -(2880 - 530 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 406 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 406 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 406 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 406 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 136, -(2880 - 406 - SCREEN_HEIGHT));
+
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 123, -(2880 - 120 - SCREEN_HEIGHT));
+
+
+
+
+
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 75, -(2880 - 126 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 34, -(2880 - 1675 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 66, -(2880 - 1675 - SCREEN_HEIGHT));
@@ -369,7 +479,7 @@ bool ModuleLvl1::CleanUp()
 	App->enemies->Disable();
 	App->input->keyboard[App->input->kcounter] = KEY_UP;
 	App->player->current_animation = &App->player->idle;
-	App->input->Disable();
+	//App->input->Disable();
 	introlvl1 = false;
 	App->helicopter->firstimelvl1 = false;
 	LOG("Unloading lvl1 scene");

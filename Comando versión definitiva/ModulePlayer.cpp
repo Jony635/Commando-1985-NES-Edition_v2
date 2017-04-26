@@ -166,7 +166,7 @@ update_status ModulePlayer::Update()
 					App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 					App->particles->bullet.speed.y = -5;
 					App->particles->bullet.speed.x = 0;
-					App->particles->bullet.life = 1000;
+					App->particles->bullet.life = 300;
 					App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
 				}
 			}
@@ -189,7 +189,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.y = 0;
 						App->particles->bullet.speed.x = -5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -218,7 +218,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.y = 0;
 						App->particles->bullet.speed.x = 5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, (position.x + p->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -249,7 +249,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = 0;
 						App->particles->bullet.speed.y = 5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -279,7 +279,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = 0;
 						App->particles->bullet.speed.y = -5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life =300;
 						App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -311,7 +311,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = 5;
 						App->particles->bullet.speed.y = -5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -340,7 +340,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = -5;
 						App->particles->bullet.speed.y = -5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -369,7 +369,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = 5;
 						App->particles->bullet.speed.y = 5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -398,7 +398,7 @@ update_status ModulePlayer::Update()
 						App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 						App->particles->bullet.speed.x = -5;
 						App->particles->bullet.speed.y = 5;
-						App->particles->bullet.life = 1000;
+						App->particles->bullet.life = 300;
 						App->particles->AddParticle(App->particles->bullet, position.x, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
 					}
 				}
@@ -448,7 +448,7 @@ update_status ModulePlayer::Update()
 		}
 		if (dead && contdead == 0 && contlives >= 0 && musend == false) {
 			contdead++;
-			App->input->Disable();
+			//App->input->Disable();
 			App->audio->Stop();
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Life Lost.ogg", false);
 			if (current_animation != &die)
@@ -465,13 +465,15 @@ update_status ModulePlayer::Update()
 			time = 0;
 			contdead++;
 			musend = false;
-			App->input->Disable();
+			//App->input->Disable();
 			App->audio->Stop();
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
 		}
 
 		if (score > highscore) {
 			highscore = score;
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+
 		}
 
 		for (int i = 0; i < 6; i++)
@@ -487,6 +489,8 @@ update_status ModulePlayer::Update()
 	else {
 		if (score > highscore) {
 			highscore = score;
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+
 		}
 		for (int i = 0; i < 6; i++)
 		{
@@ -499,6 +503,8 @@ update_status ModulePlayer::Update()
 
 		App->enemies->Disable();
 		App->collision->Disable();
+		App->particles->Disable();
+
 		if (ftimediemusic) {
 			ftimediemusic = false;
 			App->audio->Stop();

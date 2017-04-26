@@ -257,7 +257,7 @@ ModuleEndLvl1::~ModuleEndLvl1()
 bool ModuleEndLvl1::Start()
 {
 	time = 0;
-	App->input->Enable();//pa ahora hacer skape
+	//App->input->Enable();//pa ahora hacer skape
 	App->textures->Enable();
 	App->audio->Enable();
 	App->player->Disable();

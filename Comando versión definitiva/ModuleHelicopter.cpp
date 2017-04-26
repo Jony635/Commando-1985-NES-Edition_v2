@@ -9,7 +9,6 @@
 #include "Animation.h"
 #include "ModuleHelicopter.h"
 
-#include "ModuleLvl2.h"
 #include "ModuleGameOver.h"
 #include "ModulePlayer.h"
 
@@ -191,11 +190,11 @@ update_status ModuleHelicopter::Update() {
 	}*/
 
 
-	if (contanimh >0 && contanimh <0.01f) {
+	if (contanimh >0 && contanimh <0.2f ){
 		Mix_HaltChannel(-1);
 		App->audio->sounfeffect1 = nullptr;
 	}
-	if (contanimh < 4 && App->audio->sounfeffect1 == nullptr) {
+	if (contanimh >0.2 && contanimh < 0.3 && App->audio->sounfeffect1 == nullptr) {
 	App->audio->PlaySound("Resources/Audio/Sound Effects/Helicopter.wav");
 	
 	}

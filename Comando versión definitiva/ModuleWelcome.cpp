@@ -156,7 +156,6 @@ bool ModuleWelcome::CleanUp()
 {
 	//App->audio->Disable();
 	App->audio->Stop();
-	App->input->Disable();
 	App->textures->Unload(leters);
 
 	App->textures->Unload(background);
