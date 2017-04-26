@@ -14,6 +14,7 @@
 #include "ModuleParticles.h"
 #include "ModuleHelicopter.h"
 #include "Math.h"
+#include "ModuleEndLvl1.h"
 
 
 
@@ -321,6 +322,14 @@ bool ModuleLvl1::Start()
 		wall[i++] = App->collision->AddCollider({ 32, -(2880 - 80 - SCREEN_HEIGHT), 60, 8 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 0, -(2880 - SCREEN_HEIGHT), 96, 31 }, COLLIDER_WALL);
 
+		wall[i++] = App->collision->AddCollider({ -10, -(2880-2880-SCREEN_HEIGHT), SCREEN_WIDTH, 10 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ -10, -(2880 +10 - SCREEN_HEIGHT), SCREEN_WIDTH, 10 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ -10, -(2880  - SCREEN_HEIGHT), 10, 2880 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ SCREEN_WIDTH, -(2880 - SCREEN_HEIGHT), 10, 2880 }, COLLIDER_WALL);
+
+
+
+
 
 		//Colliders Water
 
@@ -450,7 +459,6 @@ bool ModuleLvl1::Start()
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 75, -(2880 - 126 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 34, -(2880 - 1675 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, 66, -(2880 - 1675 - SCREEN_HEIGHT));
-
 
 		/*App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 2491 - 200 - 200 - 200 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 23, -(2880 - 2491 - 200 - 200 - 200 - 200 - SCREEN_HEIGHT));
@@ -699,11 +707,11 @@ update_status ModuleLvl1::Update()
 
 	
 
-	//if (App->input->keyboard[SDL_SCANCODE_1]) {
+	if (App->input->keyboard[SDL_SCANCODE_F2]) {
 
-	////	App->fade->FadeToBlack(this, App->lvl2, 1);
+		App->fade->FadeToBlack(this, App->endlvl1, 0);
 
-	//}
+	}
 
 	return UPDATE_CONTINUE;
 }

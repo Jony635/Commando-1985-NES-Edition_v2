@@ -94,7 +94,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
-	
+	fhs = true;
 	dead = false;
 	musend = false;
 	contdead = 0;
@@ -431,7 +431,31 @@ update_status ModulePlayer::Update()
 
 
 
+		if (App->input->keyboard[SDL_SCANCODE_F3]) {
+			if (current_animation != &die)
+			{
+				die.Reset();
+				current_animation = &die;
+			}
+			time += 0.02f;
+			App->input->Disable();
+			App->collision->Disable();
 
+			if (!musend) {
+			
+				//App->input->Disable();
+				App->audio->Stop();
+				App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
+				musend = true;
+
+			}
+			if (time > 7) {
+				time = 0;
+				App->audio->Stop();
+				contlives = 4;
+				App->fade->FadeToBlack(App->lvl1, App->welcome, 0);
+			}
+		}
 		if (dead) {
 			time += 0.02f;
 			if (time > 5 && contlives > 0) {
@@ -461,6 +485,7 @@ update_status ModulePlayer::Update()
 				musend = true;
 			}
 		}
+		
 		if (dead && musend == true && contlives == 0 && time > 3) {
 			time = 0;
 			contdead++;
@@ -472,7 +497,11 @@ update_status ModulePlayer::Update()
 
 		if (score > highscore) {
 			highscore = score;
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+			if (fhs) {
+				fhs = false;
+
+ 				App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+			}
 
 		}
 
@@ -487,9 +516,12 @@ update_status ModulePlayer::Update()
 
 	}
 	else {
-		if (score > highscore) {
+		if (score > highscore ) {
 			highscore = score;
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+			if (fhs) {
+				fhs = false;
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+			}
 
 		}
 		for (int i = 0; i < 6; i++)

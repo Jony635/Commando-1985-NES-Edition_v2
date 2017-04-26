@@ -61,6 +61,7 @@ public:
 	bool win = false;
 	int highscore = 0;
 	bool ftimediemusic = false;
+	bool fhs = false;
 
 };
 
