@@ -26,9 +26,9 @@ Application::Application()
 	modules[i++] = helicopter = new ModuleHelicopter();
 	modules[i++] = lvl1 = new ModuleLvl1();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = endlvl1 = new ModuleEndLvl1();
