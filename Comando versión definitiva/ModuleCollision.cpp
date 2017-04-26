@@ -98,8 +98,6 @@ update_status ModuleCollision::Update()
 {
 	Collider* c1;
 	Collider* c2;
-	Collider* c3=nullptr;
-	COLLIDER_TYPE c3_type = COLLIDER_TYPE::COLLIDER_NONE;
 
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
@@ -123,28 +121,29 @@ update_status ModuleCollision::Update()
 				
 				if (matrix[c1->type][c2->type] && c1->callback)
 				{
-					if (c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT) //Si se va a destruir una particula
+					if (c1->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
 					{
-						c3_type = COLLIDER_TYPE::COLLIDER_PLAYER_SHOT; //Se respalda el tipo de la particula
-						c3 = c1;
+						if (c2->callback)
+						{
+							c2->callback->OnCollision(c2, c1);
+						}
+						c1->callback->OnCollision(c1, c2); 
+						
 					}
-					c1->callback->OnCollision(c1, c2); //Destrucción de la particula
-				}
-				if (c3_type == COLLIDER_TYPE::COLLIDER_NONE) //Si no hay colision de particulas
-				{
-					if ((matrix[c2->type][c1->type] && c2->callback)) //Colision normal ya que no se ha destruido antes
+					else
 					{
+						c1->callback->OnCollision(c1, c2);
+						c2->callback->OnCollision(c2, c1);
+					}
+					
+				}
+				
+				else if ((matrix[c2->type][c1->type] && c2->callback)) 
 						c2->callback->OnCollision(c2, c1); 
-					}
 				}
-				else //Si ha habido colision con la particula y por lo tanto se ha eliminado ya
-				{
-					c3->type = c3_type;
-					if ((matrix[c2->type][c3->type] && c2->callback))
-					{
-						c2->callback->OnCollision(c2, c3);
-					}
-				}
+				
+				
+				
 			}
 		}
 	}
