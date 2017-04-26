@@ -74,6 +74,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Bosslvl1.h" />
     <ClInclude Include="Enemy_CapturerGuard.h" />
+    <ClInclude Include="Enemy_Knife.h" />
     <ClInclude Include="Enemy_WhiteGuard.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ModuleEndLvl1.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Bosslvl1.cpp" />
     <ClCompile Include="Enemy_CapturerGuard.cpp" />
+    <ClCompile Include="Enemy_Knife.cpp" />
     <ClCompile Include="Enemy_WhiteGuard.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

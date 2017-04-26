@@ -110,6 +110,9 @@
     <ClInclude Include="Enemy_Bosslvl1.h">
       <Filter>Modules\General\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Knife.h">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -173,6 +176,9 @@
       <Filter>Modules\General\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Bosslvl1.cpp">
+      <Filter>Modules\General\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Knife.cpp">
       <Filter>Modules\General\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
