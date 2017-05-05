@@ -2,7 +2,7 @@
 
 ### Type
 
-### Severity
+### Severity (A->Crash; B->Game Stopper; C->Cosmetic)
 
 ### Steps to Reproduce
 
