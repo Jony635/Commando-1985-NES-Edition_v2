@@ -1,27 +1,20 @@
-#ifndef __ModuleTextures_H__
-#define __ModuleTextures_H__
-
+#pragma once
 #include "Module.h"
 #include "Globals.h"
-
-#define MAX_TEXTURES 50
-
-struct SDL_Texture;
+#include "SDL\include\SDL.h"
 
 class ModuleTextures : public Module
 {
 public:
-	ModuleTextures();
+	ModuleTextures(Application* app, bool start_enabled = true);
 	~ModuleTextures();
 
 	bool Init();
 	bool CleanUp();
 
 	SDL_Texture* const Load(const char* path);
-	bool Unload(SDL_Texture* texture);
+	void Unload(SDL_Texture* texture);
 
 public:
-	SDL_Texture* textures[MAX_TEXTURES];
+	p2List<SDL_Texture*> textures;
 };
-
-#endif // __ModuleTextures_H__

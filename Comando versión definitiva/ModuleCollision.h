@@ -1,10 +1,9 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#define MAX_COLLIDERS 700
-
 #include "Module.h"
-#include "Enemy.h"
+#include "p2List.h"
+
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
@@ -13,53 +12,49 @@ enum COLLIDER_TYPE
 	COLLIDER_ENEMY,
 	COLLIDER_PLAYER_SHOT,
 	COLLIDER_ENEMY_SHOT,
-	COLLIDER_WATER,
-	COLLIDER_ANTIBULLET,
+
 	COLLIDER_MAX
 };
 
 struct Collider
 {
 	SDL_Rect rect;
-	bool to_delete = false;
+	bool enabled;
 	COLLIDER_TYPE type;
-	Module* callback = nullptr;
-	ENEMY_TYPES enemytype = ENEMY_TYPES::NO_TYPE;
-	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
+	Module* callback;
+
+	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = NULL) :
 		rect(rectangle),
 		type(type),
-		callback(callback)
+		callback(callback),
+		enabled(true)
 	{}
+
 	void SetPos(int x, int y)
 	{
 		rect.x = x;
 		rect.y = y;
 	}
 
-	bool CheckCollision(const SDL_Rect& r) const;
+	bool CheckCollision(SDL_Rect r) const;
 };
 
 class ModuleCollision : public Module
 {
 public:
 
-	ModuleCollision();
+	ModuleCollision(Application* app, bool start_enabled = true);
 	~ModuleCollision();
-	
-	update_status PreUpdate();
+
 	update_status Update();
-	//update_status PostUpdate();
 	bool CleanUp();
-	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
-	bool EraseCollider(Collider* collider);
-	void DebugDraw();
+
+	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = NULL);
 
 private:
 
-	Collider* colliders[MAX_COLLIDERS];
+	p2List<Collider*>	colliders;
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
-	bool debug = false;
-
 };
 
 #endif // __ModuleCollision_H__

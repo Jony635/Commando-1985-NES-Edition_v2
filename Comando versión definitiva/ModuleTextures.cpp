@@ -1,16 +1,12 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleRender.h"
 #include "ModuleTextures.h"
 
-#include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
-ModuleTextures::ModuleTextures() : Module()
+ModuleTextures::ModuleTextures(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	for(uint i = 0; i < MAX_TEXTURES; ++i)
-		textures[i] = nullptr;
 }
 
 // Destructor
@@ -36,15 +32,20 @@ bool ModuleTextures::Init()
 	return ret;
 }
 
-// Called before q	uitting
+// Called before quitting
 bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	for(uint i = 0; i < MAX_TEXTURES; ++i)
-		if(textures[i] != nullptr)
-			SDL_DestroyTexture(textures[i]);
+	p2List_item<SDL_Texture*>* item = textures.getFirst();
 
+	while(item != NULL)
+	{
+		SDL_DestroyTexture(item->data);
+		item = item->next;
+	}
+
+	textures.clear();
 	IMG_Quit();
 	return true;
 }
@@ -61,7 +62,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	}
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
+		texture = SDL_CreateTextureFromSurface(App->renderer->renderer, surface);
 
 		if(texture == NULL)
 		{
@@ -69,14 +70,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 		}
 		else
 		{
-			for(uint i = 0; i < MAX_TEXTURES; ++i)
-			{
-				if(textures[i] == nullptr)
-				{
-					textures[i] = texture;
-					break;
-				}
-			}
+			textures.add(texture);
 		}
 
 		SDL_FreeSurface(surface);
@@ -85,21 +79,19 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	return texture;
 }
 
-// Load new texture from file path
-bool ModuleTextures::Unload(SDL_Texture* texture)
+// Free texture from memory
+void ModuleTextures::Unload(SDL_Texture* texture)
 {
-	bool ret = false;
+	p2List_item<SDL_Texture*>* item = textures.getFirst();
 
-	for(uint i = 0; i < MAX_TEXTURES; ++i)
+	while(item != NULL)
 	{
-		if(texture == textures[i])
+		if(item->data == texture)
 		{
-			SDL_DestroyTexture(textures[i]);
-			textures[i] = nullptr;
-			ret = true;
+			SDL_DestroyTexture(item->data);
+			textures.del(item);
 			break;
 		}
+		item = item->next;
 	}
-
-	return ret;
 }

@@ -1,18 +1,18 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
-#include "SDL/include/SDL.h"
 
-ModuleInput::ModuleInput() : Module()
+#define MAX_KEYS 300
+
+ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	for(uint i = 0; i < MAX_KEYS; ++i)
-		keyboard[i] = KEY_IDLE;
+	keyboard = new KEY_STATE[MAX_KEYS];
+	memset(keyboard, KEY_IDLE, sizeof(KEY_STATE) * MAX_KEYS);
 }
 
 // Destructor
 ModuleInput::~ModuleInput()
-{
-}
+{}
 
 // Called before render is available
 bool ModuleInput::Init()
@@ -33,24 +33,18 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::PreUpdate()
 {
-
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-
+	
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
 		if(keys[i] == 1)
 		{
-			if (keyboard[i] == KEY_IDLE) {
+			if(keyboard[i] == KEY_IDLE)
 				keyboard[i] = KEY_DOWN;
-				kcounter = i;
-
-			}
-			else {
+			else
 				keyboard[i] = KEY_REPEAT;
-			}
-
 		}
 		else
 		{
@@ -61,10 +55,14 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if(keyboard[SDL_SCANCODE_ESCAPE])
-		return update_status::UPDATE_STOP;
+	if(keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP)
+		return UPDATE_STOP;
 
-	return update_status::UPDATE_CONTINUE;
+	SDL_GetMouseState(&mouse_x, &mouse_y);
+	mouse_x /= SCREEN_SIZE;
+	mouse_y /= SCREEN_SIZE;
+
+	return UPDATE_CONTINUE;
 }
 
 // Called before quitting

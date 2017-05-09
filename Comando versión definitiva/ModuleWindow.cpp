@@ -1,10 +1,11 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleWindow.h"
-#include "SDL/include/SDL.h"
 
-ModuleWindow::ModuleWindow() : Module()
+ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+	window = NULL;
+	screen_surface = NULL;
 }
 
 // Destructor
@@ -20,8 +21,7 @@ bool ModuleWindow::Init()
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		LOG("SDL_VIDEO could not initialize! SDL_Error:\n");
-		LOG(SDL_GetError());
+		LOG("SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 	else
@@ -32,18 +32,26 @@ bool ModuleWindow::Init()
 		Uint32 flags = SDL_WINDOW_SHOWN;
 
 		if(WIN_FULLSCREEN == true)
+		{
 			flags |= SDL_WINDOW_FULLSCREEN;
-
-		if(WIN_BORDERLESS == true)
-			flags |= SDL_WINDOW_BORDERLESS;
+		}
 
 		if(WIN_RESIZABLE == true)
+		{
 			flags |= SDL_WINDOW_RESIZABLE;
+		}
+
+		if(WIN_BORDERLESS == true)
+		{
+			flags |= SDL_WINDOW_BORDERLESS;
+		}
 
 		if(WIN_FULLSCREEN_DESKTOP == true)
+		{
 			flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+		}
 
-		window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+		window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
 		if(window == NULL)
 		{
@@ -67,7 +75,9 @@ bool ModuleWindow::CleanUp()
 
 	//Destroy window
 	if(window != NULL)
+	{
 		SDL_DestroyWindow(window);
+	}
 
 	//Quit SDL subsystems
 	SDL_Quit();

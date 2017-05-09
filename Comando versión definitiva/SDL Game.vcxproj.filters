@@ -1,185 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Core">
+    <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Modules">
+    <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Containers">
-      <UniqueIdentifier>{78a7f487-1d77-4fdc-9f51-f067eccd6239}</UniqueIdentifier>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Modules\Audio">
-      <UniqueIdentifier>{c3159c65-2f59-4f6d-bb99-13e75a78dfd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\General">
-      <UniqueIdentifier>{c975168f-fb8b-4cc4-b2c0-4484cca59752}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\General\.cpp">
-      <UniqueIdentifier>{076275f3-32bd-4b41-987d-283955542c32}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\General\.h">
-      <UniqueIdentifier>{34430da3-5cfb-4e1e-812e-73a318821841}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Screens">
-      <UniqueIdentifier>{c45d7804-1208-4054-a9b9-d95fa567959c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\General\Enemies">
-      <UniqueIdentifier>{9d4fa8d5-f865-4394-8ea1-3d8c7659c635}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\General\Others">
-      <UniqueIdentifier>{6bcecf3d-68c1-4c8d-9973-9a162160a0b9}</UniqueIdentifier>
+    <Filter Include="Header Files\Containers">
+      <UniqueIdentifier>{97c4111e-b102-4ba8-9053-6f07ccbbe3d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MemLeaks.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
-      <Filter>Modules\Audio</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Module.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleCollision.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleFadeToBlack.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleParticles.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRender.h">
-      <Filter>Modules\General\.h</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleTextures.h">
-      <Filter>Modules\General\.h</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
-      <Filter>Modules\General\.h</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleLvl1.h">
-      <Filter>Modules\Screens</Filter>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleWelcome.h">
-      <Filter>Modules\Screens</Filter>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Path.h">
-      <Filter>Containers</Filter>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_WhiteGuard.h">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClInclude Include="p2Point.h">
+      <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEnemies.h">
-      <Filter>Modules\General\.h</Filter>
+    <ClInclude Include="p2DynArray.h">
+      <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleHelicopter.h">
-      <Filter>Modules\Screens</Filter>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEndLvl1.h">
-      <Filter>Modules\Screens</Filter>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_CapturerGuard.h">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Bosslvl1.h">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClInclude Include="ModuleSceneSpace.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Knife.h">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClInclude Include="ModuleSceneIntro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="p2List.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCollision.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Modules\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleCollision.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleFadeToBlack.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleParticles.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Modules\General\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Modules\General\.cpp</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Modules\General\.cpp</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleLvl1.cpp">
-      <Filter>Modules\Screens</Filter>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleWelcome.cpp">
-      <Filter>Modules\Screens</Filter>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_WhiteGuard.cpp">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEnemies.cpp">
-      <Filter>Modules\General\.cpp</Filter>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleHelicopter.cpp">
-      <Filter>Modules\Screens</Filter>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEndLvl1.cpp">
-      <Filter>Modules\Screens</Filter>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_CapturerGuard.cpp">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Bosslvl1.cpp">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClCompile Include="ModuleSceneSpace.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Knife.cpp">
-      <Filter>Modules\General\Enemies</Filter>
+    <ClCompile Include="ModuleSceneIntro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollision.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

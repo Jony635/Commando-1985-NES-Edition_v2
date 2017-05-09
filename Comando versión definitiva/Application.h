@@ -1,55 +1,39 @@
-#ifndef __APPLICATION_H__
-#define __APPLICATION_H__
+#pragma once
 
+#include "p2List.h"
 #include "Globals.h"
-
-#define NUM_MODULES 14
-
-class ModuleWindow;
-class ModuleInput;
-class ModuleTextures;
-class ModuleRender;
-class ModuleParticles;
-class ModulePlayer;
-class ModuleFadeToBlack;
-class ModuleCollision;
-class Module;
-class ModuleAudio;
-class ModuleWelcome;
-class ModuleLvl1;
-class ModuleEnemies;
-class ModuleHelicopter;
-class ModuleEndLvl1;
-
-
-
-
-
+#include "Module.h"
+#include "Dummy.h"
+#include "ModuleWindow.h"
+#include "ModuleRender.h"
+#include "ModuleTextures.h"
+#include "ModuleInput.h"
+#include "ModuleAudio.h"
+#include "ModuleSceneSpace.h"
+#include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 class Application
 {
 public:
-
-	Module* modules[NUM_MODULES];
+	ModuleRender* renderer;
 	ModuleWindow* window;
-	ModuleRender* render;
-	ModuleInput* input;
 	ModuleTextures* textures;
-	ModuleCollision* collision;
+	ModuleInput* input;
+	ModuleAudio* audio;
+	ModuleSceneSpace* scene_space;
 	ModulePlayer* player;
 	ModuleFadeToBlack* fade;
+	ModuleSceneIntro* scene_intro;
 	ModuleParticles* particles;
-	ModuleAudio* audio;
-	//ModuleLvl2* lvl2;
-	ModuleLvl1* lvl1;
-	ModuleWelcome* welcome;
-	bool stop_music;
-	ModuleEnemies* enemies;
-	ModuleHelicopter* helicopter;
-	ModuleEndLvl1* endlvl1;
+	ModuleCollision* collision;
 
+private:
 
-
+	p2List<Module*> list_modules;
 
 public:
 
@@ -60,9 +44,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+private:
+
+	void AddModule(Module* mod);
 };
-
-// Global var made extern for Application ---
-extern Application* App;
-
-#endif // __APPLICATION_H__

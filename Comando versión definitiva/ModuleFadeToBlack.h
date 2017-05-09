@@ -1,34 +1,25 @@
-#ifndef __MODULEFADETOBLACK_H__
-#define __MODULEFADETOBLACK_H__
-
+#pragma once
 #include "Module.h"
-#include "SDL\include\SDL_rect.h"
+#include "Animation.h"
+#include "Globals.h"
+#include "p2Point.h"
 
 class ModuleFadeToBlack : public Module
 {
 public:
-	ModuleFadeToBlack();
+	ModuleFadeToBlack(Application* app, bool start_enabled = true);
 	~ModuleFadeToBlack();
 
 	bool Start();
 	update_status Update();
-	bool FadeToBlack(Module* module_off, Module* module_on, float time = 1.0f);
-	bool IsFading() const;
+	void FadeToBlack(Module* module_off, Module* module_on, float time = 2.0f);
 
 private:
 
-	enum fade_step
-	{
-		none,
-		fade_to_black,
-		fade_from_black
-	} current_step = fade_step::none;
-
-	Uint32 start_time = 0;
-	Uint32 total_time = 0;
+	Uint32 start_time;
+	Uint32 total_time;
 	SDL_Rect screen;
-	Module* to_enable = nullptr;
-	Module* to_disable = nullptr;
+	bool fading_in;
+	Module* mod_on;
+	Module* mod_off;
 };
-
-#endif //__MODULEFADETOBLACK_H__

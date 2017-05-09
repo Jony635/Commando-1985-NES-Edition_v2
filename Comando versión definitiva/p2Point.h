@@ -5,9 +5,6 @@
 #ifndef __P2POINT_H__
 #define __P2POINT_H__
 
-#include "Globals.h"
-#include <math.h>
-
 template<class TYPE>
 class p2Point
 {
@@ -16,34 +13,18 @@ public:
 	TYPE x, y;
 
 	p2Point()
-	{
-	
-	}
+	{}
 
-	p2Point(const p2Point& v)
+	p2Point(const p2Point& p)
 	{
-		this->x = v.x;
-		this->y = v.y;
-	}
-
-	p2Point(const TYPE& x, const TYPE& y)
-	{
-		this->x = x;
-		this->y = y;
-	}
-
-	p2Point& create(const TYPE& x, const TYPE& y)
-	{
-		this->x = x;
-		this->y = y;
-
-		return(*this);
+		x = p.x;
+		y = p.y;
 	}
 
 	// Math ------------------------------------------------
 	p2Point operator -(const p2Point &v) const
 	{
-		p2Point r;
+		p2Vector2 r;
 
 		r.x = x - v.x;
 		r.y = y - v.y;
@@ -53,7 +34,7 @@ public:
 
 	p2Point operator + (const p2Point &v) const
 	{
-		p2Point r;
+		p2Vector2 r;
 
 		r.x = x + v.x;
 		r.y = y + v.y;
@@ -113,24 +94,8 @@ public:
 		TYPE fx = x - v.x;
 		TYPE fy = y - v.y;
 
-		return (TYPE)sqrtf(float(fx*fx) + float(fy*fy));
-	}
-
-	TYPE DistanceNoSqrt(const p2Point& v) const
-	{
-		TYPE fx = x - v.x;
-		TYPE fy = y - v.y;
-
-		return (fx*fx) + (fy*fy);
-	}
-
-	TYPE DistanceManhattan(const p2Point& v) const
-	{
-		return abs(v.x - x) + abs(v.y - y);
+		return sqrt((fx*fx) + (fy*fy));
 	}
 };
-
-typedef p2Point<int> iPoint;
-typedef p2Point<float> fPoint;
 
 #endif // __P2POINT_H__

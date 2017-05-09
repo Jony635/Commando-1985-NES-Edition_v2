@@ -1,16 +1,12 @@
-#ifndef __GLOBALS_H__
-#define __GLOBALS_H__
-
-#include "SDL\include\SDL_rect.h"
+#pragma once
+#include <windows.h>
+#include <stdio.h>
 
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
+
 void log(const char file[], int line, const char* format, ...);
 
-#define EXIT_FAILURE 1
-#define EXIT_SUCCESS 0
-
-#define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
-#define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) )
+#define CAP(n) ((n <= 0.0f) ? n=0.0f : (n >= 1.0f) ? n=1.0f : n=n)
 
 enum update_status
 {
@@ -19,17 +15,13 @@ enum update_status
 	UPDATE_ERROR
 };
 
-// Useful typedefs ---------
-typedef unsigned int uint;
-
 // Configuration -----------
+#define SCREEN_WIDTH 384
+#define SCREEN_HEIGHT 256
 #define SCREEN_SIZE 3
-#define SCREEN_WIDTH 256
-#define SCREEN_HEIGHT 224
-#define WIN_FULLSCREEN 0
-#define WIN_FULLSCREEN_DESKTOP 0
-#define WIN_BORDERLESS 0
-#define WIN_RESIZABLE 0
-#define REN_VSYNC 1
-
-#endif // __GLOBALS_H__
+#define WIN_FULLSCREEN false
+#define WIN_RESIZABLE false
+#define WIN_BORDERLESS false
+#define WIN_FULLSCREEN_DESKTOP false
+#define VSYNC true
+#define TITLE "Super Awesome Game"

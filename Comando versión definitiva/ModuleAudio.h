@@ -1,27 +1,34 @@
-#ifndef __MODULEAUDIO_H__
-#define __MODULEAUDIO_H__
+#ifndef __ModuleAudio_H__
+#define __ModuleAudio_H__
 
 #include "Module.h"
-#include "Globals.h"
 #include "SDL_mixer\include\SDL_mixer.h"
-#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+
+#define DEFAULT_MUSIC_FADE_TIME 2.0f
 
 class ModuleAudio : public Module
 {
 public:
-	ModuleAudio();
+
+	ModuleAudio(Application* app, bool start_enabled = true);
 	~ModuleAudio();
 
-	bool Start();
-	bool Play(const char*,bool);
-	bool PlaySound(const char*);
-	bool Stop();
+	bool Init();
 	bool CleanUp();
 
-public:
-	int loop = 0;
-	Mix_Music* soundtrack = nullptr;
-	Mix_Chunk* sounfeffect1 = nullptr;
+	// Play a music file
+	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
+
+	// Load a WAV in memory
+	unsigned int LoadFx(const char* path);
+
+	// Play a previously loaded WAV
+	bool PlayFx(unsigned int fx, int repeat = 0);
+
+private:
+
+	Mix_Music*			music;
+	p2List<Mix_Chunk*>	fx;
 };
 
-#endif // __MODULEAUDIO_H__
+#endif // __ModuleAudio_H__
