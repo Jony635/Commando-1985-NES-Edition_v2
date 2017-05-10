@@ -1,6 +1,11 @@
-#pragma once
+#ifndef __ModuleInput_H__
+#define __ModuleInput_H__
+
 #include "Module.h"
 #include "Globals.h"
+#include "SDL\include\SDL_scancode.h"
+
+#define MAX_KEYS 300
 
 enum KEY_STATE
 {
@@ -14,30 +19,15 @@ class ModuleInput : public Module
 {
 public:
 	
-	ModuleInput(Application* app, bool start_enabled = true);
+	ModuleInput();
 	~ModuleInput();
 
 	bool Init();
 	update_status PreUpdate();
 	bool CleanUp();
 
-	KEY_STATE GetKey(int id) const
-	{
-		return keyboard[id];
-	}
-
-	int GetMouseX() const
-	{
-		return mouse_x;
-	}
-
-	int GetMouseY() const
-	{
-		return mouse_y;
-	}
-
-private:
-	KEY_STATE* keyboard;
-	int mouse_x;
-	int mouse_y;
+public:
+	KEY_STATE keyboard[MAX_KEYS];
 };
+
+#endif // __ModuleInput_H__

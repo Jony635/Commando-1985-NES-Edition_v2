@@ -1,18 +1,18 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "SDL/include/SDL.h"
 
-#define MAX_KEYS 300
-
-ModuleInput::ModuleInput(Application* app, bool start_enabled) : Module(app, start_enabled)
+ModuleInput::ModuleInput() : Module()
 {
-	keyboard = new KEY_STATE[MAX_KEYS];
-	memset(keyboard, KEY_IDLE, sizeof(KEY_STATE) * MAX_KEYS);
+	for(uint i = 0; i < MAX_KEYS; ++i)
+		keyboard[i] = KEY_IDLE;
 }
 
 // Destructor
 ModuleInput::~ModuleInput()
-{}
+{
+}
 
 // Called before render is available
 bool ModuleInput::Init()
@@ -36,7 +36,7 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	
+
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
 		if(keys[i] == 1)
@@ -55,14 +55,10 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if(keyboard[SDL_SCANCODE_ESCAPE] == KEY_UP)
-		return UPDATE_STOP;
+	if(keyboard[SDL_SCANCODE_ESCAPE])
+		return update_status::UPDATE_STOP;
 
-	SDL_GetMouseState(&mouse_x, &mouse_y);
-	mouse_x /= SCREEN_SIZE;
-	mouse_y /= SCREEN_SIZE;
-
-	return UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
 
 // Called before quitting

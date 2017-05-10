@@ -1,39 +1,41 @@
-#pragma once
+#ifndef __APPLICATION_H__
+#define __APPLICATION_H__
 
-#include "p2List.h"
 #include "Globals.h"
-#include "Module.h"
-#include "Dummy.h"
-#include "ModuleWindow.h"
-#include "ModuleRender.h"
-#include "ModuleTextures.h"
-#include "ModuleInput.h"
-#include "ModuleAudio.h"
-#include "ModuleSceneSpace.h"
-#include "ModulePlayer.h"
-#include "ModuleFadeToBlack.h"
-#include "ModuleSceneIntro.h"
-#include "ModuleParticles.h"
-#include "ModuleCollision.h"
+
+#define NUM_MODULES 12
+
+class ModuleWindow;
+class ModuleInput;
+class ModuleTextures;
+class ModuleRender;
+class ModuleParticles;
+class ModuleSceneSpace;
+class ModuleSceneIntro;
+class ModulePlayer;
+class ModuleFadeToBlack;
+class ModuleCollision;
+class ModuleEnemies;
+class ModuleFonts;
+class Module;
 
 class Application
 {
 public:
-	ModuleRender* renderer;
+
+	Module* modules[NUM_MODULES];
 	ModuleWindow* window;
-	ModuleTextures* textures;
+	ModuleRender* render;
 	ModuleInput* input;
-	ModuleAudio* audio;
+	ModuleTextures* textures;
 	ModuleSceneSpace* scene_space;
+	ModuleSceneIntro* scene_intro;
+	ModuleCollision* collision;
 	ModulePlayer* player;
 	ModuleFadeToBlack* fade;
-	ModuleSceneIntro* scene_intro;
 	ModuleParticles* particles;
-	ModuleCollision* collision;
-
-private:
-
-	p2List<Module*> list_modules;
+	ModuleEnemies* enemies;
+	ModuleFonts* fonts;
 
 public:
 
@@ -44,7 +46,9 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-private:
-
-	void AddModule(Module* mod);
 };
+
+// Global var made extern for Application ---
+extern Application* App;
+
+#endif // __APPLICATION_H__

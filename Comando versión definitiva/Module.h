@@ -1,23 +1,28 @@
-#pragma once
+#ifndef __MODULE_H__
+#define __MODULE_H__
 
-class Application;
+#include "Globals.h"
+
 struct Collider;
 
 class Module
 {
-private :
-	bool enabled;
+private:
+	bool enabled = true;
 
 public:
-	Application* App;
+	virtual ~Module() {}
 
-	Module(Application* parent, bool start_enabled = true) : App(parent), enabled(start_enabled)
-	{}
-
-	bool IsEnabled() const
-	{
-		return enabled;
-	}
+	// Game execution phases ---
+	virtual bool Init()					{ return true; }
+	virtual bool Start()					{ return true; }
+	virtual update_status PreUpdate()		{ return update_status::UPDATE_CONTINUE; }
+	virtual update_status Update()		{ return update_status::UPDATE_CONTINUE; }
+	virtual update_status PostUpdate() 	{ return update_status::UPDATE_CONTINUE; }
+	virtual bool CleanUp()				{ return true; }
+	
+	// Module activation ---
+	bool IsEnabled() const				{ return enabled; }
 
 	void Enable()
 	{
@@ -37,36 +42,8 @@ public:
 		}
 	}
 
-	virtual bool Init() 
-	{
-		return true; 
-	}
-
-	virtual bool Start()
-	{
-		return true;
-	}
-
-	virtual update_status PreUpdate()
-	{
-		return UPDATE_CONTINUE;
-	}
-
-	virtual update_status Update()
-	{
-		return UPDATE_CONTINUE;
-	}
-
-	virtual update_status PostUpdate()
-	{
-		return UPDATE_CONTINUE;
-	}
-
-	virtual bool CleanUp() 
-	{ 
-		return true; 
-	}
-
-	virtual void OnCollision(Collider* col1, Collider* col2)
-	{ }
+	// Callbacks ---
+	virtual void OnCollision(Collider*, Collider*) {}
 };
+
+#endif // __MODULE_H__

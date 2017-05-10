@@ -1,13 +1,17 @@
-#pragma once
+#ifndef __ModulePlayer_H__
+#define __ModulePlayer_H__
+
 #include "Module.h"
 #include "Animation.h"
-#include "Globals.h"
 #include "p2Point.h"
+
+struct SDL_Texture;
+struct Collider;
 
 class ModulePlayer : public Module
 {
 public:
-	ModulePlayer(Application* app, bool start_enabled = true);
+	ModulePlayer();
 	~ModulePlayer();
 
 	bool Start();
@@ -17,12 +21,17 @@ public:
 
 public:
 
-	SDL_Texture* graphics;
-	Collider* collider;
-	Animation* current_animation;
+	SDL_Texture* graphics = nullptr;
+	int font_score = -1;
+	char score_text[10];
+	uint score = 0;
+	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation up;
 	Animation down;
-	p2Point<int> position;
-	bool exploding;
+	iPoint position;
+	Collider* col;
+	bool destroyed = false;
 };
+
+#endif

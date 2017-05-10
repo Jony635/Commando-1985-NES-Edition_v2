@@ -1,116 +1,72 @@
-#pragma once
 #include "Application.h"
+#include "ModuleWindow.h"
+#include "ModuleRender.h"
+#include "ModuleInput.h"
+#include "ModuleTextures.h"
+#include "ModuleSceneSpace.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleCollision.h"
+#include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleParticles.h"
+#include "ModuleEnemies.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
-	renderer = new ModuleRender(this);
-	window = new ModuleWindow(this);
-	textures = new ModuleTextures(this);
-	input = new ModuleInput(this);
-	audio = new ModuleAudio(this, false);
-	scene_space = new ModuleSceneSpace(this, false);
-	player = new ModulePlayer(this, false);
-	scene_intro = new ModuleSceneIntro(this, true);
-	fade = new ModuleFadeToBlack(this);
-	particles = new ModuleParticles(this);
-	collision = new ModuleCollision(this, false);
-
-	// The order of calls is very important!
-	// Modules will Init() Start() and Update in this order
-	// They will CleanUp() in reverse order
-
-	// Main Modules
-	AddModule(window);
-	AddModule(renderer);
-	AddModule(textures);
-	AddModule(input);
-	AddModule(audio);
-	AddModule(collision);
-	
-	// Scenes
-	AddModule(scene_space);
-	AddModule(scene_intro);
-	
-	// Characters
-	AddModule(player);
-
-	// Misc
-	AddModule(particles);
-	AddModule(fade); // let this after all drawing
-}
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = fonts = new ModuleFonts();
+	modules[i++] = scene_intro = new ModuleSceneIntro();
+	modules[i++] = scene_space = new ModuleSceneSpace();
+	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fade = new ModuleFadeToBlack();
+}	
 
 Application::~Application()
 {
-	delete renderer;
-	delete window;
-	delete textures;
-	delete input;
-	delete particles;
-	delete audio;
-	delete scene_intro;
-	delete scene_space;
-	delete player;
-	delete fade;
-	delete collision;
+	for(int i = NUM_MODULES - 1; i >= 0; --i)
+		delete modules[i];
 }
 
 bool Application::Init()
 {
 	bool ret = true;
 
-	// Call Init() in all modules
-	p2List_item<Module*>* item = list_modules.getFirst();
+	// Deactivate modules here ----
+	scene_space->Disable();
+	player->Disable();
+	collision->Disable();
+	enemies->Disable();
+	// ----------------------------
 
-	while(item != NULL && ret == true)
-	{
-		ret = item->data->Init();
-		item = item->next;
-	}
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->Init();
 
-	// After all Init calls we call Start() in all modules
-	LOG("Application Start --------------");
-	item = list_modules.getFirst();
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
-	while(item != NULL && ret == true)
-	{
-		if(item->data->IsEnabled())
-			ret = item->data->Start();
-		item = item->next;
-	}
-	
 	return ret;
 }
 
-// Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
-	p2List_item<Module*>* item = list_modules.getFirst();
 
-	while(item != NULL && ret == UPDATE_CONTINUE)
-	{
-		if(item->data->IsEnabled())
-			ret = item->data->PreUpdate();
-		item = item->next;
-	}
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
-	item = list_modules.getFirst();
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 
-	while(item != NULL && ret == UPDATE_CONTINUE)
-	{
-		if(item->data->IsEnabled())
-			ret = item->data->Update();
-		item = item->next;
-	}
-
-	item = list_modules.getFirst();
-
-	while(item != NULL && ret == UPDATE_CONTINUE)
-	{
-		if(item->data->IsEnabled())
-			ret = item->data->PostUpdate();
-		item = item->next;
-	}
+	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
 }
@@ -118,17 +74,9 @@ update_status Application::Update()
 bool Application::CleanUp()
 {
 	bool ret = true;
-	p2List_item<Module*>* item = list_modules.getLast();
 
-	while(item != NULL && ret == true)
-	{
-		ret = item->data->CleanUp();
-		item = item->prev;
-	}
+	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
+		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
+
 	return ret;
-}
-
-void Application::AddModule(Module* mod)
-{
-	list_modules.add(mod);
 }
