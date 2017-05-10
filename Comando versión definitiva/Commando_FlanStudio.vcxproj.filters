@@ -56,35 +56,32 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneSpace.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleCollision.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneIntro.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_RedBird.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_BrownShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Mech.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleFonts.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Bosslvl1.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_CapturerGuard.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Knife.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_WhiteGuard.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -118,32 +115,29 @@
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneSpace.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleCollision.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_RedBird.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_BrownShip.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Mech.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Bosslvl1.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_CapturerGuard.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Knife.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_WhiteGuard.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
