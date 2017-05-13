@@ -133,7 +133,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if(c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
 
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);

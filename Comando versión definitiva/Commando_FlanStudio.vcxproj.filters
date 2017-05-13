@@ -83,7 +83,7 @@
     <ClInclude Include="Enemy_WhiteGuard.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
+    <ClInclude Include="ModuleLvl2.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -142,7 +142,7 @@
     <ClCompile Include="Enemy_WhiteGuard.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
+    <ClCompile Include="ModuleLvl2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
