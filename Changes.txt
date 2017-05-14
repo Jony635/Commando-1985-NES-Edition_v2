@@ -1,0 +1,4 @@
+FULLSCREEN
+
+-Render.cpp -> postupdate -> rendergetlogicalsize
+-Globals.h -> screensize 1 y winfullscreendesktop 1
