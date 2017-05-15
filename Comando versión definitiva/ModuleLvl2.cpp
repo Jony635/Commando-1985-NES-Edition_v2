@@ -16,7 +16,7 @@ bool ModuleLvl2::Start() {
 	LOG("Loading lvl1 scene");
 
 	//Textures
-	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+	background = App->textures->Load("Resources/Screens/CommandoArea2.png");//foto del fondo
 
 	//Enables & Disables
 	App->textures->Enable();
