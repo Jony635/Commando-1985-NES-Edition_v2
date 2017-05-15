@@ -13,7 +13,7 @@ struct Font
 {
 	char table[MAX_FONT_CHARS];
 	SDL_Texture* graphic = nullptr;
-	uint rows, len, char_w, char_h, row_chars;
+	uint rows, len, char_w, char_h, row_chars, wtex, htex;
 };
 
 class ModuleFonts : public Module

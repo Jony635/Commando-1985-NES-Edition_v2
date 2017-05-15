@@ -22,9 +22,12 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* ui_stuff = nullptr;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
+	uint live_counter = 0;
+	uint granade_counter = 0;
 	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation up;
@@ -38,6 +41,8 @@ public:
 	Animation die;
 	Animation die_w;
 	SDL_Rect bridgelvl2;
+	SDL_Rect granade;
+	SDL_Rect lives;
 	iPoint position;
 	Collider* col;
 	bool dead = false;

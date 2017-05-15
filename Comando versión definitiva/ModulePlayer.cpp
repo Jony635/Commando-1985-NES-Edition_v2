@@ -79,6 +79,18 @@ ModulePlayer::ModulePlayer()
 	dl.PushBack({ 69, 1, 15, 22 });
 	dl.PushBack({ 53, 1, 15, 22 });
 	dl.speed = 0.1f;
+
+	//Granade UI
+	granade.x = 0;
+	granade.y = 3;
+	granade.w = 10;
+	granade.h = 12;
+
+	//Lives
+	lives.x = 10;
+	lives.y = 0;
+	lives.w = 11;
+	lives.h = 15;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -91,13 +103,15 @@ bool ModulePlayer::Start()
 	dead = false;
 	App->collision->Disable();
 	graphics = App->textures->Load("Resources/Animation/Main Character Blue.png");
+	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
 	score = 0;
+	live_counter = 4;
+	granade_counter = 0;
 	col = App->collision->AddCollider({position.x, position.y, 32, 16}, COLLIDER_PLAYER, this);
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
-
+	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
 
 	return true;
@@ -109,6 +123,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
+	App->textures->Unload(ui_stuff);
 	App->collision->EraseCollider(col);
 	App->fonts->UnLoad(font_score);
 
@@ -165,7 +180,7 @@ update_status ModulePlayer::Update()
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
-		score+=13;
+		score+=150;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -177,11 +192,15 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	if(dead == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-
 	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", score);
+	sprintf(score_text,"%7d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(16, 9, font_score, score_text);
+	App->render->Blit(ui_stuff, 18, 209, &lives, false);
+	App->render->Blit(ui_stuff, 123, 212, &granade, false);
+	//App->fonts->BlitText(32, 215, font_score, live_counter);
+	//App->fonts->BlitText(136, 215, font_score, granade_counter);
 
 	return UPDATE_CONTINUE;
 }
