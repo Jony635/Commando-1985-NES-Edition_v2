@@ -193,7 +193,7 @@ update_status ModulePlayer::Update()
 	if(dead == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	// Draw UI (score) --------------------------------------
-	sprintf(score_text,"%7d", score);
+	sprintf(score_text,"%06d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(16, 9, font_score, score_text);
