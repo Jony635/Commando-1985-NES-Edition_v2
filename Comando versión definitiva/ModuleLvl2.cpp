@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleLvl2.h"
+#include "ModulePlayer.h"
 
 
 ModuleLvl2::ModuleLvl2(){}
@@ -13,14 +14,14 @@ ModuleLvl2::~ModuleLvl2(){}
 
 bool ModuleLvl2::Start() {
 
-	LOG("Loading lvl1 scene");
+	LOG("Loading lvl2 scene");
 
 	//Textures
-	background = App->textures->Load("Resources/Screens/CommandoArea1.png");//foto del fondo
+	background = App->textures->Load("Resources/Screens/CommandoArea2.png");//foto del fondo
 
 	//Enables & Disables
 	App->textures->Enable();
-
+	App->player->Enable();
 	//Caeras positions
 	App->render->camera.x = App->render->camera.y = 0;
 
