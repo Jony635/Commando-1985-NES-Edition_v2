@@ -3,10 +3,15 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
+
 ModuleInput::ModuleInput() : Module()
 {
 	for(uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
+	for (uint i = 0; i < MAX_AXES; ++i)
+		axes[i] = KEY_IDLE;
+	for (uint i = 0; i < MAX_BUTTONS; ++i)
+		buttons[i] = KEY_IDLE;
 }
 
 // Destructor
@@ -26,6 +31,20 @@ bool ModuleInput::Init()
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
+	if (SDL_Init(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_GAMECONTROLLER could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
+	}
+
+	for (int i = 0; i < SDL_NumJoysticks(); i++)
+	{
+		if (SDL_IsGameController(i))
+		{
+			controller = SDL_GameControllerOpen(i);
+			break;
+		}
+	}
 
 	return ret;
 }
@@ -36,6 +55,27 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+	
+	int i = 0;
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_GUIDE);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSTICK);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_MAX);
+
+	if (keyboard[SDL_SCANCODE_ESCAPE])
+		return update_status::UPDATE_STOP;
 
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -54,9 +94,24 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_IDLE;
 		}
 	}
-
-	if(keyboard[SDL_SCANCODE_ESCAPE])
-		return update_status::UPDATE_STOP;
+	
+	for (int i = 0; i < MAX_BUTTONS; ++i)
+	{
+		if (button[i] == 1)
+		{
+			if (buttons[i] == KEY_IDLE)
+				buttons[i] = KEY_DOWN;
+			else
+				buttons[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (buttons[i] == KEY_REPEAT || buttons[i] == KEY_DOWN)
+				buttons[i] = KEY_UP;
+			else
+				buttons[i] = KEY_IDLE;
+		}
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -64,7 +119,15 @@ update_status ModuleInput::PreUpdate()
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
+	if (controller != nullptr) 
+	{
+		SDL_GameControllerClose(controller);
+		controller = nullptr;
+	}
+	
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	LOG("Quitting SDL game controller subsystem");
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	return true;
 }

@@ -51,16 +51,20 @@ update_status ModuleRender::Update()
 {
 	int speed = 3;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT ||
+	    App->input->button[11] == KEY_STATE::KEY_REPEAT)
 		camera.y += speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT ||
+		App->input->button[12] == KEY_STATE::KEY_REPEAT)
 		camera.y -= speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT ||
+		App->input->button[13] == KEY_STATE::KEY_REPEAT)
 		camera.x -= speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT ||
+		App->input->button[14] == KEY_STATE::KEY_REPEAT)
 		camera.x += speed;
 
 	return update_status::UPDATE_CONTINUE;

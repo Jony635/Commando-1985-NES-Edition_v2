@@ -2,3 +2,9 @@ FULLSCREEN
 
 -Render.cpp -> postupdate -> rendergetlogicalsize
 -Globals.h -> screensize 1 y winfullscreendesktop 1
+
+
+GAMEPAD
+
+-Input.cpp -> arrays axes y buttons en el constructor -> en el init inicializacion del gamecontroller, y creacion del controller, en el preupdate array d button y el for del estado de los botones. En el cleanup  el controllerclose y cerrar el gamecontroller.
+-Input.h -> include del gamecontroller.h, define maxaxes y maxbuttons, declaracion d arrays axes y buttons, *controller y button.
