@@ -15,20 +15,70 @@
 
 ModulePlayer::ModulePlayer()
 {
-	// idle animation (just the ship)
-	idle.PushBack({66, 1, 32, 14});
+	//bridge lvl1
+	bridgelvl2.x = 0;
+	bridgelvl2.y = 0;
+	bridgelvl2.w = 256;
+	bridgelvl2.h = 95;
+
+	// idle animation (No keys pressed)
+	idle.PushBack({ 40, 2, 11, 22 });
+
+	//die animation
+	die.PushBack({ 2, 72, 17, 27 });
+	die.PushBack({ 21, 80, 15, 19 });
+	die.PushBack({ 37, 72, 16, 27 });
+	die.PushBack({ 21, 80, 15, 19 });
+	die.PushBack({ 2, 72, 17, 27 });
+	die.loop = false;
+	die.speed = 0.05f;
+
+	//die water animation	
+	die_w.PushBack({ 68, 23, 11, 16 });
+	die_w.PushBack({ 98, 27, 12, 14 });
+	die_w.loop = false;
+	die_w.speed = 0.05f;
 
 	// move upwards
-	up.PushBack({100, 1, 32, 14});
-	up.PushBack({132, 0, 32, 14});
+	up.PushBack({ 100, 1, 32, 14 });
+	up.PushBack({ 132, 0, 32, 14 });
 	up.loop = false;
 	up.speed = 0.1f;
 
 	// Move down
-	down.PushBack({33, 1, 32, 14});
-	down.PushBack({0, 1, 32, 14});
-	down.loop = false;
+	down.PushBack({ 14, 0, 13, 23 });
+	down.PushBack({ 0, 0, 13, 23 });
 	down.speed = 0.1f;
+
+	// Move left
+	left.PushBack({ 2, 49, 16, 22 });
+	left.PushBack({ 20, 49, 16, 22 });
+	left.speed = 0.1f;
+
+	// Move right
+	right.PushBack({ 38, 49, 16, 22 });
+	right.PushBack({ 56, 49, 16, 22 });
+	right.speed = 0.1f;
+
+	// Move ur
+	ur.PushBack({ 34, 25, 16, 22 });
+	ur.PushBack({ 50, 25, 17, 22 });
+	ur.speed = 0.1f;
+
+	// Move ul
+	ul.PushBack({ 16, 25, 16, 22 });
+	ul.PushBack({ 1, 25, 14, 22 });
+	ul.speed = 0.1f;
+
+	// Move dr
+	dr.PushBack({ 85, 1, 15, 22 });
+	dr.PushBack({ 101, 1, 15, 22 });
+	dr.speed = 0.1f;
+
+	// Move dl
+	dl.PushBack({ 69, 1, 15, 22 });
+	dl.PushBack({ 53, 1, 15, 22 });
+	dl.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -38,16 +88,13 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
-
-	graphics = App->textures->Load("rtype/ship.png");
-
-	destroyed = false;
-	position.x = 150;
-	position.y = 120;
+	dead = false;
+	App->collision->Disable();
+	graphics = App->textures->Load("Resources/Animation/Main Character Blue.png");
+	position.x = (SCREEN_WIDTH / 2) - 7;
+	position.y = 140;
 	score = 0;
-
 	col = App->collision->AddCollider({position.x, position.y, 32, 16}, COLLIDER_PLAYER, this);
-
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
@@ -78,11 +125,21 @@ update_status ModulePlayer::Update()
 	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (current_animation != &left)
+		{
+			left.Reset();
+			current_animation = &left;
+		}
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (current_animation != &right)
+		{
+			right.Reset();
+			current_animation = &right;
+		}
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -118,7 +175,7 @@ update_status ModulePlayer::Update()
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
-	if(destroyed == false)
+	if(dead == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
 	// Draw UI (score) --------------------------------------
@@ -131,7 +188,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if(c1 == col && destroyed == false && App->fade->IsFading() == false)
+	if(c1 == col && dead == false && App->fade->IsFading() == false)
 	{
 
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
@@ -140,6 +197,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 
-		destroyed = true;
+		dead = true;
 	}
 }

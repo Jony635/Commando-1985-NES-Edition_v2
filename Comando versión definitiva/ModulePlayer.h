@@ -29,9 +29,18 @@ public:
 	Animation idle;
 	Animation up;
 	Animation down;
+	Animation left;
+	Animation right;
+	Animation ur;
+	Animation ul;
+	Animation dl;
+	Animation dr;
+	Animation die;
+	Animation die_w;
+	SDL_Rect bridgelvl2;
 	iPoint position;
 	Collider* col;
-	bool destroyed = false;
+	bool dead = false;
 };
 
 #endif

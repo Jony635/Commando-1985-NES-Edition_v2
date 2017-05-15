@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleLvl2.h"
+#include "ModulePlayer.h"
 
 
 ModuleLvl2::ModuleLvl2(){}
@@ -20,7 +21,7 @@ bool ModuleLvl2::Start() {
 
 	//Enables & Disables
 	App->textures->Enable();
-
+	App->player->Enable();
 	//Caeras positions
 	App->render->camera.x = App->render->camera.y = 0;
 
