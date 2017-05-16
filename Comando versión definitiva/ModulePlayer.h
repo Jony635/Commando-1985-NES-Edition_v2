@@ -20,7 +20,25 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 public:
-
+	enum STATES {
+		NO_STATE,
+		UP_Press,
+		UP_RePress,
+		DOWN_Press,
+		DOWN_RePress,
+		LEFT_Press,
+		LEFT_RePress,
+		RIGHT_Press,
+		RIGHT_RePress,
+		UR_Press,
+		UR_RePress,
+		UL_Press,
+		UL_Repress,
+		DL_Press,
+		DL_Repress,
+		DR_Press,
+		DR_Repress
+	}Player_States;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* ui_stuff = nullptr;
 	int font_score = -1;
