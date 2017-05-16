@@ -25,6 +25,8 @@ public:
 	SDL_Texture* ui_stuff = nullptr;
 	int font_score = -1;
 	char score_text[10];
+	char lives_text[10];
+	char grenades_text[10];
 	uint score = 0;
 	uint live_counter = 0;
 	uint granade_counter = 0;

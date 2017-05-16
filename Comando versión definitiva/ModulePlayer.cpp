@@ -432,13 +432,15 @@ update_status ModulePlayer::Update()
 	}
 	// Draw UI (score) --------------------------------------
 	sprintf(score_text,"%06d", score);
+	sprintf(lives_text, "%01d", live_counter);
+	sprintf(grenades_text, "%02d", granade_counter);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(16, 9, font_score, score_text);
 	App->render->Blit(ui_stuff, 18, 209, &lives, false);
 	App->render->Blit(ui_stuff, 123, 212, &granade, false);
-	//App->fonts->BlitText(32, 215, font_score, live_counter);
-	//App->fonts->BlitText(136, 215, font_score, granade_counter);
+	App->fonts->BlitText(32, 215, font_score, lives_text);
+	App->fonts->BlitText(136, 215, font_score, grenades_text);
 
 	return UPDATE_CONTINUE;
 }
