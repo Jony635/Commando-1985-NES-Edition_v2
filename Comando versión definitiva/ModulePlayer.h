@@ -29,7 +29,6 @@ public:
 	uint live_counter = 0;
 	uint granade_counter = 0;
 	Animation* current_animation = nullptr;
-	Animation idle;
 	Animation up;
 	Animation down;
 	Animation left;
@@ -46,6 +45,14 @@ public:
 	iPoint position;
 	Collider* col;
 	bool dead = false;
+	bool colup = false;
+	bool coldown = false;
+	bool colleft = false;
+	bool colright = false;
+	bool blockUL = false;
+	bool blockUR = false;
+	bool blockDL = false;
+	bool blockDR = false;
 };
 
 #endif

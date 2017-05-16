@@ -21,8 +21,6 @@ ModulePlayer::ModulePlayer()
 	bridgelvl2.w = 256;
 	bridgelvl2.h = 95;
 
-	// idle animation (No keys pressed)
-	idle.PushBack({ 40, 2, 11, 22 });
 
 	//die animation
 	die.PushBack({ 2, 72, 17, 27 });
@@ -40,9 +38,8 @@ ModulePlayer::ModulePlayer()
 	die_w.speed = 0.05f;
 
 	// move upwards
-	up.PushBack({ 100, 1, 32, 14 });
-	up.PushBack({ 132, 0, 32, 14 });
-	up.loop = false;
+	up.PushBack({ 28, 1, 11, 22 });
+	up.PushBack({ 40, 2, 11, 22 });
 	up.speed = 0.1f;
 
 	// Move down
@@ -56,18 +53,18 @@ ModulePlayer::ModulePlayer()
 	left.speed = 0.1f;
 
 	// Move right
-	right.PushBack({ 38, 49, 16, 22 });
 	right.PushBack({ 56, 49, 16, 22 });
+	right.PushBack({ 38, 49, 16, 22 });
 	right.speed = 0.1f;
 
 	// Move ur
-	ur.PushBack({ 34, 25, 16, 22 });
 	ur.PushBack({ 50, 25, 17, 22 });
+	ur.PushBack({ 34, 25, 16, 22 });
 	ur.speed = 0.1f;
 
 	// Move ul
-	ul.PushBack({ 16, 25, 16, 22 });
 	ul.PushBack({ 1, 25, 14, 22 });
+	ul.PushBack({ 16, 25, 16, 22 });
 	ul.speed = 0.1f;
 
 	// Move dr
@@ -101,8 +98,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	dead = false;
-	App->collision->Disable();
-	graphics = App->textures->Load("Resources/Animation/Main Character Blue.png");
+	current_animation = &up;
+	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
@@ -133,13 +130,60 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	position.x += 1; // Automatic movement
 
 	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	//DEFAULT ANIMATION
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+			&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+			&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+		|| (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT
+			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE))
 	{
-		position.x -= speed;
+		/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+		App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+		App->particles->bullet.speed.y = -5;
+		App->particles->bullet.speed.x = 0;
+		App->particles->bullet.life = 300;
+		App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
+		}*/
+	}
+
+
+	//LEFT
+	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
+		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	{
+		if (colleft == false) {
+			position.x -= speed;
+			/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.y = 0;
+			App->particles->bullet.speed.x = -5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
 		if (current_animation != &left)
 		{
 			left.Reset();
@@ -147,9 +191,28 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	//RIGHT
+	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
+		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
 	{
-		position.x += speed;
+		if (colright == false) {
+			position.x += speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.y = 0;
+			App->particles->bullet.speed.x = 5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, (position.x + p->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
 		if (current_animation != &right)
 		{
 			right.Reset();
@@ -157,41 +220,216 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+
+	//DOWN
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		)
+		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE))
 	{
-		position.y += speed;
-		if(current_animation != &down)
+		if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22) {
+			position.y += speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = 0;
+			App->particles->bullet.speed.y = 5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		if (current_animation != &down)
 		{
 			down.Reset();
 			current_animation = &down;
 		}
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+
+	//UP
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
 	{
-		position.y -= speed;
-		if(current_animation != &up)
+		if (colup == false) {
+			position.y -= speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = 0;
+			App->particles->bullet.speed.y = -5;
+			App->particles->bullet.life =300;
+			App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		//App->render->camera.y += speed;
+
+		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
+
 		}
 	}
+
+	//UP-RIGHT
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	{
+		if (blockUR == false)
+		{
+			if (colright == false)
+				position.x += speed;
+			if (colup == false)
+				position.y -= speed;
+			/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = 5;
+			App->particles->bullet.speed.y = -5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		if (current_animation != &ur)
+		{
+			ur.Reset();
+			current_animation = &ur;
+		}
+	}
+
+	//UP-LEFT
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+	{
+		if (blockUL == false)
+		{
+			if (colleft == false)
+				position.x -= speed;
+			if (colup == false)
+				position.y -= speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = -5;
+			App->particles->bullet.speed.y = -5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		if (current_animation != &ul)
+		{
+			ul.Reset();
+			current_animation = &ul;
+		}
+	}
+
+	//DOWN-RIGHT
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	{
+		if (blockDR == false)
+		{
+			if (colright == false)
+				position.x += speed;
+			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
+				position.y += speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = 5;
+			App->particles->bullet.speed.y = 5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		if (current_animation != &dr)
+		{
+			dr.Reset();
+			current_animation = &dr;
+		}
+	}
+
+	//DOWN-LEFT
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+	{
+		if (blockDL == false)
+		{
+			if (colleft == false)
+				position.x -= speed;
+			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
+				position.y += speed;
+			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			{
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
+			App->particles->bullet.speed.x = -5;
+			App->particles->bullet.speed.y = 5;
+			App->particles->bullet.life = 300;
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
+			}*/
+		}
+
+		if (current_animation != &dl)
+		{
+			dl.Reset();
+			current_animation = &dl;
+		}
+	}
+
+	colup = false;
+	coldown = false;
+	colleft = false;
+	colright = false;
+	blockUL = false;
+	blockUR = false;
+	blockDL = false;
+	blockDR = false;
+
 
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
-		score+=150;
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 	   && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-		current_animation = &idle;
 
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
-	if(dead == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	if (dead == false) {
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
+			App->render->Blit(graphics, position.x, position.y, &(current_animation->frames[0]));
+		else
+			App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	}
 	// Draw UI (score) --------------------------------------
 	sprintf(score_text,"%06d", score);
 

@@ -4,6 +4,7 @@
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModulePlayer.h"
 
 ModuleRender::ModuleRender() : Module()
 {
@@ -49,28 +50,17 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
-	int speed = 3;
+	int speed = 1;
 
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT ||
-	    App->input->button[11] == KEY_STATE::KEY_REPEAT)
-		camera.y += speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT ||
-		App->input->button[12] == KEY_STATE::KEY_REPEAT)
+	if((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT ||
+	    App->input->button[11] == KEY_STATE::KEY_REPEAT)&&
+		App->player->position.y<camera.y + SCREEN_HEIGHT / 2 &&
+		camera.y>-2880 + SCREEN_HEIGHT&&App->player->IsEnabled())
 		camera.y -= speed;
 
-	if(App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT ||
-		App->input->button[13] == KEY_STATE::KEY_REPEAT)
-		camera.x -= speed;
-
-	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT ||
-		App->input->button[14] == KEY_STATE::KEY_REPEAT)
-		camera.x += speed;
 
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-		camera.y -= speed;
 
 
 	return update_status::UPDATE_CONTINUE;
