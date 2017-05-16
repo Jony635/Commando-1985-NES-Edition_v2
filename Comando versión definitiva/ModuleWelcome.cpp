@@ -31,14 +31,16 @@ bool ModuleWelcome::Start() {
 
 update_status ModuleWelcome::Update() {
 
-	if (App->input->keyboard[SDL_SCANCODE_S]==KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_S]==KEY_DOWN||
+		App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN]==KEY_DOWN)
 	{
 		if (Menu_Options == MENU::Lvl2)
 			Menu_Options = MENU::exit;
 		else if(Menu_Options == MENU::exit)
 			Menu_Options = MENU::Lvl2;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_W]==KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_W]==KEY_DOWN ||
+		App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP]==KEY_DOWN)
 	{
 		if (Menu_Options == MENU::Lvl2)
 			Menu_Options = MENU::exit;
@@ -53,10 +55,10 @@ update_status ModuleWelcome::Update() {
 	App->render->Blit(ExitOption, 0,  0, NULL);
 
 	//Fade to black to next lvl
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] && Menu_Options==MENU::Lvl2) {
+	if ((App->input->keyboard[SDL_SCANCODE_RETURN] || App->input->buttons[SDL_CONTROLLER_BUTTON_A]==KEY_DOWN)&& Menu_Options==MENU::Lvl2) {
 		App->fade->FadeToBlack(this, App->lvl2, 2);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_RETURN] && Menu_Options == MENU::exit)
+	else if ((App->input->keyboard[SDL_SCANCODE_RETURN] || App->input->buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) && Menu_Options == MENU::exit)
 	{
 		return UPDATE_STOP;
 	}
