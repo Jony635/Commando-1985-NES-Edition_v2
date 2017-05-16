@@ -74,7 +74,8 @@ update_status ModuleInput::PreUpdate()
 	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_MAX);
 
-	if (keyboard[SDL_SCANCODE_ESCAPE])
+	if (keyboard[SDL_SCANCODE_ESCAPE] ||
+		buttons[SDL_CONTROLLER_BUTTON_B])
 		return update_status::UPDATE_STOP;
 
 	for(int i = 0; i < MAX_KEYS; ++i)
