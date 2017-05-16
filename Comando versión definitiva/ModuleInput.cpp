@@ -42,6 +42,7 @@ bool ModuleInput::Init()
 		if (SDL_IsGameController(i))
 		{
 			controller = SDL_GameControllerOpen(i);
+			controller_init = true;
 			break;
 		}
 	}
@@ -52,27 +53,36 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::PreUpdate()
 {
+	for (int i = 0; i < SDL_NumJoysticks(); i++)
+	{
+		if (SDL_IsGameController(i))
+		{
+			controller = SDL_GameControllerOpen(i);
+			controller_init = true;
+			break;
+		}
+	}
+	
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 	
-	int i = 0;
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_GUIDE);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSTICK);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSTICK);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
-	button[i++] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_MAX);
+	button[SDL_CONTROLLER_BUTTON_A] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A);
+	button[SDL_CONTROLLER_BUTTON_B] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B);
+	button[SDL_CONTROLLER_BUTTON_Y] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y);
+	button[SDL_CONTROLLER_BUTTON_X] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X);
+	button[SDL_CONTROLLER_BUTTON_BACK] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_BACK);
+	button[SDL_CONTROLLER_BUTTON_GUIDE] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_GUIDE);
+	button[SDL_CONTROLLER_BUTTON_START] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START);
+	button[SDL_CONTROLLER_BUTTON_LEFTSTICK] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSTICK);
+	button[SDL_CONTROLLER_BUTTON_RIGHTSTICK] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+	button[SDL_CONTROLLER_BUTTON_LEFTSHOULDER] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+	button[SDL_CONTROLLER_BUTTON_RIGHTSHOULDER] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+	button[SDL_CONTROLLER_BUTTON_DPAD_UP] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
+	button[SDL_CONTROLLER_BUTTON_DPAD_DOWN] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+	button[SDL_CONTROLLER_BUTTON_DPAD_LEFT] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+	button[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+	button[SDL_CONTROLLER_BUTTON_MAX] = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_MAX);
 
 	if (keyboard[SDL_SCANCODE_ESCAPE] ||
 		buttons[SDL_CONTROLLER_BUTTON_B])
@@ -120,10 +130,11 @@ update_status ModuleInput::PreUpdate()
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
-	if (controller != nullptr) 
+	if (controller != nullptr)
 	{
 		SDL_GameControllerClose(controller);
 		controller = nullptr;
+		controller_init = false;
 	}
 	
 	LOG("Quitting SDL input event subsystem");

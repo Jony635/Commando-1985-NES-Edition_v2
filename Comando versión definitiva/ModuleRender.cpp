@@ -54,14 +54,11 @@ update_status ModuleRender::Update()
 
 
 	if((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT ||
-	    App->input->button[11] == KEY_STATE::KEY_REPEAT)&&
+	    App->input->button[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT)&&
 		App->player->position.y<camera.y + SCREEN_HEIGHT / 2 &&
 		camera.y>-2880 + SCREEN_HEIGHT&&App->player->IsEnabled())
 		camera.y -= speed;
-
-
-
-
+	
 
 	return update_status::UPDATE_CONTINUE;
 }

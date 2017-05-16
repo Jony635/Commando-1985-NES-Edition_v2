@@ -8,7 +8,7 @@
 
 #define MAX_KEYS 300
 #define MAX_AXES 300
-#define MAX_BUTTONS 13
+#define MAX_BUTTONS 20
 
 enum KEY_STATE
 {
@@ -36,6 +36,7 @@ public:
 
 	SDL_GameController *controller = nullptr;
 	Uint8 button[MAX_BUTTONS];
+	bool controller_init = false;
 };
 
 #endif // __ModuleInput_H__
