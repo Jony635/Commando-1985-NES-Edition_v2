@@ -6,6 +6,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleLvl2.h"
 #include "ModulePlayer.h"
+#include "ModuleCollision.h"
 
 
 ModuleLvl2::ModuleLvl2(){}
@@ -22,6 +23,8 @@ bool ModuleLvl2::Start() {
 	//Enables & Disables
 	App->textures->Enable();
 	App->player->Enable();
+	App->collision->Enable();
+
 	//Caeras positions
 	App->render->camera.x = App->render->camera.y = 0;
 
@@ -48,6 +51,7 @@ bool ModuleLvl2::CleanUp(){
 
 	//Disables
 	App->textures->Disable();
+	App->collision->Disable();
 
 
 	//Unload textures
