@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
-
+#include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
@@ -22,11 +22,10 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({232, 103, 16, 12});
-	laser.anim.PushBack({249, 103, 16, 12});
-	laser.anim.speed = 0.2f;
-	laser.speed.x = 5;
-	laser.life = 3000;
+	bullet.anim.PushBack({0, 0, 5, 5});
+	bullet.anim.speed = 0.2f;
+	bullet.speed.x = 5;
+	bullet.life = 3000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -36,7 +35,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/particles.png");
+	graphics = App->textures->Load("Resources/Sprites/Shoots and Explosions/common bullet.png");
 
 	return true;
 }
@@ -81,6 +80,7 @@ update_status ModuleParticles::Update()
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			if(p->fx_played == false)
 			{
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 				p->fx_played = true;
 				// play the audio SFX
 			}

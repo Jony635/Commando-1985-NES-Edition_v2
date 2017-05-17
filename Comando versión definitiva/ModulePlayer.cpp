@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
 
 #include<stdio.h>
 
@@ -151,14 +152,13 @@ update_status ModulePlayer::Update()
 			&&App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE))
 	{
-		/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
-		App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 		App->particles->bullet.speed.y = -5;
 		App->particles->bullet.speed.x = 0;
 		App->particles->bullet.life = 300;
-		App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
-		}*/
+		App->particles->AddParticle(App->particles->bullet, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
+		}
 	}
 
 
@@ -174,14 +174,13 @@ update_status ModulePlayer::Update()
 	{
 		if (colleft == false) {
 			position.x -= speed;
-			/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.y = 0;
 			App->particles->bullet.speed.x = -5;
 			App->particles->bullet.life = 300;
 			App->particles->AddParticle(App->particles->bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
-			}*/
+			}
 		}
 
 		if (current_animation != &left)
@@ -203,14 +202,13 @@ update_status ModulePlayer::Update()
 	{
 		if (colright == false) {
 			position.x += speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.y = 0;
 			App->particles->bullet.speed.x = 5;
 			App->particles->bullet.life = 300;
-			App->particles->AddParticle(App->particles->bullet, (position.x + p->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
-			}*/
+			App->particles->AddParticle(App->particles->bullet, (position.x + col->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
+			}
 		}
 
 		if (current_animation != &right)
@@ -234,14 +232,13 @@ update_status ModulePlayer::Update()
 	{
 		if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22) {
 			position.y += speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = 0;
 			App->particles->bullet.speed.y = 5;
 			App->particles->bullet.life = 300;
 			App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
-			}*/
+			}
 		}
 
 		if (current_animation != &down)
@@ -264,14 +261,13 @@ update_status ModulePlayer::Update()
 	{
 		if (colup == false) {
 			position.y -= speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = 0;
 			App->particles->bullet.speed.y = -5;
 			App->particles->bullet.life =300;
-			App->particles->AddParticle(App->particles->bullet, position.x + (p->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
-			}*/
+			App->particles->AddParticle(App->particles->bullet, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
+			}
 		}
 
 		//App->render->camera.y += speed;
@@ -296,14 +292,13 @@ update_status ModulePlayer::Update()
 				position.x += speed;
 			if (colup == false)
 				position.y -= speed;
-			/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = 5;
 			App->particles->bullet.speed.y = -5;
 			App->particles->bullet.life = 300;
-			App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y, COLLIDER_PLAYER_SHOT);
-			}*/
+			App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y, COLLIDER_PLAYER_SHOT);
+			}
 		}
 
 		if (current_animation != &ur)
@@ -325,14 +320,13 @@ update_status ModulePlayer::Update()
 				position.x -= speed;
 			if (colup == false)
 				position.y -= speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = -5;
 			App->particles->bullet.speed.y = -5;
 			App->particles->bullet.life = 300;
 			App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			}*/
+			}
 		}
 
 		if (current_animation != &ul)
@@ -354,14 +348,13 @@ update_status ModulePlayer::Update()
 				position.x += speed;
 			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
 				position.y += speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = 5;
 			App->particles->bullet.speed.y = 5;
 			App->particles->bullet.life = 300;
-			App->particles->AddParticle(App->particles->bullet, position.x + p->rect.w, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
-			}*/
+			App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
+			}
 		}
 
 		if (current_animation != &dr)
@@ -383,14 +376,13 @@ update_status ModulePlayer::Update()
 				position.x -= speed;
 			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
 				position.y += speed;
-			/*	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 			{
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 			App->particles->bullet.speed.x = -5;
 			App->particles->bullet.speed.y = 5;
 			App->particles->bullet.life = 300;
-			App->particles->AddParticle(App->particles->bullet, position.x, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
-			}*/
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
+			}
 		}
 
 		if (current_animation != &dl)
@@ -410,10 +402,7 @@ update_status ModulePlayer::Update()
 	blockDR = false;
 
 
-	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
-	}
+	
 
 	if (current_animation == &up || current_animation == &down) {
 		col->rect.w = 11;

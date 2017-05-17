@@ -51,7 +51,7 @@ private:
 public:
 
 	Particle explosion;
-	Particle laser;
+	Particle bullet;
 };
 
 #endif // __MODULEPARTICLES_H__
