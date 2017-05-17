@@ -353,7 +353,7 @@ update_status ModulePlayer::Update()
 			App->particles->bullet.speed.x = 5;
 			App->particles->bullet.speed.y = 5;
 			App->particles->bullet.life = 300;
-			App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y + p->rect.h, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
 			}
 		}
 
