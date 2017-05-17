@@ -7,7 +7,7 @@
 #include "ModuleLvl2.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
-
+#include "ModuleEnemies.h"
 
 ModuleLvl2::ModuleLvl2(){}
 
@@ -24,9 +24,12 @@ bool ModuleLvl2::Start() {
 	App->textures->Enable();
 	App->player->Enable();
 	App->collision->Enable();
-
+	App->enemies->Enable();
 	//Caeras positions
 	App->render->camera.x = App->render->camera.y = 0;
+
+	//Add Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
 
 	return true;
 }

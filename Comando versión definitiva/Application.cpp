@@ -23,7 +23,7 @@ Application::Application()
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = welcome = new ModuleWelcome();
 	modules[i++] = lvl2 = new ModuleLvl2();
-	//modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
@@ -43,7 +43,7 @@ bool Application::Init()
 	bool ret = true;
 
 	// Deactivate modules here ----
-	
+	enemies->Disable();
 	lvl2->Disable();
 	player->Disable();
 	collision->Disable();

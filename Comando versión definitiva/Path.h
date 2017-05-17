@@ -32,7 +32,7 @@ public:
 		steps[last_step++].speed = speed;
 	}
 
-	iPoint GetCurrentSpeed(Animation** current_animation = nullptr)
+	iPoint GetCurrentPosition(Animation** current_animation = nullptr)
 	{
 		current_frame += 1;
 
@@ -57,10 +57,17 @@ public:
 
 		return iPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
 	}
-
+	void ResetlastStep()
+	{
+		last_step = 0;
+	}
 	void Reset()
 	{
 		current_frame = 0;
+	}
+	uint getCurrent_Frame() const
+	{
+		return current_frame;
 	}
 };
 
