@@ -4,7 +4,7 @@
 #define MAX_COLLIDERS 50
 
 #include "Module.h"
-
+#include "Enemy.h"
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
@@ -13,7 +13,8 @@ enum COLLIDER_TYPE
 	COLLIDER_ENEMY,
 	COLLIDER_PLAYER_SHOT,
 	COLLIDER_ENEMY_SHOT,
-
+	COLLIDER_WATER,
+	COLLIDER_ANTIBULLET,
 	COLLIDER_MAX
 };
 
@@ -23,7 +24,7 @@ struct Collider
 	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
-
+	ENEMY_TYPES enemytype = ENEMY_TYPES::NO_TYPE;
 	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
 		rect(rectangle),
 		type(type),
