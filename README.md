@@ -1,7 +1,8 @@
-﻿# Commando
+﻿# Commando (LEVEL 2)
 
 This is a class project made by 4 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
-The objective of the project is to recreate the arcade game Commando the more accurately possible.
+The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
+developed, but our group only covers the 2nd Area and its secret rooms.
 
 
 ##Description
@@ -19,13 +20,25 @@ Unzip the realese folder and execute the .exe file.
 
 ###Movement keys (combine them to go in diagonal):
 
-W,↑ ➣ Move player up
+Keyboard:
 
-A,← ➣ Move player left
+W ➣ Move player up
 
-S,↓ ➣ Move player down
+A ➣ Move player left
 
-D,→ ➣ Move player right
+S ➣ Move player down
+
+D ➣ Move player right
+
+Gamepad:
+
+DPAD UP ➣ Move player up
+
+DPAD LEFT ➣ Move player left
+
+DPAD DOWN ➣ Move player down
+
+DPAD RIGHT ➣ Move player right
 
 
 ###Shoot key:
@@ -35,17 +48,15 @@ Space bar ➣ Shoot
 
 ###Other keys:
 
+Keyboard:
+
 F1 ➣ Show colliders
 
-F2 ➣ Win automatically
-
-F3 ➣ Lose automatically
-
-F4 ➣ Disable God mode
-
-F5 ➣ Enable God mode
-
 Esc ➣ Quit the game
+
+Gamepad:
+
+B button ➣ Quit the game
 
 
 ##Win lose condition
@@ -55,30 +66,15 @@ Win ➣ Kill the boss at the end of the level.
 Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
 
 
-##Changelist
+##Changelist (LEVEL 2)
 
-###Version 0.5
+###Version 0.1
 
-- Welcome screen, level 1 and win screen implemented.
-
-- Player that moves and shoots normal bullets.
-
-- Dying and wining animation.
-
-- Intro animation (Helycopter).
-
-- Colliders wall and water.
-
-- Enemies with random paths and their collider spawning in determined points of the map.
-
-- Boss with determined path that makes you win when it dies.
-
-- UI with score, high score and player lives implemented.
-
-- Keys to show colliders, automatically wining and losing, and go into God mode.
-
-- Music and sound effects implemented correctly.
-
+ - Menu where you can select to play the second stage or quit
+ - Level 2 map implemented and moving correctly
+ - Player with collider that shots
+ - One enemy with collider
+ - Gamepad functionallity in the menu 
 
 ##Project wiki
 
