@@ -19,6 +19,15 @@ enum update_status
 	UPDATE_ERROR
 };
 
+enum COUNTERS
+{
+	Player_Die,
+	Helicopter,
+	//Add your counter types here
+	MAX_COUNTER
+};
+float time_Counters[COUNTERS::MAX_COUNTER];
+
 // Useful typedefs ---------
 typedef unsigned int uint;
 

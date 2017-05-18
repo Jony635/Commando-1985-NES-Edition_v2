@@ -109,9 +109,10 @@ bool ModulePlayer::Start()
 	live_counter = 4;
 	granade_counter = 0;
 	col = App->collision->AddCollider({position.x, position.y, 16, 16}, COLLIDER_PLAYER, this);
-	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
-	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
+
+	//An Example of Starting one timer:
+	time_Counters[COUNTERS::Player_Die] = 12.5f;
 
 	return true;
 }
@@ -126,6 +127,15 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(graphparticles);
 	App->collision->EraseCollider(col);
 	App->fonts->UnLoad(font_score);
+	
+	//An example of cleaning up all timers:
+	for (int i = 0; i < COUNTERS::MAX_COUNTER; i++)
+	{
+		if (time_Counters[i] != 0)
+		{
+			time_Counters[i] = 0;
+		}
+	}
 
 	return true;
 }
