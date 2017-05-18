@@ -41,6 +41,7 @@ public:
 	}Player_States;
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* ui_stuff = nullptr;
+	SDL_Texture* graphparticles = nullptr;
 	int font_score = -1;
 	char score_text[10];
 	char lives_text[10];

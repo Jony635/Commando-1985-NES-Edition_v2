@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
+#include "ModulePlayer.h"
 
 ModuleParticles::ModuleParticles()
 {
@@ -23,9 +24,7 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.speed = 0.3f;
 
 	bullet.anim.PushBack({0, 0, 5, 5});
-	bullet.anim.speed = 0.2f;
-	bullet.speed.x = 5;
-	bullet.life = 3000;
+	
 }
 
 ModuleParticles::~ModuleParticles()
@@ -35,7 +34,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Resources/Sprites/Shoots and Explosions/common bullet.png");
+	//graphics = App->textures->Load("Resources/Sprites/Shoots and Explosions/common bullet.png");
 
 	return true;
 }
@@ -44,7 +43,7 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(graphics);
+	//App->textures->Unload(graphics);
 
 	// Unload fx
 
@@ -77,7 +76,7 @@ update_status ModuleParticles::Update()
 		}
 		else if(SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			App->render->Blit(App->player->graphparticles, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));			
 			if(p->fx_played == false)
 			{
 				App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");

@@ -102,6 +102,7 @@ bool ModulePlayer::Start()
 	current_animation = &up;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
+	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/common bullet.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
 	score = 0;
@@ -122,6 +123,7 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->textures->Unload(ui_stuff);
+	App->textures->Unload(graphparticles);
 	App->collision->EraseCollider(col);
 	App->fonts->UnLoad(font_score);
 
@@ -443,11 +445,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if(c1 == col && dead == false && App->fade->IsFading() == false)
 	{
 
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
+		/*App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
 
 		dead = true;
 	}
