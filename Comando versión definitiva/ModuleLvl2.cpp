@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleAudio.h"
 
 ModuleLvl2::ModuleLvl2(){}
 
@@ -19,15 +20,16 @@ bool ModuleLvl2::Start() {
 
 	//Textures
 	background = App->textures->Load("Resources/Screens/CommandoArea2.png");//foto del fondo
-
+	
 	//Enables & Disables
+	App->audio->Enable();
 	App->textures->Enable();
 	App->player->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
 	//Caeras positions
 	App->render->camera.x = App->render->camera.y = 0;
-
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
 	//Add Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
 
@@ -55,7 +57,7 @@ bool ModuleLvl2::CleanUp(){
 	//Disables
 	App->textures->Disable();
 	App->collision->Disable();
-
+	App->audio->Disable();
 
 	//Unload textures
 	App->textures->Unload(background);
