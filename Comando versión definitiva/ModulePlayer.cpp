@@ -147,7 +147,7 @@ update_status ModulePlayer::Update()
 	int speed = 1;
 
 	//Shoots
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_X]==KEY_STATE::KEY_DOWN)
 		if (current_animation == &up)
 		{
 			App->particles->bullet.speed.y = -5;
