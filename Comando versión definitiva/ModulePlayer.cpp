@@ -301,13 +301,7 @@ update_status ModulePlayer::Update()
 	{
 		if (colup == false) {
 			position.y -= speed;
-			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-			{
-				App->particles->bullet.speed.x = 0;
-				App->particles->bullet.speed.y = -5;
-				App->particles->bullet.life = 300;
-				App->particles->AddParticle(App->particles->bullet, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
-			}
+			
 		}
 
 		//App->render->camera.y += speed;
