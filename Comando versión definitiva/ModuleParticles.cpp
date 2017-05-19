@@ -24,7 +24,7 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.speed = 0.3f;
 
 	bullet.anim.PushBack({0, 0, 5, 5});
-	
+	grenade.anim.PushBack({});
 }
 
 ModuleParticles::~ModuleParticles()
@@ -155,8 +155,24 @@ bool Particle::Update()
 		if(anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
+	if (this != &App->particles->grenade)
+	{
+		position.x += speed.x;
+		position.y += speed.y;
+	}
+	else
+	{
+		if ((SDL_GetTicks() - born) < life / 2)
+		{
+			position.x += speed.x;
+			position.y += speed.y;
+		}
+		else
+		{
+			position.x += speed.x / 2;
+			position.y += speed.y / 2;
+		}
+	}
 
 	if(collider != nullptr)
 		collider->SetPos(position.x, position.y);

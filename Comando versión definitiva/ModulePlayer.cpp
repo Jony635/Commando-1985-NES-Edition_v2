@@ -146,6 +146,17 @@ update_status ModulePlayer::Update()
 
 	int speed = 1;
 
+	//Grenades
+	if ((App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_Y] == KEY_STATE::KEY_DOWN)
+		&& granade_counter>0)
+	{
+		App->particles->grenade.speed.y = 5;
+		App->particles->grenade.speed.x = 0;
+		App->particles->grenade.life = 300;
+		App->particles->AddParticle(App->particles->grenade, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_GRENADE);
+	}
+
+
 	//Shoots
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_X]==KEY_STATE::KEY_DOWN)
 		if (current_animation == &up)
