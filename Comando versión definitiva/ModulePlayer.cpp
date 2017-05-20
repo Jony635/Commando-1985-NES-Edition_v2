@@ -12,7 +12,6 @@
 
 #include<stdio.h>
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
@@ -108,7 +107,7 @@ bool ModulePlayer::Start()
 	score = 0;
 	live_counter = 4;
 	granade_counter = 0;
-	col = App->collision->AddCollider({position.x, position.y, 16, 16}, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 
 	//An Example of Starting one timer:
@@ -492,12 +491,12 @@ update_status ModulePlayer::Update()
 
 
 
-	if (current_animation == &up || current_animation == &down) {
-		col->rect.w = 11;
-	}
-	else {
-		col->rect.w = 16;
-	}
+	//if (current_animation == &up || current_animation == &down) {
+	//	col->rect.w = 11;
+	//}
+	//else {
+	//	col->rect.w = 16;
+	//}
 
 	col->SetPos(position.x, position.y);
 
@@ -520,7 +519,6 @@ update_status ModulePlayer::Update()
 	sprintf(lives_text, "%01d", live_counter);
 	sprintf(grenades_text, "%02d", granade_counter);
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
 	App->fonts->BlitText(16, 9, font_score, score_text);
 	App->render->Blit(ui_stuff, 18, 209, &lives, false);
 	App->render->Blit(ui_stuff, 123, 212, &granade, false);
@@ -532,6 +530,126 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	//If it collides with a wall	
+
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))
+	{
+		//Check collision Right
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colright = true;
+		}
+
+		//Check collision Left
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colleft = true;
+		}
+
+		//Check collision Up
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colup = true;
+		}
+
+		//Check collision Down
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
+		{
+			coldown = true;
+		}
+
+		//Block Up-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUR = true;
+		}
+
+		//Block Up-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUL = true;
+		}
+
+		//Block Down-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDL = true;
+		}
+
+		//Block Down-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDR = true;
+		}
+
+	}
+
+	//If it collides with an enemy
+
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_ENEMY)/* && !godmode*/)
+	{
+		dead = true;
+	}
+
+	//If it collides with the water
+
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER))
+	{
+		if (c2->rect.x == (c1->rect.x + (c1->rect.w / 2))
+			|| (c2->rect.x + c2->rect.w) == (c1->rect.x + (c1->rect.w / 2))
+			|| c2->rect.y == (c1->rect.y + (c1->rect.h / 2))
+			|| (c2->rect.y + c2->rect.h) == (c1->rect.y + (c1->rect.h / 2)))
+		{
+			if (current_animation != &die_w)
+			{
+				die_w.Reset();
+				current_animation = &die_w;
+			}
+			current_animation = &die_w;
+			/*dead = true;*/
+		}
+	}
+	
 	if(c1 == col && dead == false && App->fade->IsFading() == false)
 	{
 
@@ -541,6 +659,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
 		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
 
-		dead = true;
+		/*dead = true;*/
 	}
 }
