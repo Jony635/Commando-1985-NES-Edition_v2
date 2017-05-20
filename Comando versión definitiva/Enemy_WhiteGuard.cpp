@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include <time.h>
 #include<stdlib.h>
+#include "ModulePlayer.h"
 Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 {
 	srand(time(NULL));
@@ -15,7 +16,6 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Die.PushBack({ 20, 68, 16, 26 });
 	WhiteGuard_Die.PushBack({ 36, 68, 16, 26 });
 	WhiteGuard_Die.PushBack({ 51, 68, 16, 26 });
-	WhiteGuard_Die.loop = false;
 	WhiteGuard_Die.speed = 0.07f;
 	//Left Animation
 	WhiteGuard_Left.PushBack({ 50, 23, 16, 22 });
@@ -25,10 +25,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Right.PushBack({ 32, 0, 16, 22 });
 	WhiteGuard_Right.PushBack({ 49, 0, 16, 22 });
 	WhiteGuard_Right.speed = 0.07f;
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	animation = &WhiteGuard_Left;
-	original_pos.x = x;
-	original_pos.y = y;
+	
 	//Up Animation
 	WhiteGuard_Up.PushBack({ 35, 46, 11, 21 });
 	WhiteGuard_Up.PushBack({ 49, 46, 11, 22 });
@@ -37,6 +34,14 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Down.PushBack({ 1, 23, 15, 22 });
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
 	WhiteGuard_Down.speed = 0.07f;
+
+	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+	original_pos.x = x;
+	original_pos.y = y;
+
+	path.PushBack({ -0.7f, 0 }, 0, &WhiteGuard_Left);
+	path.loop = false;
 }
 
 bool* Enemy_WhiteGuard::getMoving() const
@@ -116,24 +121,71 @@ Animation Enemy_WhiteGuard::getDie()
 }
 void Enemy_WhiteGuard::Move()
 {
-	int move = rand() % 4;
-	if (move == MOVE_STATE::GOING_UP && !moving[MOVE_STATE::GOING_UP] && path.getCurrent_Frame() == 0)
+	if (App->player->position.x - position.x < -5 && !rightleftcentered) //Muevete pa la iskierda
 	{
-		PathUp();
+		vx = -0.8f;
+		vy = 0.0f;
+		anim = &WhiteGuard_Left;
+		frames = position.x - App->player->position.x;
+		path.Reset();
+		path.ResetlastStep();
+		path.PushBack({ vx, vy }, frames, anim);
 	}
-	else if (move == MOVE_STATE::GOING_DOWN && !moving[MOVE_STATE::GOING_DOWN] && path.getCurrent_Frame() == 0)
+	else if (App->player->position.x - position.x > 5 && !rightleftcentered) //Muevete pa la deresha
 	{
-		PathDown();
+		vx = 0.8f;
+		vy = 0.0f;
+		anim = &WhiteGuard_Right;
+		frames = App->player->position.x - position.x;
+		path.Reset();
+		path.ResetlastStep();
+		path.PushBack({ vx, vy }, frames, anim);
 	}
-	else if (move == MOVE_STATE::GOING_LEFT && !moving[MOVE_STATE::GOING_LEFT] && path.getCurrent_Frame() == 0)
+	if (App->player->position.x == position.x)
 	{
-		PathLeft();
-	}
-	else if (move == MOVE_STATE::GOING_RIGHT && !moving[MOVE_STATE::GOING_RIGHT] && path.getCurrent_Frame() == 0)
-	{
-		PathRight();
+		rightleftcentered = true;
 	}
 
+	if (rightleftcentered)
+	{
+		if (App->player->position.y < position.y) //Movite parriba
+		{
+			vx = 0.0f;
+			vy = -0.8f;
+			anim = &WhiteGuard_Up;
+			if ((App->player->position.y < 0 && position.y < 0) || (App->player->position.y > 0 && position.y > 0))
+			{
+				frames = ABS(ABS(App->player->position.y) - ABS(position.y));
+			}
+			else
+			{
+				frames = ABS(App->player->position.y) + ABS(position.y);
+			}
+
+			path.Reset();
+			path.ResetlastStep();
+			path.PushBack({ vx, vy }, frames, anim);
+		}
+		else if (App->player->position.y > position.y) //Movite pabajo
+		{
+			vx = 0.0f;
+			vy = 0.8f;
+			anim = &WhiteGuard_Down;
+			if ((App->player->position.y < 0 && position.y < 0) || (App->player->position.y > 0 && position.y > 0))
+			{
+				frames = ABS(ABS(App->player->position.y) - ABS(position.y));
+			}
+			else
+			{
+				frames = ABS(App->player->position.y) + ABS(position.y);
+			}
+
+			path.Reset();
+			path.ResetlastStep();
+			path.PushBack({ vx, vy }, frames, anim);
+
+		}
+	}
 	position = original_pos + path.GetCurrentPosition(&animation);
-
+	rightleftcentered = false;
 }

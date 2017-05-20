@@ -16,6 +16,8 @@ private:
 	Animation WhiteGuard_Right;
 	Animation WhiteGuard_Up;
 	Animation WhiteGuard_Down;
+	bool rightleftcentered = false;
+	bool updowncentered = false;
 	bool moving[4] = {false, false, false, false};
 	bool* movingptr = moving;
 public:
@@ -31,6 +33,10 @@ public:
 	Animation getDie();
 	Enemy_WhiteGuard(int x, int y);
 	void Move();
+	//I WANNA DIE
+	Animation* anim = &WhiteGuard_Up;
+	float vx = 0.0f, vy = 0.0f;
+	int frames = 1;
 };
 
 #endif 

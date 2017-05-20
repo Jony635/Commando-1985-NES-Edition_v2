@@ -18,7 +18,8 @@ public:
 	bool loop = true;
 	Step steps[MAX_STEPS];
 	fPoint accumulated_speed = {0.0f, 0.0f};
-
+	bool first_move = true;
+	bool finished = false;
 private:
 	uint current_frame = 0;
 	uint last_step = 0;
@@ -30,6 +31,7 @@ public:
 		steps[last_step].animation = animation;
 		steps[last_step].frames = frames;
 		steps[last_step++].speed = speed;
+		finished = false;
 	}
 
 	iPoint GetCurrentPosition(Animation** current_animation = nullptr)
@@ -50,10 +52,18 @@ public:
 				need_loop = false;
 				break;
 			}
+			else
+			{
+				finished = true;
+			}
 		}
 
-		if(need_loop)
+		if (need_loop)
+		{
 			current_frame = 0;
+			finished = true;
+		}
+			
 
 		return iPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
 	}
@@ -64,6 +74,7 @@ public:
 	void Reset()
 	{
 		current_frame = 0;
+		finished = false;
 	}
 	uint getCurrent_Frame() const
 	{

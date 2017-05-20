@@ -6,6 +6,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleWelcome.h"
 #include "ModuleLvl2.h"
+#include "ModuleAudio.h"
 
 
 ModuleWelcome::ModuleWelcome() {}
@@ -21,11 +22,11 @@ bool ModuleWelcome::Start() {
 	ExitOption= App->textures->Load("Resources/Screens/Intro_Screen2.png");//foto del fondo
 	//Enables and Disables
 	App->textures->Enable();
-
+	App->audio->Enable();
 	Menu_Options = MENU::Lvl2;
 	//Cameras positions
 	App->render->camera.x = App->render->camera.y = 0;
-
+	App->audio->Play("Resources/Audio/Themes_SoundTrack/Title Theme.ogg", true);
 	return true;
 }
 
@@ -73,7 +74,7 @@ bool ModuleWelcome::CleanUp() {
 
 	//Disables
 	App->textures->Disable();
-
+	App->audio->Disable();
 
 	//Unload textures
 	App->textures->Unload(ExitOption);
