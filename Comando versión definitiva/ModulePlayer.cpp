@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModuleLvl2.h"
 #include "ModuleSecretAreas.h"
+#include "ModuleEnemies.h"
 
 #include<stdio.h>
 
@@ -245,255 +246,256 @@ update_status ModulePlayer::Update()
 
 		}
 
+	if (current_animation != &downstairs&&current_animation != &upstairs) {
+		//MOVEMENT
 
-	//MOVEMENT
+		//LEFT
 
-	//LEFT
-
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
-		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| ((App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT &&position.x > 0
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE)
-			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
-				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT
-				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE)))
-	{
-		if (colleft == false) {
-			position.x -= speed;
-
-		}
-
-		if (current_animation != &left)
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
+			|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| ((App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT &&position.x > 0
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE)
+				|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
+					&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
+					&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT
+					&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE)))
 		{
-			left.Reset();
-			current_animation = &left;
-		}
-	}
+			if (colleft == false) {
+				position.x -= speed;
 
-	//RIGHT
+			}
 
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
-		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE)
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
-	{
-		if (colright == false) {
-			position.x += speed;
-
+			if (current_animation != &left)
+			{
+				left.Reset();
+				current_animation = &left;
+			}
 		}
 
-		if (current_animation != &right)
+		//RIGHT
+
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
+			|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE)
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
 		{
-			right.Reset();
-			current_animation = &right;
+			if (colright == false) {
+				position.x += speed;
+
+			}
+
+			if (current_animation != &right)
+			{
+				right.Reset();
+				current_animation = &right;
+			}
 		}
-	}
 
 
-	//DOWN
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		)
-		|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
+		//DOWN
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			)
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE))
-	{
-		if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22) {
-			position.y += speed;
-
-		}
-
-		if (current_animation != &down)
+			|| (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT
+				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
+				)
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE))
 		{
-			down.Reset();
-			current_animation = &down;
+			if (coldown == false && position.y < App->render->camera.y + SCREEN_HEIGHT - 22) {
+				position.y += speed;
+
+			}
+
+			if (current_animation != &down)
+			{
+				down.Reset();
+				current_animation = &down;
+			}
 		}
-	}
 
 
-	//UP
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+		//UP
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+			|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE)
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT))
+		{
+			if (colup == false) {
+				position.y -= speed;
+
+			}
+
+			//App->render->camera.y += speed;
+
+			if (current_animation != &up)
+			{
+				up.Reset();
+				current_animation = &up;
+
+			}
+		}
+
+		//UP-RIGHT
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
+		{
+			if (blockUR == false)
+			{
+				if (colright == false)
+					position.x += speed;
+				if (colup == false)
+					position.y -= speed;
+
+			}
+
+			if (current_animation != &ur)
+			{
+				ur.Reset();
+				current_animation = &ur;
+			}
+		}
+
+		//UP-LEFT
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE)
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT))
-	{
-		if (colup == false) {
-			position.y -= speed;
-			
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE))
+		{
+			if (blockUL == false)
+			{
+				if (colleft == false)
+					position.x -= speed;
+				if (colup == false)
+					position.y -= speed;
+
+			}
+
+			if (current_animation != &ul)
+			{
+				ul.Reset();
+				current_animation = &ul;
+			}
 		}
 
-		//App->render->camera.y += speed;
-
-		if (current_animation != &up)
+		//DOWN-RIGHT
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
 		{
-			up.Reset();
-			current_animation = &up;
+			if (blockDR == false)
+			{
+				if (colright == false)
+					position.x += speed;
+				if (coldown == false && position.y < App->render->camera.y + SCREEN_HEIGHT - 22)
+					position.y += speed;
 
-		}
-	}
+			}
 
-	//UP-RIGHT
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
-	{
-		if (blockUR == false)
-		{
-			if (colright == false)
-				position.x += speed;
-			if (colup == false)
-				position.y -= speed;
-
+			if (current_animation != &dr)
+			{
+				dr.Reset();
+				current_animation = &dr;
+			}
 		}
 
-		if (current_animation != &ur)
+		//DOWN-LEFT
+			//KEYBOARD
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
+			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+			//CONTROLLER
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE))
 		{
-			ur.Reset();
-			current_animation = &ur;
-		}
-	}
+			if (blockDL == false)
+			{
+				if (colleft == false)
+					position.x -= speed;
+				if (coldown == false && position.y < App->render->camera.y + SCREEN_HEIGHT - 22)
+					position.y += speed;
 
-	//UP-LEFT
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
-		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE))
-	{
-		if (blockUL == false)
-		{
-			if (colleft == false)
-				position.x -= speed;
-			if (colup == false)
-				position.y -= speed;
+			}
 
-		}
-
-		if (current_animation != &ul)
-		{
-			ul.Reset();
-			current_animation = &ul;
-		}
-	}
-
-	//DOWN-RIGHT
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
-	{
-		if (blockDR == false)
-		{
-			if (colright == false)
-				position.x += speed;
-			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
-				position.y += speed;
-
-		}
-
-		if (current_animation != &dr)
-		{
-			dr.Reset();
-			current_animation = &dr;
-		}
-	}
-
-	//DOWN-LEFT
-		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
-		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
-		//CONTROLLER
-		|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
-			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE))
-	{
-		if (blockDL == false)
-		{
-			if (colleft == false)
-				position.x -= speed;
-			if (coldown == false && position.y<App->render->camera.y + SCREEN_HEIGHT - 22)
-				position.y += speed;
-
-		}
-
-		if (current_animation != &dl)
-		{
-			dl.Reset();
-			current_animation = &dl;
+			if (current_animation != &dl)
+			{
+				dl.Reset();
+				current_animation = &dl;
+			}
 		}
 	}
 
@@ -681,8 +683,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			App->fade->FadeToBlack(App->secretareas, App->lvl2, 0);
 	}
 	if (c2->type == COLLIDER_DOWNSTAIRS&&dead == false) {
-		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT))
+		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM1;
+			App->player->position.x = 234;
+			App->player->position.y = -(2880 - 2632 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+		}
 		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1500 - SCREEN_HEIGHT))
 			App->secretareas->actual_room = SECRETROOM::ROOM2;
 		else if (position.y < -(2880 - 1500 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT))
