@@ -8,6 +8,7 @@
 
 #define NUM_COLLIDERSWALL 100
 #define NUM_COLLIDERSWATER 100
+#define MAX_COLLIDER_DOWNSTAIRS 20
 
 struct SDL_Texture;
 
@@ -24,6 +25,17 @@ public:
 public:
 
 	SDL_Texture* background = nullptr;
+	SDL_Texture* items = nullptr;
+	int top;
+	Collider* downstairs[MAX_COLLIDER_DOWNSTAIRS];
+	Animation* current_stair1_animation = nullptr;
+	Animation* current_stair2_animation = nullptr;
+	Animation* current_stair3_animation = nullptr;
+	Animation* current_stair4_animation = nullptr;
+	Animation* current_stair5_animation = nullptr;
+	Animation* current_stair6_animation = nullptr;
+	Animation stair;
+	Animation stairinv;
 
 	//Colliders
 	Collider* wall[NUM_COLLIDERSWALL];

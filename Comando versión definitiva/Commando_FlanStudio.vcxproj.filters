@@ -92,6 +92,9 @@
     <ClInclude Include="ModuleWelcome.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSecretAreas.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -155,6 +158,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWelcome.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSecretAreas.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

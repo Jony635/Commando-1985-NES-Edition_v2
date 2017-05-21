@@ -7,6 +7,7 @@
 #include "ModuleWelcome.h"
 #include "ModuleLvl2.h"
 #include "ModuleAudio.h"
+#include "ModuleSecretAreas.h"
 
 
 ModuleWelcome::ModuleWelcome() {}
@@ -70,7 +71,7 @@ update_status ModuleWelcome::Update() {
 
 bool ModuleWelcome::CleanUp() {
 
-	LOG("Unloading lvl1 scene");
+	LOG("Unloading welcome scene");
 
 	//Disables
 	App->textures->Disable();

@@ -9,6 +9,8 @@
 #include "ModuleFonts.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include "ModuleLvl2.h"
+#include "ModuleSecretAreas.h"
 
 #include<stdio.h>
 
@@ -21,6 +23,18 @@ ModulePlayer::ModulePlayer()
 	bridgelvl2.w = 256;
 	bridgelvl2.h = 95;
 
+	//upstairs
+	upstairs.PushBack({ 40, 2, 11, 21 });
+	upstairs.PushBack({ 81, 31, 14, 16 });
+	upstairs.PushBack({ 98, 28, 14, 16 });
+	upstairs.loop = false;
+	upstairs.speed = 0.02f;
+
+	//downstairs
+	downstairs.PushBack({ 68, 25, 11, 16 });
+	downstairs.PushBack({ 98, 28, 14, 16 });
+	downstairs.loop = false;
+	downstairs.speed = 0.02f;
 
 	//die animation
 	die.PushBack({ 2, 72, 17, 27 });
@@ -112,6 +126,7 @@ bool ModulePlayer::Start()
 
 	//An Example of Starting one timer:
 	time_Counters[COUNTERS::Player_Die] = 12.5f;
+	time_Counters[stairs] = 0;
 
 	return true;
 }
@@ -142,6 +157,9 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	//counters
+	if (current_animation == &upstairs || current_animation == &downstairs)
+		time_Counters[stairs] += 0.02;
 
 	int speed = 1;
 
@@ -237,7 +255,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE)
-		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+		|| (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
@@ -246,7 +264,7 @@ update_status ModulePlayer::Update()
 			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
 			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
 			&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE)
-			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+			|| (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
 				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0
 				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_REPEAT
 				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE)))
@@ -334,7 +352,7 @@ update_status ModulePlayer::Update()
 
 	//UP
 		//KEYBOARD
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
 		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
@@ -509,7 +527,9 @@ update_status ModulePlayer::Update()
 			&& (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
 				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
 				&&App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
-				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE))
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE) 
+			&& current_animation != &upstairs
+			&& current_animation != &downstairs)
 			App->render->Blit(graphics, position.x, position.y, &(current_animation->frames[0]));
 		else
 			App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
@@ -650,6 +670,41 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 	
+	if (c2->type == COLLIDER_UPSTAIRS&&dead == false) {
+		if (current_animation != &upstairs)
+		{
+			upstairs.Reset();
+			current_animation = &upstairs;
+		}
+
+		if (time_Counters[stairs]>3 && time_Counters[stairs]<4)
+			App->fade->FadeToBlack(App->secretareas, App->lvl2, 0);
+	}
+	if (c2->type == COLLIDER_DOWNSTAIRS&&dead == false) {
+		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM1;
+		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1500 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM2;
+		else if (position.y < -(2880 - 1500 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM3;
+		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM4;
+		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM5;
+		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT))
+			App->secretareas->actual_room = SECRETROOM::ROOM6;
+
+
+		if (current_animation != &downstairs)
+		{
+			downstairs.Reset();
+			current_animation = &downstairs;
+		}
+		if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+			App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
+	}
+
+
 	if(c1 == col && dead == false && App->fade->IsFading() == false)
 	{
 

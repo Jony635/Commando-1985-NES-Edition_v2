@@ -24,6 +24,7 @@ enum COUNTERS
 {
 	Player_Die,
 	Helicopter,
+	stairs,
 	//Add your counter types here
 	MAX_COUNTER
 };

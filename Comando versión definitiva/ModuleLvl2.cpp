@@ -9,8 +9,19 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
+#include "ModuleSecretAreas.h"
 
-ModuleLvl2::ModuleLvl2(){}
+ModuleLvl2::ModuleLvl2(){
+	//stair visible
+	stair.PushBack({ 0, 0, 16, 16 });
+	stair.loop = false;
+	stair.speed = 0.02f;
+
+	//stair not visible
+	stairinv.PushBack({ 21, 19, 6, 6 });
+	stairinv.loop = false;
+	stairinv.speed = 0.02f;
+}
 
 ModuleLvl2::~ModuleLvl2(){}
 
@@ -18,18 +29,40 @@ bool ModuleLvl2::Start() {
 
 	LOG("Loading lvl2 scene");
 
+	for (uint i = 0; i < MAX_COLLIDER_DOWNSTAIRS; ++i)
+		downstairs[i] = nullptr;
+
 	//Textures
 	background = App->textures->Load("Resources/Screens/CommandoArea2.png");//foto del fondo
-	
+	items = App->textures->Load("Resources/Animations/Items.png");//foto del fondo
+
 	//Enables & Disables
 	App->audio->Enable();
 	App->textures->Enable();
 	App->player->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
-	//Caeras positions
+
+	//Cameras positions
 	App->render->camera.x = App->render->camera.y = 0;
+
 	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
+
+	//Init things
+	top = -2880 + SCREEN_HEIGHT;
+	current_stair1_animation = &stair;
+	current_stair2_animation = &stair;
+	current_stair3_animation = &stair;
+	current_stair4_animation = &stair;
+	current_stair5_animation = &stair;
+	current_stair6_animation = &stair;
+
+	//respawn
+	if (App->secretareas->actual_room == ROOM2 || App->secretareas->actual_room == ROOM3) {
+		App->player->position.y -= 1000;
+		App->render->camera.y -= 1000;
+	}
+
 	//Add Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200);
@@ -117,7 +150,11 @@ bool ModuleLvl2::Start() {
 	//wall[i++] = App->collision->AddCollider({ 209, -(2880 - 501 - SCREEN_HEIGHT), 26, 11 }, COLLIDER_WALL);
 	//wall[i++] = App->collision->AddCollider({ 218, -(2880 - 512 - SCREEN_HEIGHT), 27, 10 }, COLLIDER_WALL);
 
-
+	//downstairs colliders
+	int j = 0;
+	downstairs[j++] = App->collision->AddCollider({ 242, -(2880 - 2632 - SCREEN_HEIGHT), 6, 3 }, COLLIDER_DOWNSTAIRS);
+	downstairs[j++] = App->collision->AddCollider({ 130, -(2880 - 1544 - SCREEN_HEIGHT), 6, 3 }, COLLIDER_DOWNSTAIRS);
+	downstairs[j++] = App->collision->AddCollider({ 227, -(2880 - 1426 - SCREEN_HEIGHT), 6, 3 }, COLLIDER_DOWNSTAIRS);
 
 	//Colliders Water
 
@@ -159,15 +196,18 @@ update_status ModuleLvl2::Update(){
 
 bool ModuleLvl2::CleanUp(){
 
-	LOG("Unloading lvl1 scene");
+	LOG("Unloading lvl2 scene");
 
 	//Disables
+	App->enemies->Disable();
 	App->textures->Disable();
 	App->collision->Disable();
 	App->audio->Disable();
+	App->player->Disable();
 
 	//Unload textures
 	App->textures->Unload(background);
+	App->textures->Unload(items);
 
 	return true;
 }

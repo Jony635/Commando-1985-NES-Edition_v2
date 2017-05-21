@@ -6,6 +6,8 @@
 #include "SDL/include/SDL.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleSecretAreas.h"
+#include "ModuleLvl2.h"
 
 ModuleRender::ModuleRender() : Module()
 {
@@ -58,7 +60,7 @@ update_status ModuleRender::Update()
 	    App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_REPEAT)
 		&&
 		App->player->position.y<camera.y + SCREEN_HEIGHT / 2 &&
-		camera.y>-2880 + SCREEN_HEIGHT&&App->player->IsEnabled())
+		camera.y>App->lvl2->top&&App->player->IsEnabled() &&App->player->IsEnabled())
 		camera.y -= speed;
 	
 

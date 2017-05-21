@@ -32,6 +32,8 @@ public:
 	uint live_counter = 0;
 	uint granade_counter = 0;
 	Animation* current_animation = nullptr;
+	Animation upstairs;
+	Animation downstairs;
 	Animation up;
 	Animation down;
 	Animation left;
