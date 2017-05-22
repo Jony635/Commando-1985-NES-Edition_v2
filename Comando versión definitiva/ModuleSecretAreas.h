@@ -36,13 +36,22 @@ public:
 	
 	SECRETROOM secret_room[SECRETROOM::MAX_COUNTER_ROOM];
 	SECRETROOM actual_room;
-
+	SDL_Texture* alphabet = nullptr;
+	SDL_Texture* rect = nullptr;
+	SDL_Texture* items = nullptr;
 	SDL_Texture* background1 = nullptr;
 	Collider* wall[NUM_COLLIDERSWALL];
 	Collider* upstairs[NUM_COLLIDERSUPSTAIRS];
 
+	Animation gascounter;
+	Animation welcometo;
+	Animation yellowstair;
+
 
 };
+
+
+
 
 #endif // __MODULESECRETAREAS_H__
 

@@ -690,16 +690,37 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			App->player->position.y = -(2880 - 2632 - SCREEN_HEIGHT);
 			App->enemies->Disable();
 		}
-		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1500 - SCREEN_HEIGHT))
+		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1500 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM2;
-		else if (position.y < -(2880 - 1500 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT))
+			App->player->position.x = 129;
+			App->player->position.y = -(2880 - 1544 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+		}
+		else if (position.y < -(2880 - 1500 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM3;
-		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT))
+			App->player->position.x = 217;
+			App->player->position.y = -(2880 - 1424 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+
+		}
+		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM4;
-		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT))
+			App->player->position.x = 217;
+			App->player->position.y = -(2880 - 1065 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+		}
+		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM5;
-		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT))
+			App->player->position.x = 217;
+			App->player->position.y = -(2880 - 743 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+		}
+		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM6;
+			App->player->position.x = 217;
+			App->player->position.y = -(2880 - 528 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+		}
 
 
 		if (current_animation != &downstairs)

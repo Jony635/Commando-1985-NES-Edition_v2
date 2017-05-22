@@ -12,11 +12,41 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 
-ModuleSecretAreas::ModuleSecretAreas() {}
+ModuleSecretAreas::ModuleSecretAreas() {
+	//WELCOME ANIMATION
+	welcometo.PushBack({ 0, 33, 128, 33 });
+	welcometo.PushBack({ 0, 99, 128, 33 });
+	welcometo.loop = false;
+	welcometo.speed = 0.005f;
+
+
+	//GAS ANIMATION
+	gascounter.PushBack({ 72, 0, 8, 8 });
+	gascounter.PushBack({ 64, 0, 8, 8 });
+	gascounter.PushBack({ 56, 0, 8, 8 });
+	gascounter.PushBack({ 48, 0, 8, 8 });
+	gascounter.PushBack({ 40, 0, 8, 8 });
+	gascounter.PushBack({ 32, 0, 8, 8 });
+	gascounter.PushBack({ 24, 0, 8, 8 });
+	gascounter.PushBack({ 16, 0, 8, 8 });
+	gascounter.PushBack({ 8, 0, 8, 8 });
+	gascounter.PushBack({ 0, 0, 8, 8 });
+
+	gascounter.loop = false;
+	gascounter.speed = 0.015f;
+
+	//YELLOWSTAIR ANIMATION
+	yellowstair.PushBack({ 16,0,16,16 });
+	yellowstair.PushBack({ 22,22,6,6 });
+}
 
 ModuleSecretAreas::~ModuleSecretAreas() {}
 
 bool ModuleSecretAreas::Start() {
+
+	//General textures
+	rect = App->textures->Load("Resources/ui/Power_up_rect.png");
+	items = App->textures->Load("Resources/Animations/Items.png");
 
 	LOG("Loading SecretAreas scene");
 	if(App->secretareas->actual_room == SECRETROOM::ROOM1){
@@ -59,7 +89,7 @@ bool ModuleSecretAreas::Start() {
 	upstairs[j++] = App->collision->AddCollider({ 20, 32, 23, 5 }, COLLIDER_UPSTAIRS);
 }
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM2) {
-		//SECRETAREA1
+		//SECRETAREA2
 
 		//Textures
 		background1 = App->textures->Load("Resources/Screens/sa2.png");//foto del fondo
@@ -87,11 +117,7 @@ bool ModuleSecretAreas::Start() {
 		wall[i++] = App->collision->AddCollider({ 0, 0, 16, 224 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 240, 0, 16, 224 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 112, 0, 32, 159 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 224, 88, 16, 136 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 0, 216, 256, 8 }, COLLIDER_WALL);
-		wall[i++] = wall[i];
-		wall[i++] = wall[i];
-		wall[i++] = wall[i];
 
 
 		//UPSTAIRS
@@ -99,47 +125,100 @@ bool ModuleSecretAreas::Start() {
 		upstairs[j++] = App->collision->AddCollider({ 116, 159, 23, 5 }, COLLIDER_UPSTAIRS);
 
 	}
-	//else if (App->secretareas->actual_room == SECRETROOM::ROOM2) {
-	//	//SECRETAREA1
+	else if (App->secretareas->actual_room == SECRETROOM::ROOM3) {
 
-	//	//Textures
-	//	background1 = App->textures->Load("Resources/Screens/sa3.png");//foto del fondo
+		//SECRETAREA3
 
-	//																   //Enables & Disables
-	//	App->audio->Enable();
-	//	App->textures->Enable();
-	//	App->player->Enable();
-	//	App->collision->Enable();
-	//	App->enemies->Enable();
-	//	//Cameras positions
-	//	App->render->camera.x = App->render->camera.y = 0;
-	//	App->audio->Play("Resources/Audio/Themes_SoundTrack/Underground Bunker 2 Purple.ogg", true);
-	//	//Add Enemies
-	//	//App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
-	//	//INIT THINGS
-	//	App->lvl2->top = 0;
-	//	App->player->position.x = SCREEN_WIDTH / 2;
-	//	App->player->position.y = SCREEN_HEIGHT - 35;
-	//	//colliders 
+		//Textures
+		background1 = App->textures->Load("Resources/Screens/sa3.png");//foto del fondo
+		alphabet = App->textures->Load("Resources/ui/Alphabet.png");
 
-	//	//WALL
-	//	int i = 0;
-	//	wall[i++] = App->collision->AddCollider({ 0, 0, 256, 37 }, COLLIDER_WALL);
-	//	wall[i++] = App->collision->AddCollider({ 0, 0, 16, 224 }, COLLIDER_WALL);
-	//	wall[i++] = App->collision->AddCollider({ 240, 0, 16, 224 }, COLLIDER_WALL);
-	//	wall[i++] = App->collision->AddCollider({ 112, 0, 32, 159 }, COLLIDER_WALL);
-	//	wall[i++] = App->collision->AddCollider({ 224, 88, 16, 136 }, COLLIDER_WALL);
-	//	wall[i++] = App->collision->AddCollider({ 0, 216, 256, 8 }, COLLIDER_WALL);
-	//	wall[i++] = wall[i];
-	//	wall[i++] = wall[i];
-	//	wall[i++] = wall[i];
+		//Enables & Disables
+		App->audio->Enable();
+		App->textures->Enable();
+		App->player->Enable();
+		App->collision->Enable();
+		App->enemies->Enable();
+		//Cameras positions
+		App->render->camera.x = App->render->camera.y = 0;
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Underground Bunker 2 Purple.ogg", true);
+		//Add Enemies
+		//App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
+		//INIT THINGS
+		App->lvl2->top = 0;
+		App->player->position.x = SCREEN_WIDTH / 2;
+		App->player->position.y = SCREEN_HEIGHT - 35;
+
+		gascounter.Reset();
+		welcometo.Reset();
+
+		//colliders 
+
+		//WALL
+		int i = 0;
+		wall[i++] = App->collision->AddCollider({ 0, 0, 256, 37 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, 0, 16, 224 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 240, 0, 16, 224 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, 216, 256, 8 }, COLLIDER_WALL);
 
 
-	//	//UPSTAIRS
-	//	int j = 0;
-	//	upstairs[j++] = App->collision->AddCollider({ 116, 159, 23, 5 }, COLLIDER_UPSTAIRS);
+		//UPSTAIRS
+		int j = 0;
+		upstairs[j++] = App->collision->AddCollider({ 40, 44, 2, 2 }, COLLIDER_UPSTAIRS);
 
-	//}
+
+
+	}
+	else if (App->secretareas->actual_room == SECRETROOM::ROOM4) {
+
+		//SECRETAREA3
+
+		//Textures
+		background1 = App->textures->Load("Resources/Screens/sa4.png");//foto del fondo
+
+																	   //Enables & Disables
+		App->audio->Enable();
+		App->textures->Enable();
+		App->player->Enable();
+		App->collision->Enable();
+		App->enemies->Enable();
+		//Cameras positions
+		App->render->camera.x = 0;
+		App->render->camera.y = 0;
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Underground Bunker Blue.ogg", true);
+		//Add Enemies
+		//App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
+		//INIT THINGS
+		App->lvl2->top = -448 + SCREEN_HEIGHT;
+		App->player->position.x = SCREEN_WIDTH / 2;
+		App->player->position.y = SCREEN_HEIGHT - 35;
+
+
+		//colliders 
+
+		//WALL
+		int i = 0;
+		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 32, 448 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(448 - 0 - SCREEN_HEIGHT), 256, 35 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 240, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(448 - 35 - SCREEN_HEIGHT), 64, 60 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 32, -(448 - 95 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 60, -(448 - 65 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 31, -(448 - 216 - SCREEN_HEIGHT), 17, 48 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 32, -(448 - 442 - SCREEN_HEIGHT), 208, 6 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 80, -(448 - 216 - SCREEN_HEIGHT), 160, 50 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 96, -(448 - 72 - SCREEN_HEIGHT), 16, 144 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 112, -(448 - 72 - SCREEN_HEIGHT), 48, 48 }, COLLIDER_WALL);
+
+
+		//UPSTAIRS
+		int j = 0;
+		upstairs[j++] = App->collision->AddCollider({ 36, -(448 - 95 - SCREEN_HEIGHT), 24, 5 }, COLLIDER_UPSTAIRS);
+
+
+
+	}
+
 
 	return true;
 }
@@ -149,10 +228,7 @@ update_status ModuleSecretAreas::Update() {
 	//Render Map
 	App->render->Blit(background1, 0, 0, NULL);
 
-	////Fade to black to next lvl
-	//if (App->input->keyboard[SDL_SCANCODE_F2]) {
-	//	App->fade->FadeToBlack(this, App->endlvl2, 0);
-	//}
+	
 
 	return UPDATE_CONTINUE;
 
@@ -189,6 +265,8 @@ bool ModuleSecretAreas::CleanUp() {
 	App->enemies->Disable();
 	//Unload textures
 	App->textures->Unload(background1);
+
+	time_Counters[gas] = 0;
 
 	return true;
 }
