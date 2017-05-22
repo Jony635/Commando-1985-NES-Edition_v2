@@ -159,7 +159,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER_SHOT)
+			if (c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL)
 			{
 				App->player->score += 150;
 				enemies[i]->OnCollision(c2);

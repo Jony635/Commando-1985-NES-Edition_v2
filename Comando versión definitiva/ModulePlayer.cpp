@@ -116,12 +116,12 @@ bool ModulePlayer::Start()
 	current_animation = &up;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
-	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/common bullet.png");
+	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
 	score = 0;
 	live_counter = 4;
-	granade_counter = 0;
+	granade_counter = 15;
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 
@@ -165,12 +165,13 @@ update_status ModulePlayer::Update()
 	int speed = 1;
 
 	//Grenades
-	if ((App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_Y] == KEY_STATE::KEY_DOWN)
-		&& granade_counter>0)
+	if (granade_counter > 0 && 
+		(App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_Y] == KEY_STATE::KEY_DOWN))
 	{
-		App->particles->grenade.speed.y = 5;
+		granade_counter--;
+		App->particles->grenade.speed.y = -2;
 		App->particles->grenade.speed.x = 0;
-		App->particles->grenade.life = 300;
+		App->particles->grenade.life = 1000;
 		App->particles->AddParticle(App->particles->grenade, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_GRENADE);
 	}
 

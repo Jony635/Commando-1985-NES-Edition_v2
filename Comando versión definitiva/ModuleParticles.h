@@ -49,6 +49,7 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
+	Particle grenade_explodes;
 	Particle grenade;
 	Particle explosion;
 	Particle bullet;
