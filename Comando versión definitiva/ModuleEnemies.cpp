@@ -177,7 +177,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				else
 				{
 					App->player->score += 2000;
-					App->particles->AddParticle(App->particles->die_Green, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
+					
 					enemies[i]->OnCollision(c2);
 					delete enemies[i];
 					enemies[i] = nullptr;
@@ -187,6 +187,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if (c1->enemytype == BOSSGRENADE && c2->type == COLLIDER_PLAYER_GRENADE_EXPL)
 			{
 				App->player->score += 300;
+				App->particles->AddParticle(App->particles->die_Green, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 
