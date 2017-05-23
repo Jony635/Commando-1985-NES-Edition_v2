@@ -170,13 +170,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				if (c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 				{
 					App->player->score += 150;
-					enemies[i]->OnCollision(c2);
+					App->particles->AddParticle(App->particles->die_Grey, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 					delete enemies[i];
 					enemies[i] = nullptr;
 				}
 				else
 				{
 					App->player->score += 2000;
+					App->particles->AddParticle(App->particles->die_Green, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 					enemies[i]->OnCollision(c2);
 					delete enemies[i];
 					enemies[i] = nullptr;

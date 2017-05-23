@@ -73,7 +73,7 @@ ModulePlayer::ModulePlayer()
 	right.speed = 0.1f;
 
 	// Move ur
-	ur.PushBack({ 50, 25, 17, 22 });
+	ur.PushBack({ 51, 25, 16, 22 });
 	ur.PushBack({ 34, 25, 16, 22 });
 	ur.speed = 0.1f;
 

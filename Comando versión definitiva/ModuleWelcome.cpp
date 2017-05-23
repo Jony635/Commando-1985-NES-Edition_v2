@@ -58,8 +58,8 @@ update_status ModuleWelcome::Update() {
 
 	//Fade to black to next lvl
 	if ((App->input->keyboard[SDL_SCANCODE_RETURN] || App->input->buttons[SDL_CONTROLLER_BUTTON_A]==KEY_DOWN)&& Menu_Options==MENU::Lvl2) {
-		App->fade->FadeToBlack(this, App->secretareas, 2);
-		App->secretareas->actual_room = ROOM3;
+		App->fade->FadeToBlack(this, App->lvl2, 2);
+		
 	}
 	else if ((App->input->keyboard[SDL_SCANCODE_RETURN] || App->input->buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) && Menu_Options == MENU::exit)
 	{

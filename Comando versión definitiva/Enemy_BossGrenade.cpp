@@ -24,7 +24,10 @@ Enemy_BossGrenade::Enemy_BossGrenade(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	path.PushBack({ 0, 0 }, 2, &BossGrenade_Stand);
+	vx = -0.8f;
+	vy = 0.0f;
+	anim = &BossGrenade_Stand;
+	frames = 3;
 }
 
 Animation Enemy_BossGrenade::getDie()
