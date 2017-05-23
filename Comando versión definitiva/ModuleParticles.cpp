@@ -8,6 +8,8 @@
 #include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 #include "ModulePlayer.h"
+#include "ModuleLvl2.h"
+#include "ModuleSecretAreas.h"
 
 ModuleParticles::ModuleParticles()
 {
@@ -119,6 +121,35 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
 			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			if (c1->type == COLLIDER_PLAYER_GRENADE_EXPL&&c2->type == COLLIDER_DOWNSTAIRS) {
+
+				if (App->player->position.y > -(2880 - 2500 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair1_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 2500 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1544 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair2_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1544 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1200 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair3_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1200 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 1000 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair4_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 1000 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - 735 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair5_animation = &App->lvl2->stair;
+				}
+				else if (App->player->position.y < -(2880 - 735 - SCREEN_HEIGHT) && App->player->position.y > -(2880 - SCREEN_HEIGHT)) {
+					App->lvl2->current_stair6_animation = &App->lvl2->stair;
+				}
+
+
+
+			}
+			if (c1->type == COLLIDER_PLAYER_GRENADE_EXPL&&c2->type == COLLIDER_UPSTAIRS) {
+				if (App->secretareas->actual_room == ROOM3) {
+					App->secretareas->ystair = &App->secretareas->yellowstair;
+				}
+			}
 			if (c1->type != COLLIDER_PLAYER_GRENADE_EXPL && c1->type != COLLIDER_PLAYER_GRENADE && c1->type != COLLIDER_ENEMY_GRENADE_EXPL && c1->type != COLLIDER_ENEMY_GRENADE)
 			{
 				delete active[i];

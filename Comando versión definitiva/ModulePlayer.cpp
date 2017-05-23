@@ -170,7 +170,7 @@ update_status ModulePlayer::Update()
 		granade_counter--;
 		App->particles->grenade.speed.y = -2;
 		App->particles->grenade.speed.x = 0;
-		App->particles->grenade.life = 1000;
+		App->particles->grenade.life = 750;
 		App->particles->AddParticle(App->particles->grenade, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_GRENADE);
 	}
 
@@ -672,6 +672,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	
 	if (c2->type == COLLIDER_UPSTAIRS&&dead == false) {
+		if (App->secretareas->actual_room == ROOM3&&App->secretareas->ystair == &App->secretareas->yellowstair) {
 		if (current_animation != &upstairs)
 		{
 			upstairs.Reset();
@@ -680,54 +681,100 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (time_Counters[stairs]>3 && time_Counters[stairs]<4)
 			App->fade->FadeToBlack(App->secretareas, App->lvl2, 0);
+		}
+		else if (App->secretareas->actual_room != ROOM3) {
+			if (current_animation != &upstairs)
+			{
+				upstairs.Reset();
+				current_animation = &upstairs;
+			}
+
+			if (time_Counters[stairs] > 3 && time_Counters[stairs] < 4)
+				App->fade->FadeToBlack(App->secretareas, App->lvl2, 0);
+
+		}
 	}
 	if (c2->type == COLLIDER_DOWNSTAIRS&&dead == false) {
-		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT)) {
+		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT) && App->lvl2->current_stair1_animation == &App->lvl2->stair) {
 			App->secretareas->actual_room = SECRETROOM::ROOM1;
 			App->player->position.x = 234;
 			App->player->position.y = -(2880 - 2632 - SCREEN_HEIGHT);
 			App->enemies->Disable();
-		}
-		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1500 - SCREEN_HEIGHT)) {
-			App->secretareas->actual_room = SECRETROOM::ROOM2;
-			App->player->position.x = 129;
-			App->player->position.y = -(2880 - 1544 - SCREEN_HEIGHT);
-			App->enemies->Disable();
-		}
-		else if (position.y < -(2880 - 1500 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT)) {
-			App->secretareas->actual_room = SECRETROOM::ROOM3;
-			App->player->position.x = 217;
-			App->player->position.y = -(2880 - 1424 - SCREEN_HEIGHT);
-			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
 
 		}
-		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT)) {
+		else if (position.y < -(2880 - 2500 - SCREEN_HEIGHT) && position.y > -(2880 - 1540 - SCREEN_HEIGHT) && App->lvl2->current_stair2_animation == &App->lvl2->stair) {
+			App->secretareas->actual_room = SECRETROOM::ROOM2;
+			App->player->position.x = 120;
+			App->player->position.y = -(2880 - 1544 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
+		}
+		else if (position.y < -(2880 - 1540 - SCREEN_HEIGHT) && position.y > -(2880 - 1200 - SCREEN_HEIGHT) && App->lvl2->current_stair3_animation == &App->lvl2->stair) {
+			App->secretareas->actual_room = SECRETROOM::ROOM3;
+			App->player->position.x = 208;
+			App->player->position.y = -(2880 - 1424 - SCREEN_HEIGHT);
+			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
+
+		}
+		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT) && App->lvl2->current_stair4_animation == &App->lvl2->stair) {
 			App->secretareas->actual_room = SECRETROOM::ROOM4;
 			App->player->position.x = 96;
 			App->player->position.y = -(2880 - 1065 - SCREEN_HEIGHT);
 			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
 		}
-		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT)) {
+		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT) && App->lvl2->current_stair5_animation == &App->lvl2->stair) {
 			App->secretareas->actual_room = SECRETROOM::ROOM5;
 			App->player->position.x = 80;
 			App->player->position.y = -(2880 - 743 - SCREEN_HEIGHT);
 			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
 		}
-		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT)) {
+		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT) && App->lvl2->current_stair6_animation == &App->lvl2->stair) {
 			App->secretareas->actual_room = SECRETROOM::ROOM6;
 			App->player->position.x = 120;
 			App->player->position.y = -(2880 - 528 - SCREEN_HEIGHT);
 			App->enemies->Disable();
+			if (current_animation != &downstairs)
+			{
+				downstairs.Reset();
+				current_animation = &downstairs;
+			}
+			if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
+				App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
 		}
-
-
-		if (current_animation != &downstairs)
-		{
-			downstairs.Reset();
-			current_animation = &downstairs;
-		}
-		if (time_Counters[stairs] > 2 && time_Counters[stairs] < 3)
-			App->fade->FadeToBlack(App->lvl2, App->secretareas, 0);
 	}
 
 
