@@ -7,7 +7,7 @@
 #include "p2Point.h"
 
 #define NUM_COLLIDERSWALL 9
-#define NUM_COLLIDERSUPSTAIRS 1
+#define NUM_COLLIDERSUPSTAIRS 10
 
 enum SECRETROOM {
 	ROOM1,
@@ -37,6 +37,7 @@ public:
 	SECRETROOM secret_room[SECRETROOM::MAX_COUNTER_ROOM];
 	SECRETROOM actual_room;
 	SDL_Texture* alphabet = nullptr;
+	SDL_Texture* swall = nullptr;
 	SDL_Texture* rect = nullptr;
 	SDL_Texture* items = nullptr;
 	SDL_Texture* background1 = nullptr;
@@ -45,11 +46,16 @@ public:
 
 	Animation gascounter;
 	Animation welcometo;
+	Animation* ystair = nullptr;
 	Animation yellowstair;
-
+	Animation yellowstairinv;
 
 	bool isup = false;
 	bool isdown = false;
+	bool gateopened = false;
+	bool playdorosound = true;
+
+	fPoint swallposition;
 
 };
 
