@@ -107,6 +107,7 @@ bool ModuleAudio::CleanUp()
 	}
 	if (sounfeffect1 != nullptr)
 	{
+		Mix_HaltChannel(-1);
 		Mix_FreeChunk(sounfeffect1);
 	}
 	Mix_CloseAudio();

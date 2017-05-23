@@ -181,8 +181,16 @@ bool Particle::Update()
 	}
 	else
 	{
-		position.x += speed.x;
-		position.y += speed.y;
+		if ((SDL_GetTicks() - born) > life / 1.1)
+		{
+			position.x -= speed.x / 2;
+			position.y -= speed.y / 2;
+		}
+		else
+		{
+			position.x += speed.x;
+			position.y += speed.y;
+		}
 	}
 
 	if(collider != nullptr)
