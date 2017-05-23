@@ -119,12 +119,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
 			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
-			if (c1->type == COLLIDER_PLAYER_GRENADE&&c2->type != COLLIDER_PLAYER_GRENADE&&c2->type != COLLIDER_PLAYER_GRENADE_EXPL)
-			{
-				App->particles->grenade_explodes.life = 1000;
-				App->particles->AddParticle(App->particles->grenade_explodes, c1->rect.x, c1->rect.y, COLLIDER_PLAYER_GRENADE_EXPL);
-			}
-			if (c1->type != COLLIDER_PLAYER_GRENADE_EXPL)
+			if (c1->type != COLLIDER_PLAYER_GRENADE_EXPL && c1->type != COLLIDER_PLAYER_GRENADE && c1->type != COLLIDER_ENEMY_GRENADE_EXPL && c1->type != COLLIDER_ENEMY_GRENADE)
 			{
 				delete active[i];
 				active[i] = nullptr;
@@ -167,6 +162,11 @@ bool Particle::Update()
 			{
 				App->particles->grenade_explodes.life = 1000;
 				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
+			}
+			else if (this->collider->type == COLLIDER_ENEMY_GRENADE)
+			{
+				App->particles->grenade_explodes.life = 1000;
+				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_ENEMY_GRENADE_EXPL);
 			}
 		}
 	}

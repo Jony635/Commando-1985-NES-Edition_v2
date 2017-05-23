@@ -10,6 +10,7 @@
 #include "Enemy_CapturerGuard.h"
 #include "Enemy_Knife.h"
 #include "ModulePlayer.h"
+#include "Enemy_BossGrenade.h"
 
 #define SPAWN_MARGIN 50
 
@@ -149,6 +150,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::KNIFE;
 			enemies[i]->collider->enemytype = ENEMY_TYPES::KNIFE;
 			break;
+		case ENEMY_TYPES::BOSSGRENADE:
+			enemies[i] = new Enemy_BossGrenade(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BOSSGRENADE;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSGRENADE;
+			break;
 		}
 	}
 }
@@ -159,23 +165,31 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL)
+			if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE)
 			{
-				App->player->score += 150;
-				enemies[i]->OnCollision(c2);
-				enemies[i]->Draw(sprites);
-				delete enemies[i];
-				enemies[i] = nullptr;
-
-				if (c1->enemytype == ENEMY_TYPES::BOSSLVL1)
+				if (c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 				{
-					App->player->score += 1850;
-					/*App->player->win = true;
-					App->player->ftimediemusic = true;*/
+					App->player->score += 150;
+					enemies[i]->OnCollision(c2);
+					delete enemies[i];
+					enemies[i] = nullptr;
+				}
+				else
+				{
+					App->player->score += 2000;
+					enemies[i]->OnCollision(c2);
+					delete enemies[i];
+					enemies[i] = nullptr;
 				}
 				break;
 			}
+			else if (c1->enemytype == BOSSGRENADE && c2->type == COLLIDER_PLAYER_GRENADE_EXPL)
+			{
+				App->player->score += 300;
+				delete enemies[i];
+				enemies[i] = nullptr;
 
+			}
 			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER || c2->type == COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 			{
 

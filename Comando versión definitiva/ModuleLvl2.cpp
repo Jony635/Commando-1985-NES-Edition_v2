@@ -68,6 +68,7 @@ bool ModuleLvl2::Start() {
 	}
 
 	//Add Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, App->player->position.x + 20, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200);
