@@ -127,7 +127,6 @@ bool ModulePlayer::Start()
 
 	//An Example of Starting one timer:
 	time_Counters[COUNTERS::Player_Die] = 12.5f;
-	time_Counters[stairs] = 0;
 
 	return true;
 }
@@ -247,7 +246,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-	if (current_animation != &downstairs&&current_animation != &upstairs) {
+	if (current_animation != &downstairs&&current_animation != &upstairs&& move) {
 		//MOVEMENT
 
 		//LEFT
@@ -705,19 +704,19 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		else if (position.y < -(2880 - 1200 - SCREEN_HEIGHT) && position.y > -(2880 - 1000 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM4;
-			App->player->position.x = 217;
+			App->player->position.x = 96;
 			App->player->position.y = -(2880 - 1065 - SCREEN_HEIGHT);
 			App->enemies->Disable();
 		}
 		else if (position.y < -(2880 - 1000 - SCREEN_HEIGHT) && position.y > -(2880 - 600 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM5;
-			App->player->position.x = 217;
+			App->player->position.x = 80;
 			App->player->position.y = -(2880 - 743 - SCREEN_HEIGHT);
 			App->enemies->Disable();
 		}
 		else if (position.y < -(2880 - 600 - SCREEN_HEIGHT) && position.y > -(2880 - SCREEN_HEIGHT)) {
 			App->secretareas->actual_room = SECRETROOM::ROOM6;
-			App->player->position.x = 217;
+			App->player->position.x = 120;
 			App->player->position.y = -(2880 - 528 - SCREEN_HEIGHT);
 			App->enemies->Disable();
 		}

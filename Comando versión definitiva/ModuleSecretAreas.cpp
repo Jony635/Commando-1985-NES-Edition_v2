@@ -187,8 +187,10 @@ bool ModuleSecretAreas::Start() {
 		App->render->camera.y = 0;
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Underground Bunker Blue.ogg", true);
 		//Add Enemies
-		//App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
+
 		//INIT THINGS
+		isdown = true;
+		isup = false;
 		App->lvl2->top = -448 + SCREEN_HEIGHT;
 		App->player->position.x = SCREEN_WIDTH / 2;
 		App->player->position.y = SCREEN_HEIGHT - 35;
@@ -199,11 +201,11 @@ bool ModuleSecretAreas::Start() {
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 32, 448 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 0, -(448 - 0 - SCREEN_HEIGHT), 256, 35 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 0, -(448 - 0 - SCREEN_HEIGHT), 256, 40 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 240, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - 35 - SCREEN_HEIGHT), 64, 60 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 32, -(448 - 95 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
-		wall[i++] = App->collision->AddCollider({ 60, -(448 - 65 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
+		wall[i++] = App->collision->AddCollider({ 60, -(448 - 95 - SCREEN_HEIGHT), 4, 25 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 31, -(448 - 216 - SCREEN_HEIGHT), 17, 48 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 32, -(448 - 442 - SCREEN_HEIGHT), 208, 6 }, COLLIDER_WALL);
 		wall[i++] = App->collision->AddCollider({ 80, -(448 - 216 - SCREEN_HEIGHT), 160, 50 }, COLLIDER_WALL);
@@ -225,9 +227,63 @@ bool ModuleSecretAreas::Start() {
 
 update_status ModuleSecretAreas::Update() {
 
-	//Render Map
-	App->render->Blit(background1, 0, 0, NULL);
+	time_Counters[gas] += 0.02;
 
+
+	//Blits in rooms
+	switch (actual_room)
+	{
+	case ROOM1:
+		App->render->Blit(background1, 0, 0, NULL);
+		break;
+	case ROOM2:
+		App->render->Blit(background1, 0, 0, NULL);
+		break;
+	case ROOM3:
+		App->render->Blit(background1, 0, 0, NULL);
+		App->render->Blit(rect, 64, 55, &(welcometo.GetCurrentFrame()));
+		App->render->Blit(items, 32, 41, &(yellowstair.frames[0]));
+		if (time_Counters[gas]>5)
+			App->render->Blit(alphabet, 128, 121, &(gascounter.GetCurrentFrame()));
+		if (time_Counters[gas] > 18)
+			App->player->dead = true;
+		break;
+	case ROOM4:
+		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
+
+		if (isdown && App->player->position.y<0 && App->render->camera.y != App->lvl2->top + 2) {
+			App->render->camera.y -= 3;
+			App->player->position.y--;
+		}
+		if (App->render->camera.y == App->lvl2->top + 2) {
+			isdown = false;
+			isup = true;
+		}
+		if (isup&&App->player->position.y > -23 && App->render->camera.y != 0) {
+			App->render->camera.y += 3;
+			App->player->position.y++;
+		}
+		if (App->render->camera.y == 0) {
+			isdown = true;
+			isup = false;
+		}
+		if (App->render->camera.y != 0 && App->render->camera.y != App->lvl2->top + 2) {
+			App->player->move = false;
+		}
+		else {
+			App->player->move = true;
+		}
+
+		break;
+	case ROOM5:
+		break;
+	case ROOM6:
+		break;
+	case MAX_COUNTER_ROOM:
+		break;
+	default:
+		break;
+	}
 	
 
 	return UPDATE_CONTINUE;
@@ -237,24 +293,6 @@ update_status ModuleSecretAreas::Update() {
 bool ModuleSecretAreas::CleanUp() {
 
 	LOG("Unloading secretareas scene");
-
-
-
-	/*for (int i = 0; i < NUM_COLLIDERSWALL; i++)
-	{
-		if (wall[i] != nullptr) {
-			delete wall[i];
-			wall[i] = nullptr;
-		}
-	}
-
-	for (int i = 0; i < NUM_COLLIDERSUPSTAIRS; i++)
-	{
-		if (upstairs[i] != nullptr) {
-			delete upstairs[i];
-			upstairs[i] = nullptr;
-		}
-	}*/
 
 	//Disables
 	App->textures->Disable();

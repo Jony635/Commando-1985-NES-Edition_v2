@@ -62,6 +62,10 @@ bool ModuleLvl2::Start() {
 		App->player->position.y -= 1000;
 		App->render->camera.y -= 1000;
 	}
+	if (App->secretareas->actual_room == ROOM4) {
+		App->player->position.y -= 1500;
+		App->render->camera.y -= 1500;
+	}
 
 	//Add Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);

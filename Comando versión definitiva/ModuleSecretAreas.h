@@ -48,6 +48,9 @@ public:
 	Animation yellowstair;
 
 
+	bool isup = false;
+	bool isdown = false;
+
 };
 
 

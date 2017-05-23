@@ -58,6 +58,7 @@ public:
 	bool blockUR = false;
 	bool blockDL = false;
 	bool blockDR = false;
+	bool move = true;
 };
 
 #endif

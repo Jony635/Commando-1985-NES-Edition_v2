@@ -119,7 +119,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
 			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
-			if (c1->type == COLLIDER_PLAYER_GRENADE)
+			if (c1->type == COLLIDER_PLAYER_GRENADE&&c2->type != COLLIDER_PLAYER_GRENADE&&c2->type != COLLIDER_PLAYER_GRENADE_EXPL)
 			{
 				App->particles->grenade_explodes.life = 1000;
 				App->particles->AddParticle(App->particles->grenade_explodes, c1->rect.x, c1->rect.y, COLLIDER_PLAYER_GRENADE_EXPL);
