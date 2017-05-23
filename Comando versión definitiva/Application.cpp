@@ -12,6 +12,7 @@
 #include "ModuleFonts.h"
 #include "ModuleAudio.h"
 #include "ModuleWelcome.h"
+#include "ModulePowerUp.h"
 #include "ModuleSecretAreas.h"
 
 Application::Application()
@@ -27,6 +28,7 @@ Application::Application()
 	modules[i++] = secretareas = new ModuleSecretAreas();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = powerup = new ModulePowerUp();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
@@ -49,6 +51,8 @@ bool Application::Init()
 	lvl2->Disable();
 	player->Disable();
 	collision->Disable();
+	powerup->Disable();
+	particles->Disable();
 	secretareas->Disable();
 	// ----------------------------
 

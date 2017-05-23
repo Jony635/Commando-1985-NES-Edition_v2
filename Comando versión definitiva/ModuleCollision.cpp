@@ -144,6 +144,16 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_UPSTAIRS] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_DOWNSTAIRS] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_PLAYER_GRENADE] = false; 
+
+	matrix[COLLIDER_POWERUP][COLLIDER_WALL] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_WATER] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_ANTIBULLET] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_UPSTAIRS] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_DOWNSTAIRS] = false;
 }
 
 // Destructor
@@ -269,6 +279,9 @@ void ModuleCollision::DebugDraw()
 			break;
 		case COLLIDER_PLAYER_GRENADE_EXPL: // pink
 			App->render->DrawQuad(colliders[i]->rect, 199, 40, 114, alpha);
+			break;
+		case COLLIDER_POWERUP: // black
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
 			break;
 		}
 	}

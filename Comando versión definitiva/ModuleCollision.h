@@ -5,6 +5,7 @@
 
 #include "Module.h"
 #include "Enemy.h"
+#include "ModulePowerUp.h"
 
 enum COLLIDER_TYPE
 {
@@ -22,6 +23,7 @@ enum COLLIDER_TYPE
 	COLLIDER_PLAYER_GRENADE_EXPL,
 	COLLIDER_ENEMY_GRENADE_EXPL,
 	COLLIDER_ENEMY_GRENADE,
+	COLLIDER_POWERUP,
 	COLLIDER_MAX
 };
 
@@ -32,6 +34,7 @@ struct Collider
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
 	ENEMY_TYPES enemytype = ENEMY_TYPES::NO_TYPE;
+	PowerUp_Types poweruptype = PowerUp_Types::POWERUP_NO_TYPE;
 	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
 		rect(rectangle),
 		type(type),
