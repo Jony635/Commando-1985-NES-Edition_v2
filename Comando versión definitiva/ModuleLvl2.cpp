@@ -228,6 +228,8 @@ bool ModuleLvl2::CleanUp(){
 	LOG("Unloading lvl2 scene");
 
 	//Disables
+	App->particles->Disable();
+	App->powerup->Disable();
 	App->enemies->Disable();
 	App->textures->Disable();
 	App->collision->Disable();

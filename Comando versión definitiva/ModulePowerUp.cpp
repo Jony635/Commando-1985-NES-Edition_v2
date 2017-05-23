@@ -76,7 +76,7 @@ bool ModulePowerUp::Start()
 bool ModulePowerUp::CleanUp()
 {
 	LOG("Unloading power ups");
-	//App->textures->Unload(graphics);
+	App->textures->Unload(graphics);
 
 	// Unload fx
 
