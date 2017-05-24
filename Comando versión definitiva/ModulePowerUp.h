@@ -9,22 +9,8 @@
 #include "ModuleCollision.h"
 
 #define MAX_POWERUP 100
+#include "ModuleCollision.h"
 
-
-enum PowerUp_Types
-{
-	POWERUP_NO_TYPE = -1,
-	BINOCULAR,
-	BULLETPROOF_VEST,
-	GASOLINE,
-	GRENADEx4,
-	GRENADEx5,
-	MEDAL,
-	MEDAL_OF_HONOR,
-	BARREL,
-	BAG,
-	MAX_POWERUP_TYPE
-};
 
 struct PowerUp
 {

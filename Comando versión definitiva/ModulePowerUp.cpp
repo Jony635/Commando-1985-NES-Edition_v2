@@ -224,11 +224,13 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				switch (c1->poweruptype)
 				{
 				case PowerUp_Types::BINOCULAR:
+					App->player->PlayerPowerUps[PowerUp_Types::BINOCULAR] = true;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::BULLETPROOF_VEST:
+					App->player->godmode = true;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;

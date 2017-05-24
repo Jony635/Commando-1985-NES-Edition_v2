@@ -11,6 +11,9 @@
 #include "Enemy_Knife.h"
 #include "ModulePlayer.h"
 #include "Enemy_BossGrenade.h"
+#include <time.h>
+#include <stdlib.h>
+#include "ModulePowerUp.h"
 
 #define SPAWN_MARGIN 50
 
@@ -55,6 +58,7 @@ update_status ModuleEnemies::PreUpdate()
 // Called before render is available
 update_status ModuleEnemies::Update()
 {
+	srand(time(0));
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr) enemies[i]->Move();
 
@@ -169,23 +173,63 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			{
 				if (c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 				{
+					int spawn_Bag_Barrel = rand() % 20;
+					switch (spawn_Bag_Barrel)
+					{
+					case 0:
+						App->powerup->AddPowerUp(PowerUp_Types::BAG, enemies[i]->position.x, enemies[i]->position.y);
+						break;
+					case 7:
+						App->powerup->AddPowerUp(PowerUp_Types::BARREL, enemies[i]->position.x, enemies[i]->position.y);
+						break;
+					default:
+						break;
+					}
+
+
 					App->player->score += 150;
 					App->particles->AddParticle(App->particles->die_Grey, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 					delete enemies[i];
 					enemies[i] = nullptr;
 				}
-				else
+
+				else //BossLvl1
 				{
-					App->player->score += 2000;
-					
-					enemies[i]->OnCollision(c2);
-					delete enemies[i];
-					enemies[i] = nullptr;
+					int spawn_Bag_Barrel = rand() % 3;
+					switch (spawn_Bag_Barrel)
+					{
+					case 0:
+						App->powerup->AddPowerUp(PowerUp_Types::BAG, enemies[i]->position.x, enemies[i]->position.y);
+						break;
+					case 1:
+						App->powerup->AddPowerUp(PowerUp_Types::BARREL, enemies[i]->position.x, enemies[i]->position.y);
+						break;
+					default:
+						break;
+
+						App->player->score += 2000;
+						enemies[i]->OnCollision(c2);
+						delete enemies[i];
+						enemies[i] = nullptr;
+
+						break;
+					}
 				}
-				break;
 			}
 			else if (c1->enemytype == BOSSGRENADE && c2->type == COLLIDER_PLAYER_GRENADE_EXPL)
 			{
+				int spawn_Bag_Barrel = rand() % 3;
+				switch (spawn_Bag_Barrel)
+				{
+				case 0:
+					App->powerup->AddPowerUp(PowerUp_Types::BAG, enemies[i]->position.x, enemies[i]->position.y);
+					break;
+				case 1:
+					App->powerup->AddPowerUp(PowerUp_Types::BARREL, enemies[i]->position.x, enemies[i]->position.y);
+					break;
+				default:
+					break;
+				}
 				App->player->score += 300;
 				App->particles->AddParticle(App->particles->die_Green, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 				delete enemies[i];

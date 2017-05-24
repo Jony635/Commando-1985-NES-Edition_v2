@@ -5,7 +5,6 @@
 
 #include "Module.h"
 #include "Enemy.h"
-#include "ModulePowerUp.h"
 
 enum COLLIDER_TYPE
 {

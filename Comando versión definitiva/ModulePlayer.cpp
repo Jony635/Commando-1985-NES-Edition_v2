@@ -13,6 +13,7 @@
 #include "ModuleSecretAreas.h"
 #include "ModuleEnemies.h"
 #include "ModuleWelcome.h"
+#include "ModulePowerUp.h"
 
 #include<stdio.h>
 

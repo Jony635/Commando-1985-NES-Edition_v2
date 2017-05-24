@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "ModulePowerUp.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -63,6 +64,8 @@ public:
 	bool playsounddead = false;
 	bool playsoundresp = false;
 	bool respawn = false;
+	bool godmode = false;
+	bool PlayerPowerUps[PowerUp_Types::MAX_POWERUP_TYPE] = {false, false, false, false, false, false, false, false};
 };
 
 #endif
