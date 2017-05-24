@@ -6,6 +6,7 @@
 #include "ModulePowerUp.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 
 ModulePowerUp::ModulePowerUp()
 {
@@ -67,6 +68,11 @@ ModulePowerUp::ModulePowerUp()
 	bag.PushBack({ 6,46,12,15 });
 	bag.PushBack({ 33,47,12,15 });
 	bag.speed = 0.08f;
+
+	ally_captured.PushBack({ 176,122,16,22 });
+	ally_captured.PushBack({ 193,122,16,22 });
+	ally_captured.speed = 0.02f;
+
 }
 
 ModulePowerUp::~ModulePowerUp()
@@ -144,6 +150,10 @@ update_status ModulePowerUp::Update()
 			{
 				App->render->Blit(graphics, powerups[i]->position.x, powerups[i]->position.y, &bag.GetCurrentFrame());
 			}
+			else if (powerups[i]->type == PowerUp_Types::ALLY_CAPTURED)
+			{
+				App->render->Blit(graphics, powerups[i]->position.x, powerups[i]->position.y, &ally_captured.GetCurrentFrame());
+			}
 		}
 	}
 
@@ -197,6 +207,10 @@ void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidd
 			case PowerUp_Types::BAG:
 				col.w = 12;
 				col.h = 15;
+				break;
+			case PowerUp_Types::ALLY_CAPTURED:
+				col.w = 16;
+				col.h = 22;
 				break;
 			}
 			powerup->position.x = x;
@@ -274,6 +288,13 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					break;
 				case PowerUp_Types::BAG:
 					App->player->score += 1000;
+					c1->to_delete = true;
+					delete powerups[i];
+					powerups[i] = nullptr;
+					break;
+				case PowerUp_Types::ALLY_CAPTURED:
+					App->player->score += 1000;
+					App->enemies->AddEnemy(ENEMY_TYPES::RUNNER, powerups[i]->position.x, powerups[i]->position.y);
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;

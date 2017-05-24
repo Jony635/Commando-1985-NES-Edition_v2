@@ -48,6 +48,8 @@ public:
 	Animation medal_of_honor;
 	Animation barrel;
 	Animation bag;
+	Animation ally_captured;
+
 	SDL_Texture* graphics = nullptr;
 
 private:

@@ -209,7 +209,12 @@ bool ModuleSecretAreas::Start() {
 		int j = 0;
 		upstairs[j++] = App->collision->AddCollider({ 36, -(448 - 95 - SCREEN_HEIGHT), 24, 5 }, COLLIDER_UPSTAIRS);
 
-
+		//Allies
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 10 - SCREEN_HEIGHT));
 
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM5) {
@@ -255,7 +260,10 @@ bool ModuleSecretAreas::Start() {
 		upstairs[j++] = App->collision->AddCollider({ 217, -(448 - 35 - SCREEN_HEIGHT), 12, 3 }, COLLIDER_UPSTAIRS);
 		upstairs[j++] = App->collision->AddCollider({ 117, -(448 - 386 - SCREEN_HEIGHT), 23, 4 }, COLLIDER_UPSTAIRS);
 
-
+		//Allies
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - SCREEN_HEIGHT));
 
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM6) {

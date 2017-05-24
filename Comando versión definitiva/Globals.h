@@ -42,6 +42,7 @@ enum PowerUp_Types
 	MEDAL_OF_HONOR,
 	BARREL,
 	BAG,
+	ALLY_CAPTURED,
 	MAX_POWERUP_TYPE
 };
 
