@@ -50,49 +50,53 @@ bool ModuleLvl2::Start() {
 	App->textures->Enable();
 	App->player->Enable();
 	App->collision->Enable();
-	App->enemies->Enable();
 	App->particles->Enable();
 	App->powerup->Enable();
 
 	//Cameras positions
 	App->render->camera.x = App->render->camera.y = 0;
 
-	App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
 
 	//Init things
 	top = -2880 + SCREEN_HEIGHT;
 
 	//respawn
 	if (App->secretareas->actual_room == ROOM2 || App->secretareas->actual_room == ROOM3) {
-		App->player->position.y -= 1000;
-		App->render->camera.y -= 1000;
+		App->player->position.y = -1000 + 140;
+		App->render->camera.y = -1000;
 	}
 	if (App->secretareas->actual_room == ROOM4) {
-		App->player->position.y -= 1500;
-		App->render->camera.y -= 1500;
+		App->player->position.y = -1500 + 140;
+		App->render->camera.y = -1500;
 	}
 	if (App->secretareas->actual_room == ROOM5) {
-		App->player->position.y -= 2000;
-		App->render->camera.y -= 2000;
+		App->player->position.y = -2000 + 140;
+		App->render->camera.y = -2000;
 	}
 	if (App->secretareas->actual_room == ROOM6) {
-		App->player->position.y -= 2500;
-		App->render->camera.y -= 2500;
+		App->player->position.y = -2500 + 140;
+		App->render->camera.y = -2500;
+	}if (checkpointpassed
+		&& App->secretareas->actual_room != ROOM4
+		&& App->secretareas->actual_room != ROOM5
+		&& App->secretareas->actual_room != ROOM6) {
+		App->player->position.y = -1470 + 140;
+		App->render->camera.y = -1470;
 	}
 
 	//Add Enemies
-	/*App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, App->player->position.x + 20, App->player->position.y - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, (SCREEN_WIDTH / 2) - 7, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	
 	//PowerUps
 	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 50, false);
@@ -193,28 +197,38 @@ bool ModuleLvl2::Start() {
 	//Colliders Water
 
 	i = 0;
-	water[i++] = App->collision->AddCollider({ 141, -(2880 - 2388 - SCREEN_HEIGHT), 71, 10 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 26, -(2880 - 2404 - SCREEN_HEIGHT), 28, 10 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 0, -(2880 - 2339 - SCREEN_HEIGHT), 84, 11 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 92, -(2880 - 2276 - SCREEN_HEIGHT), 56, 10 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 188, -(2880 - 2292 - SCREEN_HEIGHT), 68, 10 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 141 + 5, -(2880 - 2388 - SCREEN_HEIGHT), 71 - 5, 10 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 26 + 5, -(2880 - 2404 - SCREEN_HEIGHT), 28 - 5, 10 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 2339 - SCREEN_HEIGHT), 84 - 5, 11 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 92 + 5, -(2880 - 2276 - SCREEN_HEIGHT), 56 - 5, 10 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 188 + 5, -(2880 - 2292 - SCREEN_HEIGHT), 68 - 5, 10 - 5 }, COLLIDER_WATER);
 
-	water[i++] = App->collision->AddCollider({ 189, -(2880 - 2211 - SCREEN_HEIGHT), 67, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 42, -(2880 - 2099 - SCREEN_HEIGHT), 45, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 186, -(2880 - 2003 - SCREEN_HEIGHT), 13, 11 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 44, -(2880 - 2003 - SCREEN_HEIGHT), 58, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 43, -(2880 - 1874 - SCREEN_HEIGHT), 26, 13 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 189 + 5, -(2880 - 2211 - SCREEN_HEIGHT), 67 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 42 + 5, -(2880 - 2099 - SCREEN_HEIGHT), 45 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 186 + 5, -(2880 - 2003 - SCREEN_HEIGHT), 13 - 5, 11 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 44 + 5, -(2880 - 2003 - SCREEN_HEIGHT), 58 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 43 + 5, -(2880 - 1874 - SCREEN_HEIGHT), 26 - 5, 13 - 5 }, COLLIDER_WATER);
 
-	water[i++] = App->collision->AddCollider({ 106, -(2880 - 1843 - SCREEN_HEIGHT), 107, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 0, -(2880 - 1763 - SCREEN_HEIGHT), 85, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 107, -(2880 - 1523 - SCREEN_HEIGHT), 42, 12 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 144, -(2880 - 1053 - SCREEN_HEIGHT), 112, 126 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64, 126 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 106 + 5, -(2880 - 1843 - SCREEN_HEIGHT), 107 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1763 - SCREEN_HEIGHT), 85 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 107 + 5, -(2880 - 1523 - SCREEN_HEIGHT), 42 - 5, 12 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
 	
 	return true;
 }
 
 update_status ModuleLvl2::Update(){
+
+	if (!App->player->respawn && playsoundlvl2) {
+		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
+		playsoundlvl2 = false;
+	}
+
+	//checkpoint
+	if (App->player->position.y < -1400) {
+		checkpointpassed = true;
+	}
 
 	//Render Map
 	App->render->Blit(background, 0, -2880 + SCREEN_HEIGHT, NULL);

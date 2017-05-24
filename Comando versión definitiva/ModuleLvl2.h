@@ -41,6 +41,9 @@ public:
 	Collider* wall[NUM_COLLIDERSWALL];
 	Collider* water[NUM_COLLIDERSWATER];
 
+	bool playsoundlvl2 = false;
+	bool checkpointpassed = false;
+
 };
 
 #endif // __MODULELVL2_H__

@@ -29,8 +29,8 @@ public:
 	char lives_text[10];
 	char grenades_text[10];
 	uint score = 0;
-	uint live_counter = 0;
-	uint granade_counter = 0;
+	uint live_counter = 4;
+	uint granade_counter = 5;
 	Animation* current_animation = nullptr;
 	Animation upstairs;
 	Animation downstairs;
@@ -59,6 +59,10 @@ public:
 	bool blockDL = false;
 	bool blockDR = false;
 	bool move = true;
+	bool playsounddie = false;
+	bool playsounddead = false;
+	bool playsoundresp = false;
+	bool respawn = false;
 };
 
 #endif

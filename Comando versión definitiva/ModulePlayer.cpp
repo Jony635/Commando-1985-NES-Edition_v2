@@ -12,6 +12,7 @@
 #include "ModuleLvl2.h"
 #include "ModuleSecretAreas.h"
 #include "ModuleEnemies.h"
+#include "ModuleWelcome.h"
 
 #include<stdio.h>
 
@@ -113,20 +114,21 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	dead = false;
+	move = true;
+	respawn = true;
+	playsounddead = true;
+	playsounddie = true;
+	playsoundresp = true;
 	current_animation = &up;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
-	score = 0;
-	live_counter = 4;
-	granade_counter = 15;
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 
 	//An Example of Starting one timer:
-	time_Counters[COUNTERS::Player_Die] = 12.5f;
 
 	return true;
 }
@@ -155,8 +157,25 @@ bool ModulePlayer::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer::Update()
-{
+update_status ModulePlayer::Update(){
+
+	//RESPAWN
+	if (respawn && !App->secretareas->IsEnabled()) {
+		time_Counters[respawn] += 0.02f;
+		move = false;
+		App->enemies->Disable();
+		if (playsoundresp) {
+			App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - New Life Intro.ogg", false);
+			playsoundresp = false;
+		}
+		if (time_Counters[respawn] > 3.8) {
+			move = true;
+			App->enemies->Enable();
+			respawn = false;
+			App->lvl2->playsoundlvl2 = true;
+		}
+	}
+
 	//counters
 	if (current_animation == &upstairs || current_animation == &downstairs)
 		time_Counters[stairs] += 0.02;
@@ -246,7 +265,8 @@ update_status ModulePlayer::Update()
 
 		}
 
-	if (current_animation != &downstairs&&current_animation != &upstairs&& move) {
+	if (current_animation != &downstairs&&current_animation != &upstairs&& move && !dead) {
+
 		//MOVEMENT
 
 		//LEFT
@@ -536,6 +556,46 @@ update_status ModulePlayer::Update()
 		else
 			App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	}
+	else if (dead == true) {
+		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		time_Counters[Player_Die] += 0.02;
+		move = false;
+		if (current_animation != &die_w) {
+			if (current_animation != &die)
+			{
+				die.Reset();
+				current_animation = &die;
+			}
+		}
+		if (playsounddie) {
+			live_counter--;
+			granade_counter = 5;
+			App->audio->Play("Resources/Audio/Themes_SoundTrack/Life Lost.ogg", false);
+			playsounddie = false;
+		}
+		if (time_Counters[Player_Die] > 3 && live_counter > 0) {
+			if (App->lvl2->IsEnabled())
+				App->fade->FadeToBlack(App->lvl2, App->lvl2, 1);
+			if (App->secretareas->IsEnabled())
+				App->fade->FadeToBlack(App->secretareas, App->lvl2, 1);
+		}
+		else if (time_Counters[Player_Die] > 3 && live_counter == 0) {
+			if (playsounddead) {
+				granade_counter = 5;
+				App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Game Over.ogg", false);
+				playsounddead = false;
+			}
+			if (time_Counters[Player_Die] > 9) {
+				if (App->lvl2->IsEnabled())
+					App->fade->FadeToBlack(App->lvl2, App->welcome, 1);
+				if (App->secretareas->IsEnabled())
+					App->fade->FadeToBlack(App->secretareas, App->welcome, 1);
+
+
+
+			}
+		}
+	}
 	// Draw UI (score) --------------------------------------
 	sprintf(score_text, "%06d", score);
 	sprintf(lives_text, "%01d", live_counter);
@@ -648,14 +708,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//If it collides with an enemy
 
-	if ((c1->type == COLLIDER_PLAYER && (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_GRENADE_EXPL))/* && !godmode*/) {
+	if ((c1->type == COLLIDER_PLAYER && (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_GRENADE_EXPL)) && dead == false/* && !godmode*/) {
 		dead = true;
 	}
 
 	//If it collides with the water
 
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER))
-	{
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER) && !dead) {
 		if (c2->rect.x == (c1->rect.x + (c1->rect.w / 2))
 			|| (c2->rect.x + c2->rect.w) == (c1->rect.x + (c1->rect.w / 2))
 			|| c2->rect.y == (c1->rect.y + (c1->rect.h / 2))
@@ -667,7 +726,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				current_animation = &die_w;
 			}
 			current_animation = &die_w;
-			/*dead = true;*/
+			dead = true;
 		}
 	}
 	

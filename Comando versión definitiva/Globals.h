@@ -26,6 +26,7 @@ enum COUNTERS
 	Helicopter,
 	stairs,
 	gas,
+	respawn,
 	//Add your counter types here
 	MAX_COUNTER
 };
