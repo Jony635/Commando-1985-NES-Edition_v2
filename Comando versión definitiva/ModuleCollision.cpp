@@ -163,6 +163,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWERUP][COLLIDER_ANTIBULLET] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_UPSTAIRS] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_DOWNSTAIRS] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_GRENADE_EXPL] = true;
 }
 
 // Destructor

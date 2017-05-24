@@ -106,7 +106,7 @@ update_status ModulePowerUp::Update()
 {
 	for (uint i = 0; i < MAX_POWERUP; ++i)
 	{
-		if (powerups[i] != nullptr)
+		if (powerups[i] != nullptr && !powerups[i]->hidden)
 		{
 			if (powerups[i]->type == PowerUp_Types::BINOCULAR)
 			{
@@ -150,7 +150,7 @@ update_status ModulePowerUp::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y)
+void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden)
 {
 	for (uint i = 0; i < MAX_POWERUP; ++i)
 	{
@@ -204,7 +204,7 @@ void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y)
 			powerup->collider = App->collision->AddCollider(col, COLLIDER_POWERUP, this);
 			powerup->collider->poweruptype = type;
 			powerup->type = type;
-
+			powerup->hidden = hidden;
 			powerups[i] = powerup;
 			break;
 		}
@@ -218,7 +218,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (powerups[i] != nullptr && powerups[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_PLAYER) 
+			if (c2->type == COLLIDER_PLAYER && !powerups[i]->hidden)
 			{
 				switch (c1->poweruptype)
 				{
@@ -233,41 +233,53 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::GASOLINE:
+					App->player->score += 1000;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::GRENADEx4:
+					App->player->granade_counter += 4;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::GRENADEx5:
+					App->player->granade_counter += 5;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::MEDAL_OF_HONOR:
+					App->player->score += 1000;
+					App->player->live_counter += 1;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::MEDAL:
+					App->player->score += 10000;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::BARREL:
+					App->player->score += 1000;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::BAG:
+					App->player->score += 1000;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				}
+			}
+			else if (c2->type == COLLIDER_PLAYER_GRENADE_EXPL && powerups[i]->hidden)
+			{
+				powerups[i]->hidden = false;
 			}
 			break;
 		}

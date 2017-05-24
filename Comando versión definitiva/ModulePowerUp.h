@@ -11,7 +11,7 @@
 #define MAX_POWERUP 100
 
 
-enum PowerUp_Types 
+enum PowerUp_Types
 {
 	POWERUP_NO_TYPE = -1,
 	BINOCULAR,
@@ -33,6 +33,7 @@ struct PowerUp
 	iPoint position;
 	PowerUp_Types type;
 	bool fx_played = false;
+	bool hidden = false;
 
 
 	PowerUp();
@@ -50,7 +51,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddPowerUp(const PowerUp_Types type, int x, int y);
+	void AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden = false);
 
 	Animation binocular;
 	Animation bulletproof_vest;

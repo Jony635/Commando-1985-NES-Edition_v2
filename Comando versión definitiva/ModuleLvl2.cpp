@@ -81,7 +81,7 @@ bool ModuleLvl2::Start() {
 	}
 
 	//Add Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, App->player->position.x + 20, App->player->position.y - 200);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, App->player->position.x + 20, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::CAPTURERGUARD, App->player->position.x, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200);
@@ -92,11 +92,22 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, App->player->position.x, App->player->position.y - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);*/
 	
 	//PowerUps
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT));
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 50, false);
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 100, false);
+	App->powerup->AddPowerUp(PowerUp_Types::BAG, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 150, false);
+	App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 200, false);
+	App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 250, false);
+	App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 300, false);
 
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 70, true);
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 120, true);
+	App->powerup->AddPowerUp(PowerUp_Types::BAG, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 170, true);
+	App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 220, true);
+	App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 280, true);
+	App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 320, true);
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);
