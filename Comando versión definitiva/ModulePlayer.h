@@ -25,11 +25,6 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* ui_stuff = nullptr;
 	SDL_Texture* graphparticles = nullptr;
-	SDL_Texture* bridge = nullptr;
-	SDL_Texture* room1 = nullptr;
-	SDL_Texture* room4 = nullptr;
-	SDL_Texture* room5 = nullptr;
-	SDL_Texture* room6 = nullptr;
 	int font_score = -1;
 	char score_text[10];
 	char lives_text[10];
