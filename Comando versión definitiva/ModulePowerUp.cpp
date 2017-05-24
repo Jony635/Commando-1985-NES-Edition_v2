@@ -220,6 +220,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type == COLLIDER_PLAYER && !powerups[i]->hidden)
 			{
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Grenades_Powerups Taken.wav");
 				switch (c1->poweruptype)
 				{
 				case PowerUp_Types::BINOCULAR:
