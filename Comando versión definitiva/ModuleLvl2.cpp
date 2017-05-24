@@ -99,19 +99,12 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200 - 200);
 	
 	//PowerUps
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 50, false);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 100, false);
-	App->powerup->AddPowerUp(PowerUp_Types::BAG, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 150, false);
-	App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 200, false);
-	App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 250, false);
-	App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 300, false);
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 48, -(2880 - 2432 - SCREEN_HEIGHT), false);
+	App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, 216, -(2880 - 1992 - SCREEN_HEIGHT), true);
+	App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, 174, -(2880 - 1648 - SCREEN_HEIGHT), true);
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 32, -(2880 - 1216 - SCREEN_HEIGHT), false);
+	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false);
 
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 70, true);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 120, true);
-	App->powerup->AddPowerUp(PowerUp_Types::BAG, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 170, true);
-	App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 220, true);
-	App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 280, true);
-	App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 45, -(2880 - 2572 - SCREEN_HEIGHT) - 320, true);
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);

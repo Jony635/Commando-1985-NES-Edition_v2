@@ -82,6 +82,8 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 218, 72, false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, 0, 256, 31 }, COLLIDER_WALL);
@@ -114,6 +116,9 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.x = SCREEN_WIDTH / 2;
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
+
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 26, 49, false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 48, 49, false);
 
 		//WALL
 		int i = 0;
@@ -190,6 +195,8 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 212, -(448 - 289 - SCREEN_HEIGHT), false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 32, 448 }, COLLIDER_WALL);
@@ -240,6 +247,11 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 299 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 331 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 363 - SCREEN_HEIGHT), false);
+		App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 24, -(448 - 286 - SCREEN_HEIGHT), false);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
@@ -286,6 +298,12 @@ bool ModuleSecretAreas::Start() {
 
 
 		//colliders 
+
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 72, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 120, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 184, -(448 - 100 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 97, -(448 - 300 - SCREEN_HEIGHT));
+		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 155, -(448 - 300 - SCREEN_HEIGHT));
 
 		//WALL
 		int i = 0;
