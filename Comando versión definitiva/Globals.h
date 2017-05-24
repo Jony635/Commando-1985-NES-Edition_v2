@@ -29,6 +29,7 @@ enum COUNTERS
 	//Add your counter types here
 	MAX_COUNTER
 };
+
 float time_Counters[COUNTERS::MAX_COUNTER];
 
 // Useful typedefs ---------

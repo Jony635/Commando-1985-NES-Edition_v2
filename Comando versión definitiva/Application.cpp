@@ -14,6 +14,7 @@
 #include "ModuleWelcome.h"
 #include "ModulePowerUp.h"
 #include "ModuleSecretAreas.h"
+#include "Globals.h"
 
 Application::Application()
 {
