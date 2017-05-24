@@ -104,11 +104,13 @@ bool ModuleAudio::CleanUp()
 	if (soundtrack != NULL)
 	{
 		Mix_FreeMusic(soundtrack);
+		soundtrack = nullptr;
 	}
 	if (sounfeffect1 != nullptr)
 	{
 		Mix_HaltChannel(-1);
 		Mix_FreeChunk(sounfeffect1);
+		sounfeffect1 = nullptr;
 	}
 	Mix_CloseAudio();
 	Mix_Quit();

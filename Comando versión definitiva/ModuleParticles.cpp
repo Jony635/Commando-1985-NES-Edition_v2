@@ -93,13 +93,19 @@ update_status ModuleParticles::Update()
 		else if(SDL_GetTicks() >= p->born)
 		{
 			App->render->Blit(App->player->graphparticles, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));			
-			if(p->fx_played == false)
+			// play the audio SFX
+			if (p->collider->type == COLLIDER_PLAYER_SHOT && !p->fx_played)
 			{
-				if (p->collider->type == COLLIDER_PLAYER_SHOT)
 				App->audio->PlaySound("Resources/Audio/Sound Effects/Shoot.wav");
 				p->fx_played = true;
-				// play the audio SFX
 			}
+			else if (p->collider->type == COLLIDER_PLAYER_GRENADE && !p->fx_played && (SDL_GetTicks() - p->born) > p->life / 1.1)
+			{
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Stairs Down Appeared.wav");
+				p->fx_played = true;
+			}
+			
+			
 		}
 	}
 
@@ -220,7 +226,7 @@ bool Particle::Update()
 		if(anim.Finished())
 			ret = false;
 
-	if (this->collider->type != COLLIDER_PLAYER_GRENADE || this->collider->type != COLLIDER_ENEMY_GRENADE)
+	if (this->collider->type != COLLIDER_PLAYER_GRENADE && this->collider->type != COLLIDER_ENEMY_GRENADE)
 	{
 		position.x += speed.x;
 		position.y += speed.y;

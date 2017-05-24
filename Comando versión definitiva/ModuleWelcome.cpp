@@ -33,23 +33,26 @@ bool ModuleWelcome::Start() {
 
 update_status ModuleWelcome::Update() {
 
-	if (App->input->keyboard[SDL_SCANCODE_S]==KEY_DOWN||
-		App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN]==KEY_DOWN)
-	{
-		if (Menu_Options == MENU::Lvl2)
-			Menu_Options = MENU::exit;
-		else if(Menu_Options == MENU::exit)
-			Menu_Options = MENU::Lvl2;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_W]==KEY_DOWN ||
-		App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP]==KEY_DOWN)
-	{
-		if (Menu_Options == MENU::Lvl2)
-			Menu_Options = MENU::exit;
-		else if (Menu_Options == MENU::exit)
-			Menu_Options = MENU::Lvl2;
-	}
 
+	if (!App->fade->IsFading())
+	{
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_DOWN ||
+			App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_DOWN)
+		{
+			if (Menu_Options == MENU::Lvl2)
+				Menu_Options = MENU::exit;
+			else if (Menu_Options == MENU::exit)
+				Menu_Options = MENU::Lvl2;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN ||
+			App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_DOWN)
+		{
+			if (Menu_Options == MENU::Lvl2)
+				Menu_Options = MENU::exit;
+			else if (Menu_Options == MENU::exit)
+				Menu_Options = MENU::Lvl2;
+		}
+	}
 	//Render Map
 	if(Menu_Options==MENU::Lvl2)
 	App->render->Blit(Area2Option, 0,  0, NULL);
