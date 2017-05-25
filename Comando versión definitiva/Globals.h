@@ -43,6 +43,7 @@ enum PowerUp_Types
 	BARREL,
 	BAG,
 	ALLY_CAPTURED,
+	MEGA_SHOOT,
 	MAX_POWERUP_TYPE
 };
 

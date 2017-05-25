@@ -216,35 +216,48 @@ update_status ModulePlayer::Update(){
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_X]==KEY_STATE::KEY_DOWN)
 		if (current_animation == &up)
 		{
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
+
 				App->particles->bullet.speed.y = -5;
 				App->particles->bullet.speed.x = 0;
-				App->particles->bullet.life = 300;
+				if(!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+					App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.y = -5;
 				App->particles->mega_bullet.speed.x = 0;
-				App->particles->mega_bullet.life = 300;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+					App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x + (col->rect.w / 2), position.y, COLLIDER_PLAYER_SHOT);
 			}
 		}
 		else if (current_animation == &down)
 		{
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.x = 0;
 				App->particles->bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.x = 0;
 				App->particles->mega_bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
 			}
 
@@ -252,36 +265,48 @@ update_status ModulePlayer::Update(){
 		else if (current_animation == &right)
 		{
 
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, (position.x + col->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.y = 0;
 				App->particles->mega_bullet.speed.x = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, (position.x + col->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
 			}
 
 		}
 		else if (current_animation == &left)
 		{
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.y = 0;
 				App->particles->mega_bullet.speed.x = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
 			}
 
@@ -289,18 +314,24 @@ update_status ModulePlayer::Update(){
 		else if (current_animation == &ur)
 		{
 
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.x = 5;
 				App->particles->mega_bullet.speed.y = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x + col->rect.w, position.y, COLLIDER_PLAYER_SHOT);
 			}
 
@@ -308,36 +339,48 @@ update_status ModulePlayer::Update(){
 		else if (current_animation == &ul)
 		{
 
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.x = -5;
 				App->particles->mega_bullet.speed.y = -5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
 			}
 
 		}
 		else if (current_animation == &dr)
 		{
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.x = 5;
 				App->particles->mega_bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x + col->rect.w, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
 			}
 
@@ -345,18 +388,25 @@ update_status ModulePlayer::Update(){
 		else if (current_animation == &dl)
 		{
 
-			if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
 			{
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->bullet.life = 300;
+				else
+					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
 			}
 			else
 			{
 				App->particles->mega_bullet.speed.x = -5;
 				App->particles->mega_bullet.speed.y = 5;
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 				App->particles->mega_bullet.life = 300;
+				else
+					App->particles->mega_bullet.life = 600;
+
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
 			}
 
