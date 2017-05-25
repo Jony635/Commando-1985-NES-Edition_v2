@@ -37,6 +37,7 @@ public:
 	uint score = 0;
 	uint live_counter = 4;
 	uint granade_counter = 5;
+	uint highscore = 0;
 	Animation* current_animation = nullptr;
 	Animation upstairs;
 	Animation downstairs;
@@ -71,6 +72,7 @@ public:
 	bool respawn = false;
 	bool godmode = false;
 	bool PlayerPowerUps[PowerUp_Types::MAX_POWERUP_TYPE] = { false, false, false, false, false, false, false, false , false , false, false};
+	bool soundhighscore = true;
 };
 
 #endif

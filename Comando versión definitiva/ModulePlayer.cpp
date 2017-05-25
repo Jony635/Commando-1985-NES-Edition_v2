@@ -116,6 +116,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	dead = false;
 	move = true;
+	if (!App->welcome->IsEnabled())
 	respawn = true;
 	playsounddead = true;
 	playsounddie = true;
@@ -170,6 +171,16 @@ bool ModulePlayer::CleanUp()
 
 // Update: draw background
 update_status ModulePlayer::Update(){
+
+	//HIGHSCORE
+	if (score > highscore&&score>20000) {
+		highscore = score;
+		if (soundhighscore) {
+			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
+			soundhighscore = false;
+		}
+	}
+
 	if (dead)
 	{
 		for (int i = 0; i < PowerUp_Types::MAX_POWERUP_TYPE; ++i)
@@ -688,7 +699,7 @@ update_status ModulePlayer::Update(){
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
-	if (dead == false) 
+	if (dead == false && !App->welcome->IsEnabled())
 	{
 		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -730,7 +741,7 @@ update_status ModulePlayer::Update(){
 			}
 		}
 	}
-	else if (dead == true) {
+	else if (dead == true && !App->welcome->IsEnabled()) {
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 		time_Counters[Player_Die] += 0.02;
 		move = false;
@@ -770,16 +781,18 @@ update_status ModulePlayer::Update(){
 			}
 		}
 	}
-	// Draw UI (score) --------------------------------------
-	sprintf(score_text, "%06d", score);
-	sprintf(lives_text, "%01d", live_counter);
-	sprintf(grenades_text, "%02d", granade_counter);
+	if (!App->welcome->IsEnabled()) {
+		// Draw UI (score) --------------------------------------
+		sprintf(score_text, "%06d", score);
+		sprintf(lives_text, "%01d", live_counter);
+		sprintf(grenades_text, "%02d", granade_counter);
 
-	App->fonts->BlitText(16, 9, font_score, score_text);
-	App->render->Blit(ui_stuff, 18, 209, &lives, false);
-	App->render->Blit(ui_stuff, 123, 212, &granade, false);
-	App->fonts->BlitText(32, 215, font_score, lives_text);
-	App->fonts->BlitText(136, 215, font_score, grenades_text);
+		App->fonts->BlitText(16, 16, font_score, score_text);
+		App->render->Blit(ui_stuff, 18, 209, &lives, false);
+		App->render->Blit(ui_stuff, 123, 212, &granade, false);
+		App->fonts->BlitText(32, 215, font_score, lives_text);
+		App->fonts->BlitText(136, 215, font_score, grenades_text);
+	}
 
 	return UPDATE_CONTINUE;
 }

@@ -167,8 +167,7 @@ bool ModuleSecretAreas::Start() {
 
 		//UPSTAIRS
 		int j = 0;
-		upstairs[j++] = App->collision->AddCollider({ 40, 44, 2, 2 }, COLLIDER_UPSTAIRS);
-
+		upstairs[j++] = App->collision->AddCollider({ 40, 34, 2, 12 }, COLLIDER_UPSTAIRS);
 
 
 	}
@@ -214,12 +213,11 @@ bool ModuleSecretAreas::Start() {
 		upstairs[j++] = App->collision->AddCollider({ 36, -(448 - 95 - SCREEN_HEIGHT), 24, 5 }, COLLIDER_UPSTAIRS);
 
 		//Allies
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 10 - SCREEN_HEIGHT));
-
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - 5 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 3 - SCREEN_HEIGHT));
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM5) {
 
@@ -266,13 +264,13 @@ bool ModuleSecretAreas::Start() {
 
 		//UPSTAIRS
 		int j = 0;
-		upstairs[j++] = App->collision->AddCollider({ 217, -(448 - 35 - SCREEN_HEIGHT), 12, 3 }, COLLIDER_UPSTAIRS);
-		upstairs[j++] = App->collision->AddCollider({ 117, -(448 - 386 - SCREEN_HEIGHT), 23, 4 }, COLLIDER_UPSTAIRS);
+		upstairs[j++] = App->collision->AddCollider({ 227, -(448 - 35 - 5 - SCREEN_HEIGHT), 5, 3 }, COLLIDER_UPSTAIRS);
+		upstairs[j++] = App->collision->AddCollider({ 127, -(448 - 386 - SCREEN_HEIGHT), 10, 4 }, COLLIDER_UPSTAIRS);
 
 		//Allies
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
 
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM6) {
@@ -374,7 +372,7 @@ update_status ModuleSecretAreas::Update() {
 		break;
 	case ROOM5:
 
-		if (App->player->position.x < 50 && App->player->position.y == -(448 - 282 - SCREEN_HEIGHT) && (int)swallposition.y != 221) {
+		if (App->player->position.x < 50 && App->player->position.y == 42 && (int)swallposition.y != 221) {
 			swallposition.y += 0.1;
 			App->player->move = false;
 			if (playdorosound) {
