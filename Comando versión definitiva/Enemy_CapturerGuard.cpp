@@ -20,7 +20,7 @@ Enemy_CapturerGuard::Enemy_CapturerGuard(int x, int y) : Enemy(x, y)
 	CapturerGuard_Die.loop = false;
 	CapturerGuard_Die.speed = 0.08f;
 
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &CapturerGuard_Default;
 	original_pos.x = x;
 	original_pos.y = y;

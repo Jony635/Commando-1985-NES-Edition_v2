@@ -4,6 +4,9 @@
 #include <time.h>
 #include<stdlib.h>
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
+#include <math.h>
+
 Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 {
 	srand(time(NULL));
@@ -35,7 +38,7 @@ Enemy_WhiteGuard::Enemy_WhiteGuard(int x, int y) : Enemy(x, y)
 	WhiteGuard_Down.PushBack({ 17, 23, 15, 22 });
 	WhiteGuard_Down.speed = 0.07f;
 
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -184,8 +187,76 @@ void Enemy_WhiteGuard::Move()
 			path.ResetlastStep();
 			path.PushBack({ vx, vy }, frames, anim);
 
+
 		}
 	}
+	if (shoots > 0)
+	{
+		if (App->player->position.y < position.y) // Dispara hacia arriba
+		{
+
+			if ((App->player->position.y < 0 && position.y < 0) || (App->player->position.y > 0 && position.y > 0))
+			{
+				distance = ABS(ABS(App->player->position.y) - ABS(position.y));
+
+			}
+			else
+			{
+				distance = ABS(App->player->position.y) + ABS(position.y);
+			}
+		}
+		else if (App->player->position.y > position.y) //Dispara hacia abajo
+		{
+			if ((App->player->position.y < 0 && position.y < 0) || (App->player->position.y > 0 && position.y > 0))
+			{
+				distance = ABS(ABS(App->player->position.y) - ABS(position.y));
+			}
+			else
+			{
+				distance = ABS(App->player->position.y) + ABS(position.y);
+			}
+		}
+
+		if (distance < 150 && App->player->position.y<0 && position.y<0 && shootmadafuka)
+		{
+			angle = atan2((double)ABS(App->player->position.y) - ABS(position.y), (double)App->player->position.x - position.x); //Angulo en radianes, enemigo arriba
+			this->sino = sin(angle);
+			this->cosino = cos(angle);
+
+
+			if (cosino < 0) cosino *= -1;
+			if (sino < 0) sino *= -1;
+
+			if (App->player->position.x < position.x)
+				shoot_vx = -2 * cosino;
+			else if (App->player->position.x > position.x)
+				shoot_vx = 2 * cosino;
+			else shoot_vx = 0;
+			if (App->player->position.y < position.y)
+				shoot_vy = -2 * sino;
+			else if (App->player->position.y > position.y)
+				shoot_vy = 2 * sino;
+			else
+				shoot_vy = 2;
+
+			App->particles->bullet.life = 10000;
+			App->particles->bullet.speed.x = shoot_vx;
+			App->particles->bullet.speed.y = shoot_vy;
+			App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+			shoots--;
+			shootmadafuka = false;
+		}
+		if (shoots == 1)
+		{
+			shoot_counter += 0.2f;
+		}
+		if (shoot_counter >= 30.0f)
+		{
+			shootmadafuka = true;
+		}
+
+	}
+
 	position = original_pos + path.GetCurrentPosition(&animation);
 	rightleftcentered = false;
 }

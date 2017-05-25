@@ -23,7 +23,7 @@ Runner::Runner(int x, int y) : Enemy(x, y)
 	RunnerRight_Grenades.speed = 0.07f;
 	
 
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 1, 1 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &RunnerRight_Points;
 	original_pos.x = x;
 	original_pos.y = y;

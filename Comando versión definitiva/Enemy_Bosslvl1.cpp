@@ -25,7 +25,7 @@ Enemy_Bosslvl1::Enemy_Bosslvl1(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	//Collider
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 21, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	//Default Animation
 	//animation = &default;
 	//Path Definition

@@ -30,7 +30,7 @@ Enemy_Knife::Enemy_Knife(int x, int y) : Enemy(x, y)
 	Knife_Down.PushBack({ 129, 81, 15, 22 });
 	Knife_Down.speed = 0.07f;
 
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &Knife_Left;
 	original_pos.x = x;
 	original_pos.y = y;

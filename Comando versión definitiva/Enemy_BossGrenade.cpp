@@ -19,7 +19,7 @@ Enemy_BossGrenade::Enemy_BossGrenade(int x, int y) : Enemy(x, y)
 	BossGrenade_DownGrenade.speed = 0.02f;
 	BossGrenade_DownGrenade.loop = false;
 
-	collider = App->collision->AddCollider({ 0, 0, 10, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &BossGrenade_Stand;
 	original_pos.x = x;
 	original_pos.y = y;
