@@ -20,11 +20,11 @@
 
 ModulePlayer::ModulePlayer()
 {
-	//bridge lvl1
+	//bridge lvl2
 	bridgelvl2.x = 0;
 	bridgelvl2.y = 0;
 	bridgelvl2.w = 256;
-	bridgelvl2.h = 95;
+	bridgelvl2.h = 96;
 
 	//upstairs
 	upstairs.PushBack({ 40, 2, 11, 21 });
@@ -124,10 +124,16 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
+	bridge = App->textures->Load("Resources/Screens/bridgelvl2.png");//puente
+	room1 = App->textures->Load("Resources/Screens/sa1-walls.png");
+	room4 = App->textures->Load("Resources/Screens/sa4-walls.png");
+	room5 = App->textures->Load("Resources/Screens/sa5-walls.png");
+	room6 = App->textures->Load("Resources/Screens/sa6-walls.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
+
 
 	//An Example of Starting one timer:
 
@@ -142,6 +148,11 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(graphics);
 	App->textures->Unload(ui_stuff);
 	App->textures->Unload(graphparticles);
+	App->textures->Unload(bridge);
+	App->textures->Unload(room1);
+	App->textures->Unload(room4);
+	App->textures->Unload(room5);
+	App->textures->Unload(room6);
 	App->collision->EraseCollider(col);
 	App->fonts->UnLoad(font_score);
 	
@@ -542,7 +553,8 @@ update_status ModulePlayer::Update(){
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
-	if (dead == false) {
+	if (dead == false) 
+	{
 		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&&App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
@@ -550,12 +562,38 @@ update_status ModulePlayer::Update(){
 			&& (App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_STATE::KEY_IDLE
 				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_IDLE
 				&&App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_STATE::KEY_IDLE
-				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE) 
+				&& App->input->buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_STATE::KEY_IDLE)
 			&& current_animation != &upstairs
 			&& current_animation != &downstairs)
+		{
 			App->render->Blit(graphics, position.x, position.y, &(current_animation->frames[0]));
+		}
 		else
+		{
 			App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		}
+		if (App->lvl2->IsEnabled())
+		{
+			App->render->Blit(bridge, 0, -(2880 - 1344 - SCREEN_HEIGHT), &bridgelvl2);
+		}
+		else if (App->secretareas->IsEnabled())
+		{
+			switch (App->secretareas->actual_room)
+			{
+			case ROOM1:
+				App->render->Blit(room1, 0, 0, NULL);
+				break;
+			case ROOM4:				
+				App->render->Blit(room4, 0, -(448 - SCREEN_HEIGHT), NULL);
+				break;
+			case ROOM5:				
+				App->render->Blit(room5, 0, -(448 - SCREEN_HEIGHT), NULL);
+				break;
+			case ROOM6:				
+				App->render->Blit(room6, 0, -(448 - SCREEN_HEIGHT), NULL);
+				break;
+			}
+		}
 	}
 	else if (dead == true) {
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
