@@ -28,7 +28,10 @@ public:
 	bool grenading = false;
 	Animation* anim = nullptr;
 
-
+	void setMove(bool boolean);
+	bool getRelax();
+	bool relax = false;
+	bool move = true;
 	float grenadecounter = 0.0f;
 	float counterReset = 0.0f;
 	Animation getDie();

@@ -75,6 +75,7 @@ public:
 	{
 		current_frame = 0;
 		finished = false;
+		loop = true;
 	}
 	uint getCurrent_Frame() const
 	{

@@ -37,7 +37,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden = false);
+	PowerUp* AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden = false);
 
 	Animation binocular;
 	Animation bulletproof_vest;

@@ -41,6 +41,8 @@ ModuleParticles::ModuleParticles()
 	die_Grey.anim.speed = 0.07f;
 	die_Grey.anim.loop = false;
 	die_Grey.life = 1000;
+
+	mega_bullet.anim.PushBack({ 11, 17, 6, 6 });
 }
 
 ModuleParticles::~ModuleParticles()

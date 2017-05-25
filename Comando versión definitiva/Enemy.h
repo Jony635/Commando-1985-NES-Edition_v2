@@ -55,6 +55,8 @@ public:
 	virtual void ColPathDown() {};
 	virtual void ColPathLeft() {};
 	virtual void ColPathRight() {};
+	virtual void setMove(bool boolean) {};
+	virtual bool getRelax() { return false; };
 	virtual bool* getMoving() const { bool* buf = nullptr; return buf; };
 };
 

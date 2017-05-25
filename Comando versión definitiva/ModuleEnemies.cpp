@@ -224,6 +224,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 						}
 					}
 				}
+				else if (c1->enemytype == BOSSGRENADE && c2->enemytype == BOSSGRENADE)
+				{
+					enemies[i]->setMove(false);
+				}
 				else if (c1->enemytype == BOSSGRENADE && c2->type == COLLIDER_PLAYER_GRENADE_EXPL) //Si es el bombas
 				{
 					int spawn_Bag_Barrel = rand() % 3;
@@ -245,11 +249,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 				}
 			}
-			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_WATER || c2->type == COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1)
+			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE)
 			{
-
-
-					
+				AddEnemy(enemies[i]->type, enemies[i]->position.x - 200, enemies[i]->position.y - 200);
+				delete enemies[i];
+				enemies[i] = nullptr;
 				break;
 			}
 		}

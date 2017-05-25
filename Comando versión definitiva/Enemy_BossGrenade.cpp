@@ -34,26 +34,50 @@ Animation Enemy_BossGrenade::getDie()
 {
 	return BossGrenade_Stand;
 }
+bool Enemy_BossGrenade::getRelax()
+{
+	return relax;
+}
+void Enemy_BossGrenade::setMove(bool boolean)
+{
+	move = boolean;
+}
 void Enemy_BossGrenade::Move()
 {
-	
-	if (App->player->position.x - position.x < -5 && grenadecounter < 20.0f) //Muevete pa la iskierda
+	if (move)
 	{
-		vx = -0.8f;
-		vy = 0.0f;
-		anim = &BossGrenade_Stand;
-		frames = position.x - App->player->position.x;
-		
+		if (App->player->position.x - position.x < -5 && grenadecounter < 20.0f) //Muevete pa la iskierda
+		{
+			vx = -0.8f;
+			vy = 0.0f;
+			anim = &BossGrenade_Stand;
+			frames = position.x - App->player->position.x;
 
+
+		}
+		else if (App->player->position.x - position.x > 5 && grenadecounter < 20.0f) //Muevete pa la deresha
+		{
+			vx = 0.8f;
+			vy = 0.0f;
+			anim = &BossGrenade_Stand;
+			frames = App->player->position.x - position.x;
+
+		}
 	}
-	else if (App->player->position.x - position.x > 5 && grenadecounter < 20.0f) //Muevete pa la deresha
+	else
 	{
-		vx = 0.8f;
-		vy = 0.0f;
+		relax = true;
 		anim = &BossGrenade_Stand;
-		frames = App->player->position.x - position.x;
-		
-
+		frames = 15;
+		vx = -vx;
+		path.Reset();
+		path.ResetlastStep();
+		path.PushBack({ vx, vy }, frames, anim);
+		path.loop = false;
+	}
+	if (path.finished)
+	{
+		relax = false;
 	}
 	grenadecounter += 0.2f;
 	if (grenadecounter >= 20.0f)
@@ -77,8 +101,12 @@ void Enemy_BossGrenade::Move()
 		grenading = false;
 		anim = &BossGrenade_Stand;
 	}
-	path.Reset();
-	path.ResetlastStep();
-	path.PushBack({vx, vy}, frames, anim);
+	if (!relax)
+	{
+		path.Reset();
+		path.ResetlastStep();
+		path.PushBack({ vx, vy }, frames, anim);
+	}
 	position = original_pos + path.GetCurrentPosition(&animation);
+	move = true;
 }

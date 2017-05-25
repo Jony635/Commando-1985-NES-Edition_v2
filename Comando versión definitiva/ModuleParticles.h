@@ -55,6 +55,7 @@ public:
 	Particle grenade;
 	Particle explosion;
 	Particle bullet;
+	Particle mega_bullet;
 };
 
 #endif // __MODULEPARTICLES_H__

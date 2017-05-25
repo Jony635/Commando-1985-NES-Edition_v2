@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleSecretAreas.h"
 
 ModulePowerUp::ModulePowerUp()
 {
@@ -160,7 +161,8 @@ update_status ModulePowerUp::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden)
+
+PowerUp* ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden)
 {
 	for (uint i = 0; i < MAX_POWERUP; ++i)
 	{
@@ -220,6 +222,7 @@ void ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidd
 			powerup->type = type;
 			powerup->hidden = hidden;
 			powerups[i] = powerup;
+			return powerups[i];
 			break;
 		}
 	}
