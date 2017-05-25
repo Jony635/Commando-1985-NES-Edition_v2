@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModulePlayer.h"
 
 
 ModuleInput::ModuleInput() : Module()
@@ -87,6 +88,15 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE] ||
 		buttons[SDL_CONTROLLER_BUTTON_B])
 		return update_status::UPDATE_STOP;
+
+	if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && !App->player->godmode)
+	{
+		App->player->godmode = true;
+	}
+	else if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->player->godmode)
+	{
+		App->player->godmode = false;
+	}
 
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
