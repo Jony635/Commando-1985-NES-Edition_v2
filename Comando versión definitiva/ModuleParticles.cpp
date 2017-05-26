@@ -221,11 +221,6 @@ bool Particle::Update()
 			ret = false;
 			if (this->collider->type == COLLIDER_PLAYER_GRENADE)
 			{
-				App->particles->grenade_explodes.life = 1000;
-				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
-			}
-			else if (this->collider->type == COLLIDER_ENEMY_GRENADE)
-			{
 				if (!App->player->PlayerPowerUps[PowerUp_Types::HANDGRANADE])
 				{
 					App->particles->grenade_explodes.life = 1000;
@@ -236,6 +231,13 @@ bool Particle::Update()
 					App->particles->MEGA_grenade_explodes.life = 1000;
 					App->particles->AddParticle(App->particles->MEGA_grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
 				}
+			}
+			else if (this->collider->type == COLLIDER_ENEMY_GRENADE)
+			{
+
+				App->particles->grenade_explodes.life = 1000;
+				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
+
 			}
 		}
 	}

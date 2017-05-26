@@ -81,10 +81,12 @@
     <ClInclude Include="Enemy_Bosslvl1.h" />
     <ClInclude Include="Enemy_Bunker.h" />
     <ClInclude Include="Enemy_CapturerGuard.h" />
+    <ClInclude Include="Enemy_Car.h" />
     <ClInclude Include="Enemy_Hole.h" />
     <ClInclude Include="Enemy_Knife.h" />
     <ClInclude Include="Enemy_Motorbike.h" />
     <ClInclude Include="Enemy_Rocket.h" />
+    <ClInclude Include="Enemy_Truck.h" />
     <ClInclude Include="Enemy_WhiteGuard.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -116,10 +118,12 @@
     <ClCompile Include="Enemy_Bosslvl1.cpp" />
     <ClCompile Include="Enemy_Bunker.cpp" />
     <ClCompile Include="Enemy_CapturerGuard.cpp" />
+    <ClCompile Include="Enemy_Car.cpp" />
     <ClCompile Include="Enemy_Hole.cpp" />
     <ClCompile Include="Enemy_Knife.cpp" />
     <ClCompile Include="Enemy_Motorbike.cpp" />
     <ClCompile Include="Enemy_Rocket.cpp" />
+    <ClCompile Include="Enemy_Truck.cpp" />
     <ClCompile Include="Enemy_WhiteGuard.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

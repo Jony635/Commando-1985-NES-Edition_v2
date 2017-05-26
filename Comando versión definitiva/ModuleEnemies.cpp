@@ -19,6 +19,8 @@
 #include "Enemy_Hole.h"
 #include "Enemy_Rocket.h"
 #include "ModuleAudio.h"
+#include "Enemy_Car.h"
+#include "Enemy_Truck.h"
 
 #define SPAWN_MARGIN 50
 
@@ -195,6 +197,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::ROCKET;
 			enemies[i]->collider->enemytype = ENEMY_TYPES::ROCKET;
 			break;
+		case ENEMY_TYPES::CAR:
+			enemies[i] = new Enemy_Car(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::CAR;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::CAR;
+			break;
+		case ENEMY_TYPES::TRUCK:
+			enemies[i] = new Enemy_Truck(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::TRUCK;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::TRUCK;
+			break;
 		}
 	}
 }
@@ -206,7 +218,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE) //Los runner son inmortales
+			if (enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK) //Los runner son inmortales
 			{
 				if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE && c1->enemytype != HOLE) //Si se les dispara o les explota una bomba y no son el boss grenade
 				{
@@ -292,7 +304,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE
-				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE)
+				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK)
 			{
 				AddEnemy(enemies[i]->type, enemies[i]->position.x - 200, enemies[i]->position.y - 200);
 				delete enemies[i];
