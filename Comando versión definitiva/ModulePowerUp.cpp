@@ -162,8 +162,8 @@ update_status ModulePowerUp::Update()
 }
 
 
-PowerUp* ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden)
-{
+PowerUp* ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden, char* label) {
+
 	for (uint i = 0; i < MAX_POWERUP; ++i)
 	{
 		if (powerups[i] == nullptr)
@@ -221,6 +221,9 @@ PowerUp* ModulePowerUp::AddPowerUp(const PowerUp_Types type, int x, int y, bool 
 			powerup->collider->poweruptype = type;
 			powerup->type = type;
 			powerup->hidden = hidden;
+			if (label != "null") {
+				powerup->label = label;
+			}
 			powerups[i] = powerup;
 			return powerups[i];
 			break;
@@ -242,11 +245,13 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				{
 				case PowerUp_Types::BINOCULAR:
 					App->player->PlayerPowerUps[PowerUp_Types::BINOCULAR] = true;
+					App->player->PlayerPowerUps[pu_taken_lvl2::binocular] = true;
 					c1->to_delete = true;
 					delete powerups[i];
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::BULLETPROOF_VEST:
+					App->player->PlayerPowerUps[pu_taken_lvl2::godmode] = true;
 					App->player->godmode = true;
 					c1->to_delete = true;
 					delete powerups[i];
@@ -259,6 +264,12 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::GRENADEx4:
+					if (powerups[i]->label == "granade1")
+						App->powerups_taken[pu_taken_lvl2::granade1] = true;
+					if (powerups[i]->label == "granade2")
+						App->powerups_taken[pu_taken_lvl2::granade2] = true;
+					if (powerups[i]->label == "granade3")
+						App->powerups_taken[pu_taken_lvl2::granade3] = true;
 					App->player->granade_counter += 4;
 					c1->to_delete = true;
 					delete powerups[i];
@@ -296,6 +307,14 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					powerups[i] = nullptr;
 					break;
 				case PowerUp_Types::ALLY_CAPTURED:
+					if (powerups[i]->label == "ally1")
+						App->powerups_taken[pu_taken_lvl2::ally1] = true;
+					if (powerups[i]->label == "ally2")
+						App->powerups_taken[pu_taken_lvl2::ally2] = true;
+					if (powerups[i]->label == "hg")
+						App->secretareas->hgcounter++;
+					if (powerups[i]->label == "mg")
+						App->secretareas->mgcounter++;
 					App->player->score += 1000;
 					App->enemies->AddEnemy(ENEMY_TYPES::RUNNER, powerups[i]->position.x, powerups[i]->position.y);
 					c1->to_delete = true;

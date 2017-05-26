@@ -22,6 +22,26 @@ class ModuleAudio;
 class ModulePowerUp;
 class ModuleSecretAreas;
 
+enum StartTypes {
+	lvl2,
+	room1,
+	room2,
+	room4,
+	room5,
+	MAX_TYPES
+};
+
+enum pu_taken_lvl2 {
+	granade1,
+	binocular,
+	godmode,
+	granade2,
+	granade3,
+	ally1,
+	ally2,
+	MAXIM_TYPES
+};
+
 class Application
 {
 public:
@@ -43,6 +63,8 @@ public:
 	ModuleAudio* audio;
 	ModulePowerUp* powerup;
 	bool stop_music;
+	bool start_types_arr[StartTypes::MAX_TYPES] = { false,false, false, false, false };
+	bool powerups_taken[pu_taken_lvl2::MAXIM_TYPES] = { false,false, false, false, false, false, false };
 
 public:
 

@@ -5,9 +5,11 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModulePowerUp.h"
 
 #define NUM_COLLIDERSWALL 9
 #define NUM_COLLIDERSUPSTAIRS 10
+#define NUM_POWERUPS_SA 50
 
 enum SECRETROOM {
 	ROOM1,
@@ -20,6 +22,7 @@ enum SECRETROOM {
 };
 
 struct SDL_Texture;
+struct PowerUp;
 
 class ModuleSecretAreas : public Module
 {
@@ -43,6 +46,7 @@ public:
 	SDL_Texture* background1 = nullptr;
 	Collider* wall[NUM_COLLIDERSWALL];
 	Collider* upstairs[NUM_COLLIDERSUPSTAIRS];
+	PowerUp* powerups_sa[NUM_POWERUPS_SA];
 
 	Animation gascounter;
 	Animation welcometo;
@@ -56,6 +60,12 @@ public:
 	bool playdorosound = true;
 
 	fPoint swallposition;
+	uint hgcounter = 0;
+	uint mgcounter = 0;
+
+	SDL_Rect* gpointer = nullptr;
+	SDL_Rect hg_rect;
+	SDL_Rect mg_rect;
 
 };
 

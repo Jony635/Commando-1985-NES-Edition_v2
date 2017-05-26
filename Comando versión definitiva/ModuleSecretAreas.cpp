@@ -12,7 +12,6 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
-#include "ModulePowerUp.h"
 
 ModuleSecretAreas::ModuleSecretAreas() {
 	//WELCOME ANIMATION
@@ -21,6 +20,17 @@ ModuleSecretAreas::ModuleSecretAreas() {
 	welcometo.loop = false;
 	welcometo.speed = 0.005f;
 
+	//HG ANIMATION
+	hg_rect.x = 0;
+	hg_rect.y = 0;
+	hg_rect.w = 128;
+	hg_rect.h = 33;
+
+	//MG ANIMATION
+	mg_rect.x = 0;
+	mg_rect.y = 66;
+	mg_rect.w = 128;
+	mg_rect.h = 33;
 
 	//GAS ANIMATION
 	gascounter.PushBack({ 72, 0, 8, 8 });
@@ -56,6 +66,19 @@ bool ModuleSecretAreas::Start() {
 	App->particles->Enable();
 	App->powerup->Enable();
 
+	for (int i = 0; i < NUM_POWERUPS_SA; i++)
+	{
+		powerups_sa[i] = nullptr;
+	}
+	for (int i = 0; i < NUM_COLLIDERSUPSTAIRS; i++)
+	{
+		upstairs[i] = nullptr;
+	}
+	for (int i = 0; i < NUM_COLLIDERSWALL; i++)
+	{
+		wall[i] = nullptr;
+	}
+
 
 	//General textures
 	rect = App->textures->Load("Resources/ui/Power_up_rect.png");
@@ -82,7 +105,10 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
 
-		App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 218, 72, false);
+		if (!App->start_types_arr[StartTypes::room1]) {
+			App->powerup->AddPowerUp(PowerUp_Types::MEDAL_OF_HONOR, 218, 72, false);
+			App->start_types_arr[StartTypes::room1] = true;
+		}
 
 		//WALL
 		int i = 0;
@@ -116,9 +142,11 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		//colliders 
 
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 26, 49, false);
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 48, 49, false);
-
+		if (!App->start_types_arr[StartTypes::room2]) {
+			App->secretareas->powerups_sa[1] = App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 26, 49, false);
+			App->secretareas->powerups_sa[2] = App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 48, 49, false);
+			App->start_types_arr[StartTypes::room2] = true;
+		}
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, 0, 256, 37 }, COLLIDER_WALL);
@@ -193,8 +221,16 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
-		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 212, -(448 - 289 - SCREEN_HEIGHT), false);
+		if (!App->start_types_arr[StartTypes::room4]) {
+			App->powerup->AddPowerUp(PowerUp_Types::GRENADEx5, 212, -(448 - 289 - SCREEN_HEIGHT), false);
 
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT), false, "hg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT), false, "hg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT), false, "hg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - 5 - SCREEN_HEIGHT), false, "hg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 3 - SCREEN_HEIGHT), false, "hg");
+			App->start_types_arr[StartTypes::room4] = true;
+		}
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 32, 448 }, COLLIDER_WALL);
@@ -212,12 +248,6 @@ bool ModuleSecretAreas::Start() {
 		int j = 0;
 		upstairs[j++] = App->collision->AddCollider({ 36, -(448 - 95 - SCREEN_HEIGHT), 24, 5 }, COLLIDER_UPSTAIRS);
 
-		//Allies
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(448 - 28 - 10 - 5 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 128, -(448 - 108 - 10 - 5 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 184, -(448 - 266 - 3 - SCREEN_HEIGHT));
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM5) {
 
@@ -242,11 +272,17 @@ bool ModuleSecretAreas::Start() {
 
 		//colliders 
 
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 299 - SCREEN_HEIGHT), false);
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 331 - SCREEN_HEIGHT), false);
-		App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 363 - SCREEN_HEIGHT), false);
-		App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 24, -(448 - 286 - SCREEN_HEIGHT), false);
+		if (!App->start_types_arr[StartTypes::room5]) {
+			App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 299 - SCREEN_HEIGHT), false);
+			App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 331 - SCREEN_HEIGHT), false);
+			App->powerup->AddPowerUp(PowerUp_Types::GASOLINE, 225, -(448 - 363 - SCREEN_HEIGHT), false);
+			App->powerup->AddPowerUp(PowerUp_Types::MEDAL, 24, -(448 - 286 - SCREEN_HEIGHT), false);
 
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - 10 - SCREEN_HEIGHT), false, "mg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT), false, "mg");
+			App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT), false, "mg");
+			App->start_types_arr[StartTypes::room5] = true;
+		}
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, -(448 - SCREEN_HEIGHT), 16, 448 }, COLLIDER_WALL);
@@ -267,10 +303,6 @@ bool ModuleSecretAreas::Start() {
 		upstairs[j++] = App->collision->AddCollider({ 227, -(448 - 35 - 5 - SCREEN_HEIGHT), 5, 3 }, COLLIDER_UPSTAIRS);
 		upstairs[j++] = App->collision->AddCollider({ 127, -(448 - 386 - SCREEN_HEIGHT), 10, 4 }, COLLIDER_UPSTAIRS);
 
-		//Allies
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 48, -(448 - 102 - 10 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 88, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
-		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 152, -(448 - 22 - 10 - 10 - SCREEN_HEIGHT));
 
 	}
 	else if (App->secretareas->actual_room == SECRETROOM::ROOM6) {
@@ -344,7 +376,14 @@ update_status ModuleSecretAreas::Update() {
 		break;
 	case ROOM4:
 		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
-
+		if (hgcounter == 5) {
+			time_Counters[hg_ecounter] += 0.02f;
+			if (time_Counters[hg_ecounter] < 5.0f) {
+				App->player->move = false;
+				gpointer = &hg_rect;
+				App->render->Blit(rect, 69, -(448 - 161 - SCREEN_HEIGHT), gpointer);
+			}
+		}
 		if (isdown && App->player->position.y<0 && App->render->camera.y != App->lvl2->top + 2) {
 			App->render->camera.y -= 3;
 			App->player->position.y--;
@@ -371,7 +410,15 @@ update_status ModuleSecretAreas::Update() {
 
 		break;
 	case ROOM5:
-
+		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
+		App->render->Blit(swall, (int)swallposition.x, -(448 - (int)swallposition.y - SCREEN_HEIGHT), NULL);
+		if (mgcounter == 3) {
+			time_Counters[mg_ecounter] += 0.02f;
+			if (time_Counters[mg_ecounter] < 5.0f) {
+				gpointer = &mg_rect;
+				App->render->Blit(rect, 69, -(448 - 161 - SCREEN_HEIGHT), gpointer);
+			}
+		}
 		if (App->player->position.x < 50 && App->player->position.y == 42 && (int)swallposition.y != 221) {
 			swallposition.y += 0.1;
 			App->player->move = false;
@@ -392,8 +439,6 @@ update_status ModuleSecretAreas::Update() {
 			swallposition.y = 216;
 		}
 
-		//swallposition.x = (int)swallposition.x;
-		//swallposition.y = (int)swallposition.y;
 		if (gateopened) {
 			if (isdown && App->player->position.y < 0 && App->render->camera.y != App->lvl2->top + 2) {
 				App->render->camera.y -= 3;
@@ -419,8 +464,6 @@ update_status ModuleSecretAreas::Update() {
 			}
 		}
 
-		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
-		App->render->Blit(swall, (int)swallposition.x, -(448 - (int)swallposition.y - SCREEN_HEIGHT), NULL);
 
 		break;
 	case ROOM6:

@@ -27,6 +27,8 @@ enum COUNTERS
 	stairs,
 	gas,
 	respawn,
+	hg_ecounter,
+	mg_ecounter,
 	//Add your counter types here
 	MAX_COUNTER
 };

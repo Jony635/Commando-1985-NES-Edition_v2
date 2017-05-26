@@ -247,12 +247,28 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 466 - SCREEN_HEIGHT));
 
 	//PowerUps
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 48, -(2880 - 2432 - SCREEN_HEIGHT), false);
-	App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, 216, -(2880 - 1992 - SCREEN_HEIGHT), true);
-	App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, 174, -(2880 - 1648 - SCREEN_HEIGHT), true);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 32, -(2880 - 1216 - SCREEN_HEIGHT), false);
-	App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false);
-
+	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 48, -(2880 - 2432 - SCREEN_HEIGHT), false, "granade1");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::binocular]) {
+		App->powerup->AddPowerUp(PowerUp_Types::BINOCULAR, 216, -(2880 - 1992 - SCREEN_HEIGHT), true, "binocular");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::godmode]) {
+		App->powerup->AddPowerUp(PowerUp_Types::BULLETPROOF_VEST, 174, -(2880 - 1648 - SCREEN_HEIGHT), true, "godmode");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::granade2]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 32, -(2880 - 1216 - SCREEN_HEIGHT), false, "granade2");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::granade3]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false, "granade3");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::ally1]) {
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(2880 - 869 - SCREEN_HEIGHT), false, "ally1");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::ally2]) {
+		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 0, -(2880 - 709 - SCREEN_HEIGHT), false, "ally2");
+		App->powerups_taken[pu_taken_lvl2::ally2] = true;
+	}
 	// Colliders ---
 	int i = 0;
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 2166 - SCREEN_HEIGHT), 23, 111 }, COLLIDER_WALL);

@@ -22,12 +22,21 @@ bool ModuleWelcome::Start() {
 
 	LOG("Loading Welcome scene");
 
+	App->secretareas->hgcounter = App->secretareas->mgcounter = 0;
 	App->player->live_counter = 4;
 	App->player->granade_counter = 5;
-	App->player->score = 0;
 	App->secretareas->actual_room = ROOM1;
 	App->lvl2->checkpointpassed = false;
 	App->player->soundhighscore = true;
+
+	for (int i = 0; i < StartTypes::MAX_TYPES; i++)
+	{
+		App->start_types_arr[i] = false;
+	}
+	for (int i = 0; i < pu_taken_lvl2::MAXIM_TYPES; i++)
+	{
+		App->powerups_taken[i] = false;
+	}
 
 
 	//fonts
@@ -35,10 +44,6 @@ bool ModuleWelcome::Start() {
 	font_welcome_score = App->fonts->Load("Resources/ui/Alphabetwhite.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'�$%&/()-.�@ASD_GHJ", 6);
 
 
-	//HIGHSCORE
-	if (App->player->score > App->player->highscore) {
-		App->player->score = App->player->highscore;
-	}
 
 	//Textures
 	Area2Option = App->textures->Load("Resources/Screens/Intro_Screen1.png");//foto del fondo
@@ -97,12 +102,12 @@ update_status ModuleWelcome::Update() {
 	sprintf(App->player->score_text, "%06d", App->player->score);
 	sprintf(one_up_text, "%s", "up");
 	sprintf(high_text, "%s", "high");
-	sprintf(App->player->score_text, "%06d", App->player->highscore);
+	sprintf(App->player->high_score_text, "%06d", App->player->highscore);
 
 	App->fonts->BlitText(16, 16, font_welcome_score, App->player->score_text);
 	App->fonts->BlitText(24, 8, font_welcome_score, one_up_text);
 	App->fonts->BlitText(16, 8, font_welcome_score, "1");
-	App->fonts->BlitText(104, 16, font_high_score, App->player->score_text);
+	App->fonts->BlitText(104, 16, font_high_score, App->player->high_score_text);
 	App->fonts->BlitText(112, 8, font_high_score, high_text);
 
 	//Fade to black to next lvl
@@ -131,6 +136,11 @@ bool ModuleWelcome::CleanUp() {
 	//Unload textures
 	App->textures->Unload(ExitOption);
 	App->textures->Unload(Area2Option);
+
+	App->fonts->UnLoad(font_high_score);
+	App->fonts->UnLoad(font_welcome_score);
+
+	App->player->score = 0;
 
 	return true;
 }

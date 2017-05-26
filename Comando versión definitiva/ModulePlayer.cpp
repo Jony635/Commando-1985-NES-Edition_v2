@@ -176,9 +176,9 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update(){
 
 	//HIGHSCORE
-	if (score > highscore&&score>20000) {
+	if (score > highscore) {
 		highscore = score;
-		if (soundhighscore) {
+		if (soundhighscore&&score>20000) {
 			App->audio->PlaySound("Resources/Audio/Sound Effects/Got 20k.wav");
 			soundhighscore = false;
 		}

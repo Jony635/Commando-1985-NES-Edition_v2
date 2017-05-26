@@ -20,6 +20,7 @@ struct PowerUp
 	PowerUp_Types type;
 	bool fx_played = false;
 	bool hidden = false;
+	char* label = "null";
 
 
 	PowerUp();
@@ -37,7 +38,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	PowerUp* AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden = false);
+	PowerUp* AddPowerUp(const PowerUp_Types type, int x, int y, bool hidden = false, char* label = "null");
 
 	Animation binocular;
 	Animation bulletproof_vest;
