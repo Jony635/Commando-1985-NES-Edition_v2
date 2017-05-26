@@ -23,6 +23,11 @@ ModuleParticles::ModuleParticles()
 	grenade_explodes.anim.speed = 0.07f;
 	grenade_explodes.anim.loop = false;
 
+	MEGA_grenade_explodes.anim.PushBack({ 64,38,28,23 });
+	MEGA_grenade_explodes.anim.PushBack({ 122, 37, 44, 40 });
+	MEGA_grenade_explodes.anim.speed = 0.07f;
+	MEGA_grenade_explodes.anim.loop = false;
+
 	grenade.anim.PushBack({ 103, 69, 5, 6 });
 	grenade.anim.PushBack({ 79,69,5,6 });
 	grenade.anim.speed = 0.09f;
@@ -219,8 +224,16 @@ bool Particle::Update()
 			}
 			else if (this->collider->type == COLLIDER_ENEMY_GRENADE)
 			{
-				App->particles->grenade_explodes.life = 1000;
-				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_ENEMY_GRENADE_EXPL);
+				if (!App->player->PlayerPowerUps[PowerUp_Types::HANDGRANADE])
+				{
+					App->particles->grenade_explodes.life = 1000;
+					App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
+				}
+				else
+				{
+					App->particles->MEGA_grenade_explodes.life = 1000;
+					App->particles->AddParticle(App->particles->MEGA_grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
+				}
 			}
 		}
 	}

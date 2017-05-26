@@ -52,6 +52,7 @@ public:
 	Particle die_Grey;
 	Particle die_Green;
 	Particle grenade_explodes;
+	Particle MEGA_grenade_explodes;
 	Particle grenade;
 	Particle explosion;
 	Particle bullet;

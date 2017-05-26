@@ -377,6 +377,7 @@ update_status ModuleSecretAreas::Update() {
 	case ROOM4:
 		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
 		if (hgcounter == 5) {
+			App->player->PlayerPowerUps[PowerUp_Types::HANDGRANADE] = true;
 			time_Counters[hg_ecounter] += 0.02f;
 			if (time_Counters[hg_ecounter] < 5.0f) {
 				App->player->move = false;
@@ -413,6 +414,7 @@ update_status ModuleSecretAreas::Update() {
 		App->render->Blit(background1, 0, -448 + SCREEN_HEIGHT, NULL);
 		App->render->Blit(swall, (int)swallposition.x, -(448 - (int)swallposition.y - SCREEN_HEIGHT), NULL);
 		if (mgcounter == 3) {
+			App->player->PlayerPowerUps[PowerUp_Types::MEGA_SHOOT] = true;
 			time_Counters[mg_ecounter] += 0.02f;
 			if (time_Counters[mg_ecounter] < 5.0f) {
 				gpointer = &mg_rect;
