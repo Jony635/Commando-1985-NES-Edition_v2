@@ -280,7 +280,7 @@ bool ModulePlayer::CleanUp()
 }
 
 // Update: draw background
-update_status ModulePlayer::Update(){
+update_status ModulePlayer::Update() {
 
 	//shortgodmode
 	if (shortgodmode) {
@@ -334,7 +334,7 @@ update_status ModulePlayer::Update(){
 	int speed = 1;
 
 	//Grenades
-	if (granade_counter > 0 && 
+	if (granade_counter > 0 &&
 		(App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_Y] == KEY_STATE::KEY_DOWN))
 	{
 		if (godmode) {
@@ -353,6 +353,7 @@ update_status ModulePlayer::Update(){
 			}
 
 		}
+
 		granade_counter--;
 		App->particles->grenade.speed.y = -2;
 		App->particles->grenade.speed.x = 0;
@@ -377,7 +378,7 @@ update_status ModulePlayer::Update(){
 	}
 
 	//Shoots
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_X]==KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons[SDL_CONTROLLER_BUTTON_X] == KEY_STATE::KEY_DOWN)
 		if (current_animation == &up || current_animation == &upgodmode)
 		{
 			if (!PlayerPowerUps[PowerUp_Types::MEGA_SHOOT])
@@ -385,7 +386,7 @@ update_status ModulePlayer::Update(){
 
 				App->particles->bullet.speed.y = -5;
 				App->particles->bullet.speed.x = 0;
-				if(!PlayerPowerUps[PowerUp_Types::BINOCULAR])
+				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
 					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
@@ -409,7 +410,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.x = 0;
 				App->particles->bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
@@ -419,7 +420,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.x = 0;
 				App->particles->mega_bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y + 20, COLLIDER_PLAYER_SHOT);
@@ -434,7 +435,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, (position.x + col->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
@@ -444,7 +445,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.y = 0;
 				App->particles->mega_bullet.speed.x = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, (position.x + col->rect.w), position.y + 5, COLLIDER_PLAYER_SHOT);
@@ -458,7 +459,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.y = 0;
 				App->particles->bullet.speed.x = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
@@ -468,7 +469,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.y = 0;
 				App->particles->mega_bullet.speed.x = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y + 5, COLLIDER_PLAYER_SHOT);
@@ -483,7 +484,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y, COLLIDER_PLAYER_SHOT);
@@ -493,7 +494,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.x = 5;
 				App->particles->mega_bullet.speed.y = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x + col->rect.w, position.y, COLLIDER_PLAYER_SHOT);
@@ -508,7 +509,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
@@ -518,7 +519,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.x = -5;
 				App->particles->mega_bullet.speed.y = -5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x, position.y, COLLIDER_PLAYER_SHOT);
@@ -532,7 +533,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.x = 5;
 				App->particles->bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x + col->rect.w, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
@@ -542,7 +543,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.x = 5;
 				App->particles->mega_bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 				App->particles->AddParticle(App->particles->mega_bullet, position.x + col->rect.w, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
@@ -557,7 +558,7 @@ update_status ModulePlayer::Update(){
 				App->particles->bullet.speed.x = -5;
 				App->particles->bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->bullet.life = 300;
+					App->particles->bullet.life = 300;
 				else
 					App->particles->bullet.life = 600;
 				App->particles->AddParticle(App->particles->bullet, position.x, position.y + col->rect.h, COLLIDER_PLAYER_SHOT);
@@ -567,7 +568,7 @@ update_status ModulePlayer::Update(){
 				App->particles->mega_bullet.speed.x = -5;
 				App->particles->mega_bullet.speed.y = 5;
 				if (!PlayerPowerUps[PowerUp_Types::BINOCULAR])
-				App->particles->mega_bullet.life = 300;
+					App->particles->mega_bullet.life = 300;
 				else
 					App->particles->mega_bullet.life = 600;
 
@@ -582,7 +583,7 @@ update_status ModulePlayer::Update(){
 
 		//LEFT
 
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT &&position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -605,7 +606,6 @@ update_status ModulePlayer::Update(){
 				position.x -= speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &leftgodmode)
 				{
@@ -624,7 +624,7 @@ update_status ModulePlayer::Update(){
 
 		//RIGHT
 
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT &&position.x < SCREEN_WIDTH - 16
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -647,7 +647,6 @@ update_status ModulePlayer::Update(){
 				position.x += speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &rightgodmode)
 				{
@@ -662,11 +661,12 @@ update_status ModulePlayer::Update(){
 					current_animation = &right;
 				}
 			}
+
 		}
 
 
 		//DOWN
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT &&position.y < SCREEN_HEIGHT - 22
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
@@ -691,7 +691,6 @@ update_status ModulePlayer::Update(){
 				position.y += speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &downgodmode)
 				{
@@ -706,11 +705,12 @@ update_status ModulePlayer::Update(){
 					current_animation = &down;
 				}
 			}
+
 		}
 
 
 		//UP
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > App->lvl2->top
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -735,7 +735,6 @@ update_status ModulePlayer::Update(){
 			}
 
 			//App->render->camera.y += speed;
-
 			if (godmode) {
 				if (current_animation != &upgodmode)
 				{
@@ -748,12 +747,14 @@ update_status ModulePlayer::Update(){
 				{
 					up.Reset();
 					current_animation = &up;
+
 				}
 			}
+
 		}
 
 		//UP-RIGHT
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -772,7 +773,6 @@ update_status ModulePlayer::Update(){
 					position.y -= speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &urgodmode)
 				{
@@ -787,10 +787,11 @@ update_status ModulePlayer::Update(){
 					current_animation = &ur;
 				}
 			}
+
 		}
 
 		//UP-LEFT
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && position.y > -2880 + SCREEN_HEIGHT
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -809,7 +810,6 @@ update_status ModulePlayer::Update(){
 					position.y -= speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &ulgodmode)
 				{
@@ -824,10 +824,11 @@ update_status ModulePlayer::Update(){
 					current_animation = &ul;
 				}
 			}
+
 		}
 
 		//DOWN-RIGHT
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - 16
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
@@ -846,7 +847,6 @@ update_status ModulePlayer::Update(){
 					position.y += speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &drgodmode)
 				{
@@ -861,10 +861,11 @@ update_status ModulePlayer::Update(){
 					current_animation = &dr;
 				}
 			}
+
 		}
 
 		//DOWN-LEFT
-			//KEYBOARD
+		//KEYBOARD
 		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && position.y < SCREEN_HEIGHT - 22
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
@@ -883,14 +884,13 @@ update_status ModulePlayer::Update(){
 					position.y += speed;
 
 			}
-
 			if (godmode) {
 				if (current_animation != &dlgodmode)
 				{
 					dlgodmode.Reset();
 					current_animation = &dlgodmode;
 				}
-			
+			}
 			else {
 				if (current_animation != &dl)
 				{
@@ -898,6 +898,7 @@ update_status ModulePlayer::Update(){
 					current_animation = &dl;
 				}
 			}
+
 		}
 	}
 
@@ -994,13 +995,13 @@ update_status ModulePlayer::Update(){
 			case ROOM1:
 				App->render->Blit(room1, 0, 0, NULL);
 				break;
-			case ROOM4:				
+			case ROOM4:
 				App->render->Blit(room4, 0, -(448 - SCREEN_HEIGHT), NULL);
 				break;
-			case ROOM5:				
+			case ROOM5:
 				App->render->Blit(room5, 0, -(448 - SCREEN_HEIGHT), NULL);
 				break;
-			case ROOM6:				
+			case ROOM6:
 				App->render->Blit(room6, 0, -(448 - SCREEN_HEIGHT), NULL);
 				break;
 			}
