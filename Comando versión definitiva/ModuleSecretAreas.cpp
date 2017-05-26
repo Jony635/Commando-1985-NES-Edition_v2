@@ -57,6 +57,8 @@ ModuleSecretAreas::~ModuleSecretAreas() {}
 
 bool ModuleSecretAreas::Start() {
 	
+	hgcounter = mgcounter = 0;
+
 	//Enables & Disables
 	App->audio->Enable();
 	App->textures->Enable();
