@@ -191,15 +191,6 @@ update_status ModulePlayer::Update(){
 			PlayerPowerUps[i] = false;
 		}
 	}
-	if (ingamegodmode)
-	{
-		time_Counters[COUNTERS::ingamegodmode_counter] += 0.2f;
-		if (time_Counters[COUNTERS::ingamegodmode_counter] == 50.0f)
-		{
-			ingamegodmode = false;
-			time_Counters[COUNTERS::ingamegodmode_counter] = 0.0f;
-		}
-	}
 	//RESPAWN
 	if (respawn && !App->secretareas->IsEnabled()) {
 		time_Counters[respawn] += 0.02f;
@@ -907,13 +898,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	//If it collides with an enemy
 
-	if (!godmode && !ingamegodmode&&c2->enemytype != ENEMY_TYPES::RUNNER && (c1->type == COLLIDER_PLAYER && (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_GRENADE_EXPL || c2->type == COLLIDER_ENEMY_SHOT)) && dead == false/* && !godmode*/) {
+	if (!godmode &&c2->enemytype != ENEMY_TYPES::RUNNER && (c1->type == COLLIDER_PLAYER && (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_GRENADE_EXPL || c2->type == COLLIDER_ENEMY_SHOT)) && dead == false/* && !godmode*/) {
 		dead = true;
 	}
 
 	//If it collides with the water
 
-	if (!godmode && !ingamegodmode && (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER) && !dead) {
+	if (!godmode  && (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WATER) && !dead) {
 		if (c2->rect.x == (c1->rect.x + (c1->rect.w / 2))
 			|| (c2->rect.x + c2->rect.w) == (c1->rect.x + (c1->rect.w / 2))
 			|| c2->rect.y == (c1->rect.y + (c1->rect.h / 2))
