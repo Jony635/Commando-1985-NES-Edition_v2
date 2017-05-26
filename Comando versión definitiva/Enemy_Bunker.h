@@ -1,29 +1,24 @@
-#ifndef __ENEMY_WHITEGUARD_H__
-#define __ENEMY_WHITEGUARD_H__
+#ifndef __ENEMY_BUNKER_H__
+#define __ENEMY_BUNKER_H__
 
 #include "Enemy.h"
 
-class Enemy_WhiteGuard : public Enemy
+class Enemy_Bunker : public Enemy
 {
-private:
 private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
 
-	Animation default;
-	Animation WhiteGuard_Die;
-	Animation WhiteGuard_Left;
-	Animation WhiteGuard_Right;
-	Animation WhiteGuard_Up;
-	Animation WhiteGuard_Down;
+	Animation LEFT_Bunker_Top;
+	Animation LEFT_Bunker_Mid;
+	Animation LEFT_Bunker_Bot;
 
-	Animation* anim = &WhiteGuard_Up;
+	Animation RIGHT_Bunker_Top;
+	Animation RIGHT_Bunker_Mid;
+	Animation RIGHT_Bunker_Bot;
 
-	Animation getDie();
-
-	bool rightleftcentered = false;
 	bool moving[4] = { false, false, false, false };
 	bool* movingptr = moving;
 
@@ -37,24 +32,25 @@ public:
 	void PathDown();
 	void PathLeft();
 	void PathRight();
-
-	Enemy_WhiteGuard(int x, int y);
+	Animation getDie();
+	Enemy_Bunker(int x, int y);
 	void Move();
-	//I WANNA DIE
+
 
 	float vx = 0.0f, vy = 0.0f;
 	int frames = 1;
 
-	
+
 
 	double sino = 0.0;
 	double cosino = 0.0;
 	double angle = 0.0;
-	int shoots = 2;
+	int shoots = 4;
 	bool shootmadafuka = true;
 	float shoot_counter = 0.0f;
 	int shoot_vx = 0, shoot_vy = 0;
 	int distance = 0;
+
 };
 
 #endif 

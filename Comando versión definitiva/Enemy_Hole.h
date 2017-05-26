@@ -1,19 +1,21 @@
-#ifndef __ENEMY_KNIFE_H__
-#define __ENEMY_KNIFE_H__
+#ifndef __ENEMY_HOLE_H__
+#define __ENEMY_HOLE_H__
 
 #include "Enemy.h"
 
-class Enemy_Knife : public Enemy
+class Enemy_Hole : public Enemy
 {
 private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
-	Animation Knife_Left;
-	Animation Knife_Right;
+	
+	Animation Hole_Down;
+
 	bool moving[4] = { false, false, false, false };
 	bool* movingptr = moving;
+
 public:
 	bool* getMoving() const;
 	void ColPathDown();
@@ -25,7 +27,7 @@ public:
 	void PathLeft();
 	void PathRight();
 	Animation getDie();
-	Enemy_Knife(int x, int y);
+	Enemy_Hole(int x, int y);
 	void Move();
 };
 

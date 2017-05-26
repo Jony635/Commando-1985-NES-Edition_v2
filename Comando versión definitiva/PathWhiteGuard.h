@@ -1,9 +1,9 @@
-#ifndef __ENEMY_WHITEGUARD_H__
-#define __ENEMY_WHITEGUARD_H__
+#ifndef __ENEMY_PATHWHITEGUARD_H__
+#define __ENEMY_PATHWHITEGUARD_H__
 
 #include "Enemy.h"
 
-class Enemy_WhiteGuard : public Enemy
+class Enemy_PathWhiteGuard : public Enemy
 {
 private:
 private:
@@ -13,13 +13,13 @@ private:
 	int original_x = 0;
 
 	Animation default;
-	Animation WhiteGuard_Die;
-	Animation WhiteGuard_Left;
-	Animation WhiteGuard_Right;
-	Animation WhiteGuard_Up;
-	Animation WhiteGuard_Down;
+	Animation PathWhiteGuard_Die;
+	Animation PathWhiteGuard_Left;
+	Animation PathWhiteGuard_Right;
+	Animation PathWhiteGuard_Up;
+	Animation PathWhiteGuard_Down;
 
-	Animation* anim = &WhiteGuard_Up;
+	Animation* anim = &PathWhiteGuard_Up;
 
 	Animation getDie();
 
@@ -38,14 +38,15 @@ public:
 	void PathLeft();
 	void PathRight();
 
-	Enemy_WhiteGuard(int x, int y);
+	Enemy_PathWhiteGuard(int x, int y);
 	void Move();
 	//I WANNA DIE
 
 	float vx = 0.0f, vy = 0.0f;
 	int frames = 1;
 
-	
+	int P_relative_y = 0;
+	int E_relative_y = 0;
 
 	double sino = 0.0;
 	double cosino = 0.0;

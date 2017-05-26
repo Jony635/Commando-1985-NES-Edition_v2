@@ -48,6 +48,8 @@ ModuleParticles::ModuleParticles()
 	die_Grey.life = 1000;
 
 	mega_bullet.anim.PushBack({ 11, 17, 6, 6 });
+
+	Rocket.anim.PushBack({ 11, 33, 8, 11 });
 }
 
 ModuleParticles::~ModuleParticles()
