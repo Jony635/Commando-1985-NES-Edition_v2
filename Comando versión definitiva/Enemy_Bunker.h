@@ -19,6 +19,7 @@ private:
 	Animation RIGHT_Bunker_Mid;
 	Animation RIGHT_Bunker_Bot;
 
+	Animation iddle;
 	bool moving[4] = { false, false, false, false };
 	bool* movingptr = moving;
 

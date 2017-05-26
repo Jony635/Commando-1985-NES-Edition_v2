@@ -18,7 +18,7 @@ Enemy_Hole::Enemy_Hole(int x, int y) : Enemy(x, y)
 	Hole_Down.PushBack({ 110, 81, 13, 16 });
 	Hole_Down.speed = 0.07f;
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 13, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &Hole_Down;
 	original_pos.x = x;
 	original_pos.y = y;

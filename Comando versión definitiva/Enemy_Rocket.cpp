@@ -15,7 +15,7 @@ Enemy_Rocket::Enemy_Rocket(int x, int y) : Enemy(x, y)
 	Rocket_Down.PushBack({ 189, 0, 16, 28 });
 	Rocket_Down.speed = 0.07f;
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 28 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &Rocket_Down;
 	original_pos.x = x;
 	original_pos.y = y;

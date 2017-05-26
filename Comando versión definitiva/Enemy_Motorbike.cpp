@@ -16,7 +16,7 @@ Enemy_Motorbike::Enemy_Motorbike(int x, int y) : Enemy(x, y)
 	Motorbike_Right.PushBack({ 143, 177, 45, 22 });
 	
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 45, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &Motorbike_Left;
 	original_pos.x = x;

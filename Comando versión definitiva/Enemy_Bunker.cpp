@@ -17,8 +17,9 @@ Enemy_Bunker::Enemy_Bunker(int x, int y) : Enemy(x, y)
 	RIGHT_Bunker_Mid.PushBack({ 172, 247, 39, 47 });
 	RIGHT_Bunker_Bot.PushBack({ 216, 243, 38, 47 });
 
+	iddle.PushBack({ 192, 215, 22, 25 });
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 39, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &LEFT_Bunker_Mid;
 	original_pos.x = x;
 	original_pos.y = y;
@@ -133,10 +134,33 @@ void Enemy_Bunker::Move()
 			if (sino < 0) sino *= -1;
 
 			if (App->player->position.x < position.x)
+			{
 				shoot_vx = -2 * cosino;
+				if (cosino >= 0.75)
+					animation = &LEFT_Bunker_Bot;
+				if (cosino > 0.25 && cosino < 0.75)
+					animation = &LEFT_Bunker_Mid;
+				else
+					animation = &LEFT_Bunker_Top;
+				
+			}
+
 			else if (App->player->position.x > position.x)
+			{
 				shoot_vx = 2 * cosino;
-			else shoot_vx = 0;
+				if (cosino >= 0.75)
+					animation = &LEFT_Bunker_Bot;
+				if (cosino > 0.25 && cosino < 0.75)
+					animation = &LEFT_Bunker_Mid;
+				else
+					animation = &LEFT_Bunker_Top;
+			}
+				
+			else
+			{
+				shoot_vx = 0;
+				animation = &iddle;
+			}
 			if (App->player->position.y < position.y)
 				shoot_vy = -2 * sino;
 			else if (App->player->position.y > position.y)

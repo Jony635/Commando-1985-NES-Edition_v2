@@ -13,7 +13,7 @@ Enemy_Knife::Enemy_Knife(int x, int y) : Enemy(x, y)
 	//Right Animation
 	Knife_Right.PushBack({ 213, 39, 16, 8 });
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 8 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	animation = &Knife_Left;
 	original_pos.x = x;
 	original_pos.y = y;
