@@ -50,7 +50,6 @@ bool Application::Init()
 	// Deactivate modules here ----
 	enemies->Disable();
 	lvl2->Disable();
-	player->Disable();
 	collision->Disable();
 	powerup->Disable();
 	particles->Disable();

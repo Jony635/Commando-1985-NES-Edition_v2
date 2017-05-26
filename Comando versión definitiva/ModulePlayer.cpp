@@ -132,6 +132,7 @@ bool ModulePlayer::Start()
 	room6 = App->textures->Load("Resources/Screens/sa6-walls.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
+	if (col == nullptr)
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 
@@ -146,6 +147,7 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
+
 	App->textures->Unload(graphics);
 	App->textures->Unload(ui_stuff);
 	App->textures->Unload(graphparticles);
@@ -155,6 +157,7 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(room5);
 	App->textures->Unload(room6);
 	App->collision->EraseCollider(col);
+	col = nullptr;
 	App->fonts->UnLoad(font_score);
 	
 	//An example of cleaning up all timers:
