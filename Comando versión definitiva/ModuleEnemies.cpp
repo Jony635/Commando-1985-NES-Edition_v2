@@ -21,6 +21,7 @@
 #include "ModuleAudio.h"
 #include "Enemy_Car.h"
 #include "Enemy_Truck.h"
+#include "PathWhiteGuard.h"
 
 #define SPAWN_MARGIN 50
 
@@ -142,6 +143,17 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 	return ret;
 }
 
+uint ModuleEnemies::Enemies_Alive() {
+	uint enemies_alive = 0;
+	for (uint i = 0; i < MAX_ENEMIES; i++)
+	{
+		if (enemies[i] != nullptr) {
+			enemies_alive++;
+		}
+	}
+	return enemies_alive;
+}
+
 void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
@@ -206,6 +218,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Truck(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::TRUCK;
 			enemies[i]->collider->enemytype = ENEMY_TYPES::TRUCK;
+			break;
+		case ENEMY_TYPES::PATHWHITEGUARD:
+			enemies[i] = new Enemy_PathWhiteGuard(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::PATHWHITEGUARD;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::PATHWHITEGUARD;
 			break;
 		}
 	}

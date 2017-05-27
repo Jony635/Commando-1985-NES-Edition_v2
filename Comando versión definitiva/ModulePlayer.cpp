@@ -228,8 +228,11 @@ bool ModulePlayer::Start()
 	playsounddead = true;
 	playsounddie = true;
 	playsoundresp = true;
+	winsound = true;
+	endaudio = true;
 	current_animation = &up;
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
+	byebye = App->textures->Load("Resources/Screens/byebye.png");
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
 	bridge = App->textures->Load("Resources/Screens/bridgelvl2.png");//puente
@@ -256,6 +259,7 @@ bool ModulePlayer::CleanUp()
 
 
 	App->textures->Unload(graphics);
+	App->textures->Unload(byebye);
 	App->textures->Unload(ui_stuff);
 	App->textures->Unload(graphparticles);
 	App->textures->Unload(bridge);
@@ -282,6 +286,60 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update() {
 
+	//win
+	if (App->render->camera.y < -(2880 - 100 - SCREEN_HEIGHT) && App->enemies->Enemies_Alive() == 0) {
+		win = true;
+	}
+	if (win) {
+		time_Counters[COUNTERS::bye] += 0.02;
+		move = false;
+		if (winsound) {
+			winsound = false;
+			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1 Cleared.ogg", false);
+		}
+
+		if (position.x > 120) {
+			if (current_animation != &left)
+			{
+				left.Reset();
+				current_animation = &left;
+			}
+			position.x--;
+		}
+		if (position.x < 120) {
+			if (current_animation != &right)
+			{
+				right.Reset();
+				current_animation = &right;
+			}
+			position.x++;
+		}
+		if (position.x == 120) {
+			if (current_animation != &up)
+			{
+				up.Reset();
+				current_animation = &up;
+			}
+			if (position.y > -2880 + SCREEN_HEIGHT + 140)
+				App->render->camera.y += 3;
+
+			if (position.y > -(2880 + 50 - SCREEN_HEIGHT)) {
+				position.y--;
+
+			}
+
+		}
+		if (position.y == -(2880 + 50 - SCREEN_HEIGHT)) {
+			if (endaudio) {
+				App->audio->Play("Resources/Audio/Themes_SoundTrack/Commando (NES) Music - Ending Theme.ogg", false);
+				endaudio = false;
+			}
+			App->render->Blit(byebye, 0, -(2880 - SCREEN_HEIGHT), nullptr);
+			if (time_Counters[bye] > 40) {
+				App->fade->FadeToBlack(App->lvl2, App->welcome, 1);
+			}
+		}
+	}
 	//shortgodmode
 	if (shortgodmode) {
 		time_Counters[COUNTERS::shortgodmode_counter] += 0.02;
@@ -1065,7 +1123,7 @@ update_status ModulePlayer::Update() {
 			&& current_animation != &upstairs
 			&& current_animation != &downstairs
 			&& current_animation != &throwing
-			&& current_animation != &throwing_godmode)
+			&& current_animation != &throwing_godmode && !win)
 		{
 			if (godmode) {
 
@@ -1102,7 +1160,6 @@ update_status ModulePlayer::Update() {
 					time_Counters[COUNTERS::godidle] = 0;
 
 
-
 			}
 			else {
 				App->render->Blit(graphics, position.x, position.y, &(current_animation->frames[0]));
@@ -1135,7 +1192,7 @@ update_status ModulePlayer::Update() {
 			}
 		}
 	}
-	else if (dead == true && !App->welcome->IsEnabled()) {
+	else if (dead == true && !App->welcome->IsEnabled() && !win) {
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 		time_Counters[Player_Die] += 0.02;
 		move = false;
@@ -1175,7 +1232,7 @@ update_status ModulePlayer::Update() {
 			}
 		}
 	}
-	if (!App->welcome->IsEnabled()) {
+	if (!App->welcome->IsEnabled()&&!win) {
 		// Draw UI (score) --------------------------------------
 		sprintf(score_text, "%06d", score);
 		sprintf(lives_text, "%01d", live_counter);

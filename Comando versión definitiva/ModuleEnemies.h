@@ -36,6 +36,8 @@ public:
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
+	uint Enemies_Alive();
+
 private:
 
 	void SpawnEnemy(const EnemyInfo& info);

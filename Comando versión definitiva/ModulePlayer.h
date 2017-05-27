@@ -23,6 +23,7 @@ public:
 public:
 	
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* byebye = nullptr;
 	SDL_Texture* ui_stuff = nullptr;
 	SDL_Texture* graphparticles = nullptr;
 	SDL_Texture* bridge = nullptr;
@@ -85,6 +86,9 @@ public:
 	bool shortgodmode = false;
 	bool PlayerPowerUps[PowerUp_Types::MAX_POWERUP_TYPE] = { false, false, false, false, false, false, false, false , false , false, false, false};
 	bool soundhighscore = true;
+	bool win = false;
+	bool winsound = true;
+	bool endaudio = true;
 };
 
 #endif

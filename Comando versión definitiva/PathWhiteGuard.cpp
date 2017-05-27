@@ -43,7 +43,22 @@ Enemy_PathWhiteGuard::Enemy_PathWhiteGuard(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	path.PushBack({ -0.8f, 0 }, 13, &PathWhiteGuard_Left);
+	path.PushBack({ +0.8f, 0 }, 120, &PathWhiteGuard_Right);
+	path.PushBack({ 0, +0.8f }, 70, &PathWhiteGuard_Down);
+	path.PushBack({ +0.8f, 0 }, 90, &PathWhiteGuard_Right);
+	path.PushBack({ 0, +0.8f }, 100, &PathWhiteGuard_Down);
+	path.PushBack({ +0.8f, 0 }, 20, &PathWhiteGuard_Right);
+	path.PushBack({ 0, -0.8f }, 210, &PathWhiteGuard_Up);
+	path.PushBack({ -0.8f, 0 }, 160, &PathWhiteGuard_Left);
+	path.PushBack({ 0, +0.8f }, 200, &PathWhiteGuard_Down);
+	path.PushBack({ -0.8f, 0 }, 50, &PathWhiteGuard_Left);
+	path.PushBack({ 0, -0.8f }, 80, &PathWhiteGuard_Up);
+	path.PushBack({ +0.8f, 0 }, 80, &PathWhiteGuard_Right);
+	path.PushBack({ 0, +0.8f }, 60, &PathWhiteGuard_Down);
+	path.PushBack({ +0.8f, 0 }, 50, &PathWhiteGuard_Right);
+	path.PushBack({ 0, -0.8f }, 100, &PathWhiteGuard_Up);
+	path.PushBack({ -0.8f, 0 }, 150, &PathWhiteGuard_Left);
+	path.PushBack({ 0, -0.8f }, 40, &PathWhiteGuard_Up);
 
 
 }

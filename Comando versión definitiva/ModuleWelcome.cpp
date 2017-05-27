@@ -28,6 +28,8 @@ bool ModuleWelcome::Start() {
 	App->secretareas->actual_room = ROOM1;
 	App->lvl2->checkpointpassed = false;
 	App->player->soundhighscore = true;
+	App->player->win = false;
+
 
 	for (int i = 0; i < StartTypes::MAX_TYPES; i++)
 	{
