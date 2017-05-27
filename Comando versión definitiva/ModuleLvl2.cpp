@@ -96,9 +96,7 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2844 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2787 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2756 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 2785 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 236, -(2880 - 2757 - SCREEN_HEIGHT));
-
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 11, -(2880 - 2661 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 15, -(2880 - 2666 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 2692 - SCREEN_HEIGHT));
@@ -370,7 +368,16 @@ bool ModuleLvl2::Start() {
 	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1763 - SCREEN_HEIGHT), 85 - 5, 12 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 107 + 5, -(2880 - 1523 - SCREEN_HEIGHT), 42 - 5, 12 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_WATER);
-	water[i++] = App->collision->AddCollider({ 0 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
+	water[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
+
+	//Colliders antibullets
+
+	anti_bullet[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 157, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 142, -(2880 - 1343 - SCREEN_HEIGHT), 20, 66 }, COLLIDER_ANTIBULLET);
+	anti_bullet[i++] = App->collision->AddCollider({ 92, -(2880 - 1343 - SCREEN_HEIGHT), 20, 66 }, COLLIDER_ANTIBULLET);
 	
 	return true;
 }

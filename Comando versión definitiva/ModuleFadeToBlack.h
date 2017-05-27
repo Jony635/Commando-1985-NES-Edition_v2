@@ -2,6 +2,7 @@
 #define __MODULEFADETOBLACK_H__
 
 #include "Module.h"
+#include "ModuleSecretAreas.h"
 #include "SDL\include\SDL_rect.h"
 
 class ModuleFadeToBlack : public Module
@@ -12,7 +13,7 @@ public:
 
 	bool Start();
 	update_status Update();
-	bool FadeToBlack(Module* module_off, Module* module_on, float time = 1.0f);
+	bool FadeToBlack(Module* module_off, Module* module_on, float time = 1.0f, SECRETROOM room = NO_ROOM);
 	bool IsFading() const;
 
 private:
@@ -23,6 +24,8 @@ private:
 		fade_to_black,
 		fade_from_black
 	} current_step = fade_step::none;
+
+	SECRETROOM room = SECRETROOM::NO_ROOM;
 
 	Uint32 start_time = 0;
 	Uint32 total_time = 0;

@@ -9,6 +9,7 @@
 #define NUM_COLLIDERSWALL 100
 #define NUM_COLLIDERSWATER 100
 #define MAX_COLLIDER_DOWNSTAIRS 20
+#define NUM_COLLIDERSANTIBULLET 10
 
 struct SDL_Texture;
 
@@ -40,6 +41,7 @@ public:
 	//Colliders
 	Collider* wall[NUM_COLLIDERSWALL];
 	Collider* water[NUM_COLLIDERSWATER];
+	Collider* anti_bullet[NUM_COLLIDERSANTIBULLET];
 
 	bool playsoundlvl2 = false;
 	bool checkpointpassed = false;

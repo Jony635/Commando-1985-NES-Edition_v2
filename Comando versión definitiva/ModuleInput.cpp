@@ -89,11 +89,13 @@ update_status ModuleInput::PreUpdate()
 		buttons[SDL_CONTROLLER_BUTTON_B])
 		return update_status::UPDATE_STOP;
 
-	if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && !App->player->godmode)
+	if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && 
+		keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_IDLE && !App->player->godmode) 
 	{
 		App->player->godmode = true;
 	}
-	else if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && App->player->godmode)
+	else if (keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN && 
+		keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_IDLE && App->player->godmode) 
 	{
 		App->player->godmode = false;
 	}

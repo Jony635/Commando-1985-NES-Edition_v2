@@ -12,6 +12,7 @@
 #define NUM_POWERUPS_SA 50
 
 enum SECRETROOM {
+	NO_ROOM = -1,
 	ROOM1,
 	ROOM2,
 	ROOM3,

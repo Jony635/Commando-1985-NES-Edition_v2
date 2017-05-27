@@ -45,6 +45,8 @@ DPAD RIGHT ➣ Move player right
 
 Space bar ➣ Shoot
 
+Shift ➣ Shoot grenade
+
 
 ###Other keys:
 
@@ -52,7 +54,51 @@ Keyboard:
 
 F1 ➣ Show colliders
 
+F2 ➣ Win automatically
+
+F3 ➣ Die automatically
+
+F4 ➣ Lose one life
+
+F5 ➣ God mode
+
+
+F6 ➣ Go to secret room 1
+
+F7 ➣ Go to secret room 2
+
+F8 ➣ Go to secret room 3
+
+F9 ➣ Go to secret room 4
+
+F10 ➣ Go to secret room 5
+
+F11 ➣ Go to secret room 6
+
+
+Alt + F1 ➣ Spawn a grenadex4 powerup
+
+Alt + F2 ➣ Spawn a grenadex5 powerup
+
+Alt + F3 ➣ Spawn a gasoline powerup
+
+Alt + F4 ➣ Spawn a bag powerup
+
+Alt + F5 ➣ Spawn a binocular powerup
+
+Alt + F6 ➣ Spawn a bulletproof vest powerup
+
+Alt + F7 ➣ Spawn a medal powerup
+
+Alt + F8 ➣ Spawn a medal of honor powerup
+
+Alt + F9 ➣ Activate mega shoot power up
+
+Alt + F10 ➣ Activate handgranade power up
+
+
 Esc ➣ Quit the game
+
 
 Gamepad:
 
@@ -75,6 +121,24 @@ Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
  - Player with collider that shots
  - One enemy with collider
  - Gamepad functionallity in the menu 
+
+###Version 0.2
+
+ - Secret Areas Implemented
+ - Module PowerUps implemented (without the individual effects)
+ - Enemy autopath that follows the player
+ - Enemy BossGrenades Implemented
+ - Full Controller functionality
+
+###Version 0.3
+
+ - Enemies shot at you
+ - Enemies respawn at their place
+ - PowerUps functionality added
+ - Allies implemented
+ - High Score implemented
+ - God mode added
+
 
 ##Project wiki
 
