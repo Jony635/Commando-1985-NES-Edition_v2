@@ -111,12 +111,12 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_WATER] = true;
-	matrix[COLLIDER_ENEMY][COLLIDER_ANTIBULLET] = true;
+	matrix[COLLIDER_ENEMY][COLLIDER_ANTIBULLET] = false;
+	matrix[COLLIDER_ENEMY][COLLIDER_ANTIENEMY] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_UPSTAIRS] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_DOWNSTAIRS] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_GRENADE] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_GRENADE_EXPL] = true;
-
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER] = false;
@@ -148,7 +148,7 @@ ModuleCollision::ModuleCollision()
 
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_WALL] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_ANTIBULLET][COLLIDER_ENEMY] = true;
+	matrix[COLLIDER_ANTIBULLET][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_ENEMY_SHOT] = true;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_WATER] = false;
@@ -156,6 +156,17 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_UPSTAIRS] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_DOWNSTAIRS] = false;
 	matrix[COLLIDER_ANTIBULLET][COLLIDER_PLAYER_GRENADE] = false; 
+
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_WALL] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_ENEMY] = true;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_WATER] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_ANTIBULLET] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_UPSTAIRS] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_DOWNSTAIRS] = false;
+	matrix[COLLIDER_ANTIENEMY][COLLIDER_PLAYER_GRENADE] = false;
 
 	matrix[COLLIDER_POWERUP][COLLIDER_WALL] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER] = true;
@@ -280,6 +291,9 @@ void ModuleCollision::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 51, 51, 0, alpha);
 			break;
 		case COLLIDER_ANTIBULLET: // blue
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
+			break;
+		case COLLIDER_ANTIENEMY: // blue
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		case COLLIDER_UPSTAIRS: // white

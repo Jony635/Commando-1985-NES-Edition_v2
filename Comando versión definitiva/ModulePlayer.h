@@ -27,6 +27,7 @@ public:
 	SDL_Texture* ui_stuff = nullptr;
 	SDL_Texture* graphparticles = nullptr;
 	SDL_Texture* bridge = nullptr;
+	SDL_Texture* bunkers = nullptr;
 	SDL_Texture* room1 = nullptr;
 	SDL_Texture* room4 = nullptr;
 	SDL_Texture* room5 = nullptr;

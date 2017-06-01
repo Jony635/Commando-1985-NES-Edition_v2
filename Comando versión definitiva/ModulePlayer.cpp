@@ -236,6 +236,7 @@ bool ModulePlayer::Start()
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
 	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
 	bridge = App->textures->Load("Resources/Screens/bridgelvl2.png");//puente
+	bunkers = App->textures->Load("Resources/Screens/bunkers.png");
 	room1 = App->textures->Load("Resources/Screens/sa1-walls.png");
 	room4 = App->textures->Load("Resources/Screens/sa4-walls.png");
 	room5 = App->textures->Load("Resources/Screens/sa5-walls.png");
@@ -263,6 +264,7 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(ui_stuff);
 	App->textures->Unload(graphparticles);
 	App->textures->Unload(bridge);
+	App->textures->Unload(bunkers);
 	App->textures->Unload(room1);
 	App->textures->Unload(room4);
 	App->textures->Unload(room5);
@@ -1172,6 +1174,7 @@ update_status ModulePlayer::Update() {
 		if (App->lvl2->IsEnabled())
 		{
 			App->render->Blit(bridge, 0, -(2880 - 1344 - SCREEN_HEIGHT), &bridgelvl2);
+			App->render->Blit(bunkers, 0, -(2880 - SCREEN_HEIGHT), NULL);
 		}
 		else if (App->secretareas->IsEnabled())
 		{

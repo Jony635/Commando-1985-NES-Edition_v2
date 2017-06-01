@@ -93,156 +93,90 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 152, -(2880 - 359 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 184, -(2880 - 296 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2844 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2787 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 2756 - SCREEN_HEIGHT));
-	
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 11, -(2880 - 2661 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 15, -(2880 - 2666 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 2692 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 40, -(2880 - 2641 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 217, -(2880 - 2776 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 44, -(2880 - 2784 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 71, -(2880 - 2702 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 96, -(2880 - 2471 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 210, -(2880 - 2342 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 71, -(2880 - 2250 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 39, -(2880 - 2050 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 207, -(2880 - 1920 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 1714 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 190, -(2880 - 1625 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 60, -(2880 - 1480 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 1309 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 197, -(2880 - 1012 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 23, -(2880 - 834 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 182, -(2880 - 653 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 104, -(2880 - 439 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 128, -(2880 - 255 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 61, -(2880 - 226 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 193, -(2880 - 180 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 185, -(2880 - 137 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 225, -(2880 - 2697 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 241, -(2880 - 2675 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 2663 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 189, -(2880 - 2714 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 118, -(2880 - 2698 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 120, -(2880 - 2529 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 216, -(2880 - 2498 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 35, -(2880 - 2494 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 85, -(2880 - 2131 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 209, -(2880 - 2059 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 41, -(2880 - 1932 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 201, -(2880 - 1868 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 165, -(2880 - 1716 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 58, -(2880 - 1586 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 169, -(2880 - 1490 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 39, -(2880 - 1240 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 158, -(2880 - 855 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 101, -(2880 - 863 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 99, -(2880 - 585 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 97, -(2880 - 323 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 162, -(2880 - 323 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 150, -(2880 - 104 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 150, -(2880 - 130 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 151, -(2880 - 159 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 96 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 62, -(2880 - 125 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 83, -(2880 - 136 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 61, -(2880 - 2646 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 49, -(2880 - 2625 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 65, -(2880 - 2608 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 200, -(2880 - 2587 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::CAR, 117, -(2880 - 2605 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 170, -(2880 - 2548 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 153, -(2880 - 2541 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 134, -(2880 - 2536 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::TRUCK, 260, -(2880 - 2698 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 35, -(2880 - 2518 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 20, -(2880 - 2490 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::MOTORBIKE, 260, -(2880 - 2229 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::MOTORBIKE, -50, -(2880 - 2117 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 223, -(2880 - 2497 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 218, -(2880 - 2472 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 195, -(2880 - 2427 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 150, -(2880 - 2415 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 133, -(2880 - 2441 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 42, -(2880 - 2398 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 153, -(2880 - 2382 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 187, -(2880 - 2382 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 56, -(2880 - 2334 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 212, -(2880 - 2286 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 123, -(2880 - 2270 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 233, -(2880 - 2206 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 197, -(2880 - 2206 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 58, -(2880 - 2094 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 67, -(2880 - 1998 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 55, -(2880 - 1870 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 124, -(2880 - 1838 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 156, -(2880 - 1838 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 189, -(2880 - 1838 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 42, -(2880 - 1758 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 120, -(2880 - 1518 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 23, -(2880 - 2368 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 55, -(2880 - 2373 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 87, -(2880 - 2377 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1190 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1190 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 74, -(2880 - 1239 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 124, -(2880 - 1239 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 104, -(2880 - 1284 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 177, -(2880 - 1273 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 179, -(2880 - 2327 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 202, -(2880 - 2316 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 242, -(2880 - 2352 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 4, -(2880 - 2320 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 2299 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 21, -(2880 - 2292 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 205, -(2880 - 2275 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 187, -(2880 - 2270 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 207, -(2880 - 2251 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 42, -(2880 - 2230 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 50, -(2880 - 2204 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 5, -(2880 - 2146 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 107, -(2880 - 2137 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 147, -(2880 - 2133 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 159, -(2880 - 2163 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 228, -(2880 - 2150 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 179, -(2880 - 2106 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 19, -(2880 - 2036 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 47, -(2880 - 2030 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 204, -(2880 - 2042 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 2044 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 1968 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 236, -(2880 - 1988 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 91, -(2880 - 1958 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 61, -(2880 - 1953 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 63, -(2880 - 1983 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 30, -(2880 - 1849 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 1860 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 194, -(2880 - 1879 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 230, -(2880 - 1886 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 238, -(2880 - 1820 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 1793 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 108, -(2880 - 1787 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 9, -(2880 - 1706 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 38, -(2880 - 1701 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 26, -(2880 - 1731 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 237, -(2880 - 1669 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 246, -(2880 - 1646 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 219, -(2880 - 1632 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 158, -(2880 - 1657 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 135, -(2880 - 1642 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 110, -(2880 - 1622 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 15, -(2880 - 1541 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 54, -(2880 - 1540 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 26, -(2880 - 1513 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 90, -(2880 - 1455 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 127, -(2880 - 1468 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 205, -(2880 - 1484 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 233, -(2880 - 1475 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 11, -(2880 - 1302 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 43, -(2880 - 1300 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 28, -(2880 - 1325 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 229, -(2880 - 1253 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 73, -(2880 - 1119 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 81, -(2880 - 1091 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 75, -(2880 - 1069 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 235, -(2880 - 1014 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 203, -(2880 - 1021 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 221, -(2880 - 993 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 232, -(2880 - 967 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 171, -(2880 - 967 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 118, -(2880 - 973 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 71, -(2880 - 933 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 52, -(2880 - 896 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 65, -(2880 - 868 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 16, -(2880 - 830 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 21, -(2880 - 806 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 45, -(2880 - 795 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 108, -(2880 - 809 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 159, -(2880 - 829 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 180, -(2880 - 850 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 170, -(2880 - 767 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 170, -(2880 - 736 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 200, -(2880 - 732 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 220, -(2880 - 708 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 21, -(2880 - 691 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 692 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 188, -(2880 - 639 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 166, -(2880 - 622 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 198, -(2880 - 604 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 149, -(2880 - 598 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 590 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 62, -(2880 - 567 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 183, -(2880 - 511 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 170, -(2880 - 483 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 186, -(2880 - 446 - SCREEN_HEIGHT));
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 115, -(2880 - 463 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 92, -(2880 - 451 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 70, -(2880 - 466 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 997 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 947 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 758 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 664 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 524 - SCREEN_HEIGHT));
 
 	//PowerUps
 	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
@@ -259,6 +193,9 @@ bool ModuleLvl2::Start() {
 	}
 	if (!App->powerups_taken[pu_taken_lvl2::granade3]) {
 		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 200, -(2880 - 734 - SCREEN_HEIGHT), false, "granade3");
+	}
+	if (!App->powerups_taken[pu_taken_lvl2::granade4]) {
+		App->powerup->AddPowerUp(PowerUp_Types::GRENADEx4, 39, -(2880 - 71 - SCREEN_HEIGHT), false, "granade4");
 	}
 	if (!App->powerups_taken[pu_taken_lvl2::ally1]) {
 		App->powerup->AddPowerUp(PowerUp_Types::ALLY_CAPTURED, 216, -(2880 - 869 - SCREEN_HEIGHT), false, "ally1");
@@ -308,38 +245,21 @@ bool ModuleLvl2::Start() {
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 215 - SCREEN_HEIGHT), 41, 15 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 0 - SCREEN_HEIGHT), 98, 32 }, COLLIDER_WALL);
 	wall[i++] = App->collision->AddCollider({ 157, -(2880 - 0 - SCREEN_HEIGHT), 99, 33 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 9, -(2880 - 992 - SCREEN_HEIGHT), 28, 11 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 18, -(2880 - 981 - SCREEN_HEIGHT), 28, 11 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 996 - SCREEN_HEIGHT), 28, 14 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 11, -(2880 - 985 - SCREEN_HEIGHT), 27, 10 }, COLLIDER_WALL);
 
-	wall[i++] = App->collision->AddCollider({ 27, -(2880 - 976 - SCREEN_HEIGHT), 11, 17 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 20, -(2880 - 997 - SCREEN_HEIGHT), 14, 10 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 195, -(2880 - 904 - SCREEN_HEIGHT), 28, 9 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 200, -(2880 - 912 - SCREEN_HEIGHT), 29, 10 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 207, -(2880 - 920 - SCREEN_HEIGHT), 13, 7 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 228, -(2880 - 939 - SCREEN_HEIGHT), 28, 14 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 218, -(2880 - 928 - SCREEN_HEIGHT), 27, 12 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 755 - SCREEN_HEIGHT), 27, 14 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 12, -(2880 - 744 - SCREEN_HEIGHT), 26, 12 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 0, -(2880 - 660 - SCREEN_HEIGHT), 29, 16 }, COLLIDER_WALL);
 
-	wall[i++] = App->collision->AddCollider({ 196, -(2880 - 897 - SCREEN_HEIGHT), 19, 11 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 193, -(2880 - 775 - SCREEN_HEIGHT), 29, 9 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 200, -(2880 - 783 - SCREEN_HEIGHT), 30, 11 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 207, -(2880 - 793 - SCREEN_HEIGHT), 13, 7 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 198, -(2880 - 770 - SCREEN_HEIGHT), 15, 11 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 12, -(2880 - 650 - SCREEN_HEIGHT), 26, 12 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 226, -(2880 - 521 - SCREEN_HEIGHT), 30, 14 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 218, -(2880 - 511 - SCREEN_HEIGHT), 28, 11 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 95, -(2880 - 0 - SCREEN_HEIGHT), 6, 49 }, COLLIDER_WALL);
+	wall[i++] = App->collision->AddCollider({ 155, -(2880 - 0 - SCREEN_HEIGHT), 6, 49 }, COLLIDER_WALL);
 
-	wall[i++] = App->collision->AddCollider({ 19, -(2880 - 742 - SCREEN_HEIGHT), 28, 9 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 10, -(2880 - 751 - SCREEN_HEIGHT), 30, 9 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 18, -(2880 - 759 - SCREEN_HEIGHT), 16, 8 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 26, -(2880 - 736 - SCREEN_HEIGHT), 15, 10 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 38, -(2880 - 628 - SCREEN_HEIGHT), 25, 11 }, COLLIDER_WALL);
-
-	wall[i++] = App->collision->AddCollider({ 27, -(2880 - 640 - SCREEN_HEIGHT), 30, 9 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 35, -(2880 - 647 - SCREEN_HEIGHT), 15, 8 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 42, -(2880 - 624 - SCREEN_HEIGHT), 14, 13 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 209, -(2880 - 501 - SCREEN_HEIGHT), 26, 11 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 218, -(2880 - 512 - SCREEN_HEIGHT), 27, 10 }, COLLIDER_WALL);
-
-	wall[i++] = App->collision->AddCollider({ 223, -(2880 - 520 - SCREEN_HEIGHT), 13, 7 }, COLLIDER_WALL);
-	wall[i++] = App->collision->AddCollider({ 215, -(2880 - 497 - SCREEN_HEIGHT), 14, 7 }, COLLIDER_WALL);
-	//wall[i++] = App->collision->AddCollider({ 42, -(2880 - 624 - SCREEN_HEIGHT), 14, 13 }, COLLIDER_WALL);
-	//wall[i++] = App->collision->AddCollider({ 209, -(2880 - 501 - SCREEN_HEIGHT), 26, 11 }, COLLIDER_WALL);
-	//wall[i++] = App->collision->AddCollider({ 218, -(2880 - 512 - SCREEN_HEIGHT), 27, 10 }, COLLIDER_WALL);
 
 	//downstairs colliders
 	int j = 0;
@@ -370,10 +290,11 @@ bool ModuleLvl2::Start() {
 	water[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_WATER);
 	water[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_WATER);
 
-	//Colliders antibullets
+	//Colliders antibullets y antienemys
 
-	anti_bullet[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
-	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIBULLET);
+	anti_enemy[i++] = App->collision->AddCollider({ 144 + 5, -(2880 - 1053 - SCREEN_HEIGHT), 112 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
+	anti_enemy[i++] = App->collision->AddCollider({ 0, -(2880 - 1053 - SCREEN_HEIGHT), 64 - 5, 126 - 5 }, COLLIDER_ANTIENEMY);
+
 	anti_bullet[i++] = App->collision->AddCollider({ 0, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
 	anti_bullet[i++] = App->collision->AddCollider({ 157, -(2880 - 1344 - SCREEN_HEIGHT), 99, 82 }, COLLIDER_ANTIBULLET);
 	anti_bullet[i++] = App->collision->AddCollider({ 142, -(2880 - 1343 - SCREEN_HEIGHT), 20, 66 }, COLLIDER_ANTIBULLET);

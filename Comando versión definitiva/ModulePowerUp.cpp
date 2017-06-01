@@ -270,6 +270,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 						App->powerups_taken[pu_taken_lvl2::granade2] = true;
 					if (powerups[i]->label == "granade3")
 						App->powerups_taken[pu_taken_lvl2::granade3] = true;
+					if (powerups[i]->label == "granade4")
+						App->powerups_taken[pu_taken_lvl2::granade4] = true;
 					App->player->granade_counter += 4;
 					c1->to_delete = true;
 					delete powerups[i];

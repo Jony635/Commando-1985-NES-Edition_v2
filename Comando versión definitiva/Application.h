@@ -37,6 +37,7 @@ enum pu_taken_lvl2 {
 	godmode,
 	granade2,
 	granade3,
+	granade4,
 	ally1,
 	ally2,
 	MAXIM_TYPES
