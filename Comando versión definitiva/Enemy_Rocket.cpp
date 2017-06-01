@@ -100,7 +100,7 @@ void Enemy_Rocket::Move()
 {
 	if (App->player->position.x - position.x < -5 ) //Muevete pa la iskierda
 	{
-		vx = -0.8f;
+		vx = -0.6f;
 		vy = 0.0f;
 		anim = &Rocket_Down;
 		frames = position.x - App->player->position.x;
@@ -109,7 +109,7 @@ void Enemy_Rocket::Move()
 	}
 	else if (App->player->position.x - position.x > 5) //Muevete pa la deresha
 	{
-		vx = 0.8f;
+		vx = 0.6f;
 		vy = 0.0f;
 		anim = &Rocket_Down;
 		frames = App->player->position.x - position.x;
