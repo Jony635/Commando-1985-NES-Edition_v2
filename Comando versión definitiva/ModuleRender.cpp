@@ -88,6 +88,7 @@ bool ModuleRender::CleanUp()
 	if(renderer != NULL)
 	{
 		SDL_DestroyRenderer(renderer);
+		renderer = nullptr;
 	}
 
 	return true;

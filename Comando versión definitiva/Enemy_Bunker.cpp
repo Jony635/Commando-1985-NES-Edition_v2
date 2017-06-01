@@ -123,7 +123,7 @@ void Enemy_Bunker::Move()
 			}
 		}
 
-		if (distance < 300 && App->player->position.y<0 && position.y<0 && shootmadafuka)
+		if (distance < 300 && App->player->position.y < 0 && position.y < 0 && shootmadafuka)
 		{
 			angle = atan2((double)ABS(App->player->position.y) - ABS(position.y), (double)App->player->position.x - position.x); //Angulo en radianes, enemigo arriba
 			this->sino = sin(angle);
@@ -142,7 +142,7 @@ void Enemy_Bunker::Move()
 					animation = &LEFT_Bunker_Mid;
 				else
 					animation = &LEFT_Bunker_Top;
-				
+
 			}
 
 			else if (App->player->position.x > position.x)
@@ -155,7 +155,7 @@ void Enemy_Bunker::Move()
 				else
 					animation = &LEFT_Bunker_Top;
 			}
-				
+
 			else
 			{
 				shoot_vx = 0;

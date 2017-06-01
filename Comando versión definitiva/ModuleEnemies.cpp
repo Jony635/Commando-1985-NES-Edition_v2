@@ -323,7 +323,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIENEMY) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE
 				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK 
-				&& enemies[i]->type != ENEMY_TYPES::BUNKER)
+				&& enemies[i]->type != ENEMY_TYPES::BUNKER && enemies[i]->type != ENEMY_TYPES::KNIFE)
 			{
 				AddEnemy(enemies[i]->type, enemies[i]->position.x, enemies[i]->position.y - 200);
 				delete enemies[i];

@@ -114,12 +114,12 @@ bool ModuleSecretAreas::Start() {
 
 		//Knifes
 
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -20, -110);
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -25, -135);
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -23, -163);
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 260, -182);
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 263, -153);
-		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 259, -128);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 20, 110);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 25, 135);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 23, 163);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 260, 182);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 263, 153);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 259, 128);
 
 		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 33, -164);
 
