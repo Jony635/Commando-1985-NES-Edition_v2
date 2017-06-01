@@ -191,7 +191,7 @@ void Enemy_PathWhiteGuard::Move()
 			else
 				shoot_vy = 2;
 
-			App->particles->bullet.life = 10000;
+			App->particles->bullet.life = 8000;
 			App->particles->bullet.speed.x = shoot_vx;
 			App->particles->bullet.speed.y = shoot_vy;
 			App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
