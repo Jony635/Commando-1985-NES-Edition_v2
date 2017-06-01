@@ -275,15 +275,16 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 							break;
 						default:
 							break;
+						}
 
 							App->player->score += 2000;
-							enemies[i]->OnCollision(c2);
 							App->audio->PlaySound("Resources/Audio/Sound Effects/Enemy Died.wav");
+							App->particles->AddParticle(App->particles->die_Green, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_DIE);
 							delete enemies[i];
 							enemies[i] = nullptr;
 
 							break;
-						}
+						
 					}
 				}
 				else if (c1->enemytype == BOSSGRENADE && c2->enemytype == BOSSGRENADE)
@@ -320,10 +321,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					enemies[i] = nullptr;
 				}
 			}
-			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIBULLET) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE
-				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK)
+			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIENEMY) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE
+				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK 
+				&& enemies[i]->type != ENEMY_TYPES::BUNKER)
 			{
-				AddEnemy(enemies[i]->type, enemies[i]->position.x - 200, enemies[i]->position.y - 200);
+				AddEnemy(enemies[i]->type, enemies[i]->position.x, enemies[i]->position.y - 200);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;

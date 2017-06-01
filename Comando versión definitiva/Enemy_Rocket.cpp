@@ -114,6 +114,10 @@ void Enemy_Rocket::Move()
 		anim = &Rocket_Down;
 		frames = App->player->position.x - position.x;
 	}
+	else
+	{
+		anim = &Rocket_Down;
+	}
 	if (numRockets < 3)
 	{
 		App->particles->bullet.life = 500;

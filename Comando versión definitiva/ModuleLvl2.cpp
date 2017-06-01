@@ -163,20 +163,20 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 42, -(2880 - 1758 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::HOLE, 120, -(2880 - 1518 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1190 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1190 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 74, -(2880 - 1239 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 124, -(2880 - 1239 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 104, -(2880 - 1284 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 177, -(2880 - 1273 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1190 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1190 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 74, -(2880 - 1239 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 124, -(2880 - 1239 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 104, -(2880 - 1284 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 177, -(2880 - 1273 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 997 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 947 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 758 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 664 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 524 - SCREEN_HEIGHT));
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 997 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 947 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 758 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 30, -(2880 - 664 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 225, -(2880 - 524 - SCREEN_HEIGHT));*/
 
 	//PowerUps
 	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
