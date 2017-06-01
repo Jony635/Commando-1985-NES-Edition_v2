@@ -112,6 +112,17 @@ bool ModuleSecretAreas::Start() {
 			App->start_types_arr[StartTypes::room1] = true;
 		}
 
+		//Knifes
+
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -20, -110);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -25, -135);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, -23, -163);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 260, -182);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 263, -153);
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 259, -128);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::KNIFE, 33, -164);
+
 		//WALL
 		int i = 0;
 		wall[i++] = App->collision->AddCollider({ 0, 0, 256, 31 }, COLLIDER_WALL);
@@ -330,7 +341,6 @@ bool ModuleSecretAreas::Start() {
 
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 72, -(448 - 100 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 120, -(448 - 100 - SCREEN_HEIGHT));
-		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 184, -(448 - 100 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 97, -(448 - 300 - SCREEN_HEIGHT));
 		App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 155, -(448 - 300 - SCREEN_HEIGHT));
 
