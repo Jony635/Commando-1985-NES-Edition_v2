@@ -120,10 +120,10 @@ void Enemy_Rocket::Move()
 	}
 	if (numRockets < 3)
 	{
-		App->particles->bullet.life = 500;
-		App->particles->bullet.speed.x = 0;
-		App->particles->bullet.speed.y = 5;
-		App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->Rocket.life = 500;
+		App->particles->Rocket.speed.x = 0;
+		App->particles->Rocket.speed.y = 5;
+		App->particles->AddParticle(App->particles->Rocket, position.x, position.y, COLLIDER_ENEMY_SHOT);
 		numRockets++;
 	}
 
