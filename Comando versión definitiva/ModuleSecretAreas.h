@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModulePowerUp.h"
 
-#define NUM_COLLIDERSWALL 9
+#define NUM_COLLIDERSWALL_SA 9
 #define NUM_COLLIDERSUPSTAIRS 10
 #define NUM_POWERUPS_SA 50
 
@@ -45,7 +45,7 @@ public:
 	SDL_Texture* rect = nullptr;
 	SDL_Texture* items = nullptr;
 	SDL_Texture* background1 = nullptr;
-	Collider* wall[NUM_COLLIDERSWALL];
+	Collider* wall[NUM_COLLIDERSWALL_SA];
 	Collider* upstairs[NUM_COLLIDERSUPSTAIRS];
 	PowerUp* powerups_sa[NUM_POWERUPS_SA];
 

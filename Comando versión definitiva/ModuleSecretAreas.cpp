@@ -13,6 +13,7 @@
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 
+
 ModuleSecretAreas::ModuleSecretAreas() {
 	//WELCOME ANIMATION
 	welcometo.PushBack({ 0, 33, 128, 33 });
@@ -33,6 +34,7 @@ ModuleSecretAreas::ModuleSecretAreas() {
 	mg_rect.h = 33;
 
 	//GAS ANIMATION
+	
 	gascounter.PushBack({ 72, 0, 8, 8 });
 	gascounter.PushBack({ 64, 0, 8, 8 });
 	gascounter.PushBack({ 56, 0, 8, 8 });
@@ -43,7 +45,6 @@ ModuleSecretAreas::ModuleSecretAreas() {
 	gascounter.PushBack({ 16, 0, 8, 8 });
 	gascounter.PushBack({ 8, 0, 8, 8 });
 	gascounter.PushBack({ 0, 0, 8, 8 });
-
 	gascounter.loop = false;
 	gascounter.speed = 0.015f;
 
@@ -67,7 +68,7 @@ bool ModuleSecretAreas::Start() {
 	App->enemies->Enable();
 	App->particles->Enable();
 	App->powerup->Enable();
-
+	
 	for (int i = 0; i < NUM_POWERUPS_SA; i++)
 	{
 		powerups_sa[i] = nullptr;
@@ -76,18 +77,21 @@ bool ModuleSecretAreas::Start() {
 	{
 		upstairs[i] = nullptr;
 	}
-	for (int i = 0; i < NUM_COLLIDERSWALL; i++)
+	
+	for (int i = 0; i < NUM_COLLIDERSWALL_SA; i++)
 	{
 		wall[i] = nullptr;
 	}
-
-
+	
+	
 	//General textures
 	rect = App->textures->Load("Resources/ui/Power_up_rect.png");
 	items = App->textures->Load("Resources/Animations/Items.png");
 
 	LOG("Loading SecretAreas scene");
-	if (App->secretareas->actual_room == SECRETROOM::ROOM1) {
+	
+	if (App->secretareas->actual_room == SECRETROOM::ROOM1 && !App->lvl2->IsEnabled()) 
+	{
 		//SECRETAREA1
 
 		//Textures
@@ -138,7 +142,9 @@ bool ModuleSecretAreas::Start() {
 		int j = 0;
 		upstairs[j++] = App->collision->AddCollider({ 20, 32, 23, 5 }, COLLIDER_UPSTAIRS);
 	}
-	else if (App->secretareas->actual_room == SECRETROOM::ROOM2) {
+	
+	else if (App->secretareas->actual_room == SECRETROOM::ROOM2) 
+	{
 		//SECRETAREA2
 
 		//Textures
@@ -174,7 +180,9 @@ bool ModuleSecretAreas::Start() {
 		upstairs[j++] = App->collision->AddCollider({ 116, 159, 23, 5 }, COLLIDER_UPSTAIRS);
 
 	}
-	else if (App->secretareas->actual_room == SECRETROOM::ROOM3) {
+	 
+	else if (App->secretareas->actual_room == SECRETROOM::ROOM3)
+	{
 
 		//SECRETAREA3
 
@@ -192,10 +200,10 @@ bool ModuleSecretAreas::Start() {
 		App->player->position.x = SCREEN_WIDTH / 2;
 		App->player->position.y = SCREEN_HEIGHT - 35;
 		ystair = &yellowstairinv;
-
+		
 		gascounter.Reset();
 		welcometo.Reset();
-
+		
 		//colliders 
 
 		//WALL
@@ -381,9 +389,9 @@ update_status ModuleSecretAreas::Update() {
 		App->render->Blit(background1, 0, 0, NULL);
 		App->render->Blit(rect, 64, 55, &(welcometo.GetCurrentFrame()));
 		App->render->Blit(items, 32, 41, &(ystair->frames[0]));
-		if (time_Counters[gas]>5)
+		if (time_Counters[gas]>5.0f)
 			App->render->Blit(alphabet, 128, 121, &(gascounter.GetCurrentFrame()));
-		if (time_Counters[gas] > 18 && App->player->current_animation != &App->player->upstairs)
+		if (time_Counters[gas] > 18.0f && App->player->current_animation != &App->player->upstairs)
 			App->player->dead = true;
 		break;
 	case ROOM4:
