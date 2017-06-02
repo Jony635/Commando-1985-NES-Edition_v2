@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 
-Enemy::Enemy(int x, int y) : position(x, y), collider(nullptr)
+Enemy::Enemy(int x, int y, char* cpath) : position(x, y), collider(nullptr), cpath(cpath)
 {}
 
 Enemy::~Enemy()

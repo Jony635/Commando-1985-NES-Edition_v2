@@ -131,7 +131,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, char* cpath)
 {
 	bool ret = false;
 
@@ -142,6 +142,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
+			queue[i].cpath = cpath;
 			ret = true;
 			break;
 		}
@@ -231,9 +232,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 					enemies[i]->collider->enemytype = ENEMY_TYPES::TRUCK;
 					break;
 				case ENEMY_TYPES::PATHWHITEGUARD:
-					enemies[i] = new Enemy_PathWhiteGuard(info.x, info.y);
+					enemies[i] = new Enemy_PathWhiteGuard(info.x, info.y, info.cpath);
 					enemies[i]->type = ENEMY_TYPES::PATHWHITEGUARD;
 					enemies[i]->collider->enemytype = ENEMY_TYPES::PATHWHITEGUARD;
+					
 					break;
 				case ENEMY_TYPES::BUNKER:
 					enemies[i] = new Enemy_Bunker(info.x, info.y);

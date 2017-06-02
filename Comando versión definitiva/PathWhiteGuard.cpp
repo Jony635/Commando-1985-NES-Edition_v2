@@ -7,7 +7,7 @@
 #include "ModuleParticles.h"
 #include <math.h>
 
-Enemy_PathWhiteGuard::Enemy_PathWhiteGuard(int x, int y) : Enemy(x, y)
+Enemy_PathWhiteGuard::Enemy_PathWhiteGuard(int x, int y, char* cpath) : Enemy(x, y, cpath)
 {
 	srand(time(NULL));
 	//Default Animation
@@ -39,26 +39,30 @@ Enemy_PathWhiteGuard::Enemy_PathWhiteGuard(int x, int y) : Enemy(x, y)
 	PathWhiteGuard_Down.speed = 0.07f;
 
 	collider = App->collision->AddCollider({ 0, 0, 16, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-
+	animation = &PathWhiteGuard_Left;
 	original_pos.x = x;
 	original_pos.y = y;
 
-	path.PushBack({ +0.8f, 0 }, 120, &PathWhiteGuard_Right);
-	path.PushBack({ 0, +0.8f }, 70, &PathWhiteGuard_Down);
-	path.PushBack({ +0.8f, 0 }, 90, &PathWhiteGuard_Right);
-	path.PushBack({ 0, +0.8f }, 100, &PathWhiteGuard_Down);
-	path.PushBack({ +0.8f, 0 }, 20, &PathWhiteGuard_Right);
-	path.PushBack({ 0, -0.8f }, 210, &PathWhiteGuard_Up);
-	path.PushBack({ -0.8f, 0 }, 160, &PathWhiteGuard_Left);
-	path.PushBack({ 0, +0.8f }, 200, &PathWhiteGuard_Down);
-	path.PushBack({ -0.8f, 0 }, 50, &PathWhiteGuard_Left);
-	path.PushBack({ 0, -0.8f }, 80, &PathWhiteGuard_Up);
-	path.PushBack({ +0.8f, 0 }, 80, &PathWhiteGuard_Right);
-	path.PushBack({ 0, +0.8f }, 60, &PathWhiteGuard_Down);
-	path.PushBack({ +0.8f, 0 }, 50, &PathWhiteGuard_Right);
-	path.PushBack({ 0, -0.8f }, 100, &PathWhiteGuard_Up);
-	path.PushBack({ -0.8f, 0 }, 150, &PathWhiteGuard_Left);
-	path.PushBack({ 0, -0.8f }, 40, &PathWhiteGuard_Up);
+	if (cpath == "path1")
+	{
+		path.PushBack({ +0.8f, 0 }, 120, &PathWhiteGuard_Right);
+		path.PushBack({ 0, +0.8f }, 70, &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 90, &PathWhiteGuard_Right);
+		path.PushBack({ 0, +0.8f }, 100, &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 20, &PathWhiteGuard_Right);
+		path.PushBack({ 0, -0.8f }, 210, &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0 }, 160, &PathWhiteGuard_Left);
+		path.PushBack({ 0, +0.8f }, 200, &PathWhiteGuard_Down);
+		path.PushBack({ -0.8f, 0 }, 50, &PathWhiteGuard_Left);
+		path.PushBack({ 0, -0.8f }, 80, &PathWhiteGuard_Up);
+		path.PushBack({ +0.8f, 0 }, 80, &PathWhiteGuard_Right);
+		path.PushBack({ 0, +0.8f }, 60, &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 50, &PathWhiteGuard_Right);
+		path.PushBack({ 0, -0.8f }, 100, &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0 }, 150, &PathWhiteGuard_Left);
+		path.PushBack({ 0, -0.8f }, 40, &PathWhiteGuard_Up);
+	}
+	
 
 
 }

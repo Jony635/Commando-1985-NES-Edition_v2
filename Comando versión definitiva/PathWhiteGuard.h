@@ -38,10 +38,10 @@ public:
 	void PathLeft();
 	void PathRight();
 
-	Enemy_PathWhiteGuard(int x, int y);
+	Enemy_PathWhiteGuard(int x, int y, char* cpath="NULL");
 	void Move();
 	//I WANNA DIE
-
+	char* cpath="NULL";
 	float vx = 0.0f, vy = 0.0f;
 	int frames = 1;
 

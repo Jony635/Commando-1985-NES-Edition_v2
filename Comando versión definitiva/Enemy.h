@@ -44,7 +44,7 @@ public:
 	iPoint original_pos;
 public:
 	friend class ModuleEnemies;
-	Enemy(int x, int y);
+	Enemy(int x, int y, char* cpath="NULL");
 	virtual ~Enemy();
 	const Collider* GetCollider() const;
 	virtual void Move() {};
@@ -53,6 +53,7 @@ public:
 	ENEMY_TYPES type;
 	virtual Animation getDie() = 0;
 	Path path;
+	char* cpath = "NULL";
 	virtual void OnCollision(Collider* collider);
 	virtual void PathUp() {};
 	virtual void PathDown() {};
