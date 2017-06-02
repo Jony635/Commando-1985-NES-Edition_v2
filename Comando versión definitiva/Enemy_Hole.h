@@ -29,6 +29,8 @@ public:
 	Animation getDie();
 	Enemy_Hole(int x, int y);
 	void Move();
+	float shootcounter = 0.0f;
+	bool runcounterrun = false;
 };
 
 #endif 

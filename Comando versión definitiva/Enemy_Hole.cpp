@@ -101,14 +101,23 @@ Animation Enemy_Hole::getDie()
 }
 void Enemy_Hole::Move()
 {
-	if ((int)animation->current_frame == 0 && App->player->position.x == position.x)
+	if ((int)animation->current_frame == 0 && App->player->position.x == position.x && shootcounter==0.0f)
 	{
 		App->particles->bullet.life = 10000;
 		App->particles->bullet.speed.x = 0;
 		App->particles->bullet.speed.y = 2;
 		App->particles->AddParticle(App->particles->bullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		runcounterrun = true;
 	}
-
+	if (runcounterrun)
+	{
+		shootcounter += 0.2f;
+	}
+	if (shootcounter >= 5.0f)
+	{
+		shootcounter = 0.0f;
+		runcounterrun = false;
+	}
 	position = original_pos + path.GetCurrentPosition(&animation);
 
 }
