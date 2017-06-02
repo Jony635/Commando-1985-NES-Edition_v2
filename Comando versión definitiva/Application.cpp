@@ -16,6 +16,7 @@
 #include "ModuleSecretAreas.h"
 #include "Globals.h"
 
+
 Application::Application()
 {
 	int i = 0;
@@ -39,8 +40,10 @@ Application::Application()
 
 Application::~Application()
 {
-	for(int i = NUM_MODULES - 1; i >= 0; --i)
+	for (int i = NUM_MODULES - 1; i >= 0; --i) {
 		delete modules[i];
+		modules[i] = nullptr;
+	}
 }
 
 bool Application::Init()
