@@ -66,16 +66,12 @@ bool ModuleLvl2::Start() {
 		App->render->camera.y = -1000;
 	}
 	if (App->secretareas->actual_room == ROOM4) {
-		App->player->position.y = -1500 + 140;
-		App->render->camera.y = -1500;
+		App->player->position.y = -1470 + 140;
+		App->render->camera.y = -1470;
 	}
-	if (App->secretareas->actual_room == ROOM5) {
+	if (App->secretareas->actual_room == ROOM5 || App->secretareas->actual_room == ROOM6) {
 		App->player->position.y = -2000 + 140;
 		App->render->camera.y = -2000;
-	}
-	if (App->secretareas->actual_room == ROOM6) {
-		App->player->position.y = -2500 + 140;
-		App->render->camera.y = -2500;
 	}if (checkpointpassed
 		&& App->secretareas->actual_room != ROOM4
 		&& App->secretareas->actual_room != ROOM5
@@ -112,11 +108,11 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 128, -(2880 - 255 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 61, -(2880 - 226 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 193, -(2880 - 180 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 185, -(2880 - 137 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 185, -(2880 - 137 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 98, -(2880 - 146 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 166, -(2880 - 115 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 166, -(2880 - 115 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 141, -(2880 - 184 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 190 - SCREEN_HEIGHT));
+	//App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 67, -(2880 - 190 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 189, -(2880 - 2714 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 118, -(2880 - 2698 - SCREEN_HEIGHT));
