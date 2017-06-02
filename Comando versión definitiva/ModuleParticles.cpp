@@ -236,7 +236,7 @@ bool Particle::Update()
 			{
 
 				App->particles->grenade_explodes.life = 1000;
-				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_PLAYER_GRENADE_EXPL);
+				App->particles->AddParticle(App->particles->grenade_explodes, this->position.x, this->position.y, COLLIDER_ENEMY_GRENADE_EXPL);
 
 			}
 		}
