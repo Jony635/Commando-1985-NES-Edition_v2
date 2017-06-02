@@ -69,7 +69,7 @@ update_status ModuleEnemies::Update()
 	srand(time(0));
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->position.y < -2880)
+		if (enemies[i] != nullptr && enemies[i]->position.y < -2880 + SCREEN_HEIGHT)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;

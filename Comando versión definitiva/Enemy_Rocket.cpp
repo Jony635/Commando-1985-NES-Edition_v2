@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 
 Enemy_Rocket::Enemy_Rocket(int x, int y) : Enemy(x, y)
 {
@@ -123,6 +124,7 @@ void Enemy_Rocket::Move()
 		App->particles->Rocket.life = 500;
 		App->particles->Rocket.speed.x = 0;
 		App->particles->Rocket.speed.y = 5;
+		App->audio->PlaySound("Resources/Audio/Sound Effects/zuca shoot.wav");
 		App->particles->AddParticle(App->particles->Rocket, position.x, position.y, COLLIDER_ENEMY_SHOT);
 		numRockets++;
 	}
