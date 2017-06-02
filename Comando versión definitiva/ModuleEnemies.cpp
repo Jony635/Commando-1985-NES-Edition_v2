@@ -68,8 +68,14 @@ update_status ModuleEnemies::Update()
 {
 	srand(time(0));
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->position.y < -2880)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
 		if (enemies[i] != nullptr) enemies[i]->Move();
-
+	}
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
 
