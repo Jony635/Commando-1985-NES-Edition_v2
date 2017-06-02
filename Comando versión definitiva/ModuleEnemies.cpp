@@ -237,7 +237,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK) //Los runner son inmortales
 			{
-				if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE && c1->enemytype != HOLE) //Si se les dispara o les explota una bomba y no son el boss grenade
+				if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE && c1->enemytype != HOLE && c1->enemytype!=KNIFE) //Si se les dispara o les explota una bomba y no son el boss grenade
 				{
 					if (c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 					{

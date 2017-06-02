@@ -12,6 +12,7 @@ private:
 	int original_x = 0;
 	Animation Knife_Left;
 	Animation Knife_Right;
+	Animation Knife_Hidden;
 	bool moving[4] = { false, false, false, false };
 	bool* movingptr = moving;
 public:

@@ -12,9 +12,10 @@ Enemy_Knife::Enemy_Knife(int x, int y) : Enemy(x, y)
 	Knife_Left.PushBack({ 194, 39, 16, 8 });
 	//Right Animation
 	Knife_Right.PushBack({ 213, 39, 16, 8 });
-
+	//Hidden Animation
+	Knife_Hidden.PushBack({ 200,184,15,18 });
 	collider = App->collision->AddCollider({ 0, 0, 16, 8 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	animation = &Knife_Left;
+	animation = &Knife_Hidden;
 	original_pos.x = x;
 	original_pos.y = y;
 }
@@ -101,10 +102,12 @@ void Enemy_Knife::Move()
 		if (App->player->position.x < position.x)
 		{
 			path.PushBack({ -2.0f, 0.0f }, 500, &Knife_Left);
+			path.loop = false;
 		}
 		else
 		{
 			path.PushBack({ 2.0f, 0.0f }, 500, &Knife_Right);
+			path.loop = false;
 		}
 	}
 	position = original_pos + path.GetCurrentPosition(&animation);
