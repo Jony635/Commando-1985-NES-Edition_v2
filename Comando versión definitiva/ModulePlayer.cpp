@@ -297,6 +297,7 @@ update_status ModulePlayer::Update() {
 		move = false;
 		App->collision->Disable();
 		App->powerup->Disable();
+		App->enemies->Disable();
 		if (winsound) {
 			winsound = false;
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1 Cleared.ogg", false);
@@ -391,7 +392,7 @@ update_status ModulePlayer::Update() {
 
 
 	//Win, die and lose one live
-	if (!win && !dead)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
 			App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
@@ -421,7 +422,7 @@ update_status ModulePlayer::Update() {
 
 
 	//Changing rooms automatically
-	if (!win && !dead)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
 			App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
@@ -480,7 +481,7 @@ update_status ModulePlayer::Update() {
 	
 
 	//Debug for power ups
-	if (!win && !dead)
+	if (!win && !dead && !App->welcome->IsEnabled())
 	{
 		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
 			App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)

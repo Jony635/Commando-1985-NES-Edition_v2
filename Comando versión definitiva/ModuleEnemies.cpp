@@ -165,79 +165,83 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
-
-	if (i != MAX_ENEMIES)
+	if (!App->player->win)
 	{
-		switch (info.type)
+		for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
+
+		if (i != MAX_ENEMIES)
 		{
-		case ENEMY_TYPES::WHITEGUARD:
-			enemies[i] = new Enemy_WhiteGuard(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::WHITEGUARD;
-			break;
-		case ENEMY_TYPES::CAPTURERGUARD:
-			enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::CAPTURERGUARD;
-			break;
-		case ENEMY_TYPES::BOSSLVL1:
-			enemies[i] = new Enemy_Bosslvl1(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BOSSLVL1;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSLVL1;
-			break;
-		case ENEMY_TYPES::KNIFE:
-			enemies[i] = new Enemy_Knife(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::KNIFE;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::KNIFE;
-			break;
-		case ENEMY_TYPES::BOSSGRENADE:
-			enemies[i] = new Enemy_BossGrenade(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BOSSGRENADE;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSGRENADE;
-			break;
-		case ENEMY_TYPES::RUNNER:
-			enemies[i] = new Runner(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::RUNNER;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::RUNNER;
-			break;
-		case ENEMY_TYPES::MOTORBIKE:
-			enemies[i] = new Enemy_Motorbike(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::MOTORBIKE;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::MOTORBIKE;
-			break;
-		case ENEMY_TYPES::HOLE:
-			enemies[i] = new Enemy_Hole(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::HOLE;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::HOLE;
-			break;
-		case ENEMY_TYPES::ROCKET:
-			enemies[i] = new Enemy_Rocket(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::ROCKET;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::ROCKET;
-			break;
-		case ENEMY_TYPES::CAR:
-			enemies[i] = new Enemy_Car(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::CAR;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::CAR;
-			break;
-		case ENEMY_TYPES::TRUCK:
-			enemies[i] = new Enemy_Truck(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::TRUCK;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::TRUCK;
-			break;
-		case ENEMY_TYPES::PATHWHITEGUARD:
-			enemies[i] = new Enemy_PathWhiteGuard(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::PATHWHITEGUARD;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::PATHWHITEGUARD;
-			break;
-		case ENEMY_TYPES::BUNKER:
-			enemies[i] = new Enemy_Bunker(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BUNKER;
-			enemies[i]->collider->enemytype = ENEMY_TYPES::BUNKER;
-			break;
+			switch (info.type)
+			{
+			case ENEMY_TYPES::WHITEGUARD:
+				enemies[i] = new Enemy_WhiteGuard(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::WHITEGUARD;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::WHITEGUARD;
+				break;
+			case ENEMY_TYPES::CAPTURERGUARD:
+				enemies[i] = new Enemy_CapturerGuard(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::CAPTURERGUARD;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::CAPTURERGUARD;
+				break;
+			case ENEMY_TYPES::BOSSLVL1:
+				enemies[i] = new Enemy_Bosslvl1(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOSSLVL1;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSLVL1;
+				break;
+			case ENEMY_TYPES::KNIFE:
+				enemies[i] = new Enemy_Knife(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::KNIFE;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::KNIFE;
+				break;
+			case ENEMY_TYPES::BOSSGRENADE:
+				enemies[i] = new Enemy_BossGrenade(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOSSGRENADE;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::BOSSGRENADE;
+				break;
+			case ENEMY_TYPES::RUNNER:
+				enemies[i] = new Runner(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::RUNNER;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::RUNNER;
+				break;
+			case ENEMY_TYPES::MOTORBIKE:
+				enemies[i] = new Enemy_Motorbike(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::MOTORBIKE;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::MOTORBIKE;
+				break;
+			case ENEMY_TYPES::HOLE:
+				enemies[i] = new Enemy_Hole(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::HOLE;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::HOLE;
+				break;
+			case ENEMY_TYPES::ROCKET:
+				enemies[i] = new Enemy_Rocket(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::ROCKET;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::ROCKET;
+				break;
+			case ENEMY_TYPES::CAR:
+				enemies[i] = new Enemy_Car(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::CAR;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::CAR;
+				break;
+			case ENEMY_TYPES::TRUCK:
+				enemies[i] = new Enemy_Truck(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::TRUCK;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::TRUCK;
+				break;
+			case ENEMY_TYPES::PATHWHITEGUARD:
+				enemies[i] = new Enemy_PathWhiteGuard(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::PATHWHITEGUARD;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::PATHWHITEGUARD;
+				break;
+			case ENEMY_TYPES::BUNKER:
+				enemies[i] = new Enemy_Bunker(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BUNKER;
+				enemies[i]->collider->enemytype = ENEMY_TYPES::BUNKER;
+				break;
+			}
 		}
 	}
+	
 }
 
 

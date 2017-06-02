@@ -86,6 +86,7 @@ bool ModuleLvl2::Start() {
 
 	//Add Enemies
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, (SCREEN_WIDTH / 2) - 7 + 20, -(2880 - 2796 - SCREEN_HEIGHT) - 200);
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 113, -(2880 - 35 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 59, -(2880 - 298 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSGRENADE, 104, -(2880 - 361 - SCREEN_HEIGHT));
@@ -302,7 +303,7 @@ bool ModuleLvl2::Start() {
 
 update_status ModuleLvl2::Update(){
 
-	if (!App->player->respawn && playsoundlvl2) {
+	if (!App->player->respawn && playsoundlvl2 && !App->player->win) {
 		App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1, 2 Theme.ogg", true);
 		playsoundlvl2 = false;
 	}
