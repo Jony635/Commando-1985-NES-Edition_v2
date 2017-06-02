@@ -166,7 +166,7 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 42, -(2880 - 1195 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 89, -(2880 - 1243 - SCREEN_HEIGHT));
-	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 110, -(2880 - 1282 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKET, 20, -(2880 - 1282 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
