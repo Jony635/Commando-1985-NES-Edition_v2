@@ -340,6 +340,7 @@ update_status ModulePlayer::Update() {
 				endaudio = false;
 			}
 			App->render->Blit(byebye, 0, -(2880 - SCREEN_HEIGHT), nullptr);
+			App->render->camera.y = -(2880 - SCREEN_HEIGHT);
 			if (time_Counters[bye] > 40) {
 				App->fade->FadeToBlack(App->lvl2, App->welcome, 1);
 			}

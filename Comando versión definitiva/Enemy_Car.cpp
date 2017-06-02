@@ -19,7 +19,7 @@ Enemy_Car::Enemy_Car(int x, int y) : Enemy(x, y)
 	animation = &Car_Down;
 	original_pos.x = x;
 	original_pos.y = y;
-	path.PushBack({0.0f, 2.0f}, 1000, &Car_Down);
+	
 }
 
 Animation Enemy_Car::getDie()
@@ -33,6 +33,7 @@ void Enemy_Car::Move()
 		position.x = App->player->position.x;
 		firstSpawn = true;
 		App->audio->PlaySound("Resources/Audio/Sound Effects/Motorbike_Car is here.wav");
+		path.PushBack({ 0.0f, 2.0f }, 1000, &Car_Down);
 	}
 
 	
