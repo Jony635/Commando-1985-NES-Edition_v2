@@ -26,6 +26,7 @@ public:
 	void PathLeft();
 	void PathRight();
 	Animation getDie();
+	bool once = false;
 	Enemy_Motorbike(int x, int y);
 	void Move();
 };

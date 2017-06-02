@@ -100,19 +100,25 @@ Animation Enemy_Motorbike::getDie()
 }
 void Enemy_Motorbike::Move()
 {
-	if(App->player->position.y==position.y)
+	if (!once)
 	{
-		if (App->player->position.x < position.x)
+		if (App->player->position.y == position.y)
 		{
-			path.PushBack({-2.0f, 0.0f}, 500, &Motorbike_Left);
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Motorbike_Car is here.wav");
-		}
-		else
-		{
-			path.PushBack({ 2.0f, 0.0f }, 500, &Motorbike_Right);
-			App->audio->PlaySound("Resources/Audio/Sound Effects/Motorbike_Car is here.wav");
+			if (App->player->position.x < position.x)
+			{
+				path.PushBack({ -2.0f, 0.0f }, 500, &Motorbike_Left);
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Motorbike_Car is here.wav");
+				once = true;
+			}
+			else
+			{
+				path.PushBack({ 2.0f, 0.0f }, 500, &Motorbike_Right);
+				App->audio->PlaySound("Resources/Audio/Sound Effects/Motorbike_Car is here.wav");
+				once = true;
+			}
 		}
 	}
+	
 
 	position = original_pos + path.GetCurrentPosition(&animation);
 

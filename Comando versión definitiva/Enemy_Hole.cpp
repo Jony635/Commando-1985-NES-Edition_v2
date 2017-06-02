@@ -101,7 +101,7 @@ Animation Enemy_Hole::getDie()
 }
 void Enemy_Hole::Move()
 {
-	if ((int)animation->current_frame == 0 && App->player->position.x == position.x && shootcounter==0.0f)
+	if ((int)animation->current_frame == 0  && ABS(ABS(App->player->position.x)-ABS(position.x))<10 && shootcounter==0.0f)
 	{
 		App->particles->bullet.life = 10000;
 		App->particles->bullet.speed.x = 0;
@@ -113,7 +113,7 @@ void Enemy_Hole::Move()
 	{
 		shootcounter += 0.2f;
 	}
-	if (shootcounter >= 5.0f)
+	if (shootcounter >= 4.0f)
 	{
 		shootcounter = 0.0f;
 		runcounterrun = false;
