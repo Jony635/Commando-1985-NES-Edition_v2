@@ -295,6 +295,8 @@ update_status ModulePlayer::Update() {
 	if (win) {
 		time_Counters[COUNTERS::bye] += 0.02;
 		move = false;
+		App->collision->Disable();
+		App->powerup->Disable();
 		if (winsound) {
 			winsound = false;
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1 Cleared.ogg", false);
@@ -391,11 +393,21 @@ update_status ModulePlayer::Update() {
 	//Win, die and lose one live
 
 	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+	{
+		position.x = (SCREEN_WIDTH / 2) - 7;
+		position.y = -(2880 - SCREEN_HEIGHT - 140);
+		App->render->camera.y = -(2880 - SCREEN_HEIGHT);
+		App->enemies->Disable();
+		App->particles->Disable();
+		win = true;
+	}
+	
+	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
 		App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
 	{
 		live_counter = 1;
 		dead = true;
-
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
