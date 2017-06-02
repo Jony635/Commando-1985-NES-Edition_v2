@@ -252,6 +252,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					break;
 				case PowerUp_Types::BULLETPROOF_VEST:
 					App->player->PlayerPowerUps[pu_taken_lvl2::godmode] = true;
+					if(!App->player->godmode)
 					App->player->shortgodmode = true;
 					c1->to_delete = true;
 					delete powerups[i];

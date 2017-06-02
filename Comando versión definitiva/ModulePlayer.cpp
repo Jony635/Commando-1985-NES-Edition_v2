@@ -1419,8 +1419,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 
 	if (c2->type == COLLIDER_DOWNSTAIRS&&dead == false) {
-		App->particles->Disable();
 		if (position.y > -(2880 - 2500 - SCREEN_HEIGHT) && App->lvl2->current_stair1_animation == &App->lvl2->stair) {
+			App->particles->Disable();
 			App->secretareas->actual_room = SECRETROOM::ROOM1;
 			App->player->position.x = 234;
 			App->player->position.y = -(2880 - 2632 - SCREEN_HEIGHT);
