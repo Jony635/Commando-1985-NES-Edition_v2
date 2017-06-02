@@ -29,6 +29,7 @@ bool ModuleWelcome::Start() {
 	App->lvl2->checkpointpassed = false;
 	App->player->soundhighscore = true;
 	App->player->win = false;
+	App->secretareas->playdorosound = true;
 
 
 	for (int i = 0; i < StartTypes::MAX_TYPES; i++)

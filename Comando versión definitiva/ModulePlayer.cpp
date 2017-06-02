@@ -302,6 +302,7 @@ update_status ModulePlayer::Update() {
 			winsound = false;
 			App->audio->Play("Resources/Audio/Themes_SoundTrack/Area 1 Cleared.ogg", false);
 		}
+		
 
 		if (position.x > 120) {
 			if (current_animation != &left)
@@ -325,8 +326,7 @@ update_status ModulePlayer::Update() {
 				up.Reset();
 				current_animation = &up;
 			}
-			if (position.y > -2880 + SCREEN_HEIGHT + 140)
-				App->render->camera.y += 3;
+			
 
 			if (position.y > -(2880 + 50 - SCREEN_HEIGHT)) {
 				position.y--;
