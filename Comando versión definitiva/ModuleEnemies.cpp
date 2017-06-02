@@ -22,6 +22,7 @@
 #include "Enemy_Car.h"
 #include "Enemy_Truck.h"
 #include "PathWhiteGuard.h"
+#include "Enemy_Bunker.h"
 
 #define SPAWN_MARGIN 50
 
@@ -230,6 +231,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i]->type = ENEMY_TYPES::PATHWHITEGUARD;
 			enemies[i]->collider->enemytype = ENEMY_TYPES::PATHWHITEGUARD;
 			break;
+		case ENEMY_TYPES::BUNKER:
+			enemies[i] = new Enemy_Bunker(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BUNKER;
+			enemies[i]->collider->enemytype = ENEMY_TYPES::BUNKER;
+			break;
 		}
 	}
 }
@@ -243,7 +249,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK) //Los runner son inmortales
 			{
-				if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE && c1->enemytype != HOLE && c1->enemytype!=KNIFE) //Si se les dispara o les explota una bomba y no son el boss grenade
+				if ((c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER_GRENADE_EXPL) && c1->enemytype != BOSSGRENADE && c1->enemytype != HOLE && c1->enemytype!=KNIFE && c1->enemytype!=BUNKER) //Si se les dispara o les explota una bomba y no son el boss grenade
 				{
 					if (c1->enemytype != ENEMY_TYPES::BOSSLVL1)
 					{
@@ -327,7 +333,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					enemies[i] = nullptr;
 				}
 			}
-			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIENEMY) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && enemies[i]->type != ENEMY_TYPES::BOSSGRENADE
+			if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_ANTIENEMY) && c1->enemytype != ENEMY_TYPES::BOSSLVL1 && c1->enemytype!= ENEMY_TYPES::BOSSGRENADE
 				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK 
 				&& enemies[i]->type != ENEMY_TYPES::BUNKER && enemies[i]->type != ENEMY_TYPES::KNIFE)
 			{

@@ -169,11 +169,11 @@ bool ModuleLvl2::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSLVL1, 117, -(2880 - 88 - SCREEN_HEIGHT));
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 977 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 921 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 737 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 643 - SCREEN_HEIGHT));
-	//App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 503 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 977 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 921 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 737 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 0, -(2880 - 643 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::BUNKER, 218, -(2880 - 503 - SCREEN_HEIGHT));
 
 	//PowerUps
 	if (!App->powerups_taken[pu_taken_lvl2::granade1]) {
