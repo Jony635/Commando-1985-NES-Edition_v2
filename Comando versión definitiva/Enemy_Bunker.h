@@ -48,9 +48,10 @@ public:
 	double angle = 0.0;
 	int shoots = 4;
 	bool shootmadafuka = true;
+	bool gominicounter = false;
 	float shoot_counter = 0.0f;
+	float minicounter = 0.0f;
 	int shoot_vx = 0, shoot_vy = 0;
-	int distance = 0;
 
 };
 

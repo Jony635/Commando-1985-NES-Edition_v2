@@ -97,7 +97,7 @@ bool ModuleTextures::Unload(SDL_Texture* texture)
 
 	for(uint i = 0; i < MAX_TEXTURES; ++i)
 	{
-		if(texture == textures[i])
+		if(texture == textures[i] && textures[i]!=nullptr)
 		{
 			SDL_DestroyTexture(textures[i]);
 			textures[i] = nullptr;
