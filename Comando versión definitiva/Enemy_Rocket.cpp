@@ -133,7 +133,7 @@ void Enemy_Rocket::Move()
 	{
 		ShootCounter += 0.2f;
 	}
-	if (ShootCounter >= 50.0f)
+	if (ShootCounter >= 30.0f)
 	{
 		ShootCounter = 0.0f;
 		numRockets = 0;

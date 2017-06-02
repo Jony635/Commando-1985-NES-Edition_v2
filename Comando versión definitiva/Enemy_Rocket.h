@@ -24,7 +24,7 @@ public:
 	Animation* anim = nullptr;
 
 	float ShootCounter = 0.0f;
-	int numRockets = 0;
+	int numRockets = 3;
 
 	bool* getMoving() const;
 	void ColPathDown();
