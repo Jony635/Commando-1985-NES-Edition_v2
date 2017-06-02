@@ -345,7 +345,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				&& enemies[i]->type != ENEMY_TYPES::RUNNER && enemies[i]->type != ENEMY_TYPES::MOTORBIKE && enemies[i]->type != ENEMY_TYPES::CAR && enemies[i]->type != ENEMY_TYPES::TRUCK 
 				&& enemies[i]->type != ENEMY_TYPES::BUNKER && enemies[i]->type != ENEMY_TYPES::KNIFE)
 			{
-				AddEnemy(enemies[i]->type, enemies[i]->position.x, enemies[i]->position.y - 200);
+				AddEnemy(enemies[i]->type, enemies[i]->position.x, enemies[i]->position.y - 200, enemies[i]->cpath);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
