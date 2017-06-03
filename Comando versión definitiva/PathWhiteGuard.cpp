@@ -46,44 +46,44 @@ Enemy_PathWhiteGuard::Enemy_PathWhiteGuard(int x, int y, char* cpath) : Enemy(x,
 	if (cpath == "pathleft")
 	{
 		path.PushBack({ +0.8f, 0 }, 60, &PathWhiteGuard_Right);
-		path.PushBack({ 0, +0.8f }, 35, &PathWhiteGuard_Down);
-		path.PushBack({ +0.8f, 0 }, 45, &PathWhiteGuard_Right);
-		path.PushBack({ 0, +0.8f }, 50, &PathWhiteGuard_Down);
-		path.PushBack({ +0.8f, 0 }, 10, &PathWhiteGuard_Right);
-		path.PushBack({ 0, -0.8f }, 105, &PathWhiteGuard_Up);
-		path.PushBack({ -0.8f, 0 }, 80, &PathWhiteGuard_Left);
-		path.PushBack({ 0, +0.8f }, 100, &PathWhiteGuard_Down);
-		path.PushBack({ -0.8f, 0 }, 25, &PathWhiteGuard_Left);
-		path.PushBack({ 0, -0.8f }, 40, &PathWhiteGuard_Up);
-		path.PushBack({ +0.8f, 0 }, 40, &PathWhiteGuard_Right);
-		path.PushBack({ 0, +0.8f }, 30, &PathWhiteGuard_Down);
-		path.PushBack({ +0.8f, 0 }, 25, &PathWhiteGuard_Right);
-		path.PushBack({ 0, -0.8f }, 50, &PathWhiteGuard_Up);
-		path.PushBack({ -0.8f, 0 }, 75, &PathWhiteGuard_Left);
-		path.PushBack({ 0, -0.8f }, 20, &PathWhiteGuard_Up);
+		path.PushBack({ 0, +0.8f }, 35 , &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 45 , &PathWhiteGuard_Right);
+		path.PushBack({ 0, +0.8f }, 50 , &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 10 , &PathWhiteGuard_Right);
+		path.PushBack({ 0, -0.8f }, 105 , &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0 }, 80 , &PathWhiteGuard_Left);
+		path.PushBack({ 0, +0.8f }, 100 , &PathWhiteGuard_Down);
+		path.PushBack({ -0.8f, 0 }, 25 , &PathWhiteGuard_Left);
+		path.PushBack({ 0, -0.8f }, 40 , &PathWhiteGuard_Up);
+		path.PushBack({ +0.8f, 0 }, 40 , &PathWhiteGuard_Right);
+		path.PushBack({ 0, +0.8f }, 30 , &PathWhiteGuard_Down);
+		path.PushBack({ +0.8f, 0 }, 25 , &PathWhiteGuard_Right);
+		path.PushBack({ 0, -0.8f }, 50 , &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0 }, 75 , &PathWhiteGuard_Left);
+		path.PushBack({ 0, -0.8f }, 20 , &PathWhiteGuard_Up);
 	}
 	else if (cpath == "pathright")
 	{
-		path.PushBack({ +0.0f, 0.8f }, 100, &PathWhiteGuard_Down);
-		path.PushBack({ -0.8f, 0.0f }, 40, &PathWhiteGuard_Left);
-		path.PushBack({ +0.0f, 0.8f }, 40, &PathWhiteGuard_Down);
-		path.PushBack({ -0.8f, +0.0f }, 20, &PathWhiteGuard_Left);
-		path.PushBack({ +0.0f, -0.8f }, 80, &PathWhiteGuard_Up);
-		path.PushBack({ -0.8f, 0.0f }, 20, &PathWhiteGuard_Left);
-		path.PushBack({ 0.0f, -0.8f }, 60, &PathWhiteGuard_Up);
-		path.PushBack({ 0.8f, 0.0f }, 80, &PathWhiteGuard_Right);
+		path.PushBack({ +0.0f, 0.8f }, 100 *0.4, &PathWhiteGuard_Down);
+		path.PushBack({ -0.8f, 0.0f }, 40 *0.4, &PathWhiteGuard_Left);
+		path.PushBack({ +0.0f, 0.8f }, 40 *0.4, &PathWhiteGuard_Down);
+		path.PushBack({ -0.8f, +0.0f }, 20 *0.4, &PathWhiteGuard_Left);
+		path.PushBack({ +0.0f, -0.8f }, 80 *0.4, &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0.0f }, 20 *0.4, &PathWhiteGuard_Left);
+		path.PushBack({ 0.0f, -0.8f }, 60 *0.4, &PathWhiteGuard_Up);
+		path.PushBack({ 0.8f, 0.0f }, 80 *0.4, &PathWhiteGuard_Right);
 	}
 
 	else if (cpath == "pathcenter")
 	{
-		path.PushBack({ +0.0f, 0.8f }, 40, &PathWhiteGuard_Down);
-		path.PushBack({ 0.8f, 0.0f }, 40, &PathWhiteGuard_Right);
-		path.PushBack({ +0.0f, -0.8f }, 60, &PathWhiteGuard_Up);
-		path.PushBack({ -0.8f, 0.0f }, 80, &PathWhiteGuard_Left);
-		path.PushBack({ +0.0f, 0.8f }, 80, &PathWhiteGuard_Down);
-		path.PushBack({ 0.8f, 0.0f }, 100, &PathWhiteGuard_Right);
-		path.PushBack({ +0.0f, -0.8f }, 60, &PathWhiteGuard_Up);
-		path.PushBack({ -0.8f, +0.0f }, 60, &PathWhiteGuard_Left);
+		path.PushBack({ +0.0f, 0.8f }, 40 , &PathWhiteGuard_Down);
+		path.PushBack({ 0.8f, 0.0f }, 40 , &PathWhiteGuard_Right);
+		path.PushBack({ +0.0f, -0.8f }, 60 , &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, 0.0f }, 80 , &PathWhiteGuard_Left);
+		path.PushBack({ +0.0f, 0.8f }, 80 , &PathWhiteGuard_Down);
+		path.PushBack({ 0.8f, 0.0f }, 100 , &PathWhiteGuard_Right);
+		path.PushBack({ +0.0f, -0.8f }, 60 , &PathWhiteGuard_Up);
+		path.PushBack({ -0.8f, +0.0f }, 60 , &PathWhiteGuard_Left);
 	}
 	
 
