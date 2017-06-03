@@ -106,8 +106,10 @@ bool ModuleLvl2::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 2382 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 46, -(2880 - 1953 - SCREEN_HEIGHT));
 	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 83, -(2880 - 331 - SCREEN_HEIGHT));
-
-
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2650 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 2086 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 1454 - SCREEN_HEIGHT));
+	App->enemies->AddEnemy(ENEMY_TYPES::WHITEGUARD, 114, -(2880 - 777 - SCREEN_HEIGHT));
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 117, -(2880 - 2707 - SCREEN_HEIGHT), "pathcenter");
 	App->enemies->AddEnemy(ENEMY_TYPES::PATHWHITEGUARD, 120, -(2880 - 2510 - SCREEN_HEIGHT), "pathcenter");
