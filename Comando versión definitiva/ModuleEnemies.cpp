@@ -172,7 +172,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		if (i != MAX_ENEMIES)
 		{
-			if (info.y < App->player->position.y)
+			if (info.y < App->player->position.y+SPAWN_MARGIN)
 			{
 				switch (info.type)
 				{

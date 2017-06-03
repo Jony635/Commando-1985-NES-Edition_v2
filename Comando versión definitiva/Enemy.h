@@ -45,6 +45,7 @@ public:
 public:
 	friend class ModuleEnemies;
 	Enemy(int x, int y, char* cpath="NULL");
+	
 	virtual ~Enemy();
 	const Collider* GetCollider() const;
 	virtual void Move() {};

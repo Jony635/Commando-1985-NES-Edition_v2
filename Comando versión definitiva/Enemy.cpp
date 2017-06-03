@@ -6,6 +6,8 @@
 Enemy::Enemy(int x, int y, char* cpath) : position(x, y), collider(nullptr), cpath(cpath)
 {}
 
+
+
 Enemy::~Enemy()
 {
 	if(collider != nullptr)
