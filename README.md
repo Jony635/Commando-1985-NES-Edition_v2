@@ -1,4 +1,3 @@
-## Flan Studio Logo
 ![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
 
 
