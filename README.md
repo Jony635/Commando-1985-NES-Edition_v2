@@ -155,7 +155,7 @@ Rockets Enemy: They can kill you from so far, try to use the time between shoots
  - Debug functionality to respawn power ups in front of you
 
 
-# Download our game [here](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
+# Download our game [here](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050709/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
 
 ## Changelist (LEVEL 2)
 
