@@ -230,6 +230,6 @@ Carlos Gálvez's Github account and responsability
  - Github: https://github.com/carlosgabe1998
  
  <video>
-<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/F0Y9LAmNNxE?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allowfullscreen></iframe></div>
+ <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/F0Y9LAmNNxE?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allowfullscreen></iframe></div>
 
 CITM Terrassa 2016-2017
