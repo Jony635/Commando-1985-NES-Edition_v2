@@ -43,25 +43,18 @@ bool ModuleWelcome::Start() {
 
 
 	//fonts
-	if(font_high_score==-1)
 	font_high_score = App->fonts->Load("Resources/ui/Alphabetred.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'�$%&/()-.�@ASD_GHJ", 6);
-	if (font_welcome_score == -1)
 	font_welcome_score = App->fonts->Load("Resources/ui/Alphabetwhite.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'�$%&/()-.�@ASD_GHJ", 6);
 
 
 
 	//Textures
-	if(Area2Option==nullptr)
 	Area2Option = App->textures->Load("Resources/Screens/Intro_Screen1.png");//foto del fondo
-	if(ExitOption==nullptr)
 	ExitOption= App->textures->Load("Resources/Screens/Intro_Screen2.png");//foto del fondo
 	//Enables and Disables
-	App->input->Enable();
 	App->player->Enable();
 	App->textures->Enable();
 	App->audio->Enable();
-	App->fade->Enable();
-	App->fonts->Enable();
 	Menu_Options = MENU::Lvl2;
 	//Cameras positions
 	App->render->camera.x = App->render->camera.y = 0;
