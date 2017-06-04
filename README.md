@@ -198,7 +198,7 @@ Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
 
 ## Project wiki
 
-https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki
+[https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki](https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki)
 
 ## Project web
 
@@ -207,27 +207,27 @@ https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki
 
 ## Credits
 
-Github project page: https://github.com/Jony635/Commando-1985-NES-Edition_v2
+Github project page: [https://github.com/Jony635/Commando-1985-NES-Edition_v2](https://github.com/Jony635/Commando-1985-NES-Edition_v2)
 
 Oriol de Dios's Github account and responsability
 
  - Management.
 
- - Github: https://github.com/orioldedios
+ - Github: [https://github.com/orioldedios](https://github.com/orioldedios)
 
 
 Jonathan Molina's Github account and responsability
 
  - Code.
 
- - Github: https://github.com/Jony635
+ - Github: [https://github.com/Jony635](https://github.com/Jony635)
 
 
 Carlos Gálvez's Github account and responsability
 
  - QA Testing
 
- - Github: https://github.com/carlosgabe1998
+ - Github: [https://github.com/carlosgabe1998](https://github.com/carlosgabe1998)
  
 
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/nxzWL1kqg54?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allowfullscreen></iframe></div>
