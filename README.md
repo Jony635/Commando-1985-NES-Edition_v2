@@ -150,7 +150,7 @@ Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
  - A grenade powerup at the end of the map to ensure that you don't run out of grenades when facing the boss
  - Debug functionality to respawn power ups in front of you
 
-# Download: ![Download](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
+# Download: [Commando_1985_FlanStudios](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
 
 ## Changelist (LEVEL 2)
 
