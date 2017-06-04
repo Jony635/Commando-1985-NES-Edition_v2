@@ -227,6 +227,7 @@ bool ModulePlayer::Start()
 	respawn = true;
 	playsounddead = true;
 	playsounddie = true;
+	if(!App->welcome->IsEnabled())
 	playsoundresp = true;
 	winsound = true;
 	endaudio = true;
@@ -253,7 +254,7 @@ bool ModulePlayer::Start()
 	room6 = App->textures->Load("Resources/Screens/sa6-walls.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
-	if (col == nullptr)
+	if (col == nullptr && !		App->welcome->IsEnabled())
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
 	if(font_score==-1)
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
@@ -397,7 +398,7 @@ update_status ModulePlayer::Update() {
 		}
 	}
 	//RESPAWN
-	if (respawn && !App->secretareas->IsEnabled()) {
+	if (respawn && !App->secretareas->IsEnabled() && !App->welcome->IsEnabled()) {
 		time_Counters[respawn] += 0.02f;
 		move = false;
 		App->enemies->Disable();
@@ -415,7 +416,7 @@ update_status ModulePlayer::Update() {
 
 
 	//Win, die and lose one live
-	if (!win && !dead && !App->welcome->IsEnabled())
+	if (!win && !dead && !App->welcome->IsEnabled() && !App->fade->IsFading())
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
 			App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
@@ -445,7 +446,7 @@ update_status ModulePlayer::Update() {
 
 
 	//Changing rooms automatically
-	if (!win && !dead && !App->welcome->IsEnabled())
+	if (!win && !dead && !App->welcome->IsEnabled() && !App->fade->IsFading())
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LALT] == KEY_IDLE &&
 			App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN)
@@ -504,7 +505,7 @@ update_status ModulePlayer::Update() {
 	
 
 	//Debug for power ups
-	if (!win && !dead && !App->welcome->IsEnabled())
+	if (!win && !dead && !App->welcome->IsEnabled() && !App->fade->IsFading())
 	{
 		if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_DOWN || App->input->keyboard[SDL_SCANCODE_LALT] == KEY_REPEAT) &&
 			App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
@@ -1153,7 +1154,7 @@ update_status ModulePlayer::Update() {
 	//else {
 	//	col->rect.w = 16;
 	//}
-
+	if(col!=nullptr)
 	col->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------

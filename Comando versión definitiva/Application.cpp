@@ -41,7 +41,6 @@ Application::Application()
 
 Application::~Application()
 {
-	CleanUp();
 	for (int i = NUM_MODULES - 1; i >= 0; --i) {
 		delete modules[i];
 		modules[i] = nullptr;
@@ -59,6 +58,7 @@ bool Application::Init()
 	powerup->Disable();
 	particles->Disable();
 	secretareas->Disable();
+	player->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
