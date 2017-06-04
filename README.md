@@ -1,5 +1,3 @@
-﻿# Download: [Commando_1985_FlanStudios](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
-
 ## Flan Studio Logo
 ![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
 
@@ -155,6 +153,7 @@ Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
  - Debug functionality to respawn power ups in front of you
 
 
+# Download our game [here](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
 
 ## Changelist (LEVEL 2)
 
@@ -249,7 +248,7 @@ Carlos Gálvez's Github account and responsability
 ![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Web/FlanStudio.png?raw=true)
 
 
-# Dowload the latest version of Commando here.
+# Check all Commando releases [here](https://github.com/Jony635/Commando-1985-NES-Edition_v2/releases)
 
 
 CITM Terrassa 2016-2017
