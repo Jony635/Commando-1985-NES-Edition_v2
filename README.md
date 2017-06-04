@@ -1,4 +1,4 @@
-﻿# Commando (LEVEL 2)
+# Commando (LEVEL 2)
 
 This is a class project made by 3 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
 The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
