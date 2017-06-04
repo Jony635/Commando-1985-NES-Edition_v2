@@ -1,6 +1,6 @@
 ﻿# Commando (LEVEL 2)
 
-This is a class project made by 4 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
+This is a class project made by 3 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
 The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
 developed, but our group only covers the 2nd Area and its secret rooms.
 
@@ -43,9 +43,17 @@ DPAD RIGHT ➣ Move player right
 
 ###Shoot key:
 
+Keyboard:
+
 Space bar ➣ Shoot
 
 Shift ➣ Shoot grenade
+
+Gamepad:
+
+X ➣ Shoot
+
+Y ➣ Shoot grenade
 
 
 ###Other keys:
@@ -105,11 +113,24 @@ Gamepad:
 B button ➣ Quit the game
 
 
-##Win lose condition
+##Win/lose condition
 
 Win ➣ Kill the boss at the end of the level.
 
 Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
+
+
+##How to kill every type of enemy
+
+Normal Whiteguard Enemy ➣ Shoot or throw a grenade at him.
+
+Covered Enemy ➣ Throw a grenade at him.
+
+Vehicles and Bunkers ➣ Can't die.
+
+Green Boss Grenade Enemy ➣ Throw a grenade at him.
+
+Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
 
 
 ##Changelist (LEVEL 2)
@@ -138,6 +159,31 @@ Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
  - Allies implemented
  - High Score implemented
  - God mode added
+
+###Version 0.4
+
+ - Added all kind of enemies
+ - Godmode now has a concrete animation
+ - All PowerUps implemented + Debug Keys for spawning
+ - Win condition implemented: Kill all enemies in the final zone.
+ - Final Screen implemented
+ - Debug keys for visit a concrete area or secret area
+
+###Version 0.5
+
+ - Win automatically with F2
+ - Some bugs fixed
+ - Knives working well
+
+###Version 0.6
+
+ - Enemies path now have different paths
+ - Some bugs fixed
+
+###Version 1.0
+
+ - Enemies's position improved to be more accurate
+ - Bugs fixed, game working well
 
 
 ##Project wiki
@@ -172,13 +218,6 @@ Carlos Gálvez's Github account and responsability
  - QA Testing
 
  - Github: https://github.com/carlosgabe1998
-
-
-Pablo Rovira's Github account and responsability
-
- - Art.
-
- - Github: https://github.com/Rovii
 
 
 CITM Terrassa 2016-2017
