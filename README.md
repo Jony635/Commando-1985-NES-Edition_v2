@@ -133,6 +133,16 @@ Green Boss Grenade Enemy ➣ Throw a grenade at him.
 Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
 
 
+##Original content added
+
+ - Map modified with indicators of the points where you should throw a grenade at to discover power ups or scret rooms
+ - Final screen with Flan Studio's logo and congratulations to the player
+ - Some art modifications in secret rooms
+ - Bunkers relocated.
+ - A grenade powerup at the end of the map to ensure that you don't run out of grenades when facing the boss
+ - Debug functionality to respawn power ups in front of you
+
+
 ##Changelist (LEVEL 2)
 
 ###Version 0.1
