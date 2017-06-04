@@ -90,7 +90,7 @@ bool ModuleRender::CleanUp()
 		SDL_DestroyRenderer(renderer);
 		renderer = nullptr;
 	}
-
+	
 	return true;
 }
 

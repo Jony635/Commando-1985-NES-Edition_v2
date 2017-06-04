@@ -231,20 +231,31 @@ bool ModulePlayer::Start()
 	winsound = true;
 	endaudio = true;
 	current_animation = &up;
+	if(graphics==nullptr)
 	graphics = App->textures->Load("Resources/Animations/Main Character Blue.png");
+	if (byebye == nullptr)
 	byebye = App->textures->Load("Resources/Screens/byebye.png");
+	if (ui_stuff == nullptr)
 	ui_stuff = App->textures->Load("Resources/ui/ui_stuff.png");
+	if (graphparticles == nullptr)
 	graphparticles = App->textures->Load("Resources/Sprites/Shoots and Explosions/Shoots_and_explosions.png");
+	if(bridge==nullptr)
 	bridge = App->textures->Load("Resources/Screens/bridgelvl2.png");//puente
+	if (bunkers == nullptr)
 	bunkers = App->textures->Load("Resources/Screens/bunkers.png");
+	if (room1 == nullptr)
 	room1 = App->textures->Load("Resources/Screens/sa1-walls.png");
+	if(room4==nullptr)
 	room4 = App->textures->Load("Resources/Screens/sa4-walls.png");
+	if (room5 == nullptr)
 	room5 = App->textures->Load("Resources/Screens/sa5-walls.png");
+	if(room6==nullptr)
 	room6 = App->textures->Load("Resources/Screens/sa6-walls.png");
 	position.x = (SCREEN_WIDTH / 2) - 7;
 	position.y = 140;
 	if (col == nullptr)
 	col = App->collision->AddCollider({position.x, position.y, 16, 20}, COLLIDER_PLAYER, this);
+	if(font_score==-1)
 	font_score = App->fonts->Load("Resources/ui/Alphabet.png", "0123456789abcdefghiklmnoprstuvwxyq<HIGH=!'·$%&/()-.€@ASD_GHJ", 6);
 
 
@@ -260,18 +271,29 @@ bool ModulePlayer::CleanUp()
 
 
 	App->textures->Unload(graphics);
-	App->textures->Unload(byebye);
+	graphics = nullptr;
 	App->textures->Unload(ui_stuff);
+	ui_stuff = nullptr;
 	App->textures->Unload(graphparticles);
+	graphparticles = nullptr;
 	App->textures->Unload(bridge);
+	bridge = nullptr;
 	App->textures->Unload(bunkers);
+	bunkers = nullptr;
 	App->textures->Unload(room1);
+	room1 = nullptr;
 	App->textures->Unload(room4);
+	room4 = nullptr;
 	App->textures->Unload(room5);
+	room5 = nullptr;
 	App->textures->Unload(room6);
+	room6 = nullptr;
+	App->textures->Unload(byebye);
+	byebye = nullptr;
 	App->collision->EraseCollider(col);
 	col = nullptr;
 	App->fonts->UnLoad(font_score);
+	font_score = -1;
 	
 	//An example of cleaning up all timers:
 	for (int i = 0; i < COUNTERS::MAX_COUNTER; i++)

@@ -529,7 +529,17 @@ update_status ModuleSecretAreas::Update() {
 bool ModuleSecretAreas::CleanUp() {
 
 	LOG("Unloading secretareas scene");
-
+	//Unload textures
+	App->textures->Unload(background1);
+	background1 = nullptr;
+	App->textures->Unload(items);
+	items = nullptr;
+	App->textures->Unload(rect);
+	rect = nullptr;
+	App->textures->Unload(alphabet);
+	alphabet = nullptr;
+	App->textures->Unload(swall);
+	swall = nullptr;
 
 
 	//Disables
@@ -541,10 +551,8 @@ bool ModuleSecretAreas::CleanUp() {
 	App->lvl2->top = -2880 + SCREEN_HEIGHT;
 	App->player->Disable();
 	App->enemies->Disable();
-	//Unload textures
-	App->textures->Unload(background1);
-	App->textures->Unload(items);
-	App->textures->Unload(rect);
+	
+
 
 	time_Counters[gas] = 0;
 

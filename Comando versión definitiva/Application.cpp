@@ -17,6 +17,7 @@
 #include "Globals.h"
 
 
+
 Application::Application()
 {
 	int i = 0;
@@ -40,6 +41,7 @@ Application::Application()
 
 Application::~Application()
 {
+	CleanUp();
 	for (int i = NUM_MODULES - 1; i >= 0; --i) {
 		delete modules[i];
 		modules[i] = nullptr;
@@ -88,8 +90,10 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
+	for (int i = NUM_MODULES - 1; i >= 0 && ret == true; --i) {
+		
 		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
+	}
 
 	return ret;
 }

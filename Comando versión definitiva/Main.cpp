@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
 
 			} break;
 
-		}
+		} 
 	}
 	delete App;
 	App = nullptr;
