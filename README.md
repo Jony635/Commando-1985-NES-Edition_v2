@@ -22,7 +22,7 @@ singlehandedly, fending off a massive assault of enemy soldiers and rescuing cap
 
 ## Installation
 
-Unzip the realese folder and execute the .exe file.
+Unzip the release folder and execute the .exe file.
 
 
 ## Usage
@@ -56,7 +56,7 @@ Keyboard:
 
 Space bar ➣ Shoot
 
-Shift ➣ Shoot grenade
+LShift ➣ Shoot grenade
 
 Gamepad:
 
@@ -124,23 +124,26 @@ B button ➣ Quit the game
 
 ## Win/lose condition
 
-Win ➣ Kill the boss at the end of the level.
+Win ➣ Kill all enemies at the end of the level.
 
-Lose ➣ Get shoot by an enemy, colliding with him, or falling into the water.
+Lose ➣ Get shoot by an enemy, colliding with him, falling into the water or in a secret area trap.
 
 
-## How to kill every type of enemy
+## Info about Commando enemies:
 
-Normal Whiteguard Enemy ➣ Shoot or throw a grenade at him.
+Normal Whiteguard Enemy ➣ Shoot or throw a grenade at him if you want to kill him. This enemy has different kind of movements, so be careful!
 
-Covered Enemy ➣ Throw a grenade at him.
+Covered Enemy ➣ Throw a grenade at him for killing him. This enemy shoots at you if you are in front of him and he is up.
 
-Vehicles and Bunkers ➣ Can't die.
+Vehicles and Bunkers ➣ Can't die. Evade them!
 
-Green Boss Grenade Enemy ➣ Throw a grenade at him.
+Green Boss Grenade Enemy ➣ Throw a grenade at him and he will die, but evade his ones!
 
-Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
+Green Boss Runner Enemy ➣ Shoot or throw him a grenade for killing him.
 
+Knifes: Evade them! They are inmortals.
+
+Rockets Enemy: They can kill you from so far, try to use the time between shoots for killing them, they die with shoots and grenades.
 
 ## Original content added
 
