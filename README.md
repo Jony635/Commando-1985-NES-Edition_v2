@@ -1,4 +1,7 @@
-![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
+﻿# Download: [Commando_1985_FlanStudios](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
+
+## Flan Studio Logo
+![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition/blob/master/Wiki/Home%20y%20Analysis/CommandoLogo.png?raw=true)
 
 
 
@@ -7,6 +10,8 @@
 
 
 # Commando (LEVEL 2)
+
+![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
 
 This is a class project made by 3 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
 The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
@@ -150,7 +155,7 @@ Green Boss Runner Enemy ➣ Shoot or throw a grenade at him.
  - A grenade powerup at the end of the map to ensure that you don't run out of grenades when facing the boss
  - Debug functionality to respawn power ups in front of you
 
-# Download: [Commando_1985_FlanStudios](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
+
 
 ## Changelist (LEVEL 2)
 
@@ -238,9 +243,14 @@ Carlos Gálvez's Github account and responsability
 
  - Github: [https://github.com/carlosgabe1998](https://github.com/carlosgabe1998)
  
-
+## Commando Gameplay
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/nxzWL1kqg54?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allowfullscreen></iframe></div>
 
+## Flan Studio staff
 ![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Web/FlanStudio.png?raw=true)
+
+
+# Dowload the latest version of Commando here.
+
 
 CITM Terrassa 2016-2017
