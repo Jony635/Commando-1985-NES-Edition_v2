@@ -202,7 +202,7 @@ https://github.com/Jony635/Commando-1985-NES-Edition_v2/wiki
 
 ## Project web
 
-[Project web](https://jony635.github.io/Commando-1985-NES-Edition_v2/)
+[https://jony635.github.io/Commando-1985-NES-Edition_v2/](https://jony635.github.io/Commando-1985-NES-Edition_v2/)
 
 
 ## Credits
