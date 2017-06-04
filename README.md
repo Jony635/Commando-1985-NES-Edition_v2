@@ -1,8 +1,7 @@
 ﻿# Download: [Commando_1985_FlanStudios](https://github.com/Jony635/Commando-1985-NES-Edition_v2/files/1050632/RELEASE_1.0-LVL2_Commando_FlanStudios.zip)
 
 ## Flan Studio Logo
-![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition/blob/master/Wiki/Home%20y%20Analysis/CommandoLogo.png?raw=true)
-
+![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
 
 
 
@@ -10,8 +9,8 @@
 
 
 # Commando (LEVEL 2)
+![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition/blob/master/Wiki/Home%20y%20Analysis/CommandoLogo.png?raw=true)
 
-![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Wiki/Home%20y%20Analysis/Logo%20Flan%20Studios.PNG?raw=true)
 
 This is a class project made by 3 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
 The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
