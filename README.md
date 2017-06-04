@@ -232,6 +232,6 @@ Carlos Gálvez's Github account and responsability
 
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/nxzWL1kqg54?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allowfullscreen></iframe></div>
 
-![](https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Web/FlanStudio.jpeg)  
+<img src="https://github.com/Jony635/Commando-1985-NES-Edition_v2/blob/master/Web/FlanStudio.jpeg" alt="hi" class="inline"/>
 
 CITM Terrassa 2016-2017
