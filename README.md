@@ -6,8 +6,9 @@
 
 
 # Commando (LEVEL 2)
+<!---
 ![Image not avaiable](https://github.com/Jony635/Commando-1985-NES-Edition/blob/master/Wiki/Home%20y%20Analysis/CommandoLogo.png?raw=true)
-
+-->
 
 This is a class project made by 3 students of the "design and development of videogames" degree from Terrassa (Catalonia/Spain). 
 The objective of the project is to recreate the arcade game Commando the more accurately possible. Between all the groups most of the game will be
